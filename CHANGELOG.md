@@ -12,4 +12,7 @@
 
 - Add LICENSE.md
 - Add CHANGELOG.md
-# CHANGELOG
+- Add CODE_OF_CONDUCT.md
+- Add CONTRIBUTING.md
+- Modify README.md
+
