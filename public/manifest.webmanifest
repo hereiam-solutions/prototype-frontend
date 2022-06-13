@@ -8,7 +8,6 @@
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
-  "id": "hereIam",
   "start_url": "/",
   "icons": [
     {
