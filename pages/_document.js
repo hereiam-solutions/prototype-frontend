@@ -8,7 +8,7 @@ class MyDocument extends Document {
     return (
       <Html lang='en' dir='ltr'>
         <Head>
-            <link rel="manifest" href="public/manifest.json" />
+            <link rel="manifest" href="/public/manifest.json" />
             <meta charSet='utf-8' />
             <meta httpEquiv='X-UA-Compatible' content='IE=edge' />    
             <meta name='application-name' content={APP_NAME} />
@@ -18,8 +18,8 @@ class MyDocument extends Document {
             <meta name='description' content={APP_DESCRIPTION} />
             <meta name='format-detection' content='telephone=no' />
             <meta name='mobile-web-app-capable' content='yes' />
-            <link href='public/icons/favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' />    
-            <link href='public/icons/favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' />
+            <link href='/public/icons/favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' />    
+            <link href='/public/icons/favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' />
             <link rel='apple-touch-icon' href='public/icon/apple-icon.png'></link>
             <meta name='theme-color' content='#DCE4EF' />
         </Head>
