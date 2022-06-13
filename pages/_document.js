@@ -8,7 +8,7 @@ class MyDocument extends Document {
     return (
       <Html lang='en' dir='ltr'>
         <Head>
-            <link rel="manifest" href="public/manifest.webmanifest" />
+            <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
             <meta charSet='utf-8' />
             <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
             
