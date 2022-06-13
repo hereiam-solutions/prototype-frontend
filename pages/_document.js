@@ -9,7 +9,7 @@ class MyDocument extends Document {
       <Html lang='en' dir='ltr'>
         <Head>
             <link rel="manifest" href="%PUBLIC_URL%/manifest.webmanifest" />
-            <meta charset='utf-8' />
+            <meta charSet='utf-8' />
             <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
             
             <meta name='application-name' content={APP_NAME} />
