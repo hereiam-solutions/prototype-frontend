@@ -10,8 +10,7 @@ class MyDocument extends Document {
         <Head>
             <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
             <meta charSet='utf-8' />
-            <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-            
+            <meta httpEquiv='X-UA-Compatible' content='IE=edge' />    
             <meta name='application-name' content={APP_NAME} />
             <meta name='apple-mobile-web-app-capable' content='yes' />
             <meta name='apple-mobile-web-app-status-bar-style' content='default' />
