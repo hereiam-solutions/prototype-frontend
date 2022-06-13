@@ -8,11 +8,14 @@ const nextConfig = {
 
 module.exports = nextConfig;
 
-/** incude shadowwalker/next-pwa/examples/cache-on-front-ed-nav */
-const withPWA = require('next-pwa')
+/**PWA **/
+const withPWA = require("next-pwa");
 
 module.exports = withPWA({
   pwa: {
-    dest: 'public'
-  }
-})
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+    disable: process.env.NODE_ENV === "development",
+  },
+});
