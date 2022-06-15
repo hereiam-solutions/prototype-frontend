@@ -79,6 +79,7 @@ We see the prototype as an experiment. With it, we want to validate the internal
 - [styled-components](https://styled-components.com/) (for styling)
 - [formik](https://www.npmjs.com/package/formik) (for handling form input)
 - [swr](https://www.npmjs.com/package/swr) and [axios](https://www.npmjs.com/package/axios) (for handling http requests)
+- [next-pwa] (https://github.com/shadowwalker/next-pwa) (for PWA Approach)
 
 
 ## Getting Started
