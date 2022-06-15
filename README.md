@@ -1,8 +1,6 @@
-<h1 align="center">
-  <a href="https://github.com/hereiam-solutions/prototype-frontend„>
-    <img src=„https://avatars.githubusercontent.com/u/99030226?v=4" alt="Logo" width="125" height="125">
-  </a>
-</h1>
+<div align="center">
+	![hereIam Logo](https://github.com/hereiam-solutions/prototype-frontend/blob/main/public/icons/icon-144x144.png?raw=true)
+</div>
 
 <div align="center">
 	<h3>hereIam - save lives with better decisions</h3>
@@ -79,7 +77,7 @@ We see the prototype as an experiment. With it, we want to validate the internal
 - [styled-components](https://styled-components.com/) (for styling)
 - [formik](https://www.npmjs.com/package/formik) (for handling form input)
 - [swr](https://www.npmjs.com/package/swr) and [axios](https://www.npmjs.com/package/axios) (for handling http requests)
-- [next-pwa] (https://github.com/shadowwalker/next-pwa) (for PWA Approach)
+- [next-pwa](https://github.com/shadowwalker/next-pwa) (for PWA Approach)
 
 
 ## Getting Started
