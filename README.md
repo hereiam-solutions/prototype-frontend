@@ -1,7 +1,5 @@
-<div align="center">
-	[hereIam Logo](https://github.com/hereiam-solutions/prototype-frontend/blob/main/public/icons/icon-144x144.png?raw=true)
-</div>
 
+![hereIam Logo](/public/icons/icon-144x144.png?raw=true)
 <div align="center">
 	<h3>hereIam - save lives with better decisions</h3>
 	<br />
