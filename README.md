@@ -1,5 +1,5 @@
+![hereIam Logo](/public/icons/icon-144x144.png?raw=true)
 <div align="center">
-	![hereIam Logo](/public/icons/icon-144x144.png?raw=true)
 	<h3>hereIam - save lives with better decisions</h3>
 	<br />
 	<br />
