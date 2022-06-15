@@ -1,5 +1,5 @@
 <div align="center">
-	![hereIam Logo](https://github.com/hereiam-solutions/prototype-frontend/blob/main/public/icons/icon-144x144.png?raw=true)
+	[hereIam Logo](https://github.com/hereiam-solutions/prototype-frontend/blob/main/public/icons/icon-144x144.png?raw=true)
 </div>
 
 <div align="center">
