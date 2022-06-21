@@ -68,13 +68,13 @@ We see the prototype as an experiment. With it, we want to validate the internal
 
 ### Built With
 
-- [Next.js](https://nextjs.org/)(using React together with Typescript)
-- [Leaflet](https://github.com/features/actions)
-- [realm](https://github.com/igorshubovych/markdownlint-cli)
+- [React with Typescript](https://create-react-app.dev/docs/adding-typescript)
+- [Leaflet](https://react-leaflet.js.org)
+- [realm](https://www.mongodb.com/docs/realm/sdk/react-native/use-realm-react/)
 - [styled-components](https://styled-components.com/) (for styling)
 - [formik](https://www.npmjs.com/package/formik) (for handling form input)
 - [swr](https://www.npmjs.com/package/swr) and [axios](https://www.npmjs.com/package/axios) (for handling http requests)
-- [next-pwa](https://github.com/shadowwalker/next-pwa) (for PWA Approach)
+- [cra-pwa](https://cra.link/PWA) (for PWA Approach)
 
 
 ## Getting Started
