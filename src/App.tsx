@@ -8,6 +8,7 @@ import {
 } from './styles/GlobalStyle';
 import useTheme from './hooks/useTheme';
 import Map from './components/Map';
+import Nav from  './components/Nav';
 
 const App = () => {
   // get the current theme
@@ -16,14 +17,16 @@ const App = () => {
   return (
     <>
       {/* pass the appropriate global values for the current theme */}
+
       <ThemeProvider
         theme={
           currentTheme === 'dark'
             ? globalDarkThemeValues
             : globalLightThemeValues
         }
-      >
+      </>
         <Map />
+        <Nav />
         {/* <Routes>
           <Route path="/" element={<Map />} />
           <Route path="signup" element={<Signup />} />
