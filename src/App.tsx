@@ -18,31 +18,36 @@ const App = () => {
     <>
       {/* pass the appropriate global values for the current theme */}
 
-      <ThemeProvider
+      <ThemeProvider>
+        /*
         theme={
           currentTheme === 'dark'
             ? globalDarkThemeValues
             : globalLightThemeValues
         }
-      >
+        */
+
         <Map />
         <Nav />
-        {/* <Routes>
-          <Route path="/" element={<Map />} />
-          <Route path="signup" element={<Signup />} />
-            <Route path="signin" element={<Signin />} />
-            <Route path="/" element={<Home />} />
-            <Route element={<RequireAuth />}>
-              <Route path="notes" element={<Notes />} />
-              <Route path="note" element={<Note />}>
-                <Route path=":noteID" element={<Note />} />
-              </Route>
-            </Route>s
-           </Route>
-        </Routes> */}
+
+        {
+          <Routes>
+            /*<Route path="/" element={<Home />} /> */
+            <Route path="/" element={<Map />} />,
+            /*<Route path="signup" element={<Signup />} /> */
+            /*<Route path="signin" element={<Signin />} /> */
+            /*<Route element={<RequireAuth />}> */
+              <Route path="/profile" element={<Profile />} />,
+              <Route path="/settings" element={<Settings />} />,
+              <Route path="/about" element={<About />} />
+            /*</Route>*/
+          </Routes>
+        }
         <GlobalStyles />
       </ThemeProvider>
+
     </>
+
   );
 };
 
