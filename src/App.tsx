@@ -34,7 +34,7 @@ const App = () => {
               <Route path="note" element={<Note />}>
                 <Route path=":noteID" element={<Note />} />
               </Route>
-            </Route> 
+            </Route>s
            </Route>
         </Routes> */}
         <GlobalStyles />
