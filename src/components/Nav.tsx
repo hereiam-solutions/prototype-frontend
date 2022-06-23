@@ -37,7 +37,6 @@ const MenuItemLinks = styled(Link)`
     }
 `
 
-
 const Nav: React.FunctionComponent = () => {
     return (
         <>
@@ -52,8 +51,7 @@ const Nav: React.FunctionComponent = () => {
                         </MenuItems>
                     )
                 }
-)}
-
+                )}
             </OverlayNavMenu>
         </>
     )
