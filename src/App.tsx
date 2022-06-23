@@ -24,7 +24,7 @@ const App = () => {
             ? globalDarkThemeValues
             : globalLightThemeValues
         }
-      </>
+      >
         <Map />
         <Nav />
         {/* <Routes>
