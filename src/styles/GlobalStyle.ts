@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     --base-light: #DCE4EF;
     --base: #494440;
     --base-dark: #212121;
-    --gray-500 #323A45;
+    --gray-500: #323A45;
     --gray-400: #5B616B;
     --gray-300: #AEB0B5;
     --gray-200: #D6D7D9;
