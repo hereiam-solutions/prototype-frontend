@@ -8,8 +8,8 @@ const OverlayNavMenu = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
-    height: 3rem;
-    transition: .6s;
+    height: 100%;
+    background-color: var(--base-light);
 `
 const MenuItems = styled.li`
     list-style: none;
@@ -18,13 +18,13 @@ const MenuItems = styled.li`
     justify-content: start;
     width: 100%;
     height: 35px;
-    padding: 1rem 0 1.25rem;
+    padding-top: 1rem;
 `
 const MenuItemLinks = styled(Link)`
     display: flex;
     align-items: center;
     padding: 0 2rem;
-    font-size: 15px;
+    font-size: 2rem;
     text-decoration: none;
     color: var(--base-light);
 
@@ -33,7 +33,6 @@ const MenuItemLinks = styled(Link)`
         color: var(--gray-200);
         font-weight: 400;
         border-radius: 5px;
-        margin: 0 2rem;
     }
 `
 
