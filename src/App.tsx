@@ -21,13 +21,14 @@ const App = () => {
     <>
       {/* pass the appropriate global values for the current theme */}
 
-      <ThemeProvider>
+      <ThemeProvider
 
         theme={
           currentTheme === 'dark'
             ? globalDarkThemeValues
             : globalLightThemeValues
         }
+      >
         <Map />
         <Nav />
         {
