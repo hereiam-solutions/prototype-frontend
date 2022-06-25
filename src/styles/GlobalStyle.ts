@@ -62,10 +62,11 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 100;
   }
 
-  /* all elements in the flow of the document that follow other elements will receive margin */
+  /* all elements in the flow of the document that follow other elements will receive margin
   * + * {
     margin-top: 1.5em;
   }
+  */
 
   /* center elements vertically */
   .centered {
