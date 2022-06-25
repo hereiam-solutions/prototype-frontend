@@ -1,51 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import 'leaflet/dist/leaflet.css';
 
 import { OverlayNavData } from './NavData';
 
 const OverlayNavMenu = styled.div`
     display: flex;
-    justify-content: start;
+    flex-direction: column;
     align-items: center;
-    height: 5rem;
-    background-color: var(--base-light);
+    padding: 1rem;
+    background-color: var(--gray-200);
+    position: absolute;
+    bottom: 5%;
+    left: 80%;
+    z-index: 1000;
 `
 const MenuItems = styled.li`
     list-style: none;
     display: flex;
-    align-items: center;
-    justify-content: start;
-    width: 100%;
-    height: 35px;
-    padding-top: 1rem;
+    flex-wrap: wrap;
+    padding-top: 2rem;
 `
 const MenuItemLinks = styled(Link)`
     display: flex;
-    align-items: center;
-    padding: 0 2rem;
+    width: 100%;
     font-size: 2rem;
-    text-decoration: none;
-    color: var(--base-dark);
+    color: var(--whiter);
 
     &:hover {
         background-color: var(--gray-400);
         color: var(--gray-200);
-        font-weight: 400;
-        border-radius: 5px;
+        border-radius: 1rem;
     }
 `
 
 const Nav: React.FunctionComponent = () => {
     return (
         <>
-            <OverlayNavMenu>
+            <OverlayNavMenu role="navigation">
                 {OverlayNavData.map((item, index) => {
                     return (
                         <MenuItems key={index}>
                             <MenuItemLinks to={item.path}>
                                 {item.icon}
-                                <span style={{marginTop: '10px'}}>{item.title}</span>
                             </MenuItemLinks>
                         </MenuItems>
                     )

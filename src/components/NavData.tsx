@@ -1,5 +1,5 @@
 import React from 'react';
-import * as FiIcons from "react-icons/fi";
+import * as FiIcons from 'react-icons/fi'
 
 export const OverlayNavData = [
 
