@@ -3,6 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 // the styled-components global styles object
 // import in App.tsx and inserted as a Component
 // applies every style defined in here to all elements (can still be overwritten)
+
+// css improvements based on: https://github.com/AllThingsSmitty/css-protips
 export const GlobalStyles = createGlobalStyle`
   *{
      box-sizing: border-box;
