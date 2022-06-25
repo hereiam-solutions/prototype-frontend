@@ -11,7 +11,7 @@ const SettingsText = styled.div`
 
 const Settings: React.FunctionComponent = () => {
     return (
-        <SettingsText>About</SettingsText>
+        <SettingsText>Settings</SettingsText>
     )
 }
 
