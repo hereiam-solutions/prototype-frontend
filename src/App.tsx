@@ -34,9 +34,9 @@ const App = () => {
         {
           <Routes>
             <Route path="/" element={<Map />} />;
-              <Route path="/profile" element={<Profile />} />;
-              <Route path="/settings" element={<Settings />} />;
-              <Route path="/about" element={<About />} />;
+            <Route path="/profile" element={<Profile />} />;
+            <Route path="/settings" element={<Settings />} />;
+            <Route path="/about" element={<About />} />;
           </Routes>
         }
         <GlobalStyles />
