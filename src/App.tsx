@@ -9,6 +9,9 @@ import {
 import useTheme from './hooks/useTheme';
 import Map from './components/Map';
 import Nav from  './components/Nav';
+import Profile from  './components/Profile';
+import Settings from  './components/Settings';
+import About from  './components/About';
 
 const App = () => {
   // get the current theme
@@ -19,28 +22,20 @@ const App = () => {
       {/* pass the appropriate global values for the current theme */}
 
       <ThemeProvider>
-        /*
+
         theme={
           currentTheme === 'dark'
             ? globalDarkThemeValues
             : globalLightThemeValues
         }
-        */
-
         <Map />
         <Nav />
-
         {
           <Routes>
-            /*<Route path="/" element={<Home />} /> */
             <Route path="/" element={<Map />} />;
-            /*<Route path="signup" element={<Signup />} /> */
-            /*<Route path="signin" element={<Signin />} /> */
-            /*<Route element={<RequireAuth />}> */
               <Route path="/profile" element={<Profile />} />;
               <Route path="/settings" element={<Settings />} />;
               <Route path="/about" element={<About />} />;
-            /*</Route>*/
           </Routes>
         }
         <GlobalStyles />
