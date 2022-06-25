@@ -1,12 +1,13 @@
-import { Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import { ThemeProvider } from 'styled-components';
 import {
   GlobalStyles,
   globalDarkThemeValues,
   globalLightThemeValues,
 } from './styles/GlobalStyle';
 import useTheme from './hooks/useTheme';
+
 import Map from './components/Map';
 import Nav from  './components/Nav';
 import Profile from  './components/Profile';
@@ -20,30 +21,29 @@ const App = () => {
   return (
     <>
       {/* pass the appropriate global values for the current theme */}
+      <Router>
+        <ThemeProvider
 
-      <ThemeProvider
-
-        theme={
-          currentTheme === 'dark'
-            ? globalDarkThemeValues
-            : globalLightThemeValues
-        }
-      >
+          theme={
+            currentTheme === 'dark'
+              ? globalDarkThemeValues
+              : globalLightThemeValues
+          }
+        >
         <Map />
         <Nav />
-        {
-          <Routes>
-            <Route path="/" element={<Map />} />;
-            <Route path="/profile" element={<Profile />} />;
-            <Route path="/settings" element={<Settings />} />;
-            <Route path="/about" element={<About />} />;
-          </Routes>
-        }
+
+        <Routes>
+          <Route path="/" element={<Map />} />;
+          <Route path="/profile" element={<Profile />} />;
+          <Route path="/settings" element={<Settings />} />;
+          <Route path="/about" element={<About />} />;
+        </Routes>
+
         <GlobalStyles />
-      </ThemeProvider>
-
+        </ThemeProvider>
+      </Router>
     </>
-
   );
 };
 
