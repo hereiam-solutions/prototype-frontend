@@ -1,4 +1,4 @@
-import { createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 // the styled-components global styles object
 // import in App.tsx and inserted as a Component
