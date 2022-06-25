@@ -8,7 +8,7 @@ const OverlayNavMenu = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
-    height: 100%;
+    height: 5rem;
     background-color: var(--base-light);
 `
 const MenuItems = styled.li`
@@ -26,7 +26,7 @@ const MenuItemLinks = styled(Link)`
     padding: 0 2rem;
     font-size: 2rem;
     text-decoration: none;
-    color: var(--base-light);
+    color: var(--base-dark);
 
     &:hover {
         background-color: var(--gray-400);
