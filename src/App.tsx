@@ -21,6 +21,8 @@ import About from './components/About';
 
 // helper functions imports
 import connectToRealm from './helpers/connectToRealm';
+import Register from './components/Register';
+import Login from './components/Login';
 
 const App = () => {
   // get the current theme
@@ -41,11 +43,13 @@ const App = () => {
                 : globalLightThemeValues
             }
           >
-            <Map />
-            <Nav />
+            {/* <Map />
+            <Nav /> */}
 
             <Routes>
               <Route path="/" element={<Map />} />;
+              <Route path="/register" element={<Register />} />;
+              <Route path="/login" element={<Login />} />;
               <Route path="/profile" element={<Profile />} />;
               <Route path="/settings" element={<Settings />} />;
               <Route path="/about" element={<About />} />;

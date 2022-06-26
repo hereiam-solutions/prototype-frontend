@@ -4,30 +4,21 @@ import { useState } from 'react';
 import LoadingIndicator from './LoadingIndicator';
 import useRealm from '../hooks/useRealm';
 import styled from 'styled-components';
+import * as Realm from 'realm-web';
 
 // define the schema / rules for the form validation
 const userSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  lastName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string().min(8, 'Too short!').required('Required'),
 });
 
 // create a type for the values in the form
 type formValuesType = {
-  firstName: string;
-  lastName: string;
   email: string;
   password: string;
 };
 
-const Register = () => {
+const Login = () => {
   // get the realm connection from the context
   const { realm } = useRealm();
 
@@ -39,10 +30,12 @@ const Register = () => {
     try {
       setLoading(true);
 
-      const reg = await realm.emailPasswordAuth.registerUser({
-        email: values.email,
-        password: values.password,
-      });
+      const credentials = Realm.Credentials.emailPassword(
+        values.email,
+        values.password
+      );
+
+      const reg = await realm.logIn(credentials);
 
       console.log('reg', reg);
       console.log('current user: ', realm.currentUser);
@@ -54,56 +47,34 @@ const Register = () => {
   };
 
   return (
-    <>
-      <Formik
-        initialValues={{
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-        }}
-        validationSchema={userSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, touched }) => (
-          <Form>
-            <StyledField name="firstName" placeholder="First Name" />
-            {errors.firstName && touched.firstName ? (
-              <StyledInlineErrorMessage>
-                {errors.firstName}
-              </StyledInlineErrorMessage>
-            ) : null}
+    <Formik
+      initialValues={{
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+      }}
+      validationSchema={userSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ errors, touched }) => (
+        <Form>
+          <StyledField name="email" type="email" placeholder="Email" />
+          {errors.email && touched.email ? (
+            <StyledInlineErrorMessage>{errors.email}</StyledInlineErrorMessage>
+          ) : null}
 
-            <StyledField name="lastName" placeholder="Last Name" />
-            {errors.lastName && touched.lastName ? (
-              <StyledInlineErrorMessage>
-                {errors.lastName}
-              </StyledInlineErrorMessage>
-            ) : null}
+          <StyledField name="password" type="password" placeholder="Password" />
+          {errors.password && touched.password ? (
+            <StyledInlineErrorMessage>
+              {errors.password}
+            </StyledInlineErrorMessage>
+          ) : null}
 
-            <StyledField name="email" type="email" placeholder="Email" />
-            {errors.email && touched.email ? (
-              <StyledInlineErrorMessage>
-                {errors.email}
-              </StyledInlineErrorMessage>
-            ) : null}
-
-            <StyledField
-              name="password"
-              type="password"
-              placeholder="Password"
-            />
-            {errors.password && touched.password ? (
-              <StyledInlineErrorMessage>
-                {errors.password}
-              </StyledInlineErrorMessage>
-            ) : null}
-
-            <StyledButton type="submit">Submit</StyledButton>
-          </Form>
-        )}
-      </Formik>
-    </>
+          <StyledButton type="submit">Submit</StyledButton>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
@@ -166,4 +137,4 @@ const StyledButton = styled.button`
   }
 `;
 
-export default Register;
+export default Login;
