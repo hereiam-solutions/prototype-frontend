@@ -18,11 +18,12 @@ import Nav from './components/Nav';
 import Profile from './components/Profile';
 import Settings from './components/Settings';
 import About from './components/About';
+import UserDetails from './components/UserDetails';
 
 // helper functions imports
 import connectToRealm from './helpers/connectToRealm';
-import Register from './components/Register';
-import Login from './components/Login';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 const App = () => {
   // get the current theme
@@ -53,6 +54,7 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />;
               <Route path="/settings" element={<Settings />} />;
               <Route path="/about" element={<About />} />;
+              <Route path="/user" element={<UserDetails />} />;
             </Routes>
 
             <GlobalStyles />

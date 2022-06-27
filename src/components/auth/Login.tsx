@@ -1,10 +1,11 @@
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import LoadingIndicator from './LoadingIndicator';
-import useRealm from '../hooks/useRealm';
+import LoadingIndicator from '../LoadingIndicator';
+import useRealm from '../../hooks/useRealm';
 import styled from 'styled-components';
 import * as Realm from 'realm-web';
+import { useNavigate } from 'react-router-dom';
 
 // define the schema / rules for the form validation
 const userSchema = Yup.object().shape({
@@ -19,13 +20,14 @@ type formValuesType = {
 };
 
 const Login = () => {
+  let navigate = useNavigate();
   // get the realm connection from the context
   const { realm } = useRealm();
 
   // initalize a loading state to conditionally render a loading indicator component
   const [loading, setLoading] = useState(false);
 
-  // function that is called upon form submission, tries to create a user in realm
+  // function that is called upon form submission, tries to login the user in realm
   const handleSubmit = async (values: formValuesType) => {
     try {
       setLoading(true);
@@ -41,6 +43,7 @@ const Login = () => {
       console.log('current user: ', realm.currentUser);
 
       setLoading(false);
+      navigate('/user');
     } catch (e) {
       console.log(e);
     }
