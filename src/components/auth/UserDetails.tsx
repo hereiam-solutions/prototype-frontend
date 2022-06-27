@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import useRealm from '../hooks/useRealm';
-import useRealmFunction from '../hooks/useRealmFunction';
+import useRealm from '../../hooks/useRealm';
+import useRealmFunction from '../../hooks/useRealmFunction';
 
 const UserDetails = () => {
   const { realm } = useRealm();
