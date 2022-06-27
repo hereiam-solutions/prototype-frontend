@@ -8,13 +8,13 @@ export enum ThemeEnum {
 }
 
 // create a type for the context's value
-export type themeContextType = {
+type ThemeContextType = {
   currentTheme: ThemeEnum;
   setCurrentTheme: (theme: ThemeEnum) => void;
 };
 
 // create the context and set a default value that matches the context type
-const ThemeContext = createContext<themeContextType>({
+const ThemeContext = createContext<ThemeContextType>({
   currentTheme: ThemeEnum.DARK,
   setCurrentTheme: () => {},
 });

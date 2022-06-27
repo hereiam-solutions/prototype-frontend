@@ -1,5 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+// Context imports
+import RealmContext from './context/RealmContext';
+
+// Theming imports
 import { ThemeProvider } from 'styled-components';
 import {
   GlobalStyles,
@@ -8,40 +12,54 @@ import {
 } from './styles/GlobalStyle';
 import useTheme from './hooks/useTheme';
 
+// Component imports
 import Map from './components/Map';
-import Nav from  './components/Nav';
-import Profile from  './components/Profile';
-import Settings from  './components/Settings';
-import About from  './components/About';
+import Nav from './components/Nav';
+import Profile from './components/Profile';
+import Settings from './components/Settings';
+import About from './components/About';
+import UserDetails from './components/UserDetails';
+
+// helper functions imports
+import connectToRealm from './helpers/connectToRealm';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 const App = () => {
   // get the current theme
   const { currentTheme } = useTheme();
 
+  // initialize the MongoDB Realm connection
+  const realm = connectToRealm();
+
   return (
     <>
-      {/* pass the appropriate global values for the current theme */}
       <Router>
-        <ThemeProvider
+        <RealmContext.Provider value={{ realm }}>
+          {/* pass the appropriate global values for the current theme */}
+          <ThemeProvider
+            theme={
+              currentTheme === 'dark'
+                ? globalDarkThemeValues
+                : globalLightThemeValues
+            }
+          >
+            {/* <Map />
+            <Nav /> */}
 
-          theme={
-            currentTheme === 'dark'
-              ? globalDarkThemeValues
-              : globalLightThemeValues
-          }
-        >
-        <Map />
-        <Nav />
+            <Routes>
+              <Route path="/" element={<Map />} />;
+              <Route path="/register" element={<Register />} />;
+              <Route path="/login" element={<Login />} />;
+              <Route path="/profile" element={<Profile />} />;
+              <Route path="/settings" element={<Settings />} />;
+              <Route path="/about" element={<About />} />;
+              <Route path="/user" element={<UserDetails />} />;
+            </Routes>
 
-        <Routes>
-          <Route path="/" element={<Map />} />;
-          <Route path="/profile" element={<Profile />} />;
-          <Route path="/settings" element={<Settings />} />;
-          <Route path="/about" element={<About />} />;
-        </Routes>
-
-        <GlobalStyles />
-        </ThemeProvider>
+            <GlobalStyles />
+          </ThemeProvider>
+        </RealmContext.Provider>
       </Router>
     </>
   );
