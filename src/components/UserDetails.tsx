@@ -1,11 +1,21 @@
-import axios from 'axios';
-import { useEffect } from 'react';
 import styled from 'styled-components';
 import useRealm from '../hooks/useRealm';
-import * as Realm from 'realm-web';
+import useRealmFunction from '../hooks/useRealmFunction';
 
 const UserDetails = () => {
   const { realm } = useRealm();
+
+  const { data, loading, error } = useRealmFunction({
+    functionName: 'testFunction',
+    args: [],
+  });
+
+  if (loading) {
+    console.log('loading');
+  }
+  if (data) {
+    console.log(data);
+  }
 
   return (
     <>
