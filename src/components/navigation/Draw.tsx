@@ -4,8 +4,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useNavigation from '../../hooks/useNavigation';
 
-const Draw = () => {
-  const { isDrawOpen, setIsDrawOpen } = useNavigation();
+type DrawPropsType = {
+  usedInAuthentication: boolean;
+};
+const Draw = ({ usedInAuthentication }: DrawPropsType) => {
+  const { setIsDrawOpen } = useNavigation();
 
   return (
     <StyledDrawWrapper>
@@ -13,7 +16,9 @@ const Draw = () => {
         <Outlet />
       </StyledDrawContentWrapper>
 
-      <StyledMapOverlay to="/" onClick={() => setIsDrawOpen(false)} />
+      {!usedInAuthentication && (
+        <StyledMapOverlay to="/" onClick={() => setIsDrawOpen(false)} />
+      )}
     </StyledDrawWrapper>
   );
 };

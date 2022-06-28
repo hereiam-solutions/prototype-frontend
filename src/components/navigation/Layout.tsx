@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import RequireAuth from '../auth/RequireAuth';
 import Map from '../Map';
 import Nav from './Nav';
 
@@ -8,14 +9,14 @@ type Props = {};
 
 const Layout = (props: Props) => {
   return (
-    <div>
-      <StyledAppWrapper>
-        <Map />
-        <StyledNavWrapper>
-          <Nav />
-        </StyledNavWrapper>
-      </StyledAppWrapper>
-    </div>
+    // <RequireAuth>
+    <StyledAppWrapper>
+      <Map />
+      <StyledNavWrapper>
+        <Nav />
+      </StyledNavWrapper>
+    </StyledAppWrapper>
+    // </RequireAuth>
   );
 };
 

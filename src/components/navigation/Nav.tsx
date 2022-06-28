@@ -23,7 +23,7 @@ const Nav = () => {
         </StyledMenuButton>
       </StyledNavigationMenu>
 
-      {isDrawOpen && <Draw />}
+      {isDrawOpen && <Draw usedInAuthentication={false} />}
     </>
   );
 };

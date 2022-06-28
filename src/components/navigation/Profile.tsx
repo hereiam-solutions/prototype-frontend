@@ -6,15 +6,16 @@ import useRealm from '../../hooks/useRealm';
 
 const Profile = () => {
   const { realm } = useRealm();
-  const { isDrawOpen, setIsDrawOpen } = useNavigation();
+
+  const { setIsDrawOpen } = useNavigation();
+
   let navigate = useNavigate();
 
   const handleLogOut = async () => {
-    const log = await realm.currentUser?.logOut();
-    console.log(log);
+    await realm.currentUser?.logOut();
 
     setIsDrawOpen(false);
-    navigate('/login');
+    navigate('/auth');
   };
 
   return (

@@ -1,5 +1,3 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import Map from '../Map';
 import Draw from '../navigation/Draw';
@@ -9,7 +7,7 @@ const AuthLayout = () => {
     <div>
       <StyledAppWrapper>
         <Map />
-        <Draw />
+        <Draw usedInAuthentication={true} />
       </StyledAppWrapper>
     </div>
   );

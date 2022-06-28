@@ -15,6 +15,7 @@ import Layout from './components/navigation/Layout';
 import AuthLayout from './components/auth/AuthLayout';
 import UserDetails from './components/auth/UserDetails';
 import Authentication from './components/auth/Authentication';
+import RequireAuth from './components/auth/RequireAuth';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -29,13 +30,25 @@ root.render(
           {/* Login and Register need another layout than the actual app */}
           <Route element={<AuthLayout />}>
             {/* /user is just for realm testing */}
-            <Route path="user" element={<UserDetails />} />
+            <Route
+              path="user"
+              element={
+                <RequireAuth>
+                  <UserDetails />
+                </RequireAuth>
+              }
+            />
+
             <Route path="auth" element={<Authentication />} />
-            {/* <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} /> */}
           </Route>
 
-          <Route element={<Layout />}>
+          <Route
+            element={
+              <RequireAuth>
+                <Layout />
+              </RequireAuth>
+            }
+          >
             <Route index element={<Home />} />
             <Route path="mission" element={<Mission />} />
             <Route path="settings" element={<Settings />} />
