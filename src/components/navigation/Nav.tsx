@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Draw from '../Draw';
+import Draw from './Draw';
 
 const Nav = () => {
   const [drawIsOpen, setDrawIsOpen] = useState(false);
@@ -33,7 +33,6 @@ const StyledNavigationMenu = styled.div`
   align-items: center;
   padding: 1rem;
   gap: 1em;
-  background: rgba(1, 1, 1, 0.106);
   position: absolute;
   bottom: 5%;
   left: 80%;

@@ -10,9 +10,9 @@ type PropsType = {
 const Draw = ({ setDrawIsOpen }: PropsType) => {
   return (
     <StyledDrawWrapper>
-      <StyledDrawBackground>
+      <StyledDrawContentWrapper>
         <Outlet />
-      </StyledDrawBackground>
+      </StyledDrawContentWrapper>
 
       <StyledMapOverlay to="/" onClick={() => setDrawIsOpen(false)} />
     </StyledDrawWrapper>
@@ -21,7 +21,6 @@ const Draw = ({ setDrawIsOpen }: PropsType) => {
 
 const StyledDrawWrapper = styled.div`
   position: absolute;
-  background: rgba(1, 1, 1, 0, 1);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -38,12 +37,15 @@ const StyledMapOverlay = styled(Link)`
   width: 100vw;
 `;
 
-const StyledDrawBackground = styled.div`
+const StyledDrawContentWrapper = styled.div`
+  height: 66vh;
+  width: 100vw;
   background: white;
-  height: 66%;
-  width: 100%;
-  border-radius: 100px 100px 0 0;
   z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 70px 70px 0 0;
 `;
 
 export default Draw;

@@ -5,13 +5,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // component imports
 import App from './App';
 import Profile from './components/navigation/Profile';
+import Settings from './components/navigation/Settings';
+import Mission from './components/navigation/Mission';
 import Home from './components/navigation/Home';
 import Layout from './components/navigation/Layout';
 
 // service worker imports
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import Settings from './components/Settings';
-import Mission from './components/navigation/Mission';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
