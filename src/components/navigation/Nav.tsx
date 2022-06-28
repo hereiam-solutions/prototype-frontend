@@ -1,28 +1,29 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
 const Nav = () => {
-  const [drawIsOpen, setDrawIsOpen] = useState(false);
+  const { isDrawOpen, setIsDrawOpen } = useNavigation();
 
   return (
     <>
       <StyledNavigationMenu role="navigation">
-        <StyledMenuButton onClick={() => setDrawIsOpen(true)} to="mission">
+        <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="mission">
           Missions
         </StyledMenuButton>
 
-        <StyledMenuButton onClick={() => setDrawIsOpen(true)} to="settings">
+        <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="settings">
           Settings
         </StyledMenuButton>
 
-        <StyledMenuButton onClick={() => setDrawIsOpen(true)} to="profile">
+        <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="profile">
           Profile
         </StyledMenuButton>
       </StyledNavigationMenu>
 
-      {drawIsOpen && <Draw setDrawIsOpen={setDrawIsOpen} />}
+      {isDrawOpen && <Draw usedInAuthentication={false} />}
     </>
   );
 };

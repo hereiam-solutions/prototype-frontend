@@ -2,19 +2,23 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import useNavigation from '../../hooks/useNavigation';
 
-type PropsType = {
-  setDrawIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+type DrawPropsType = {
+  usedInAuthentication: boolean;
 };
+const Draw = ({ usedInAuthentication }: DrawPropsType) => {
+  const { setIsDrawOpen } = useNavigation();
 
-const Draw = ({ setDrawIsOpen }: PropsType) => {
   return (
     <StyledDrawWrapper>
       <StyledDrawContentWrapper>
         <Outlet />
       </StyledDrawContentWrapper>
 
-      <StyledMapOverlay to="/" onClick={() => setDrawIsOpen(false)} />
+      {!usedInAuthentication && (
+        <StyledMapOverlay to="/" onClick={() => setIsDrawOpen(false)} />
+      )}
     </StyledDrawWrapper>
   );
 };
@@ -43,6 +47,7 @@ const StyledDrawContentWrapper = styled.div`
   background: white;
   z-index: 4;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 70px 70px 0 0;
