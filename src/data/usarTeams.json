@@ -27,7 +27,7 @@
                                 "name": "Urban Search and Rescue (USAR) Team of South Africa",
                                 "shortname": "USAR SA",
                                 "iec": "medium",
-                                "iecyear": "2017",
+                                "iecyear": 2017,
                                 "personnel": 49,
                                 "url": "www.joburg.org.za",
                                 "foundation": null,
@@ -58,7 +58,7 @@
                                 "iecyear": null,
                                 "personnel": 50,
                                 "url": "https://www.rescue-sa.co.za",
-                                "foundation": "1999",
+                                "foundation": 1999,
                                 "skills": [
                                     {
                                         "mission lead": true,
@@ -99,10 +99,11 @@
                                 "name": "Austrian Forces Disaster Relief Unit",
                                 "shortname": "AFDRU",
                                 "iec": "heavy",
-                                "iecyear": "2012",
+                                "iecyear": 2012,
+                                "national": null,
                                 "personnel": 197,
                                 "url": "https://www.bmlv.gv.at/organisation/beitraege/abcabws/index.shtml",
-                                "foundation": "1990",
+                                "foundation": 1990,
                                 "skills": [
                                     {
                                         "mission lead": null,
@@ -128,9 +129,10 @@
                                 "shortname": "SA-RRT 1",
                                 "iec": null,
                                 "iecyear": null,
+                                "national": null,
                                 "personnel": 20,
                                 "url": "http://khd.samariterbund.net",
-                                "foundation": "1985",
+                                "foundation": 1985,
                                 "skills": [
                                     {
                                         "mission lead": null,
@@ -156,9 +158,10 @@
                                 "shortname": "SARUV Austria",
                                 "iec": null,
                                 "iecyear": null,
+                                "national": null,
                                 "personnel": 40,
                                 "url": "http://www.saruv.at",
-                                "foundation": "2001",
+                                "foundation": 2001,
                                 "skills": [
                                     {
                                         "mission lead": null,
@@ -192,10 +195,11 @@
                                 "name": "Belgium First Aid and Support Team",
                                 "shortname": "B-Fast Usar",
                                 "iec": "medium",
-                                "iecyear": "2010",
+                                "iecyear": 2010,
+                                "national": null,
                                 "personnel": 40,
                                 "url": null,
-                                "foundation": "2003",
+                                "foundation": 2003,
                                 "skills": [
                                     {
                                         "mission lead": null,
@@ -230,9 +234,510 @@
                                 "shortname": "DEMA",
                                 "iec": null,
                                 "iecyear": null,
+                                "national": null,
                                 "personnel": 81,
                                 "url": "http://www.brs.dk",
-                                "foundation": "1992",
+                                "foundation": 1992,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "54",
+                        "name": "Estonia",
+                        "alpha2": "EE",
+                        "alpha3": "EST",
+                        "focalpoint": [],
+                        "teams": [
+                            {
+                                "id": "541",
+                                "sign": "EST-10",
+                                "name": "Estonian USAR",
+                                "shortname": null,
+                                "iec": "medium",
+                                "iecyear": 2015,
+                                "national": null,
+                                "personnel": 43,
+                                "url": "http://wwww.paasteamet.ee",
+                                "foundation": 1997,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "55",
+                        "name": "Finland",
+                        "alpha2": "FI",
+                        "alpha3": "FIN",
+                        "focalpoint": [],
+                        "teams": [
+                            {
+                                "id": "551",
+                                "sign": "FIN-1",
+                                "name": "FINN RESCUE TEAM",
+                                "shortname": "FRT",
+                                "iec": "heavy",
+                                "iecyear": 2012,
+                                "national": null,
+                                "personnel": 74,
+                                "url": "http://www.cmcfinland.fi",
+                                "foundation": 1993,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "56",
+                        "name": "France",
+                        "alpha2": "FR",
+                        "alpha3": "FRA",
+                        "focalpoint": [],
+                        "teams": [
+                            {
+                                "id": "561",
+                                "sign": "FRA-1",
+                                "name": "MUSAR FRA1-PUI-FRANCE",
+                                "shortname": "FRA-01",
+                                "iec": "medium",
+                                "iecyear": 2010,
+                                "national": null,
+                                "personnel": 113,
+                                "url": "http://www.pompiers-urgence.org",
+                                "foundation": 2004,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "562",
+                                "sign": "FRA-2",
+                                "name": "HUSAR - UIISC 1 - FRA02",
+                                "shortname": "UIISC 1",
+                                "iec": "heavy",
+                                "iecyear": 2014,
+                                "national": null,
+                                "personnel": 70,
+                                "url": "http://uiisc1.fr",
+                                "foundation": 1978,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "563",
+                                "sign": "FRA-3",
+                                "name": "HUSAR - UIISC 7 - FRA03",
+                                "shortname": "UIISC 7",
+                                "iec": "heavy",
+                                "iecyear": 2019,
+                                "national": null,
+                                "personnel": 70,
+                                "url": "http://uiisc7.fr",
+                                "foundation": 1974,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "564",
+                                "sign": "FRA-10",
+                                "name": "HUSAR IrNAP - Zone sud - FRA10",
+                                "shortname": "FRA-A",
+                                "iec": null,
+                                "iecyear": null,
+                                "national": null,
+                                "personnel": 300,
+                                "url": "http://www.entente-valabre.com",
+                                "foundation": 1980,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "565",
+                                "sign": "FRA-11",
+                                "name": "HUSAR IrNAP - Zone IdF - FRA11",
+                                "shortname": "FRA-B",
+                                "iec": null,
+                                "iecyear": null,
+                                "national": null,
+                                "personnel": 65,
+                                "url": null,
+                                "foundation": 2017,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "566",
+                                "sign": "FRA-12",
+                                "name": "HUSAR IrNAP - Zone Sud Est - FRA12",
+                                "shortname": "FRA-12",
+                                "iec": null,
+                                "iecyear": null,
+                                "national": "medium",
+                                "personnel": 46,
+                                "url": null,
+                                "foundation": null,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "567",
+                                "sign": "FRA-20",
+                                "name": "LUSAR IrNAP - Guadeloupe - FRA 20",
+                                "shortname": "FRA-20",
+                                "iec": null,
+                                "iecyear": null,
+                                "national": null,
+                                "personnel": null,
+                                "url": null,
+                                "foundation": null,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "568",
+                                "sign": "FRA-21",
+                                "name": "LUSAR IrNAP - Martinique - FRA 21",
+                                "shortname": "FRA-21",
+                                "iec": null,
+                                "iecyear": null,
+                                "national": null,
+                                "personnel": null,
+                                "url": null,
+                                "foundation": null,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "569",
+                                "sign": "FRA-22",
+                                "name": "LUSAR IrNAP - Guyane - FRA 22",
+                                "shortname": "FRA-22",
+                                "iec": null,
+                                "iecyear": null,
+                                "national": null,
+                                "personnel": null,
+                                "url": null,
+                                "foundation": null,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "5610",
+                                "sign": "FRA-23",
+                                "name": "LUSAR IrNAP - La Réunion - FRA 23",
+                                "shortname": "FRA-23",
+                                "iec": null,
+                                "iecyear": null,
+                                "national": null,
+                                "personnel": null,
+                                "url": null,
+                                "foundation": null,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "5611",
+                                "sign": "FRA-30",
+                                "name": "LUSAR IrNAP - Nouvelle-Calédonie - FRA 30",
+                                "shortname": "FRA-30",
+                                "iec": null,
+                                "iecyear": null,
+                                "national": null,
+                                "personnel": null,
+                                "url": null,
+                                "foundation": null,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "57",
+                        "name": "Germany",
+                        "alpha2": "DE",
+                        "alpha3": "DEU",
+                        "focalpoint": [],
+                        "teams": [
+                            {
+                                "id": "571",
+                                "sign": "DEU-1",
+                                "name": "Technisches Hilfswerk SEEBA: Rapid Deployment Urban Search & Rescue",
+                                "shortname": "THW - Germany",
+                                "iec": "heavy",
+                                "iecyear": 2007,
+                                "national": null,
+                                "personnel": 230,
+                                "url": "http://www.thw.de/",
+                                "foundation": 1986,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "572",
+                                "sign": "DEU-2",
+                                "name": "I.S.A.R. Germany",
+                                "shortname": "I.S.A.R.",
+                                "iec": "medium",
+                                "iecyear": 2007,
+                                "national": null,
+                                "personnel": 50,
+                                "url": "http://wwww.isar-germany.de",
+                                "foundation": 2003,
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "573",
+                                "sign": "DEU-3",
+                                "name": "@fire - International Disaster Response Germany",
+                                "shortname": "@fire",
+                                "iec": "light",
+                                "iecyear": 2021,
+                                "national": null,
+                                "personnel": 20,
+                                "url": "http://www.at-fire.de",
+                                "foundation": 2002,
                                 "skills": [
                                     {
                                         "mission lead": null,
