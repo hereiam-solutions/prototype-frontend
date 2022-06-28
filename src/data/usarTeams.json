@@ -1,0 +1,86 @@
+{
+    "usarteams": {
+      "region": [
+        {
+          "id": "1",
+          "title": "Africa",
+          "shorttitle": "af",
+          "countries": [
+            {
+              "id": "11",
+              "name": "South Africa",
+              "alpha2": "ZA",
+              "alpha3": "ZAF",
+              "focalpoint": [
+                {
+                  "id": "11F",
+                  "authority": "National Disaster Management Center",
+                  "contact": "Ms Ané Bruwer",
+                  "email": "aneb@ndmc.gov.za",
+                  "phone": "+27 12 8484607"
+                }
+              ],
+              "teams": [
+                {
+                  "id": "111",
+                  "sign": "ZAF-1",
+                  "name": "Urban Search and Rescue (USAR) Team of South Africa",
+                  "shortname": "USAR SA",
+                  "iec": "medium",
+                  "iecyear": "2017",
+                  "personnel": 49,
+                  "url": "www.joburg.org.za",
+                  "foundation": null,
+                  "skills": [
+                    {
+                      "mission lead": null,
+                      "mission safety": null,
+                      "liaison": null,
+                      "team physician": null,
+                      "operations": null,
+                      "quartermaster": null,
+                      "communications": null,
+                      "extriction": null,
+                      "k9 search": null,
+                      "tech search": null,
+                      "structural engineer": null,
+                      "hazmat spec": null,
+                      "rigger": null
+                    }
+                  ]
+                },
+                {
+                  "id": "112",
+                  "sign": "ZAF-10",
+                  "name": "Rescue South Africa",
+                  "shortname": "RSA",
+                  "iec": null,
+                  "iecyear": null,
+                  "personnel": 50,
+                  "url": "www.rescue-sa.co.za",
+                  "foundation": "1999",
+                  "skills": [
+                    {
+                      "mission lead": true,
+                      "mission safety": true,
+                      "liaison": true,
+                      "team physician": true,
+                      "operations": true,
+                      "quartermaster": true,
+                      "communications": true,
+                      "extriction": true,
+                      "k9 search": true,
+                      "tech search": true,
+                      "structural engineer": true,
+                      "hazmat spec": true,
+                      "rigger": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
