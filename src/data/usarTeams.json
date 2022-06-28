@@ -188,7 +188,7 @@
                         "teams": [
                             {
                                 "id": "521",
-                                "sign": "BEL-10",
+                                "sign": "BEL-1",
                                 "name": "Belgium First Aid and Support Team",
                                 "shortname": "B-Fast Usar",
                                 "iec": "medium",
@@ -213,7 +213,44 @@
                                         "rigger": null
                                     }
                                 ]
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "id": "53",
+                        "name": "Denmark",
+                        "alpha2": "DK",
+                        "alpha3": "DNK",
+                        "focalpoint": [],
+                        "teams": [
+                            {
+                                "id": "531",
+                                "sign": "DNK-10",
+                                "name": "Danish Search and Rescue Team",
+                                "shortname": "DEMA",
+                                "iec": null,
+                                "iecyear": null,
+                                "personnel": 81,
+                                "url": "http://www.brs.dk",
+                                "foundation": "1992",
+                                "skills": [
+                                    {
+                                        "mission lead": null,
+                                        "mission safety": null,
+                                        "liaison": null,
+                                        "team physician": null,
+                                        "operations": null,
+                                        "quartermaster": null,
+                                        "communications": null,
+                                        "extriction": null,
+                                        "k9 search": null,
+                                        "tech search": null,
+                                        "structural engineer": null,
+                                        "hazmat spec": null,
+                                        "rigger": null
+                                    }
+                                ]
+                            }
                         ]
                     }
                 ]
