@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import mockLocationData from '../data/locationData.json';
+import mockLocationData from '../../data/locationData.json';
 
 const fireHazardIcon = new Icon({
   iconUrl: '/fire_hazard_icon.svg',

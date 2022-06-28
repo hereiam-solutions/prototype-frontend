@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import RequireAuth from '../auth/RequireAuth';
-import Map from '../Map';
+import Map from '../map/Map';
 import Nav from './Nav';
 
 type Props = {};

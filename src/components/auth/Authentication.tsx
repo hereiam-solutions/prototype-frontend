@@ -1,12 +1,10 @@
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import LoadingIndicator from '../LoadingIndicator';
 import useRealm from '../../hooks/useRealm';
 import styled from 'styled-components';
 import * as Realm from 'realm-web';
 import { useNavigate } from 'react-router-dom';
-import useNavigation from '../../hooks/useNavigation';
 
 // define the schema / rules for the register form validation
 const loginSchema = Yup.object().shape({
@@ -49,8 +47,6 @@ const Authentication = () => {
   // get the realm connection from the context
   const { realm } = useRealm();
 
-  const { isDrawOpen, setIsDrawOpen } = useNavigation();
-
   // initalize a loading state to conditionally render a loading indicator component
   const [loading, setLoading] = useState(false);
 
@@ -79,10 +75,20 @@ const Authentication = () => {
     try {
       setLoading(true);
 
+      // register the new user
       await realm.emailPasswordAuth.registerUser({
         email: values.email,
         password: values.password,
       });
+
+      // use the same email and password used for registering as credentials for the login
+      const credentials = Realm.Credentials.emailPassword(
+        values.email,
+        values.password
+      );
+
+      // log the new user in
+      await realm.logIn(credentials);
 
       setLoading(false);
 
@@ -152,7 +158,7 @@ const Authentication = () => {
             onSubmit={handleRegister}
           >
             {({ errors, touched }) => (
-              <Form>
+              <StyledForm>
                 <StyledField name="firstName" placeholder="First Name" />
                 {errors.firstName && touched.firstName ? (
                   <StyledInlineErrorMessage>
@@ -186,7 +192,7 @@ const Authentication = () => {
                 ) : null}
 
                 <StyledButton type="submit">Register</StyledButton>
-              </Form>
+              </StyledForm>
             )}
           </Formik>
         </>

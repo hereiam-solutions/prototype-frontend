@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Map from '../Map';
+import Map from '../map/Map';
 import Draw from '../navigation/Draw';
 
 const AuthLayout = () => {
