@@ -9,9 +9,13 @@ import Settings from './components/navigation/Settings';
 import Mission from './components/navigation/Mission';
 import Home from './components/navigation/Home';
 import Layout from './components/navigation/Layout';
+import AuthLayout from './components/auth/AuthLayout';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 
 // service worker imports
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import UserDetails from './components/auth/UserDetails';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,18 +27,26 @@ root.render(
       <Routes>
         {/* the App component contains no html elements, its just for initializing the Realm connection and providing the contexts */}
         <Route path="/" element={<App />}>
+          {/* Login and Register need another layout than the actual app */}
+          <Route element={<AuthLayout />}>
+            {/* /user is just for realm testing */}
+            <Route path="user" element={<UserDetails />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+          </Route>
+
           <Route element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="mission" element={<Mission />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
+          </Route>
 
-            {/* <Route path="mission/:missionId" element={<Mission />} />
+          {/* <Route path="mission/:missionId" element={<Mission />} />
         <Route path="mission/:missionId/edit" element={<EditMission />} />
         <Route path="mission/create" element={<CreateMission />} /> */}
 
-            {/* <Route path="about" element={<Draw />} /> */}
-          </Route>
+          {/* <Route path="about" element={<Draw />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

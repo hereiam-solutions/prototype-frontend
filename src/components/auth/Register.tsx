@@ -5,6 +5,7 @@ import LoadingIndicator from '../LoadingIndicator';
 import useRealm from '../../hooks/useRealm';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import useNavigation from '../../hooks/useNavigation';
 
 // define the schema / rules for the form validation
 const userSchema = Yup.object().shape({
@@ -32,6 +33,8 @@ const Register = () => {
   // get the realm connection from the context
   const { realm } = useRealm();
 
+  const { isDrawOpen, setIsDrawOpen } = useNavigation();
+
   let navigate = useNavigate();
 
   // initalize a loading state to conditionally render a loading indicator component
@@ -51,7 +54,9 @@ const Register = () => {
       console.log('current user: ', realm.currentUser);
 
       setLoading(false);
-      navigate('/user');
+
+      setIsDrawOpen(false);
+      navigate('/');
     } catch (e) {
       console.log(e);
     }

@@ -6,6 +6,7 @@ import useRealm from '../../hooks/useRealm';
 import styled from 'styled-components';
 import * as Realm from 'realm-web';
 import { useNavigate } from 'react-router-dom';
+import useNavigation from '../../hooks/useNavigation';
 
 // define the schema / rules for the form validation
 const userSchema = Yup.object().shape({
@@ -23,6 +24,8 @@ const Login = () => {
   let navigate = useNavigate();
   // get the realm connection from the context
   const { realm } = useRealm();
+
+  const { isDrawOpen, setIsDrawOpen } = useNavigation();
 
   // initalize a loading state to conditionally render a loading indicator component
   const [loading, setLoading] = useState(false);
@@ -43,7 +46,9 @@ const Login = () => {
       console.log('current user: ', realm.currentUser);
 
       setLoading(false);
-      navigate('/user');
+
+      //   setIsDrawOpen(false);
+      navigate('/');
     } catch (e) {
       console.log(e);
     }
@@ -61,7 +66,7 @@ const Login = () => {
       onSubmit={handleSubmit}
     >
       {({ errors, touched }) => (
-        <Form>
+        <StyledForm>
           <StyledField name="email" type="email" placeholder="Email" />
           {errors.email && touched.email ? (
             <StyledInlineErrorMessage>{errors.email}</StyledInlineErrorMessage>
@@ -75,11 +80,19 @@ const Login = () => {
           ) : null}
 
           <StyledButton type="submit">Submit</StyledButton>
-        </Form>
+        </StyledForm>
       )}
     </Formik>
   );
 };
+
+const StyledForm = styled(Form)`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const StyledField = styled(Field)`
   background-color: white;
@@ -92,52 +105,20 @@ const StyledField = styled(Field)`
   width: 100%;
   margin-top: 0.5rem;
   padding: 0.75rem 0.75rem;
-
-  &:focus,
-  &:active {
-    box-shadow: rgb(210, 213, 217) 0px 0px 2px 1px,
-      rgb(227, 230, 232) 0px 0px 0px 3px;
-    border: 1px solid rgb(26, 33, 43);
-    outline: none;
-  }
 `;
 
 const StyledInlineErrorMessage = styled.div`
   color: red;
 `;
+
 const StyledButton = styled.button`
   width: 100%;
   margin-top: 1.5rem;
 
   background-color: rgb(24, 81, 187);
-  display: block;
   text-align: center;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
   height: 3rem;
-  white-space: nowrap;
-  color: rgb(232, 243, 255) !important;
-  padding: 0.5rem 1rem;
-
-  &:active,
-  &:focus,
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:disabled {
-    cursor: pointer;
-    background-color: rgb(163, 168, 173);
-    box-shadow: none;
-    color: rgb(255, 255, 255) !important;
-
-    &:hover,
-    &:focus {
-      cursor: not-allowed;
-    }
-  }
+  color: white;
 `;
 
 export default Login;
