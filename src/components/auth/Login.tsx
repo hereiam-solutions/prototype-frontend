@@ -79,7 +79,7 @@ const Login = () => {
             </StyledInlineErrorMessage>
           ) : null}
 
-          <StyledButton type="submit">Submit</StyledButton>
+          <StyledButton type="submit">Login</StyledButton>
         </StyledForm>
       )}
     </Formik>

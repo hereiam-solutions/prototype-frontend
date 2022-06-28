@@ -41,7 +41,7 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
 
   // function that is called upon form submission, tries to register the user in realm
-  const handleSubmit = async (values: formValuesType) => {
+  const handleRegister = async (values: formValuesType) => {
     try {
       setLoading(true);
 
@@ -72,7 +72,7 @@ const Register = () => {
           password: '',
         }}
         validationSchema={userSchema}
-        onSubmit={handleSubmit}
+        onSubmit={handleRegister}
       >
         {({ errors, touched }) => (
           <Form>
@@ -108,7 +108,7 @@ const Register = () => {
               </StyledInlineErrorMessage>
             ) : null}
 
-            <StyledButton type="submit">Submit</StyledButton>
+            <StyledButton type="submit">Register</StyledButton>
           </Form>
         )}
       </Formik>

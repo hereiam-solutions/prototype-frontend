@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+// service worker imports
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 // component imports
 import App from './App';
 import Profile from './components/navigation/Profile';
@@ -10,12 +13,8 @@ import Mission from './components/navigation/Mission';
 import Home from './components/navigation/Home';
 import Layout from './components/navigation/Layout';
 import AuthLayout from './components/auth/AuthLayout';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-
-// service worker imports
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import UserDetails from './components/auth/UserDetails';
+import Authentication from './components/auth/Authentication';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -31,8 +30,9 @@ root.render(
           <Route element={<AuthLayout />}>
             {/* /user is just for realm testing */}
             <Route path="user" element={<UserDetails />} />
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
+            <Route path="auth" element={<Authentication />} />
+            {/* <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} /> */}
           </Route>
 
           <Route element={<Layout />}>

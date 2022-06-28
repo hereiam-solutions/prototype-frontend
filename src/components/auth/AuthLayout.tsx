@@ -19,8 +19,4 @@ const StyledAppWrapper = styled.div`
   position: relative;
 `;
 
-const StyledSwitchWrapper = styled.div`
-  width: 80%;
-`;
-
 export default AuthLayout;
