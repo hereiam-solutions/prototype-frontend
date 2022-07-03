@@ -7,8 +7,6 @@
         "crypto-browserify": "^3.12.0",
         "formik": "^2.2.9",
         "leaflet": "^1.8.0",
-        "leaflet-draw": "^1.0.4",
-        "leaflet-draw-toolbar": "^0.3.0-alpha.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^4.4.0",
