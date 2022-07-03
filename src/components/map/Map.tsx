@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -11,7 +11,7 @@ const fireHazardIcon = new Icon({
   iconSize: [25, 25],
 });
 
-type Location = [latitude: number, longitude: number];
+//type Location = [lat: number, lng: number];
 
 type ActiveMarkerType = {
   id: number;
