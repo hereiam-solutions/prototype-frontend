@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents } from 'react-leaflet';
-import { Icon, latLng } from 'leaflet';
+import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
+import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
 
 import mockLocationData from '../../data/locationData.json';
 
@@ -24,31 +23,10 @@ type ActiveMarkerType = {
 const Map = () => {
   //   const map = useMap();
 
-
   const [currentLocation, setCurrentLocation] = useState<Location>([
     52.520008, 13.404954,
   ]);
   const defaultZoom = 13;
-
-  const mapRef = useRef();
-  useEffect(() => {
-    const { current = {} } = mapRef;
-    const { leafletElement: map } = current;
-    map.locate({
-    setView: true,
-    });
-    map.on('locationfound', handleOnLocationFound);
-  }, []);
-
-  function handleOnLocationFound(event: { latlng: any; accuracy: any; }) {
-    const { current = {} } = mapRef;
-    const { leafletElement: map } = current;
-    const latlng = event.latlng;
-    const radius = event.accuracy;
-    const circle = L.circle(latlng, radius);
-    circle.addTo(map);
-  }
-
 
   const [activeMarker, setActiveMarker] = useState<ActiveMarkerType | null>(
     null
@@ -57,7 +35,6 @@ const Map = () => {
   return (
     <>
       <StyledMapContainer
-        ref={mapRef}
         center={currentLocation}
         zoom={defaultZoom}
         scrollWheelZoom={false}
