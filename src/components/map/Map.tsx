@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -23,9 +23,29 @@ type ActiveMarkerType = {
 const Map = () => {
   //   const map = useMap();
 
-  const [currentLocation, setCurrentLocation] = useState<Location>([
-    52.520008, 13.404954,
-  ]);
+  // const [currentLocation, setCurrentLocation] = useState<Location>([
+  //  52.520008, 13.404954,
+  //]);
+
+  function LocationMarker() {
+    const [position, setPosition] = useState(null)
+    const map = useMapEvents({
+      click() {
+        map.locate()
+      },
+      locationfound(e) {
+        setPosition(e.latlng)
+        map.flyTo(e.latlng, map.getZoom())
+      },
+    })
+
+    return position === null ? null : (
+      <Marker position={position}>
+        <Popup>You are here</Popup>
+      </Marker>
+    )
+  }
+
   const defaultZoom = 13;
 
   const [activeMarker, setActiveMarker] = useState<ActiveMarkerType | null>(
@@ -35,7 +55,7 @@ const Map = () => {
   return (
     <>
       <StyledMapContainer
-        center={currentLocation}
+        center={{ lat: 51.505, lng: -0.09 }}
         zoom={defaultZoom}
         scrollWheelZoom={false}
       >
@@ -44,6 +64,10 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
+        <LocationMarker />
+
+
         {mockLocationData.features.map((location) => (
           <Marker
             key={location.id}
