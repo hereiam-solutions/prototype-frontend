@@ -23,6 +23,7 @@ type ActiveMarkerType = {
 const Map = () => {
   //   const map = useMap();
 
+
   const [currentLocation, setCurrentLocation] = useState<Location>([
     52.520008, 13.404954,
   ]);
@@ -38,6 +39,7 @@ const Map = () => {
         zoom={12}
         scrollWheelZoom={false}
       >
+
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -58,6 +60,7 @@ const Map = () => {
             {activeMarker.name}
           </Popup>
         )}
+
       </StyledMapContainer>
     </>
   );
