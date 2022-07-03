@@ -11,7 +11,7 @@ const fireHazardIcon = new Icon({
   iconSize: [25, 25],
 });
 
-//type Location = [lat: number, lng: number];
+type Location = [latidude: number, longitude: number];
 
 type ActiveMarkerType = {
   id: number;
