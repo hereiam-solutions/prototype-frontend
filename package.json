@@ -7,6 +7,8 @@
         "crypto-browserify": "^3.12.0",
         "formik": "^2.2.9",
         "leaflet": "^1.8.0",
+        "leaflet-draw": "^0.4.14",
+        "leaflet-draw-toolbar": "^0.3.0-alpha.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^4.4.0",
@@ -21,14 +23,9 @@
         "workbox-broadcast-update": "^6.5.3",
         "workbox-cacheable-response": "^6.5.3",
         "workbox-core": "^6.5.3",
-        "workbox-expiration": "^6.5.3",
-        "workbox-google-analytics": "^6.5.3",
         "workbox-navigation-preload": "^6.5.3",
         "workbox-precaching": "^6.5.3",
-        "workbox-range-requests": "^6.5.3",
         "workbox-routing": "^6.5.3",
-        "workbox-strategies": "^6.5.3",
-        "workbox-streams": "^6.5.3",
         "yup": "^0.32.11"
     },
     "devDependencies": {
