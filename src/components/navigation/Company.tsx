@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
-import { ReactComponent as LogoHereiam } from '../../assets/Logo/';
+import LogoHereiam from '../../assets/Logo/icon-72x72.png';
 
 function Company() {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
@@ -13,10 +13,10 @@ function Company() {
     <>
       <StyledCompanyMenu role="navigation">
         <StyledCompanyButton onClick={() => setIsDrawOpen(true)} to="about">
-          <LogoHereiam />
+          <img src={LogoHereiam} alt='hereIam Logo' />
         </StyledCompanyButton>
         <div>
-          <h4>hereIam</h4>
+          <h6>hereIam</h6>
         </div>
       </StyledCompanyMenu>
 
@@ -29,16 +29,16 @@ const StyledCompanyMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.3rem;
+  gap: 0.5rem;
   position: absolute;
   bottom: 5%;
-  right: 5rem;
-  z-index: 5;
+  left: 2rem;
+  z-index: 2;
   pointer-events: auto;
 `;
 
 const StyledCompanyButton = styled(Link)`
- color: black;
+ color: ${(props) => props.theme.secondaryFontColor};
 `;
 
 export default Company;
