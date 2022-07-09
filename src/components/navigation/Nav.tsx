@@ -1,11 +1,15 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
-// import svg logos
-// import fireHazardIcon from '../../../public/fire_hazard_icon.svg';
+
+import { ReactComponent as DashboardButton } from '../../assets/Navigation/Dashboard.svg';
+import { ReactComponent as SettingsButton } from '../../assets/Navigation/Settings.svg';
+import { ReactComponent as ProfileButton } from '../../assets/Navigation/User.svg';
+
+
 
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
@@ -14,15 +18,15 @@ const Nav = () => {
     <>
       <StyledNavigationMenu role="navigation">
         <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="mission">
-          Dashboard {/* <img src={fireHazardIcon} alt="React Logo" /> */}
+          <DashboardButton />
         </StyledMenuButton>
 
         <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="settings">
-          Settings
+            <SettingsButton />
         </StyledMenuButton>
 
         <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="profile">
-          Profile
+          <ProfileButton />
         </StyledMenuButton>
       </StyledNavigationMenu>
 
@@ -35,20 +39,16 @@ const StyledNavigationMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
-  gap: 1em;
+  gap: 1.3rem;
   position: absolute;
   bottom: 5%;
-  left: 80%;
+  right: 3rem;
   z-index: 2;
   pointer-events: auto;
 `;
 
 const StyledMenuButton = styled(Link)`
-  background: white;
-  border-radius: 50%;
-  width: 3em;
-  height: 3em;
+ 
 `;
 
 export default Nav;

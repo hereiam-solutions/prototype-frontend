@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import RequireAuth from '../auth/RequireAuth';
 import Map from '../map/Map';
 import Nav from './Nav';
+import Company from './Company';
 
 type Props = {};
 
@@ -14,6 +15,7 @@ const Layout = (props: Props) => {
       <Map />
       <StyledNavWrapper>
         <Nav />
+        <Company />
       </StyledNavWrapper>
     </StyledAppWrapper>
     // </RequireAuth>
