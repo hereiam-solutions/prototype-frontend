@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
-import { ReactComponent as LogoHereiam } from '../../assets/Logo/light/hereIam_logo_light256x256.svg';
+import { ReactComponent as LogoHereiam } from '../../assets/Logo/';
 
 function Company() {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
@@ -33,7 +33,7 @@ const StyledCompanyMenu = styled.div`
   position: absolute;
   bottom: 5%;
   right: 5rem;
-  z-index: 2;
+  z-index: 5;
   pointer-events: auto;
 `;
 
