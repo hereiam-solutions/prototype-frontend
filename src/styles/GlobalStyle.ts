@@ -60,6 +60,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1rem;
     line-height: 1.6;
     font-weight: 100;
+	font-size: calc(1vw + 1vh + .5vmin);
   }
 
   /* center elements vertically */
@@ -115,10 +116,6 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1.2em;
   }
 
-  p {
-    font-size: 1rem;
-  }
-
   button {
     all: unset;
   }
@@ -126,11 +123,6 @@ export const GlobalStyles = createGlobalStyle`
   button, html input[type="button"], input[type="reset"], input[type="submit"] {
     -webkit-appearance: button;
     cursor: pointer
-  }
-
-  .button-disabled {
-    opacity: .5;
-    pointer-events: none;
   }
 
   a:focus,
@@ -166,7 +158,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: sans-serif;
     font-weight: 300;
     line-height: 2;
-    text-allign: center;
+    text-align: center;
   }
 
   /* pseudo-elements rules to display a user message and URL reference of the broken image */
@@ -213,16 +205,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: .1em .2em;
   }
 
-  }
-  /* portrait and phones */
-  @media (max-width: 43em), screen or (orientation: portrait) {
 
-  }
-
-  /* Tablett */
-  @media (44em <= width <= 62em), screen {
-
-  }
 
   /* Desktop */
   @media (63em <= width <= 87em), screen {
@@ -242,27 +225,65 @@ export const GlobalStyles = createGlobalStyle`
   @media (prefers-reduced-motion: reduce) {
     .animation {
       animation: none;
-    }
-  }
+    }  }
 `;
 
-export const globalDarkThemeValues = {};
-export const globalLightThemeValues = {};
+const colors = {
+  hazardColor: '#23409',
+};
 
-/*
-export const globalDarkThemeValues = createDarkStyle`
-:root {
-  --background: #494440;
-  --text-light: #DCE4EF;
-  --text: #F1F1F1;
-}
-`;
+const borderConstants = {
+  primaryBorderRadius: '20px',
+  tabletBorderRadius: '30px',
+};
 
-export const globalLightThemeValues = createLightStyle`
-  :root {
-    --background: #DCE4EF;
-    --text-light: #494440;
-    --text: #212121;
-  }
-`;
-*/
+const mediaQueries = {
+  mediaQueryPhone: '(max-width: 43em), screen or (orientation: portrait)',
+  mediaQueryTablet: '(44em <= width <= 62em), screen',
+};
+
+const font = {
+  calculatedFontSize: 'calc(1vw + 1vh + .5vmin)',
+  primaryLineHeight: '1.6rem',
+};
+
+export const darkTheme = {
+  primaryBackgroundColor: '#242632',
+  secondaryBackgroundColor: '#242632',
+  primaryFontColor: '#ffffff',
+  ...borderConstants,
+  ...colors,
+  ...mediaQueries,
+  ...font,
+};
+
+export const lightTheme = {
+  primaryBackgroundColor: '#242632',
+  secondaryBackgroundColor: '#242632',
+  primaryFontColor: '#000000',
+  ...borderConstants,
+  ...colors,
+  ...mediaQueries,
+  ...font,
+};
+
+// Example
+// const StyledMapContainer = styled(MapContainer)`
+//   height: 100vh;
+//   width: 100vw;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: -1;
+//   background-color: ${(props) => props.theme.primaryBackgroundColor};
+//   border-radius: ${(props) => props.theme.primaryBorderRadius};
+
+//   @media (max-width: ${(props) => props.theme.mediaQueryPhone}) {
+
+//   }
+
+//   @media (max-width: ${(props) => props.theme.mediaQueryTablet}) {
+
+// }
+
+// `;

@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
+// import svg logos
+// import fireHazardIcon from '../../../public/fire_hazard_icon.svg';
+
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
 
@@ -11,7 +14,7 @@ const Nav = () => {
     <>
       <StyledNavigationMenu role="navigation">
         <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="mission">
-          Missions
+          Dashboard {/* <img src={fireHazardIcon} alt="React Logo" /> */}
         </StyledMenuButton>
 
         <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="settings">
