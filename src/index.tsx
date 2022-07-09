@@ -12,6 +12,7 @@ import Settings from './components/navigation/Settings';
 import Mission from './components/navigation/Mission';
 import Home from './components/navigation/Home';
 import Layout from './components/navigation/Layout';
+import About from './components/navigation/About';
 import AuthLayout from './components/auth/AuthLayout';
 import UserDetails from './components/auth/UserDetails';
 import Authentication from './components/auth/Authentication';
@@ -53,6 +54,7 @@ root.render(
             <Route path="mission" element={<Mission />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="about" element={<About />} />
           </Route>
 
           {/* <Route path="mission/:missionId" element={<Mission />} />
