@@ -1,6 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvent,
+  useMap,
+} from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -20,12 +27,61 @@ type ActiveMarkerType = {
   longitude: number;
 };
 
-const Map = () => {
-  //   const map = useMap();
+function GetInitialLocation() {
+  const map = useMap();
 
   const [currentLocation, setCurrentLocation] = useState<Location>([
     52.520008, 13.404954,
   ]);
+
+  useEffect(() => {
+    map.locate().on('locationfound', function (e) {
+      const currentCoordinates: Location = [e.latlng.lat, e.latlng.lng];
+      setCurrentLocation(currentCoordinates);
+    });
+  }, [map]);
+
+  map.setView(currentLocation);
+  return null;
+}
+
+function SetCenterToBerlinMitte() {
+  const map = useMapEvent('click', () => {
+    map.setView([52.520008, 13.404954]);
+  });
+  return null;
+}
+
+const Map = () => {
+  const [currentLocation, setCurrentLocation] = useState<Location>([
+    52.520008, 13.404954,
+  ]);
+
+  useEffect(() => {
+    const getCurrentLocation = async () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setCurrentLocation([
+              position.coords.latitude,
+              position.coords.longitude,
+            ]);
+
+            // map.setView(currentLocation);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } else {
+        alert('Geolocation is not supported by this browser.');
+      }
+    };
+
+    getCurrentLocation();
+  }, []);
+
+  const defaultZoom = 13;
 
   const [activeMarker, setActiveMarker] = useState<ActiveMarkerType | null>(
     null
@@ -35,13 +91,14 @@ const Map = () => {
     <>
       <StyledMapContainer
         center={currentLocation}
-        zoom={12}
+        zoom={defaultZoom}
         scrollWheelZoom={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
         {mockLocationData.features.map((location) => (
           <Marker
             key={location.id}
@@ -58,6 +115,9 @@ const Map = () => {
             {activeMarker.name}
           </Popup>
         )}
+
+        <GetInitialLocation />
+        <SetCenterToBerlinMitte />
       </StyledMapContainer>
     </>
   );
