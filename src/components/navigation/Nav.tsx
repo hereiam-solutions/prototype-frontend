@@ -1,11 +1,13 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
-// import svg logos
-// import fireHazardIcon from '../../../public/fire_hazard_icon.svg';
+import { ReactComponent as DashboardButton } from '../../../public/icons/Navigation/Dashboard.svg';
+import { ReactComponent as SettingsButton } from '../../../public/icons/Navigation/Settings.svg';
+import { ReactComponent as ProfileButton } from '../../../public/icons/Navigation/User.svg';
+
 
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
@@ -14,15 +16,15 @@ const Nav = () => {
     <>
       <StyledNavigationMenu role="navigation">
         <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="mission">
-          Dashboard {/* <img src={fireHazardIcon} alt="React Logo" /> */}
+          <DashboardButton />
         </StyledMenuButton>
 
         <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="settings">
-          Settings
+          <SettingsButton />
         </StyledMenuButton>
 
         <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="profile">
-          Profile
+          <ProfileButton />
         </StyledMenuButton>
       </StyledNavigationMenu>
 
