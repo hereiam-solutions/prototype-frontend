@@ -174,24 +174,6 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0
   }
 
-  code,
-  pre {
-    background-color: var(--gray-400);
-    border-radius: 3px;
-    font-family: monospace;
-    padding: 3px;
-  }
-
-  code {
-    white-space: nowrap;
-  }
-
-  em {
-    background-color: var(--gray-200);
-    font-style: normal;
-    padding: .1em .2em;
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .animation {
       animation: none;
@@ -202,6 +184,7 @@ const colors = {
   attentionColor: '#F8DE00',
   alertColor: '#D2251E',
   readyColor: '#4CBA4B',
+  navIconOverlay: 'var(--gray-300)',
 };
 
 const borderConstants = {
@@ -224,10 +207,18 @@ const font = {
 };
 
 export const darkTheme = {
-  primaryBackgroundColor: '#242632',
-  secondaryBackgroundColor: '#242632',
-  primaryFontColor: '#ffffff',
-  navIconColor: '#23409',
+  primaryBackgroundColor: 'var(--base)',
+  secondaryBackgroundColor: 'var(--base-text)',
+  primaryFontColor: 'var(--whiter)',
+  secondaryFontColor: 'var(--base-light)',
+  navIconColor: 'var(--base-light)',
+  mapControlBackground: 'var(--gray-300)',
+  mapControlColor: 'var(--base)',
+  formFieldBackground: 'var(--gray-500)',
+  formFieldColor: 'var(--gray-200)',
+  formSubmitFillColor: 'var(--gray-400)',
+  formSubmitTextColor: 'var(--base-text)',
+  formSubmitBorderColor: 'var(--base-text))',
   ...borderConstants,
   ...colors,
   ...mediaQueries,
@@ -235,10 +226,18 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  primaryBackgroundColor: '#242632',
-  secondaryBackgroundColor: '#242632',
-  primaryFontColor: '#000000',
-  navIconColor: '#23409',
+  primaryBackgroundColor: 'var(--base-light)',
+  secondaryBackgroundColor: 'var(--gray-300)',
+  primaryFontColor: 'var(--base-text)',
+  secondaryFontColor: 'var(--base)',
+  navIconColor: 'var(--base-light)',
+  mapControlBackground: 'var(--gray-200)',
+  mapControlColor: 'var(--base)',
+  formFieldBackground: 'var(--gray-200)',
+  formFieldColor: 'var(--base)',
+  formSubmitFillColor: 'var(--gray-400)',
+  formSubmitTextColor: 'var(--gray-150)',
+  formSubmitBorderColor: 'var(--gray-150)',
   ...borderConstants,
   ...colors,
   ...mediaQueries,
