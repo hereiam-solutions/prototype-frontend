@@ -10,79 +10,19 @@ import {
 } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-
 import mockLocationData from '../../data/locationData.json';
+import { ActiveMarkerType } from './mapTypes';
+import GetInitialLocation from './mapEvents/GetInitialLocation';
+import SetMapCenter from './mapEvents/SetMapCenter';
+import SetMarker from './mapEvents/SetMarker';
+import ActivateActionMenu from './mapEvents/ActivateActionMenu';
 
 const fireHazardIcon = new Icon({
   iconUrl: '/fire_hazard_icon.svg',
   iconSize: [25, 25],
 });
 
-type Location = [latitude: number, longitude: number];
-
-type ActiveMarkerType = {
-  id: number;
-  name: string;
-  latitude: number;
-  longitude: number;
-};
-
-function GetInitialLocation() {
-  const map = useMap();
-
-  const [currentLocation, setCurrentLocation] = useState<Location>([
-    52.520008, 13.404954,
-  ]);
-
-  useEffect(() => {
-    map.locate().on('locationfound', function (e) {
-      const currentCoordinates: Location = [e.latlng.lat, e.latlng.lng];
-      setCurrentLocation(currentCoordinates);
-    });
-  }, [map]);
-
-  map.setView(currentLocation);
-  return null;
-}
-
-function SetCenterToBerlinMitte() {
-  const map = useMapEvent('click', () => {
-    map.setView([52.520008, 13.404954]);
-  });
-  return null;
-}
-
 const Map = () => {
-  const [currentLocation, setCurrentLocation] = useState<Location>([
-    52.520008, 13.404954,
-  ]);
-
-  useEffect(() => {
-    const getCurrentLocation = async () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setCurrentLocation([
-              position.coords.latitude,
-              position.coords.longitude,
-            ]);
-
-            // map.setView(currentLocation);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      } else {
-        alert('Geolocation is not supported by this browser.');
-      }
-    };
-
-    getCurrentLocation();
-  }, []);
-
-  const defaultZoom = 13;
-
   const [activeMarker, setActiveMarker] = useState<ActiveMarkerType | null>(
     null
   );
@@ -90,8 +30,8 @@ const Map = () => {
   return (
     <>
       <StyledMapContainer
-        center={currentLocation}
-        zoom={defaultZoom}
+        center={[52.520008, 13.404954]}
+        zoom={13}
         scrollWheelZoom={false}
       >
         <TileLayer
@@ -117,7 +57,12 @@ const Map = () => {
         )}
 
         <GetInitialLocation />
-        <SetCenterToBerlinMitte />
+        <ActivateActionMenu />
+        <SetMarker
+          activeMarker={activeMarker}
+          setActiveMarker={setActiveMarker}
+        />
+        {/* <SetMapCenter /> */}
       </StyledMapContainer>
     </>
   );

@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 // Context imports
 import RealmContext from './context/RealmContext';
 import NavigationContext from './context/NavigationContext';
+import ActionMenuContext from './context/ActionMenuContext';
 
 // Theming imports
 import { ThemeProvider } from 'styled-components';
@@ -24,16 +25,21 @@ const App = () => {
 
   // state for the draw / navigation context
   const [isDrawOpen, setIsDrawOpen] = useState<boolean>(false);
+  const [isActionMenuOpen, setIsActionMenuOpen] = useState<boolean>(false);
 
   return (
     <>
       <RealmContext.Provider value={{ realm }}>
         {/* pass the appropriate global values for the current theme */}
         <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
-          <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>
-            {/* React Router Outlet component always renders children  */}
-            <Outlet />
-          </NavigationContext.Provider>
+          <ActionMenuContext.Provider
+            value={{ isActionMenuOpen, setIsActionMenuOpen }}
+          >
+            <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>
+              {/* React Router Outlet component always renders children  */}
+              <Outlet />
+            </NavigationContext.Provider>
+          </ActionMenuContext.Provider>
           <GlobalStyles />
         </ThemeProvider>
       </RealmContext.Provider>
