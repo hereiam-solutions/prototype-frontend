@@ -1,6 +1,13 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvent,
+  useMap,
+} from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -11,7 +18,7 @@ const fireHazardIcon = new Icon({
   iconSize: [25, 25],
 });
 
-type Location = [latidude: number, longitude: number];
+type Location = [latitude: number, longitude: number];
 
 type ActiveMarkerType = {
   id: number;
@@ -20,31 +27,59 @@ type ActiveMarkerType = {
   longitude: number;
 };
 
+function GetInitialLocation() {
+  const map = useMap();
+
+  const [currentLocation, setCurrentLocation] = useState<Location>([
+    52.520008, 13.404954,
+  ]);
+
+  useEffect(() => {
+    map.locate().on('locationfound', function (e) {
+      const currentCoordinates: Location = [e.latlng.lat, e.latlng.lng];
+      setCurrentLocation(currentCoordinates);
+    });
+  }, [map]);
+
+  map.setView(currentLocation);
+  return null;
+}
+
+function SetCenterToBerlinMitte() {
+  const map = useMapEvent('click', () => {
+    map.setView([52.520008, 13.404954]);
+  });
+  return null;
+}
+
 const Map = () => {
-  //   const map = useMap();
+  const [currentLocation, setCurrentLocation] = useState<Location>([
+    52.520008, 13.404954,
+  ]);
 
-  // const [currentLocation, setCurrentLocation] = useState<Location>([
-  //  52.520008, 13.404954,
-  //]);
+  useEffect(() => {
+    const getCurrentLocation = async () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setCurrentLocation([
+              position.coords.latitude,
+              position.coords.longitude,
+            ]);
 
-  function LocationMarker() {
-    const [position, setPosition] = useState(null)
-    const map = useMapEvents({
-      click() {
-        map.locate()
-      },
-      locationfound(e) {
-        setPosition(e.latlng)
-        map.flyTo(e.latlng, map.getZoom())
-      },
-    })
+            // map.setView(currentLocation);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } else {
+        alert('Geolocation is not supported by this browser.');
+      }
+    };
 
-    return position === null ? null : (
-      <Marker position={position}>
-        <Popup>You are here</Popup>
-      </Marker>
-    )
-  }
+    getCurrentLocation();
+  }, []);
 
   const defaultZoom = 13;
 
@@ -55,18 +90,14 @@ const Map = () => {
   return (
     <>
       <StyledMapContainer
-        center={{ lat: 51.505, lng: -0.09 }}
+        center={currentLocation}
         zoom={defaultZoom}
         scrollWheelZoom={false}
       >
-
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
-        <LocationMarker />
-
 
         {mockLocationData.features.map((location) => (
           <Marker
@@ -85,6 +116,8 @@ const Map = () => {
           </Popup>
         )}
 
+        <GetInitialLocation />
+        <SetCenterToBerlinMitte />
       </StyledMapContainer>
     </>
   );
