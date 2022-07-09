@@ -9,11 +9,7 @@ import NavigationContext from './context/NavigationContext';
 
 // Theming imports
 import { ThemeProvider } from 'styled-components';
-import {
-  GlobalStyles,
-  globalDarkThemeValues,
-  globalLightThemeValues,
-} from './styles/GlobalStyle';
+import { GlobalStyles, darkTheme, lightTheme } from './styles/GlobalStyle';
 import useTheme from './hooks/useTheme';
 
 // helper functions imports
@@ -33,13 +29,7 @@ const App = () => {
     <>
       <RealmContext.Provider value={{ realm }}>
         {/* pass the appropriate global values for the current theme */}
-        <ThemeProvider
-          theme={
-            currentTheme === 'dark'
-              ? globalDarkThemeValues
-              : globalLightThemeValues
-          }
-        >
+        <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
           <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>
             {/* React Router Outlet component always renders children  */}
             <Outlet />
