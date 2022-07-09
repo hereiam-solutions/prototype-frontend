@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
-import { ReactComponent as DashboardButton } from '../../../public/icons/Navigation/Dashboard.svg';
-import { ReactComponent as SettingsButton } from '../../../public/icons/Navigation/Settings.svg';
-import { ReactComponent as ProfileButton } from '../../../public/icons/Navigation/User.svg';
+import { ReactComponent as DashboardButton } from '%PUBLIC_URL%/icons/Navigation/Dashboard.svg';
+import { ReactComponent as SettingsButton } from '%PUBLIC_URL%/icons/Navigation/Settings.svg';
+import { ReactComponent as ProfileButton } from '%PUBLIC_URL%/icons/Navigation/User.svg';
 
 
 const Nav = () => {
