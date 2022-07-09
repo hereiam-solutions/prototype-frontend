@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import RequireAuth from '../auth/RequireAuth';
 import Map from '../map/Map';
-import ActionMenu from './ActionMenu';
+import ActionMenu from './actionMenu/ActionMenu';
 import Nav from './Nav';
 
 type Props = {};

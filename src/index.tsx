@@ -7,15 +7,16 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 // component imports
 import App from './App';
-import Profile from './components/navigation/Profile';
-import Settings from './components/navigation/Settings';
-import Mission from './components/navigation/Mission';
+import Profile from './components/navigation/drawContent/Profile';
+import Settings from './components/navigation/drawContent/Settings';
+import Mission from './components/navigation/drawContent/Mission';
 import Home from './components/navigation/Home';
 import Layout from './components/navigation/Layout';
 import AuthLayout from './components/auth/AuthLayout';
 import UserDetails from './components/auth/UserDetails';
 import Authentication from './components/auth/Authentication';
 import RequireAuth from './components/auth/RequireAuth';
+import CreateMapMarker from './components/navigation/drawContent/CreateMapMarker';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -53,6 +54,18 @@ root.render(
             <Route path="mission" element={<Mission />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
+            <Route
+              path="create-hazard"
+              element={<CreateMapMarker type={'hazard'} />}
+            />
+            <Route
+              path="create-casualty"
+              element={<CreateMapMarker type={'casualty'} />}
+            />
+            <Route
+              path="create-boo"
+              element={<CreateMapMarker type={'boo'} />}
+            />
           </Route>
 
           {/* <Route path="mission/:missionId" element={<Mission />} />

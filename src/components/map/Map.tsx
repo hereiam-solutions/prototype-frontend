@@ -8,7 +8,7 @@ import {
   useMapEvent,
   useMap,
 } from 'react-leaflet';
-import { Icon } from 'leaflet';
+import { Icon, latLng } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import mockLocationData from '../../data/locationData.json';
 import { ActiveMarkerType } from './mapTypes';
@@ -16,6 +16,8 @@ import GetInitialLocation from './mapEvents/GetInitialLocation';
 import SetMapCenter from './mapEvents/SetMapCenter';
 import SetMarker from './mapEvents/SetMarker';
 import ActivateActionMenu from './mapEvents/ActivateActionMenu';
+import useActionMenu from '../../hooks/useActionMenu';
+import { Location } from './mapTypes';
 
 const fireHazardIcon = new Icon({
   iconUrl: '/fire_hazard_icon.svg',
@@ -30,9 +32,10 @@ const Map = () => {
   return (
     <>
       <StyledMapContainer
-        center={[52.520008, 13.404954]}
-        zoom={13}
+        center={[0, 0]}
+        zoom={20}
         scrollWheelZoom={false}
+        tap={true}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -58,10 +61,14 @@ const Map = () => {
 
         <GetInitialLocation />
         <ActivateActionMenu />
+
+        {/* {isCreateMarkerModeEnabled && ( */}
         <SetMarker
           activeMarker={activeMarker}
           setActiveMarker={setActiveMarker}
         />
+        {/* )} */}
+
         {/* <SetMapCenter /> */}
       </StyledMapContainer>
     </>

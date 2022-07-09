@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import useActionMenu from '../../hooks/useActionMenu';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
@@ -9,21 +10,49 @@ import Draw from './Draw';
 
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
+  const { setIsInitialMapLoad } = useActionMenu();
 
   return (
     <>
       <StyledNavigationMenu role="navigation">
-        <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="mission">
+        <StyledMenuButton
+          onClick={() => {
+            setIsDrawOpen(true);
+            setIsInitialMapLoad(false);
+          }}
+          to="mission"
+        >
           Dashboard {/* <img src={fireHazardIcon} alt="React Logo" /> */}
         </StyledMenuButton>
 
-        <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="settings">
+        <StyledMenuButton
+          onClick={() => {
+            setIsDrawOpen(true);
+            setIsInitialMapLoad(false);
+          }}
+          to="settings"
+        >
           Settings
         </StyledMenuButton>
 
-        <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="profile">
+        <StyledMenuButton
+          onClick={() => {
+            setIsDrawOpen(true);
+            setIsInitialMapLoad(false);
+          }}
+          to="profile"
+        >
           Profile
         </StyledMenuButton>
+
+        <StyledLocateButton
+          onClick={() => {
+            setIsDrawOpen(true);
+            setIsInitialMapLoad(true);
+          }}
+        >
+          Locate
+        </StyledLocateButton>
       </StyledNavigationMenu>
 
       {isDrawOpen && <Draw usedInAuthentication={false} />}
@@ -45,6 +74,13 @@ const StyledNavigationMenu = styled.div`
 `;
 
 const StyledMenuButton = styled(Link)`
+  background: white;
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+`;
+
+const StyledLocateButton = styled.div`
   background: white;
   border-radius: 50%;
   width: 3em;

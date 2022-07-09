@@ -25,7 +25,14 @@ const App = () => {
 
   // state for the draw / navigation context
   const [isDrawOpen, setIsDrawOpen] = useState<boolean>(false);
+
+  // state for the actionmenu context
   const [isActionMenuOpen, setIsActionMenuOpen] = useState<boolean>(false);
+  const [isCreateMarkerModeEnabled, setIsCreateMarkerModeEnabled] =
+    useState<boolean>(false);
+  const [isCreateMarkerDrawOpen, setIsCreateMarkerDrawOpen] =
+    useState<boolean>(false);
+  const [isInitialMapLoad, setIsInitialMapLoad] = useState<boolean>(true);
 
   return (
     <>
@@ -33,7 +40,16 @@ const App = () => {
         {/* pass the appropriate global values for the current theme */}
         <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
           <ActionMenuContext.Provider
-            value={{ isActionMenuOpen, setIsActionMenuOpen }}
+            value={{
+              isActionMenuOpen,
+              setIsActionMenuOpen,
+              isCreateMarkerModeEnabled,
+              setIsCreateMarkerModeEnabled,
+              isCreateMarkerDrawOpen,
+              setIsCreateMarkerDrawOpen,
+              isInitialMapLoad,
+              setIsInitialMapLoad,
+            }}
           >
             <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>
               {/* React Router Outlet component always renders children  */}
