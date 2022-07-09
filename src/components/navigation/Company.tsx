@@ -6,13 +6,13 @@ import Draw from './Draw';
 
 import { ReactComponent as LogoHereiam } from '../../assets/Logo/light/hereIam_logo_light256x256.svg';
 
-const About = () => {
+const Company = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
 
   return (
     <>
       <StyledAboutMenu role="navigation">
-        <StyledAboutButton onClick={() => setIsDrawOpen(true)} to="about">
+        <StyledAboutButton onClick={() => setIsDrawOpen(true)} to="aboutpage">
           <LogoHereiam />
         </StyledAboutButton>
         <div>
@@ -32,7 +32,7 @@ const StyledAboutMenu = styled.div`
   gap: 1.3rem;
   position: absolute;
   bottom: 5%;
-  left: 3rem;
+  right: 3rem;
   z-index: 4;
   pointer-events: auto;
 `;
@@ -41,4 +41,4 @@ const StyledAboutButton = styled(Link)`
  
 `;
 
-export default About;
+export default Company;
