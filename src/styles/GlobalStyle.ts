@@ -20,11 +20,7 @@ export const GlobalStyles = createGlobalStyle`
     --cta-100: #0071BC;
     --cta-200: #205493;
     --cta-300: #112E51;
-    --attention: #F8DE00;
-    --alert: #D2251E;
-    --ready: #4CBA4B;
     --whiter: #fffff8;
-    font-size: calc(1vw + 1vh + .5vmin);
   }
 
   html{
@@ -60,20 +56,11 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1rem;
     line-height: 1.6;
     font-weight: 100;
-	font-size: calc(1vw + 1vh + .5vmin);
-  }
-
-  /* center elements vertically */
-  .centered {
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -webkit-flex;
-    display: flex;
+	  font-size: calc(1vw + 1vh + .5vmin);
   }
 
   /* Display links when the <a> element has no text value but the href attribute has a link */
-  a[href^="http"]:empty::before {
+  a[href^="https"]:empty::before {
     content: attr(href);
   }
 
@@ -187,41 +174,6 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0
   }
 
-  code,
-  pre {
-    background-color: var(--gray-400);
-    border-radius: 3px;
-    font-family: monospace;
-    padding: 3px;
-  }
-
-  code {
-    white-space: nowrap;
-  }
-
-  em {
-    background-color: var(--gray-200);
-    font-style: normal;
-    padding: .1em .2em;
-  }
-
-
-
-  /* Desktop */
-  @media (63em <= width <= 87em), screen {
-
-  }
-
-  /* Widescreen */
-  @media (min-width: 88em), screen {
-
-  }
-
-  /* Wearable */
-  @media (max-width: 25em), screen {
-
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .animation {
       animation: none;
@@ -229,17 +181,24 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 const colors = {
-  hazardColor: '#23409',
+  attentionColor: '#F8DE00',
+  alertColor: '#D2251E',
+  readyColor: '#4CBA4B',
+  navIconOverlay: 'var(--gray-300)',
 };
 
 const borderConstants = {
-  primaryBorderRadius: '20px',
-  tabletBorderRadius: '30px',
+  primaryBorderRadius: '10px',
+  drawerBorderRadius: '5px',
+  buttonBorderRadius: '5px',
 };
 
 const mediaQueries = {
   mediaQueryPhone: '(max-width: 43em), screen or (orientation: portrait)',
   mediaQueryTablet: '(44em <= width <= 62em), screen',
+  mediaQueryDesktop: '(63em <= width <= 87em), screen',
+  mediaQueryWidescreen: '(min-width: 88em), screen',
+  mediaQueryWearable: '(max-width: 25em), screen',
 };
 
 const font = {
@@ -248,9 +207,18 @@ const font = {
 };
 
 export const darkTheme = {
-  primaryBackgroundColor: '#242632',
-  secondaryBackgroundColor: '#242632',
-  primaryFontColor: '#ffffff',
+  primaryBackgroundColor: 'var(--base)',
+  secondaryBackgroundColor: 'var(--base-text)',
+  primaryFontColor: 'var(--whiter)',
+  secondaryFontColor: 'var(--base-light)',
+  navIconColor: 'var(--base-light)',
+  mapControlBackground: 'var(--gray-300)',
+  mapControlColor: 'var(--base)',
+  formFieldBackground: 'var(--gray-500)',
+  formFieldColor: 'var(--gray-200)',
+  formSubmitFillColor: 'var(--gray-400)',
+  formSubmitTextColor: 'var(--base-text)',
+  formSubmitBorderColor: 'var(--base-text))',
   ...borderConstants,
   ...colors,
   ...mediaQueries,
@@ -258,9 +226,18 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  primaryBackgroundColor: '#242632',
-  secondaryBackgroundColor: '#242632',
-  primaryFontColor: '#000000',
+  primaryBackgroundColor: 'var(--base-light)',
+  secondaryBackgroundColor: 'var(--gray-300)',
+  primaryFontColor: 'var(--base-text)',
+  secondaryFontColor: 'var(--base)',
+  navIconColor: 'var(--base-light)',
+  mapControlBackground: 'var(--gray-200)',
+  mapControlColor: 'var(--base)',
+  formFieldBackground: 'var(--gray-200)',
+  formFieldColor: 'var(--base)',
+  formSubmitFillColor: 'var(--gray-400)',
+  formSubmitTextColor: 'var(--gray-150)',
+  formSubmitBorderColor: 'var(--gray-150)',
   ...borderConstants,
   ...colors,
   ...mediaQueries,
