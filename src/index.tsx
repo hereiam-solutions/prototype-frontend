@@ -13,6 +13,7 @@ import Dashboard from './components/navigation/withoutActiveMission/drawContent/
 import ActiveDashboard from './components/navigation/withActiveMission/drawContent/ActiveDashboard';
 import Home from './components/navigation/Placeholder';
 import Layout from './components/navigation/Layout';
+import About from './components/navigation/About';
 import AuthLayout from './components/auth/AuthLayout';
 import UserDetails from './components/auth/UserDetails';
 import Authentication from './components/auth/Authentication';
@@ -58,6 +59,7 @@ root.render(
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="about" element={<About />} />
           </Route>
 
           {/* a mission is currently active */}
