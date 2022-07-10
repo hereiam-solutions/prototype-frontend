@@ -1,15 +1,14 @@
 //import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import useActionMenu from '../../hooks/useActionMenu';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
-
+// svg imports
 import { ReactComponent as DashboardButton } from '../../assets/Navigation/Dashboard.svg';
 import { ReactComponent as SettingsButton } from '../../assets/Navigation/Settings.svg';
 import { ReactComponent as ProfileButton } from '../../assets/Navigation/User.svg';
-
-
 
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
@@ -17,15 +16,32 @@ const Nav = () => {
   return (
     <>
       <StyledNavigationMenu role="navigation">
-        <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="mission">
+      
+        <StyledMenuButton
+          onClick={() => {
+            setIsDrawOpen(true);
+          }}
+          to="dashboard"
+        >
           <DashboardButton />
         </StyledMenuButton>
 
-        <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="settings">
-            <SettingsButton />
+        <StyledMenuButton
+          onClick={() => {
+            setIsDrawOpen(true);
+          }}
+          to="settings"
+        >
+          <SettingsButton />
         </StyledMenuButton>
 
-        <StyledMenuButton onClick={() => setIsDrawOpen(true)} to="profile">
+        <StyledMenuButton
+          onClick={() => {
+            setIsDrawOpen(true);
+          }}
+          to="profile"
+        >
+
           <ProfileButton />
         </StyledMenuButton>
       </StyledNavigationMenu>

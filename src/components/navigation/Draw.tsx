@@ -17,7 +17,7 @@ const Draw = ({ usedInAuthentication }: DrawPropsType) => {
       </StyledDrawContentWrapper>
 
       {!usedInAuthentication && (
-        <StyledMapOverlay to="/" onClick={() => setIsDrawOpen(false)} />
+        <StyledMapOverlay to="" onClick={() => setIsDrawOpen(false)} />
       )}
     </StyledDrawWrapper>
   );

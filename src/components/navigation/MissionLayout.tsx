@@ -1,19 +1,15 @@
 import styled from 'styled-components';
-import Map from '../map/Map';
+import MissionMap from '../map/MissionMap';
 import ActionMenu from './actionMenu/ActionMenu';
 import Nav from './Nav';
-import Company from './Company';
 
-type Props = {};
-
-const Layout = (props: Props) => {
+const MissionLayout = () => {
   return (
     <StyledAppWrapper>
       <ActionMenu />
-      <Map />
+      <MissionMap />
       <StyledNavWrapper>
         <Nav />
-        <Company />
       </StyledNavWrapper>
     </StyledAppWrapper>
   );
@@ -33,4 +29,4 @@ const StyledNavWrapper = styled.div`
   align-items: end;
 `;
 
-export default Layout;
+export default MissionLayout;
