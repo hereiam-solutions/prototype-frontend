@@ -5,12 +5,8 @@ import useActionMenu from '../../hooks/useActionMenu';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
-// import svg logos
-// import fireHazardIcon from '../../../public/fire_hazard_icon.svg';
-
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
-  const { setIsInitialMapLoad } = useActionMenu();
 
   return (
     <>
@@ -18,17 +14,15 @@ const Nav = () => {
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
-            setIsInitialMapLoad(false);
           }}
-          to="mission"
+          to="dashboard"
         >
-          Dashboard {/* <img src={fireHazardIcon} alt="React Logo" /> */}
+          Dashboard
         </StyledMenuButton>
 
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
-            setIsInitialMapLoad(false);
           }}
           to="settings"
         >
@@ -38,7 +32,6 @@ const Nav = () => {
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
-            setIsInitialMapLoad(false);
           }}
           to="profile"
         >

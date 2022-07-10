@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 type Props = {};
 
-const Mission = (props: Props) => {
-  return <>Mission</>;
+const Settings = (props: Props) => {
+  return <>Settings</>;
 };
 
-export default Mission;
+export default Settings;

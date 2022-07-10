@@ -1,12 +1,9 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import useMission from '../../hooks/useMission';
-import useRealm from '../../hooks/useRealm';
 
 const RequireActiveMission = ({ children }: { children: JSX.Element }) => {
   // check if mission context has data, else reroute to /
   const { activeMission } = useMission();
-
-  console.log(activeMission);
 
   let location = useLocation();
 

@@ -7,13 +7,12 @@ import axios from 'axios';
 import useActionMenu from '../../../hooks/useActionMenu';
 
 function ActivateActionMenu() {
-  const { setIsActionMenuOpen, setIsInitialMapLoad } = useActionMenu();
+  const { setIsActionMenuOpen } = useActionMenu();
   const [markerLocation, setMarkerLocation] = useState<Location | null>(null);
 
   const map = useMapEvents({
     contextmenu(e) {
       setIsActionMenuOpen(true);
-      setIsInitialMapLoad(false);
     },
   });
 

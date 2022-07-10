@@ -1,5 +1,5 @@
 import React from 'react';
-import useCreateMarker from '../../../hooks/useCreateMarker';
+import useCreateMarker from '../../../../hooks/useCreateMarker';
 
 type CreateMapMarkerProps = {
   type: 'hazard' | 'casualty' | 'boo';

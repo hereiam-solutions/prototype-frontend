@@ -6,3 +6,9 @@ export type ActiveMarkerType = {
 };
 
 export type Location = [latitude: number, longitude: number];
+
+export enum MarkerType {
+  HAZARD = 'hazard',
+  CASUALTY = 'casualty',
+  BOO = 'boo',
+}

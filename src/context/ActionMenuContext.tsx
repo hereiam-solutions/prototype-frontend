@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useState } from 'react';
+import { MarkerType } from '../components/map/mapTypes';
 
 // create a type for the context's value
 type ActionMenuContextType = {
@@ -8,8 +9,8 @@ type ActionMenuContextType = {
   setIsCreateMarkerModeEnabled: (createMarkerModeState: boolean) => void;
   isCreateMarkerDrawOpen: boolean;
   setIsCreateMarkerDrawOpen: (createMarkerDrawState: boolean) => void;
-  isInitialMapLoad: boolean;
-  setIsInitialMapLoad: (initialMapLoadState: boolean) => void;
+  markerType: MarkerType;
+  setMarkerType: (markerType: MarkerType) => void;
 };
 
 // create the context and set a default value that matches the context type
@@ -20,8 +21,8 @@ const ActionMenuContext = createContext<ActionMenuContextType>({
   setIsCreateMarkerModeEnabled: () => {},
   isCreateMarkerDrawOpen: false,
   setIsCreateMarkerDrawOpen: () => {},
-  isInitialMapLoad: true,
-  setIsInitialMapLoad: () => {},
+  markerType: MarkerType.HAZARD,
+  setMarkerType: () => {},
 });
 
 // export the context provider which wraps (almost) all of the other components and provides the context's values
@@ -31,7 +32,7 @@ export const ActionMenuProvider = (children: ReactNode) => {
     useState<boolean>(false);
   const [isCreateMarkerDrawOpen, setIsCreateMarkerDrawOpen] =
     useState<boolean>(false);
-  const [isInitialMapLoad, setIsInitialMapLoad] = useState<boolean>(true);
+  const [markerType, setMarkerType] = useState<MarkerType>(MarkerType.HAZARD);
 
   return (
     <ActionMenuContext.Provider
@@ -42,8 +43,8 @@ export const ActionMenuProvider = (children: ReactNode) => {
         setIsCreateMarkerModeEnabled: setIsCreateMarkerModeEnabled,
         isCreateMarkerDrawOpen: isCreateMarkerDrawOpen,
         setIsCreateMarkerDrawOpen: setIsCreateMarkerDrawOpen,
-        isInitialMapLoad: isInitialMapLoad,
-        setIsInitialMapLoad: setIsInitialMapLoad,
+        markerType: markerType,
+        setMarkerType: setMarkerType,
       }}
     >
       <>{children}</>

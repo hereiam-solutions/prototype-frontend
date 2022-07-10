@@ -15,6 +15,7 @@ import useTheme from './hooks/useTheme';
 
 // helper functions imports
 import connectToRealm from './helpers/connectToRealm';
+import { MarkerType } from './components/map/mapTypes';
 
 const App = () => {
   // get the current theme
@@ -32,7 +33,7 @@ const App = () => {
     useState<boolean>(false);
   const [isCreateMarkerDrawOpen, setIsCreateMarkerDrawOpen] =
     useState<boolean>(false);
-  const [isInitialMapLoad, setIsInitialMapLoad] = useState<boolean>(true);
+  const [markerType, setMarkerType] = useState<MarkerType>(MarkerType.HAZARD);
 
   return (
     <>
@@ -47,8 +48,8 @@ const App = () => {
               setIsCreateMarkerModeEnabled,
               isCreateMarkerDrawOpen,
               setIsCreateMarkerDrawOpen,
-              isInitialMapLoad,
-              setIsInitialMapLoad,
+              markerType,
+              setMarkerType,
             }}
           >
             <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMapEvents, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
-import { ActiveMarkerType } from '../mapTypes';
+import { ActiveMarkerType, MarkerType } from '../mapTypes';
 import axios from 'axios';
 import useActionMenu from '../../../hooks/useActionMenu';
 import useCreateMarker from '../../../hooks/useCreateMarker';
@@ -33,6 +33,7 @@ function SetMarker() {
     setIsActionMenuOpen,
     isCreateMarkerModeEnabled,
     setIsCreateMarkerModeEnabled,
+    markerType,
   } = useActionMenu();
 
   const { setLocation } = useCreateMarker();
@@ -42,7 +43,15 @@ function SetMarker() {
       if (isCreateMarkerModeEnabled) {
         setLocation([e.latlng.lat, e.latlng.lng]);
         setIsDrawOpen(true);
-        navigate('/create-hazard');
+        if (markerType === MarkerType.HAZARD) {
+          navigate(`create-${MarkerType.HAZARD}`);
+        }
+        if (markerType === MarkerType.CASUALTY) {
+          navigate(`create-${MarkerType.CASUALTY}`);
+        }
+        if (markerType === MarkerType.BOO) {
+          navigate(`create-${MarkerType.BOO}`);
+        }
         map.setView(e.latlng, map.getZoom());
 
         setIsCreateMarkerModeEnabled(false);
