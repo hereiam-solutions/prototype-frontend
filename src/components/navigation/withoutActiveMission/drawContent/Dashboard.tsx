@@ -1,10 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 type Props = {};
 
 const Dashboard = (props: Props) => {
-  return <>Dashboard</>;
+  return (
+    <>
+      <Link to="/mission">Join Mission</Link>
+    </>
+  );
 };
 
 export default Dashboard;
