@@ -5,6 +5,11 @@ import useActionMenu from '../../hooks/useActionMenu';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
+// svg imports
+import { ReactComponent as DashboardButton } from '../../assets/Navigation/Dashboard.svg';
+import { ReactComponent as SettingsButton } from '../../assets/Navigation/Settings.svg';
+import { ReactComponent as ProfileButton } from '../../assets/Navigation/User.svg';
+
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
 
@@ -17,7 +22,7 @@ const Nav = () => {
           }}
           to="dashboard"
         >
-          Dashboard
+          <DashboardButton />
         </StyledMenuButton>
 
         <StyledMenuButton
@@ -26,7 +31,7 @@ const Nav = () => {
           }}
           to="settings"
         >
-          Settings
+          <SettingsButton />
         </StyledMenuButton>
 
         <StyledMenuButton
@@ -35,7 +40,7 @@ const Nav = () => {
           }}
           to="profile"
         >
-          Profile
+          <ProfileButton />
         </StyledMenuButton>
       </StyledNavigationMenu>
 
