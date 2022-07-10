@@ -12,14 +12,14 @@ import Settings from './components/navigation/withActiveMission/drawContent/Sett
 import Dashboard from './components/navigation/withoutActiveMission/drawContent/Dashboard';
 import ActiveDashboard from './components/navigation/withActiveMission/drawContent/ActiveDashboard';
 import Home from './components/navigation/Placeholder';
-import Layout from './components/navigation/Layout';
+import Layout from './components/navigation/withoutActiveMission/Layout';
 import About from './components/navigation/About';
 import AuthLayout from './components/auth/AuthLayout';
 import UserDetails from './components/auth/UserDetails';
 import Authentication from './components/auth/Authentication';
 import RequireAuth from './components/auth/RequireAuth';
 import CreateMapMarker from './components/navigation/withActiveMission/drawContent/CreateMapMarker';
-import MissionLayout from './components/navigation/MissionLayout';
+import MissionLayout from './components/navigation/withActiveMission/MissionLayout';
 import RequireActiveMission from './components/navigation/RequireActiveMission';
 
 const root = ReactDOM.createRoot(

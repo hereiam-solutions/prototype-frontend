@@ -1,7 +1,5 @@
-//import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import useActionMenu from '../../hooks/useActionMenu';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 
@@ -16,7 +14,6 @@ const Nav = () => {
   return (
     <>
       <StyledNavigationMenu role="navigation">
-      
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
@@ -41,7 +38,6 @@ const Nav = () => {
           }}
           to="profile"
         >
-
           <ProfileButton />
         </StyledMenuButton>
       </StyledNavigationMenu>
@@ -55,16 +51,14 @@ const StyledNavigationMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.3rem;
+  gap: 1rem;
   position: absolute;
-  bottom: 5%;
-  right: 3rem;
+  bottom: 1%;
+  right: 1rem;
   z-index: 2;
   pointer-events: auto;
 `;
 
-const StyledMenuButton = styled(Link)`
- 
-`;
+const StyledMenuButton = styled(Link)``;
 
 export default Nav;

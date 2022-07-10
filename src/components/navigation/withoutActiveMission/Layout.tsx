@@ -1,15 +1,13 @@
 import styled from 'styled-components';
-import Map from '../map/Map';
-import ActionMenu from './actionMenu/ActionMenu';
-import Nav from './Nav';
-import Company from './Company';
+import Map from '../../map/Map';
+import Nav from '../Nav';
+import Company from '../Company';
 
 type Props = {};
 
 const Layout = (props: Props) => {
   return (
     <StyledAppWrapper>
-      <ActionMenu />
       <Map />
       <StyledNavWrapper>
         <Nav />

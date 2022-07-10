@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import MissionMap from '../map/MissionMap';
-import ActionMenu from './actionMenu/ActionMenu';
-import Nav from './Nav';
+import MissionMap from '../../map/MissionMap';
+import ActionMenu from '../actionMenu/ActionMenu';
+import Nav from '../Nav';
+import Company from '../Company';
 
 const MissionLayout = () => {
   return (
@@ -10,6 +11,7 @@ const MissionLayout = () => {
       <MissionMap />
       <StyledNavWrapper>
         <Nav />
+        <Company />
       </StyledNavWrapper>
     </StyledAppWrapper>
   );
