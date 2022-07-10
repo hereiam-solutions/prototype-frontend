@@ -10,13 +10,15 @@ import App from './App';
 import Profile from './components/navigation/drawContent/Profile';
 import Settings from './components/navigation/drawContent/Settings';
 import Mission from './components/navigation/drawContent/Mission';
-import Home from './components/navigation/Home';
+import Home from './components/navigation/Placeholder';
 import Layout from './components/navigation/Layout';
 import AuthLayout from './components/auth/AuthLayout';
 import UserDetails from './components/auth/UserDetails';
 import Authentication from './components/auth/Authentication';
 import RequireAuth from './components/auth/RequireAuth';
 import CreateMapMarker from './components/navigation/drawContent/CreateMapMarker';
+import MissionLayout from './components/navigation/MissionLayout';
+import RequireActiveMission from './components/navigation/RequireActiveMission';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -43,6 +45,7 @@ root.render(
             <Route path="auth" element={<Authentication />} />
           </Route>
 
+          {/* no active mission */}
           <Route
             element={
               <RequireAuth>
@@ -51,21 +54,41 @@ root.render(
             }
           >
             <Route index element={<Home />} />
-            <Route path="mission" element={<Mission />} />
+            <Route path="dashboard" element={<Mission />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
-            <Route
-              path="create-hazard"
-              element={<CreateMapMarker type={'hazard'} />}
-            />
-            <Route
-              path="create-casualty"
-              element={<CreateMapMarker type={'casualty'} />}
-            />
-            <Route
-              path="create-boo"
-              element={<CreateMapMarker type={'boo'} />}
-            />
+          </Route>
+
+          {/* a mission is currently active */}
+          <Route
+            path="mission"
+            element={
+              <RequireAuth>
+                <RequireActiveMission>
+                  <MissionLayout />
+                </RequireActiveMission>
+              </RequireAuth>
+            }
+          >
+            <Route path=":misionId">
+              <Route index element={<Home />} />
+              <Route path="dashboard" element={<Mission />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="profile" element={<Profile />} />
+              <Route
+                path="create-hazard"
+                element={<CreateMapMarker type={'hazard'} />}
+              />
+              <Route
+                path="create-casualty"
+                element={<CreateMapMarker type={'casualty'} />}
+              />
+              <Route
+                path="create-boo"
+                element={<CreateMapMarker type={'boo'} />}
+              />
+              {/* a mission is currently active */}
+            </Route>
           </Route>
 
           {/* <Route path="mission/:missionId" element={<Mission />} />

@@ -27,7 +27,7 @@ const fireHazardIcon = new Icon({
   iconSize: [25, 25],
 });
 
-const Map = () => {
+const MissionMap = () => {
   //   const hazardsRef = useRef<L.Layer>();
   //   const casualtiesRef = useRef();
   //   const booRef = useRef();
@@ -46,7 +46,7 @@ const Map = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {/* <LayersControl
+        <LayersControl
           collapsed={true}
           hideSingleBase={true}
           position="topright"
@@ -78,11 +78,11 @@ const Map = () => {
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
-        </LayersControl> */}
+        </LayersControl>
 
         <GetCurrentLocation />
-        {/* <ActivateActionMenu /> */}
-        {/* <SetMarker /> */}
+        <ActivateActionMenu />
+        <SetMarker />
 
         {/* <SetMapCenter /> */}
       </StyledMapContainer>
@@ -100,4 +100,4 @@ const StyledMapContainer = styled(MapContainer)`
   z-index: -1;
 `;
 
-export default Map;
+export default MissionMap;
