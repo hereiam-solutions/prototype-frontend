@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import {
   MapContainer,
@@ -7,6 +7,9 @@ import {
   Popup,
   useMapEvent,
   useMap,
+  ZoomControl,
+  LayersControl,
+  LayerGroup,
 } from 'react-leaflet';
 import { Icon, latLng } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -25,15 +28,15 @@ const fireHazardIcon = new Icon({
 });
 
 const Map = () => {
-  const [activeMarker, setActiveMarker] = useState<ActiveMarkerType | null>(
-    null
-  );
+  const hazardsRef = useRef();
+  const casualtiesRef = useRef();
+  const booRef = useRef();
 
   return (
     <>
       <StyledMapContainer
         center={[0, 0]}
-        zoom={20}
+        zoom={13}
         scrollWheelZoom={false}
         tap={true}
       >
@@ -42,32 +45,43 @@ const Map = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {mockLocationData.features.map((location) => (
-          <Marker
-            key={location.id}
-            position={[location.latitude, location.longitude]}
-            icon={fireHazardIcon}
-            eventHandlers={{ click: () => setActiveMarker(location) }}
-          />
-        ))}
-        {activeMarker && (
-          <Popup
-            position={[activeMarker.latitude, activeMarker.longitude]}
-            eventHandlers={{ popupclose: () => setActiveMarker(null) }}
-          >
-            {activeMarker.name}
-          </Popup>
-        )}
+        <LayersControl
+          collapsed={true}
+          hideSingleBase={true}
+          position="topright"
+        >
+          <LayersControl.Overlay checked={true} name="Fires">
+            <LayerGroup>
+              {mockLocationData.features.map((location) => (
+                <Marker
+                  key={location.id}
+                  position={[location.latitude, location.longitude]}
+                  icon={fireHazardIcon}
+                >
+                  <Popup>{location.name}</Popup>
+                </Marker>
+              ))}
+            </LayerGroup>
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay name="Casualties">
+            <LayerGroup>
+              {mockLocationData.features.map((location) => (
+                <Marker
+                  key={location.id}
+                  position={[location.latitude, location.longitude]}
+                  icon={fireHazardIcon}
+                >
+                  <Popup>{location.name}</Popup>
+                </Marker>
+              ))}
+            </LayerGroup>
+          </LayersControl.Overlay>
+        </LayersControl>
 
         <GetInitialLocation />
         <ActivateActionMenu />
-
-        {/* {isCreateMarkerModeEnabled && ( */}
-        <SetMarker
-          activeMarker={activeMarker}
-          setActiveMarker={setActiveMarker}
-        />
-        {/* )} */}
+        <SetMarker />
 
         {/* <SetMapCenter /> */}
       </StyledMapContainer>

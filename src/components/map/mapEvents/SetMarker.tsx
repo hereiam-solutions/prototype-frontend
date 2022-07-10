@@ -16,14 +16,14 @@ const fireHazardIcon = new Icon({
   iconSize: [25, 25],
 });
 
-type SetMarkerPropsType = {
-  activeMarker: ActiveMarkerType | null;
-  setActiveMarker: React.Dispatch<
-    React.SetStateAction<ActiveMarkerType | null>
-  >;
-};
+// type SetMarkerPropsType = {
+//   activeMarker: ActiveMarkerType | null;
+//   setActiveMarker: React.Dispatch<
+//     React.SetStateAction<ActiveMarkerType | null>
+//   >;
+// };
 
-function SetMarker({ activeMarker, setActiveMarker }: SetMarkerPropsType) {
+function SetMarker() {
   let navigate = useNavigate();
 
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
@@ -43,7 +43,7 @@ function SetMarker({ activeMarker, setActiveMarker }: SetMarkerPropsType) {
         setLocation([e.latlng.lat, e.latlng.lng]);
         setIsDrawOpen(true);
         navigate('/create-hazard');
-        // map.setView(e.latlng, map.getZoom());
+        map.setView(e.latlng, map.getZoom());
 
         setIsCreateMarkerModeEnabled(false);
       }
