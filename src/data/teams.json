@@ -50,12 +50,14 @@
                                         "teamLeader": null,
                                         "teamPhysician": null,
                                         "teamQuartermaster": null,
-                                        "k9-doghandling": null,
-                                        "extriction": null,
+                                        "k9-detection": null,
                                         "technicalSearch": null,
+                                        "extriction": null,
+                                        "rigger": null,
+                                        
                                         "structuralEngineer": null,
-                                        "hazmatSpecialist": null,
-                                        "rigger": null
+                                        "hazmatSpecialist": null
+                                        
                                     }
                                 ]
                             },
