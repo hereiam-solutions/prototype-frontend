@@ -49,7 +49,6 @@ const StyledDrawContentWrapper = styled.div`
   z-index: 4;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
   opacity: 0.75;
