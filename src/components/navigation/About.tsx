@@ -15,10 +15,6 @@ const About = (props: Props) => {
         <StyledAboutWelcome>
           <AboutWelcome />
         </StyledAboutWelcome>
-        <StyledCompanyInfo>
-          <CompanyInfo />
-        </StyledCompanyInfo>
-        
 
       </StyledAboutContent>
       
@@ -38,18 +34,6 @@ const AboutWelcome = () => {
   );
 };
 
-const CompanyInfo = () => {
-  return (
-    <div>
-      <p><strong>Project X Consulting GmbH</strong></p>
-      <p>Adress</p>
-      <p>Zip City</p>
-      <p><strong>Email</strong></p>
-      <p><strong>Phone</strong></p>
-    </div>      
-  );
-};
-
 function AboutHeader() {
   return (
     <div>
@@ -61,11 +45,11 @@ function AboutHeader() {
 const StyledAboutWrapper = styled.div`
 position: absolute;
 width: 100vw;
-height; 55vh;
 display: flex;
 flex-direction: column;
 align-items: center;
 overflow: hidden;
+pointer-events: auto;
 `;
 
 const StyledAboutHeader = styled.div`
@@ -86,27 +70,23 @@ overflow: hidden;
 `;
 
 const StyledAboutContent = styled.div`
+  height: auto;  
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
-  margin-top: 2rem;
-  overflow: auto;
-  height: auto;
+  margin-top: 1.2rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
 `;
 const StyledAboutWelcome = styled.div`
 padding: 2rem;
 font-size: 0.8rem;
 font-weight: 200;
-flex: 1;
+
 `;
 
-const StyledCompanyInfo = styled.div`
-padding: 1rem;
-font-size: 1.2rem;
-font-weight: 300;
-flex: 1;
-`;
+
 
 export default About;
