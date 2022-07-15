@@ -27,6 +27,7 @@ const Map = () => {
 
 // styled components
 const StyledMapContainer = styled(MapContainer)`
+  position: sticky;
   height: 100vh;
   width: 100vw;
   position: absolute;

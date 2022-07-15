@@ -32,6 +32,7 @@ const StyledDrawWrapper = styled.div`
   align-items: end;
   pointer-events: auto;
   z-index: 3;
+  overflow: hidden;
 `;
 
 const StyledMapOverlay = styled(Link)`
@@ -60,6 +61,7 @@ const StyledDrawContentWrapper = styled.div`
     100% {height: 66vH;}
   }
   height: 66vH;
+  overflow: hidden;
 `;
 
 export default Draw;
