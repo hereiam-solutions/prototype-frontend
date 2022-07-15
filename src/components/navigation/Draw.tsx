@@ -50,7 +50,7 @@ const StyledDrawContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 70px 70px 0 0;
+  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
 `;
 
 export default Draw;
