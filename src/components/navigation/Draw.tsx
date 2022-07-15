@@ -45,6 +45,7 @@ const StyledDrawContentWrapper = styled.div`
   height: 66vh;
   width: 100vw;
   background: ${(props) => props.theme.secondaryBackgroundColor};
+  color: ${(props) => props.theme.secondaryFontColor};
   z-index: 4;
   display: flex;
   flex-direction: column;
