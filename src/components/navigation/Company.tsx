@@ -14,7 +14,7 @@ function Company() {
           <img src={LogoHereiam} alt="hereIam Logo" />
         </StyledCompanyButton>
         <div>
-          <h6>hereIam</h6>
+          <StyledCompanyName>hereIam</StyledCompanyName>
         </div>
       </StyledCompanyMenu>
 
@@ -39,6 +39,12 @@ const StyledCompanyMenu = styled.div`
 
 const StyledCompanyButton = styled(Link)`
   color: ${(props) => props.theme.secondaryFontColor};
+`;
+
+const StyledCompanyName = styled.p`
+  color: ${(props) => props.theme.primaryFontColor};
+  font-size: 1.2rem;
+
 `;
 
 export default Company;

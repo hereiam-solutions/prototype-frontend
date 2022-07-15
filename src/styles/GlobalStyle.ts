@@ -189,7 +189,7 @@ const colors = {
 
 const borderConstants = {
   primaryBorderRadius: '10px',
-  drawerBorderRadius: '10px',
+  drawerBorderRadius: '15px',
   buttonBorderRadius: '5px',
 };
 
