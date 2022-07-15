@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
-import LogoHereiam from '../../assets/Logo/icon-72x72.png';
-
+import LogoHereiam from '../../assets/Logo/light/hereIam_logo_light96x96.svg';
 function Company() {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
 
@@ -38,13 +37,13 @@ const StyledCompanyMenu = styled.div`
 `;
 
 const StyledCompanyButton = styled(Link)`
-  color: ${(props) => props.theme.secondaryFontColor};
+  
 `;
 
 const StyledCompanyName = styled.p`
-  color: ${(props) => props.theme.primaryFontColor};
+  color: var(--base-light);
   font-size: 1.2rem;
-
+  margin-top: -0.5rem;
 `;
 
 export default Company;
