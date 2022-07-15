@@ -1,21 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 type Props = {};
 
 const About = (props: Props) => {
   return (
     <StyledAboutWrapper>
+
       <StyledAboutHeader>
         <AboutHeader />
       </StyledAboutHeader>
-      test
+     
+      <StyledAboutContent>
+        Text
+      </StyledAboutContent>
+      
     </StyledAboutWrapper>
   )  
 };
 
-const AboutHeader = (props: Props) => {
+const AboutHeader = () => {
   return (
     <div>
       About
@@ -44,6 +48,15 @@ display: flex;
 align-items: center;
 justify-content: space-around;
 opacity: 0.75;
+`;
+
+const StyledAboutContent = styled.div`
+  padding: 2rem 1rem 1rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 export default About;

@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type Props = {};
-
-const AboutContent = (props: Props) => {
-  return (
+const AboutContent = () => {
+  
     <div>
       <StyledAboutContent>
-        <AboutContent />
+        Text
       </StyledAboutContent>
     </div>
-  );
+
 };
 
 const StyledAboutContent = styled.div`
