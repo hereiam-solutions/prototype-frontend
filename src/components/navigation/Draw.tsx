@@ -44,7 +44,7 @@ const StyledMapOverlay = styled(Link)`
 const StyledDrawContentWrapper = styled.div`
   height: 66vh;
   width: 100vw;
-  background: white;
+  background: ${(props) => props.theme.secondaryBackgroundColor};
   z-index: 4;
   display: flex;
   flex-direction: column;
