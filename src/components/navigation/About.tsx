@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import AboutContent from './AboutContent';
+
 
 type Props = {};
 
@@ -10,7 +10,7 @@ const About = (props: Props) => {
       <StyledAboutHeader>
         <AboutHeader />
       </StyledAboutHeader>
-      <AboutContent />
+      test
     </StyledAboutWrapper>
   )  
 };
