@@ -52,6 +52,11 @@ const StyledDrawContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
+  opacity: 0.60;
+	-webkit-transition: 10s all ease-in-out;
+	-moz-transition: 10s all ease-in-out;
+	-o-transition: 10s all ease-in-out;
+	transition: 10s all ease-in-out;
 `;
 
 export default Draw;
