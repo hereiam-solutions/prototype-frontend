@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from 'react';
-import { MarkerType } from '../components/map/mapTypes';
+import { MarkerType, screenCoordinatesType } from '../components/map/mapTypes';
 
 // create a type for the context's value
 type ActionMenuContextType = {

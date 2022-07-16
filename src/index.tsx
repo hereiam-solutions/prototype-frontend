@@ -7,8 +7,8 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 // component imports
 import App from './App';
-import Profile from './components/navigation/withActiveMission/drawContent/Profile';
-import Settings from './components/navigation/withActiveMission/drawContent/Settings';
+import Profile from './components/navigation/withoutActiveMission/drawContent/Profile';
+import Settings from './components/navigation/withoutActiveMission/drawContent/Settings';
 import Dashboard from './components/navigation/withoutActiveMission/drawContent/Dashboard';
 import ActiveDashboard from './components/navigation/withActiveMission/drawContent/ActiveDashboard';
 import Home from './components/navigation/Placeholder';
@@ -18,7 +18,7 @@ import AuthLayout from './components/auth/AuthLayout';
 import UserDetails from './components/auth/UserDetails';
 import Authentication from './components/auth/Authentication';
 import RequireAuth from './components/auth/RequireAuth';
-import CreateMapMarker from './components/navigation/withActiveMission/drawContent/CreateMapMarker';
+import CreateHazardMarker from './components/navigation/withActiveMission/drawContent/createMapMarker/CreateHazardMarker';
 import MissionLayout from './components/navigation/withActiveMission/MissionLayout';
 import RequireActiveMission from './components/navigation/RequireActiveMission';
 
@@ -77,18 +77,9 @@ root.render(
             <Route path="dashboard" element={<ActiveDashboard />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
-            <Route
-              path="create-hazard"
-              element={<CreateMapMarker type={'hazard'} />}
-            />
-            <Route
-              path="create-casualty"
-              element={<CreateMapMarker type={'casualty'} />}
-            />
-            <Route
-              path="create-boo"
-              element={<CreateMapMarker type={'boo'} />}
-            />
+            <Route path="create-hazard" element={<CreateHazardMarker />} />
+            <Route path="create-casualty" element={<CreateHazardMarker />} />
+            <Route path="create-boo" element={<CreateHazardMarker />} />
           </Route>
         </Route>
       </Routes>

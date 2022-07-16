@@ -42,7 +42,9 @@ function SetMarker() {
     async click(e) {
       if (isCreateMarkerModeEnabled) {
         setLocation([e.latlng.lat, e.latlng.lng]);
+
         setIsDrawOpen(true);
+
         if (markerType === MarkerType.HAZARD) {
           navigate(`create-${MarkerType.HAZARD}`);
         }
@@ -52,14 +54,11 @@ function SetMarker() {
         if (markerType === MarkerType.BOO) {
           navigate(`create-${MarkerType.BOO}`);
         }
+
         map.setView(e.latlng, map.getZoom());
 
         setIsCreateMarkerModeEnabled(false);
       }
-      // this event should only be triggerable whenever the user clicked
-      // the action in the cross menu to create a Marker
-      // TODO: open the draw corresponding to creating a Marker
-      //   const response = await axios.get()
     },
   });
 

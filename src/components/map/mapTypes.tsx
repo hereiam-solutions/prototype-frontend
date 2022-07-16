@@ -12,3 +12,8 @@ export enum MarkerType {
   CASUALTY = 'casualty',
   BOO = 'boo',
 }
+
+export type screenCoordinatesType = {
+  x: number;
+  y: number;
+};
