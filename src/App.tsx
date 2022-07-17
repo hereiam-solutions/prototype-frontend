@@ -15,6 +15,8 @@ import useTheme from './hooks/useTheme';
 
 // helper functions imports
 import connectToRealm from './helpers/connectToRealm';
+
+// type imports
 import { MarkerType } from './components/map/mapTypes';
 
 const App = () => {

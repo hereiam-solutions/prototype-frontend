@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useState } from 'react';
 
 type MissionType = {
-  id: number;
+  id: string;
 };
 // create a type for the context's value
 type MissionContextType = {
