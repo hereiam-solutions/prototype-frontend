@@ -32,6 +32,7 @@ const StyledDrawWrapper = styled.div`
   align-items: end;
   pointer-events: auto;
   z-index: 3;
+  overflow: hidden;
 `;
 
 const StyledMapOverlay = styled(Link)`
@@ -42,15 +43,25 @@ const StyledMapOverlay = styled(Link)`
 `;
 
 const StyledDrawContentWrapper = styled.div`
-  height: 66vh;
+
   width: 100vw;
-  background: white;
+  background: ${(props) => props.theme.secondaryBackgroundColor};
+  color: ${(props) => props.theme.secondaryFontColor};
   z-index: 4;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  border-radius: 70px 70px 0 0;
+  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
+  opacity: 0.75;
+  animation-name: fadeInBottom;
+  animation-timing-function: ease-in;
+  animation-duration: 0.4s;
+  @keyframes fadeInBottom {
+    0% {height: 0rem;}
+    100% {height: 66vH;}
+  }
+  height: 66vH;
+  overflow: hidden;
 `;
 
 export default Draw;
