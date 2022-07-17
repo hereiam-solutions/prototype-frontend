@@ -30,6 +30,18 @@ const AboutWelcome = () => {
       <p>&nbsp;</p>    
       <p>hereIam is a project of Project X Consulting GmbH, a German based company - 
           supported by professionals and experts in Urban Search and Rescue from all over Europe.</p>
+          <p>&nbsp;</p>    
+      <p>hereIam is a project of Project X Consulting GmbH, a German based company - 
+          supported by professionals and experts in Urban Search and Rescue from all over Europe.</p>
+          <p>&nbsp;</p>    
+      <p>hereIam is a project of Project X Consulting GmbH, a German based company - 
+          supported by professionals and experts in Urban Search and Rescue from all over Europe.</p>
+          <p>&nbsp;</p>    
+      <p>hereIam is a project of Project X Consulting GmbH, a German based company - 
+          supported by professionals and experts in Urban Search and Rescue from all over Europe.</p>
+          <p>&nbsp;</p>    
+      <p>hereIam is a project of Project X Consulting GmbH, a German based company - 
+          supported by professionals and experts in Urban Search and Rescue from all over Europe.</p>
     </div>      
   );
 };
