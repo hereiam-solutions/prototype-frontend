@@ -51,7 +51,7 @@ const MissionMap = () => {
           hideSingleBase={true}
           position="topright"
         >
-          <LayersControl.Overlay checked={true} name="Fires">
+          <LayersControl.Overlay checked={true} name="Hazards">
             <LayerGroup>
               {mockLocationData.features.map((location) => (
                 <Marker
@@ -66,6 +66,20 @@ const MissionMap = () => {
           </LayersControl.Overlay>
 
           <LayersControl.Overlay name="Casualties">
+            <LayerGroup>
+              {mockLocationData.features.map((location) => (
+                <Marker
+                  key={location.id}
+                  position={[location.latitude, location.longitude]}
+                  icon={fireHazardIcon}
+                >
+                  <Popup>{location.name}</Popup>
+                </Marker>
+              ))}
+            </LayerGroup>
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay name="BoO">
             <LayerGroup>
               {mockLocationData.features.map((location) => (
                 <Marker
