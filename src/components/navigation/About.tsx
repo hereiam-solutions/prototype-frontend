@@ -17,7 +17,7 @@ const About = (props: Props) => {
         </StyledAboutWelcome>
 
       </StyledAboutContent>
-      
+
     </StyledAboutWrapper>
   )  
 };
@@ -29,13 +29,13 @@ const AboutWelcome = () => {
           you can save more lives by making better decisions.</p>
       <p>&nbsp;</p>    
       <p>hereIam is a project of Project X Consulting GmbH, a German based company - 
-          supported by professionals and experts in Urban Search and Rescue from all over Europe.</p>
+          supported by professionals and experts in Urban Search & Rescue from all over Europe.</p>
           
     </div>      
   );
 };
 
-function AboutHeader() {
+const AboutHeader = () => {
   return (
     <div>
       About
@@ -74,9 +74,12 @@ const StyledAboutContent = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
-  margin-top: 1.3rem;
+  margin-top: -0.2rem;
+  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
+  background: ${(props) => props.theme.secondaryBackgroundColor};
   overflow-x: hidden;
   overflow-y: scroll;
+  z-index: 6;
 `;
 const StyledAboutWelcome = styled.div`
 padding: 2rem;
