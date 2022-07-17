@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 // type imports
 import { hazardTypes } from '../../../../map/mapTypes';
-import {
-  addNewHazardArgs,
-  realmFunctionNames,
-} from '../../../../../data/realmFunctions';
+import { realmFunctionNames } from '../../../../../data/realm/functions';
+import { HazardArgs } from '../../../../../data/realm/schema';
+import { BSON } from 'realm-web';
 
 // hook imports
 import useCreateMarker from '../../../../../hooks/useCreateMarker';
@@ -34,14 +33,15 @@ import { ReactComponent as RockSlideIcon } from '../../../../../assets/Hazards/A
 import { ReactComponent as TrafficIcon } from '../../../../../assets/Hazards/Alert=Traffic Accident.svg';
 import { ReactComponent as TrainIcon } from '../../../../../assets/Hazards/Alert=Train.svg';
 import { ReactComponent as WaterIcon } from '../../../../../assets/Hazards/Alert=Water Disruption.svg';
+import useNavigation from '../../../../../hooks/useNavigation';
 
 const CreateHazardMarker = () => {
   const { realm } = useRealm();
   const { location } = useCreateMarker();
   const { activeMission } = useMission();
+  const { setIsDrawOpen } = useNavigation();
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
 
   const [selectedType, setSelectedType] = useState<hazardTypes>(
     hazardTypes.AVALANCHE
@@ -49,50 +49,44 @@ const CreateHazardMarker = () => {
 
   const [identifierValue, setIdentifierValue] = useState<string>('');
 
-  // TODO:
-  // map a clicked marker to the possible type of marker with state
-  // send request to backend with all infomation for creating a marker
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIdentifierValue(event.currentTarget.value);
   };
 
-  //   const handleSubmit = async () => {
-  //     try {
+  const handleSubmit = async () => {
+    try {
+      if (activeMission) {
+        const args: HazardArgs = {
+          identifier: identifierValue,
+          mission: activeMission.id,
+          hazard_type: selectedType,
+          status: 'active',
+          //   placed_by: new BSON.ObjectId(realm.currentUser?.id),
+          location: { type: 'Point', coordinates: location },
+        };
 
-  // 		const args: addNewHazardArgs = {
-  // 			identifier: identifierValue,
-  // 			mission: activeMission?.id || '',
-  // 			hazard_type:
-  // 		}
+        setLoading(true);
 
-  //       setLoading(true);
-  //       if (realm.currentUser) {
-  //         // call the Realm function
-  //         const response = await realm.currentUser.callFunction(
-  //           realmFunctionNames.addNewHazard,
-  //           args
-  //         );
+        if (realm.currentUser) {
+          // call the Realm function
+          await realm.currentUser.callFunction(
+            realmFunctionNames.addHazard,
+            args
+          );
+        }
 
-  //         // set the response as the state of this hook
-  //         setData(response);
-  //       } else {
-  //         // there is no user object on the realm connection
-  //         setError(true);
-  //       }
-
-  //       setLoading(false);
-  //     } catch (e) {
-  //       setLoading(false);
-  //       setError(true);
-  //       console.log(
-  //         'There has been an error while calling the Realm custom function called:',
-  //         functionName,
-  //         'error:',
-  //         e
-  //       );
-  //     }
-  //   };
+        setLoading(false);
+        setIsDrawOpen(false);
+      }
+    } catch (e) {
+      console.log(
+        'There has been an error while calling the Realm custom function called:',
+        realmFunctionNames.addHazard,
+        'Error:',
+        e
+      );
+    }
+  };
 
   return (
     <StyledWrapper>
@@ -243,10 +237,8 @@ const CreateHazardMarker = () => {
         value={identifierValue}
       />
 
-      <StyledButton
-      //   onClick={handleSubmit}
-      >
-        Submit Hazard
+      <StyledButton onClick={handleSubmit}>
+        {loading ? 'loading...' : 'Submit Hazard'}
       </StyledButton>
     </StyledWrapper>
   );

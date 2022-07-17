@@ -1,7 +1,8 @@
 import { ReactNode, createContext, useState } from 'react';
+import { BSON } from 'realm-web';
 
 type MissionType = {
-  id: string;
+  id: BSON.ObjectId;
 };
 // create a type for the context's value
 type MissionContextType = {

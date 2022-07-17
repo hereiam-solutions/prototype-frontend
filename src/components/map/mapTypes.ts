@@ -48,6 +48,18 @@ export enum hazardTypes {
   WATERDISRUPTION = 'water disruption',
 }
 
+export enum booTypes {
+  DIVISIONCOMMAND = 'division command',
+  ELECTRICITYPOINT = 'electricity point',
+  FIREBRIGADE = 'fire brigade',
+  MEDICALFACILITY = 'medical facility',
+  MILITARY = 'military',
+  MUNICIPALITYAUTHORITIES = 'municipality authorities',
+  POLICE = 'police',
+  SHELTER = 'shelter',
+  WATERPOINT = 'water point',
+}
+
 export type ActiveMarkerType = {
   id: number;
   name: string;
