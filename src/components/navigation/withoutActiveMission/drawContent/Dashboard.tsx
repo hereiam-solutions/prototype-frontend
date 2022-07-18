@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import MissionA from '../drawContent/MissionCard';
 
 type Props = {};
 
@@ -14,8 +14,14 @@ const Dashboard = (props: Props) => {
      
       <StyledDashboardContent>
         
-        TEst
-        <Link to="/mission"><StyledMissionJoinButton>Join this mission</StyledMissionJoinButton></Link>
+        <MissionA />
+        <StyledDeactivated>
+          <div>
+            <MissionA />
+          </div>
+        </StyledDeactivated>
+        
+        
       </StyledDashboardContent>
 
     </StyledDashboardWrapper>
@@ -30,6 +36,10 @@ const DashboardHeader = () => {
     </div>
   );
 }
+
+const StyledDeactivated = styled.div`
+opacity: 0.3;
+`;
 
 const StyledDashboardWrapper = styled.div`
 position: absolute;
@@ -62,22 +72,13 @@ const StyledDashboardContent = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
+  gap: 2rem;
   border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
   background: ${(props) => props.theme.secondaryBackgroundColor};
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 6;
 `;
-const StyledMissionJoinButton = styled.button`
-  padding: 0.2rem 1rem 0.2rem 1rem;
-  margin-top: 1.5rem;
-  background-color: ${(props) => props.theme.formSubmitFillColor};
-  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
-  border-radius: ${(props) => props.theme.buttonBorderRadius};
-  text-align: center;
-  height: 3rem;
-  color: ${(props) => props.theme.formSubmitTextColor};
-  font-weight: 500;
-`;
+
 
 export default Dashboard;
