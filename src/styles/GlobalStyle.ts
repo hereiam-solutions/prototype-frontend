@@ -216,7 +216,7 @@ export const darkTheme = {
   mapControlColor: 'var(--base)',
   formFieldBackground: 'var(--gray-500)',
   formFieldColor: 'var(--gray-200)',
-  formSubmitFillColor: 'var(--gray-400)',
+  formSubmitFillColor: '#F8DE00',
   formSubmitTextColor: 'var(--base-text)',
   formSubmitBorderColor: 'var(--base-text))',
   ...borderConstants,
