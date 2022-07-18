@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { darkTheme, lightTheme } from '../../../../styles/GlobalStyle';
 
 type Props = {};
 
@@ -13,7 +14,6 @@ const Settings = (props: Props) => {
      
       <StyledSettingsContent>
         
-        TEst
 
       </StyledSettingsContent>
 
@@ -27,7 +27,7 @@ const SettingsHeader = () => {
       Settings
     </div>
   );
-}
+};
 
 const StyledSettingsWrapper = styled.div`
 position: absolute;
