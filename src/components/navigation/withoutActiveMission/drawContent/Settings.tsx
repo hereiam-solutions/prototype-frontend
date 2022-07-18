@@ -14,6 +14,7 @@ const Settings = (props: Props) => {
       <StyledSettingsContent>
         
         TEst
+
       </StyledSettingsContent>
 
     </StyledSettingsWrapper>
