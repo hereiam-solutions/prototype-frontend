@@ -11,7 +11,7 @@ const Settings = (props: Props) => {
         <p>Settings</p>
       </StyledHeader>
 
-      <Accordion>
+      <Accordion heading={'accordion heading'}>
         <Child />
         <SecondChild />
       </Accordion>
