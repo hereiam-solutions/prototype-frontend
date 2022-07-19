@@ -12,9 +12,13 @@ const About = (props: Props) => {
       </StyledHeader>
      
       <StyledAboutContent>
+
         <StyledAboutWelcome>
           <AboutWelcome />
         </StyledAboutWelcome>
+        <div>
+          testing
+        </div>
 
       </StyledAboutContent>
 
@@ -41,6 +45,7 @@ width: 100vw;
 display: flex;
 flex-direction: column;
 align-items: center;
+justify-content: center;
 overflow: hidden;
 pointer-events: auto;
 `;
@@ -49,9 +54,7 @@ const StyledHeader = styled.div`
   width: 80%;
   padding: 1rem;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
   color: ${(props) => props.theme.primaryFontColor};
   font-size: 1.1rem;
   font-weight: 500;
@@ -59,22 +62,21 @@ const StyledHeader = styled.div`
 `;
 
 const StyledAboutContent = styled.div`
-  height: 55vh;  
   display: flex;
-  align-items: flex-start;
   flex-wrap: wrap;
-  flex-direction: column;
-  margin-top: -0.2rem;
-  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
-  background: ${(props) => props.theme.secondaryBackgroundColor};
+  padding: 0.5rem;
+  justify-content: space-around;
+  height: 55vh;
   overflow-x: hidden;
   overflow-y: scroll;
-  z-index: 6;
+  
 `;
 const StyledAboutWelcome = styled.div`
-padding: 2rem;
-font-size: 0.8rem;
-font-weight: 200;
+  margin: 0.4rem;
+  padding: 1rem;
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: 200;
 `;
 
 
