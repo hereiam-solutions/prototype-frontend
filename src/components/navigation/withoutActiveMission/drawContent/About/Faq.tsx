@@ -1,15 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Accordion } from './FaqTest';
 
-type Props = {
-
-};
-
-const Faq = (props: Props) => {
+const Faq = () => {
   return (
     <StyledFaq>
 
-
+      <Accordion />
             
     </StyledFaq>
   )  
