@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Welcome from './Welcome';
 
 type Props = {};
 
@@ -13,30 +14,12 @@ const About = (props: Props) => {
      
       <StyledAboutContent>
 
-        <StyledAboutWelcome>
-          <AboutWelcome />
-        </StyledAboutWelcome>
-        <div>
-          testing
-        </div>
+        <Welcome />
 
       </StyledAboutContent>
 
     </StyledAboutWrapper>
   )  
-};
-
-const AboutWelcome = () => {
-  return (
-    <div>
-      <p>Welcome and thank you for choosing to use hereIam. With well over 100 users worldwide, 
-          you can save more lives by making better decisions.</p>
-      <p>&nbsp;</p>    
-      <p>hereIam is a project of Project X Consulting GmbH, a German based company - 
-          supported by professionals and experts in Urban Search & Rescue from all over Europe.</p>
-          
-    </div>      
-  );
 };
 
 const StyledAboutWrapper = styled.div`
@@ -71,14 +54,5 @@ const StyledAboutContent = styled.div`
   overflow-y: scroll;
   
 `;
-const StyledAboutWelcome = styled.div`
-  margin: 0.4rem;
-  padding: 1rem;
-  width: 100%;
-  font-size: 0.8rem;
-  font-weight: 200;
-`;
-
-
 
 export default About;
