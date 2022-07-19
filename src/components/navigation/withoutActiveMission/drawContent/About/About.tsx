@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Version from './Version';
 import Welcome from './Welcome';
+import Faq from './Faq';
 
 type Props = {};
 
@@ -16,6 +17,7 @@ const About = (props: Props) => {
       <StyledAboutContent>
         <Version />
         <Welcome />
+        <Faq />
 
       </StyledAboutContent>
 
@@ -49,7 +51,7 @@ const StyledAboutContent = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 0.5rem;
-  justify-content: space-around;
+  justify-content: center;
   height: 55vh;
   overflow-x: hidden;
   overflow-y: scroll;
