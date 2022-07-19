@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // type imports
 import { hazardTypes } from '../../../../map/mapTypes';
 import { realmFunctionNames } from '../../../../../data/realm/functions';
-import { HazardArgs } from '../../../../../data/realm/schema';
+import { CreateHazardArgs } from '../../../../../data/realm/schema';
 import { BSON } from 'realm-web';
 
 // hook imports
@@ -56,7 +56,7 @@ const CreateHazardMarker = () => {
   const handleSubmit = async () => {
     try {
       if (activeMission) {
-        const args: HazardArgs = {
+        const args: CreateHazardArgs = {
           identifier: identifierValue,
           mission: activeMission.id,
           hazard_type: selectedType,
