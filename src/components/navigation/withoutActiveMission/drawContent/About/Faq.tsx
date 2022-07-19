@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Accordion from './Acc';
 
-
-
 const Faq = () => {
   return (
     <StyledFaq>

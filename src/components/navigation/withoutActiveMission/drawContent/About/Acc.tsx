@@ -11,13 +11,13 @@ function Accordion(props: { title: string; content: string; }) {
   return (
     <StyledAccordion>
         <div className="accordion__item">
-        <div className="accordion__header" onClick={toggleHandler}>
-            <h4>{props.title}</h4>
-            <i>
-            +
-            </i>
-        </div>
-        <p className="accordion__content">{props.content}</p>
+            <div className="accordion__header" onClick={toggleHandler}>
+                <h4>{props.title}</h4>
+                <i>
+                +
+                </i>
+            </div>
+            <p className="accordion__content">{props.content}</p>
         </div>
     </StyledAccordion>
   );
