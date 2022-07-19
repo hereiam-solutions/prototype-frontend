@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import useNavigation from '../../../../hooks/useNavigation';
 import MissionA from '../drawContent/MissionCard';
 
 type Props = {};
 
 const Dashboard = (props: Props) => {
+  const { setIsDrawOpen } = useNavigation();
   return (
+
     <StyledDashboardWrapper>
 
       <StyledHeader>
@@ -69,6 +72,5 @@ const StyledDashboardContent = styled.div`
   overflow-y: scroll;
   z-index: 6;
 `;
-
 
 export default Dashboard;

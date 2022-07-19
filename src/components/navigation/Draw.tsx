@@ -43,25 +43,35 @@ const StyledMapOverlay = styled(Link)`
 `;
 
 const StyledDrawContentWrapper = styled.div`
-
   width: 100vw;
+  height: 66vh;
+  overflow: hidden;
+
   background: ${(props) => props.theme.secondaryBackgroundColor};
   color: ${(props) => props.theme.secondaryFontColor};
+
   z-index: 4;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
-  opacity: 0.75;
+
+  border-radius: ${(props) => props.theme.drawerBorderRadius}
+    ${(props) => props.theme.drawerBorderRadius} 0 0;
+
+  opacity: 1;
+
   animation-name: fadeInBottom;
   animation-timing-function: ease-in;
-  animation-duration: 0.4s;
+  animation-duration: 0.2s;
   @keyframes fadeInBottom {
-    0% {height: 0rem;}
-    100% {height: 66vH;}
+    0% {
+      height: 0rem;
+    }
+    100% {
+      height: 66vh;
+    }
   }
-  height: 66vH;
-  overflow: hidden;
 `;
 
 export default Draw;

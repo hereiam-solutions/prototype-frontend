@@ -11,7 +11,7 @@ import Profile from './components/navigation/withoutActiveMission/drawContent/Pr
 import Settings from './components/navigation/withoutActiveMission/drawContent/Settings';
 import Dashboard from './components/navigation/withoutActiveMission/drawContent/Dashboard';
 import ActiveDashboard from './components/navigation/withActiveMission/drawContent/ActiveDashboard';
-import Home from './components/navigation/Placeholder';
+import Home from './components/navigation/Home';
 import Layout from './components/navigation/withoutActiveMission/Layout';
 import About from './components/navigation/withoutActiveMission/drawContent/About/About';
 import AuthLayout from './components/auth/AuthLayout';
@@ -33,6 +33,7 @@ root.render(
         {/* the App component contains no html elements, its just for initializing the Realm connection and providing the contexts */}
         <Route path="/" element={<App />}>
           {/* Login and Register need another layout than the actual app */}
+
           <Route element={<AuthLayout />}>
             {/* /user is just for realm testing */}
             <Route
@@ -77,6 +78,7 @@ root.render(
             <Route path="dashboard" element={<ActiveDashboard />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="about" element={<About />} />
             <Route path="create-hazard" element={<CreateHazardMarker />} />
             <Route path="create-casualty" element={<CreateHazardMarker />} />
             <Route path="create-boo" element={<CreateHazardMarker />} />
