@@ -1,35 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
+import Accordion from '../../Accordion';
 
 type Props = {};
 
 const Settings = (props: Props) => {
   return (
     <StyledSettingsWrapper>
-
       <StyledHeader>
         <p>Settings</p>
       </StyledHeader>
-     
-      <StyledSettingsContent>
-        
 
-      </StyledSettingsContent>
+      <Accordion>
+        <Child />
+        <SecondChild />
+      </Accordion>
 
+      <StyledSettingsContent></StyledSettingsContent>
     </StyledSettingsWrapper>
-  )
+  );
 };
 
+const Child = () => {
+  return <p>Inside Accordion</p>;
+};
 
+const SecondChild = () => {
+  return <p>Inside Accordion</p>;
+};
 
 const StyledSettingsWrapper = styled.div`
-position: absolute;
-width: 100vw;
-display: flex;
-flex-direction: column;
-align-items: center;
-overflow: hidden;
-pointer-events: auto;
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: auto;
 `;
 
 const StyledHeader = styled.div`
@@ -46,13 +53,14 @@ const StyledHeader = styled.div`
 `;
 
 const StyledSettingsContent = styled.div`
-  height: 55vh;  
+  height: 55vh;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
   margin-top: -0.2rem;
-  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
+  border-radius: ${(props) => props.theme.drawerBorderRadius}
+    ${(props) => props.theme.drawerBorderRadius} 0 0;
   background: ${(props) => props.theme.secondaryBackgroundColor};
   overflow-x: hidden;
   overflow-y: scroll;
