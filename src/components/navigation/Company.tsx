@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import useNavigation from '../../hooks/useNavigation';
 import Draw from './Draw';
 import LogoHereiam from '../../assets/Logo/light/hereIam_logo_light96x96.svg';
+
 function Company() {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
 
