@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Version from './Version';
 import Welcome from './Welcome';
 
 type Props = {};
@@ -13,7 +14,7 @@ const About = (props: Props) => {
       </StyledHeader>
      
       <StyledAboutContent>
-
+        <Version />
         <Welcome />
 
       </StyledAboutContent>
