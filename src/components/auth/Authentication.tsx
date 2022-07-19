@@ -100,15 +100,9 @@ const Authentication = () => {
 
   return (
     <>
-      <StyledSwitchWrapper>
-        <StyledSwitchButton onClick={() => setIsLogin(true)}>
-          Login
-        </StyledSwitchButton>
-
-        <StyledSwitchButton onClick={() => setIsLogin(false)}>
-          Register
-        </StyledSwitchButton>
-      </StyledSwitchWrapper>
+      <StyledHeader>
+        <p>WELCOME</p>
+      </StyledHeader>
 
       {isLogin ? (
         <Formik
@@ -141,7 +135,10 @@ const Authentication = () => {
                 </StyledInlineErrorMessage>
               ) : null}
 
-              <StyledButton type="submit">Login</StyledButton>
+              <StyledButton type="submit">Yes. Log me in</StyledButton>
+              <StyledSwitchButton onClick={() => setIsLogin(false)}>
+                No account? Sign In.
+              </StyledSwitchButton>
             </StyledForm>
           )}
         </Formik>
@@ -191,7 +188,10 @@ const Authentication = () => {
                   </StyledInlineErrorMessage>
                 ) : null}
 
-                <StyledButton type="submit">Register</StyledButton>
+                <StyledButton type="submit">Thats me. Sign in</StyledButton>
+                <StyledSwitchButton onClick={() => setIsLogin(true)}>
+                  I have an account. Let me Log in
+                </StyledSwitchButton>
               </StyledForm>
             )}
           </Formik>
@@ -203,47 +203,58 @@ const Authentication = () => {
 
 const StyledForm = styled(Form)`
   width: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  overflow: auto;
 `;
 
 const StyledField = styled(Field)`
-  background-color: white;
-  border: 1px solid lightgrey;
-  border-radius: 4px;
+  background-color: ${(props) => props.theme.formFieldBackground};
+  border: 1px solid ${(props) => props.theme.formFieldColor};
+  border-radius: ${(props) => props.theme.buttonBorderRadius};
+  color: ${(props) => props.theme.formFieldColor};
   font-size: 1rem;
   line-height: 1.5rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
   padding: 0.75rem 0.75rem;
 `;
 
 const StyledInlineErrorMessage = styled.div`
-  color: red;
+  color: ${(props) => props.theme.alertColor};
+  font-weight: 500;
+  margin-top: 0.3rem;
 `;
 
 const StyledButton = styled.button`
   width: 100%;
   margin-top: 1.5rem;
-
-  background-color: rgb(24, 81, 187);
+  background-color: ${(props) => props.theme.formSubmitFillColor};
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.buttonBorderRadius};
   text-align: center;
   height: 3rem;
-  color: white;
+  color: ${(props) => props.theme.formSubmitTextColor};
+  font-weight: 500;
 `;
 
-const StyledSwitchWrapper = styled.div`
+const StyledHeader = styled.div`
   width: 80%;
+  padding: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  font-size: 1.1rem;
+  font-weight: 500;
 `;
 
-const StyledSwitchButton = styled.button``;
+const StyledSwitchButton = styled.button`
+  margin-top: 1rem;
+`;
 
 export default Authentication;

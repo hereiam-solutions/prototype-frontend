@@ -1,23 +1,76 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useNavigation from '../../../../hooks/useNavigation';
+import MissionA from '../drawContent/MissionCard';
 
 type Props = {};
 
 const Dashboard = (props: Props) => {
   const { setIsDrawOpen } = useNavigation();
   return (
-    <>
-      <StyledLink onClick={() => setIsDrawOpen(false)} to="/mission">
-        Join Mission
-      </StyledLink>
-    </>
+
+    <StyledDashboardWrapper>
+
+      <StyledHeader>
+        <p>Dashboard</p>
+      </StyledHeader>
+     
+      <StyledDashboardContent>
+        
+        <MissionA />
+        <StyledDeactivated>
+          <div>
+            <MissionA />
+          </div>
+        </StyledDeactivated>
+        
+        
+      </StyledDashboardContent>
+
+    </StyledDashboardWrapper>
+
   );
 };
 
-const StyledLink = styled(Link)`
-  color: white;
+const StyledDeactivated = styled.div`
+opacity: 0.3;
+`;
+
+const StyledDashboardWrapper = styled.div`
+position: absolute;
+width: 100vw;
+display: flex;
+flex-direction: column;
+align-items: center;
+overflow: hidden;
+pointer-events: auto;
+`;
+
+const StyledHeader = styled.div`
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: ${(props) => props.theme.primaryFontColor};
+  font-size: 1.1rem;
+  font-weight: 500;
+  overflow: hidden;
+`;
+
+const StyledDashboardContent = styled.div`
+  height: 55vh;  
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
+  background: ${(props) => props.theme.secondaryBackgroundColor};
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 6;
 `;
 
 export default Dashboard;

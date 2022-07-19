@@ -13,7 +13,7 @@ import Dashboard from './components/navigation/withoutActiveMission/drawContent/
 import ActiveDashboard from './components/navigation/withActiveMission/drawContent/ActiveDashboard';
 import Home from './components/navigation/Home';
 import Layout from './components/navigation/withoutActiveMission/Layout';
-import About from './components/navigation/About';
+import About from './components/navigation/withoutActiveMission/drawContent/About/About';
 import AuthLayout from './components/auth/AuthLayout';
 import UserDetails from './components/auth/UserDetails';
 import Authentication from './components/auth/Authentication';
