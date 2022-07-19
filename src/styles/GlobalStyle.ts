@@ -206,6 +206,10 @@ const font = {
   primaryLineHeight: '1.6rem',
 };
 
+const margins = {
+  insideDrawMargin: '1rem',
+};
+
 export const darkTheme = {
   primaryBackgroundColor: 'var(--base)',
   secondaryBackgroundColor: 'var(--base-text)',
@@ -223,6 +227,7 @@ export const darkTheme = {
   ...colors,
   ...mediaQueries,
   ...font,
+  ...margins,
 };
 
 export const lightTheme = {
@@ -242,6 +247,7 @@ export const lightTheme = {
   ...colors,
   ...mediaQueries,
   ...font,
+  ...margins,
 };
 
 // Example

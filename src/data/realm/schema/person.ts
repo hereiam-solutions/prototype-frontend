@@ -18,27 +18,27 @@ enum roles {
 }
 
 export type PersonSchema = {
-  _id: BSON.ObjectId;
+  //   _id: BSON.ObjectId;
   userId: BSON.ObjectId;
-  identifier: string;
-  active: boolean;
+  //   identifier: string;
+  //   active: boolean;
   firstName: string;
   lastName: string;
   missionReadyStatus: boolean;
-  managingOrganization: BSON.ObjectId;
-  team: BSON.ObjectId;
+  //   managingOrganization: BSON.ObjectId;
+  //   team: BSON.ObjectId;
   role: roles[];
   missions: BSON.ObjectId[];
   deployedToMission: BSON.ObjectId[];
-  rollCallReport: [];
-  contact: {
-    email: string;
-    phone: string;
-    satcom: string;
-    pager: string;
-    radio: [{ callsign: string }, { channel: string }, { frequency: string }];
-  };
-  allowTracking: boolean;
+  //   rollCallReport: [];
+  //   contact: {
+  //     email: string;
+  //     phone: string;
+  //     satcom: string;
+  //     pager: string;
+  //     radio: [{ callsign: string }, { channel: string }, { frequency: string }];
+  //   };
+  //   allowTracking: boolean;
   geoJSON: geoJSONPoint;
 };
 
