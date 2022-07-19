@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // type imports
 import { hazardTypes } from '../../../../map/mapTypes';
 import { realmFunctionNames } from '../../../../../data/realm/functions';
-import { CreateHazardArgs } from '../../../../../data/realm/schema';
+import { CreateHazardArgs } from '../../../../../data/realm/schema/hazard';
 import { BSON } from 'realm-web';
 
 // hook imports

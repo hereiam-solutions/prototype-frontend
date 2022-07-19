@@ -3,9 +3,7 @@ import Map from '../../map/Map';
 import Nav from '../Nav';
 import Company from '../Company';
 
-type Props = {};
-
-const Layout = (props: Props) => {
+const Layout = () => {
   return (
     <StyledAppWrapper>
       <Map />
