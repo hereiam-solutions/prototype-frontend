@@ -100,11 +100,9 @@ const Authentication = () => {
 
   return (
     <>
-      <StyledSwitchWrapper>
+      <StyledHeader>
         <p>WELCOME</p>
-        <span>|</span>
-        <span>|</span>
-      </StyledSwitchWrapper>
+      </StyledHeader>
 
       {isLogin ? (
         <Formik
@@ -208,7 +206,6 @@ const StyledForm = styled(Form)`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   overflow: auto;
 `;
@@ -245,7 +242,7 @@ const StyledButton = styled.button`
   font-weight: 500;
 `;
 
-const StyledSwitchWrapper = styled.div`
+const StyledHeader = styled.div`
   width: 80%;
   padding: 1rem;
   display: flex;

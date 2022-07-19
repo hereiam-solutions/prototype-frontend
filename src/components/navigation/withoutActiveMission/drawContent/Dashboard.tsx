@@ -8,9 +8,9 @@ const Dashboard = (props: Props) => {
   return (
     <StyledDashboardWrapper>
 
-      <StyledDashboardHeader>
-        <DashboardHeader />
-      </StyledDashboardHeader>
+      <StyledHeader>
+        <p>Dashboard</p>
+      </StyledHeader>
      
       <StyledDashboardContent>
         
@@ -29,14 +29,6 @@ const Dashboard = (props: Props) => {
   );
 };
 
-const DashboardHeader = () => {
-  return (
-    <div>
-      Dashboard
-    </div>
-  );
-}
-
 const StyledDeactivated = styled.div`
 opacity: 0.3;
 `;
@@ -51,19 +43,17 @@ overflow: hidden;
 pointer-events: auto;
 `;
 
-const StyledDashboardHeader = styled.div`
-position: sticky;
-top: 0px;
-width: 100vw;
-height: 3rem;
-border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
-background: ${(props) => props.theme.primaryBackgroundColor};
-color: ${(props) => props.theme.primaryFontColor};
-font-size: 1.4rem;
-font-weight: 600;
-display: flex;
-align-items: center;
-justify-content: space-around;
+const StyledHeader = styled.div`
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: ${(props) => props.theme.primaryFontColor};
+  font-size: 1.1rem;
+  font-weight: 500;
+  overflow: hidden;
 `;
 
 const StyledDashboardContent = styled.div`
