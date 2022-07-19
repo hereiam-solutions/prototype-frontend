@@ -1,49 +1,35 @@
-import React from 'react';
 import styled from 'styled-components';
-import useNavigation from '../../../../hooks/useNavigation';
 import MissionA from '../drawContent/MissionCard';
 
 type Props = {};
 
 const Dashboard = (props: Props) => {
-  const { setIsDrawOpen } = useNavigation();
   return (
-
     <StyledDashboardWrapper>
+      <StyledHeader>Dashboard</StyledHeader>
 
-      <StyledHeader>
-        <p>Dashboard</p>
-      </StyledHeader>
-     
       <StyledDashboardContent>
-        
         <MissionA />
         <StyledDeactivated>
-          <div>
-            <MissionA />
-          </div>
+          <MissionA />
         </StyledDeactivated>
-        
-        
       </StyledDashboardContent>
-
     </StyledDashboardWrapper>
-
   );
 };
 
 const StyledDeactivated = styled.div`
-opacity: 0.3;
+  opacity: 0.3;
 `;
 
 const StyledDashboardWrapper = styled.div`
-position: absolute;
-width: 100vw;
-display: flex;
-flex-direction: column;
-align-items: center;
-overflow: hidden;
-pointer-events: auto;
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: auto;
 `;
 
 const StyledHeader = styled.div`
@@ -60,13 +46,14 @@ const StyledHeader = styled.div`
 `;
 
 const StyledDashboardContent = styled.div`
-  height: 55vh;  
+  height: 55vh;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
   gap: 2rem;
-  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
+  border-radius: ${(props) => props.theme.drawerBorderRadius}
+    ${(props) => props.theme.drawerBorderRadius} 0 0;
   background: ${(props) => props.theme.secondaryBackgroundColor};
   overflow-x: hidden;
   overflow-y: scroll;
