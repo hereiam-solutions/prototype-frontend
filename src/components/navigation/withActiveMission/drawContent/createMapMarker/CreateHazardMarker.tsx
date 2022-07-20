@@ -58,7 +58,7 @@ const CreateHazardMarker = () => {
       if (activeMission) {
         const args: CreateHazardArgs = {
           identifier: identifierValue,
-          mission: activeMission.id,
+          mission: activeMission._id,
           hazard_type: selectedType,
           status: 'active',
           //   placed_by: new BSON.ObjectId(realm.currentUser?.id),

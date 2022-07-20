@@ -1,25 +1,41 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import MissionA from '../drawContent/MissionCard';
+import MissionCard from '../drawContent/MissionCard';
+import CreateMission from './CreateMission';
 
-type Props = {};
+const Dashboard = () => {
+  const [createMissionMode, setCreateMissionMode] = useState<boolean>(false);
 
-const Dashboard = (props: Props) => {
   return (
     <StyledDashboardWrapper>
       <StyledHeader>Dashboard</StyledHeader>
 
       <StyledDashboardContent>
-        <MissionA />
-        <StyledDeactivated>
-          <MissionA />
-        </StyledDeactivated>
+        {createMissionMode ? (
+          <CreateMission />
+        ) : (
+          <>
+            <MissionCard />
+            <StyledDeactivated>
+              <MissionCard />
+            </StyledDeactivated>
+          </>
+        )}
+
+        <StyledSwitchButton
+          onClick={() => {
+            setCreateMissionMode(!createMissionMode);
+          }}
+        >
+          {createMissionMode ? 'Join a mission' : 'Create a mission'}
+        </StyledSwitchButton>
       </StyledDashboardContent>
     </StyledDashboardWrapper>
   );
 };
 
-const StyledDeactivated = styled.div`
-  opacity: 0.3;
+const StyledSwitchButton = styled.div`
+  align-self: center;
 `;
 
 const StyledDashboardWrapper = styled.div`
@@ -58,6 +74,10 @@ const StyledDashboardContent = styled.div`
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 6;
+`;
+
+const StyledDeactivated = styled.div`
+  opacity: 0.3;
 `;
 
 export default Dashboard;

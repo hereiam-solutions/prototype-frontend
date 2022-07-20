@@ -1,30 +1,38 @@
 import { ReactNode, createContext, useState } from 'react';
-import { BSON } from 'realm-web';
+import { MissionSchema } from '../data/realm/schema/mission';
 
-type MissionType = {
-  id: BSON.ObjectId;
-};
 // create a type for the context's value
 type MissionContextType = {
-  activeMission: MissionType | null;
-  setActiveMission: (mission: MissionType) => void;
+  activeMission: MissionSchema | null;
+  setActiveMission: (activeMission: MissionSchema) => void;
+  isPolygonDrawingActive: boolean;
+  setIsPolygonDrawingActive: (polygonDrawingActive: boolean) => void;
 };
 
 // create the context and set a default value that matches the context type
 const MissionContext = createContext<MissionContextType>({
   activeMission: null,
   setActiveMission: () => {},
+  isPolygonDrawingActive: false,
+  setIsPolygonDrawingActive: () => {},
 });
 
 // export the context provider which wraps (almost) all of the other components and provides the context's values
 export const MissionProvider = (children: ReactNode) => {
-  const [activeMission, setActiveMission] = useState<MissionType | null>(null);
+  const [activeMission, setActiveMission] = useState<MissionSchema | null>(
+    null
+  );
+
+  const [polygonDrawingActive, setIsPolygonDrawingActive] =
+    useState<boolean>(false);
 
   return (
     <MissionContext.Provider
       value={{
         activeMission: activeMission,
         setActiveMission: setActiveMission,
+        isPolygonDrawingActive: polygonDrawingActive,
+        setIsPolygonDrawingActive: setIsPolygonDrawingActive,
       }}
     >
       <>{children}</>

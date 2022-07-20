@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useNavigation from '../../../../hooks/useNavigation';
 
-const MissionA = () => {
+const MissionCard = () => {
   const { setIsDrawOpen } = useNavigation();
 
   return (
@@ -51,4 +51,4 @@ const Content = styled.div`
   justify-content: center;
 `;
 
-export default MissionA;
+export default MissionCard;
