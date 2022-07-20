@@ -28,7 +28,7 @@ export type PersonSchema = {
   //   team: BSON.ObjectId;
   role: roles[];
   missions: BSON.ObjectId[];
-  deployedToMission: BSON.ObjectId[];
+  deployedToMission: BSON.ObjectId;
   //   rollCallReport: [];
   //   contact: {
   //     email: string;
@@ -53,7 +53,7 @@ export type UpdatePersonArgs = {
   team: BSON.ObjectId;
   role: roles[];
   missions: BSON.ObjectId[];
-  deployedToMission: BSON.ObjectId[];
+  deployedToMission: BSON.ObjectId;
   rollCallReport: [];
   contact: {
     email: string;

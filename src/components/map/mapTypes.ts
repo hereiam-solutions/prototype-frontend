@@ -9,6 +9,7 @@ type PolygonCoordinates<Location> = {
   0: Location;
   1: Location;
 } & Array<Location>;
+// TODO: doubled array polygon
 
 export type geoJSONPolygon = {
   type: 'Polygon';
@@ -88,7 +89,7 @@ export enum locationTypes {
   MISSINGPERSONS = 'missing persons',
 }
 
-export enum disasterTypes {
+export enum disasterTypesEnum {
   'DROUGHT' = 'Drought',
   'ARMEDCONFLICTS' = 'Armed Conflicts',
   'WARS' = 'Wars',

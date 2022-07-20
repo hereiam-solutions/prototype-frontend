@@ -1,6 +1,6 @@
 import { BSON } from 'realm-web';
 import { geoJSONPolygon } from './../../../components/map/mapTypes';
-import { disasterTypes } from './../../../components/map/mapTypes';
+import { disasterTypesEnum } from './../../../components/map/mapTypes';
 
 enum RiskLevel {
   'ONE' = '1-Minimal',
@@ -50,7 +50,7 @@ export type MissionSchema = {
   participants: BSON.ObjectId[];
   operating_teams: BSON.ObjectId[];
   geoJSON: geoJSONPolygon;
-  disasterType: disasterTypes[];
+  disasterType: disasterTypesEnum[];
   roleAndMandates: string[];
   objectives: string[];
   nationalAssetsDeployed: boolean;
@@ -90,7 +90,7 @@ export type CreateMissionArgs = {
   participants: BSON.ObjectId[];
   //   operating_teams: BSON.ObjectId[];
   geoJSON: geoJSONPolygon;
-  disasterType: disasterTypes[];
+  disasterType: disasterTypesEnum[];
   //   roleAndMandates: string[];
   objectives: string[];
   //   nationalAssetsDeployed: boolean;
