@@ -15,13 +15,13 @@ type ThemeContextType = {
 
 // create the context and set a default value that matches the context type
 const ThemeContext = createContext<ThemeContextType>({
-  currentTheme: ThemeEnum.DARK,
+  currentTheme: ThemeEnum.LIGHT,
   setCurrentTheme: () => {},
 });
 
 // export the context provider which wraps (almost) all of the other components and provides the context's values
 export const ThemeProvider = (children: ReactNode) => {
-  const [currentTheme, setCurrentTheme] = useState<ThemeEnum>(ThemeEnum.DARK);
+  const [currentTheme, setCurrentTheme] = useState<ThemeEnum>(ThemeEnum.LIGHT);
 
   return (
     <ThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>

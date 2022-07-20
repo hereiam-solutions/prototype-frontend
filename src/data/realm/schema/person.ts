@@ -1,6 +1,5 @@
 import { BSON } from 'realm-web';
 import { geoJSONPoint } from './../../../components/map/mapTypes';
-import { locationTypes } from '../../../components/map/mapTypes';
 
 enum roles {
   'LEMA' = 'lema',
@@ -19,7 +18,7 @@ enum roles {
 
 export type PersonSchema = {
   //   _id: BSON.ObjectId;
-  userId: BSON.ObjectId;
+  //   userId: BSON.ObjectId;
   //   identifier: string;
   //   active: boolean;
   firstName: string;

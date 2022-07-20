@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import { MapContainer, TileLayer } from 'react-leaflet';
+import DrawPolygon from './DrawPolygon';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet-draw/dist/leaflet.draw.css';
 
 import GetCurrentLocation from './mapEvents/CurrentLocationMarker';
+import useMission from '../../hooks/useMission';
 
 const Map = () => {
+  const { isPolygonDrawingActive } = useMission();
+
   return (
     <>
       <StyledMapContainer
@@ -18,6 +23,8 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
+        {isPolygonDrawingActive && <DrawPolygon />}
 
         <GetCurrentLocation />
       </StyledMapContainer>

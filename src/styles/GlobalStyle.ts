@@ -178,6 +178,7 @@ export const GlobalStyles = createGlobalStyle`
     .animation {
       animation: none;
     }  }
+
 `;
 
 const colors = {
