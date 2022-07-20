@@ -63,16 +63,23 @@ const StyledHeader = styled.div`
 
 const StyledDashboardContent = styled.div`
   height: 55vh;
+  width: 100%;
+  padding: 2rem;
+
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
   gap: 2rem;
+
   border-radius: ${(props) => props.theme.drawerBorderRadius}
     ${(props) => props.theme.drawerBorderRadius} 0 0;
+
   background: ${(props) => props.theme.secondaryBackgroundColor};
+
   overflow-x: hidden;
   overflow-y: scroll;
+
   z-index: 6;
 `;
 

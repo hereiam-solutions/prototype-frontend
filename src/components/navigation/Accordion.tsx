@@ -30,6 +30,11 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  /* for the child elements  */
+  .selected {
+    background-color: blue;
+  }
 `;
 
 const StyledHeading = styled.div`
