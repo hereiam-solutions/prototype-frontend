@@ -17,8 +17,9 @@ const Welcome = (props: Props) => {
 
 const StyledAboutWelcome = styled.div`
     width: 100%;
-    margin: 0.4rem;
-    padding: 1rem;
+
+    padding: ${(props) => props.theme.insideDrawMargin};
+
     font-size: 0.8rem;
     font-weight: 200;
 `;

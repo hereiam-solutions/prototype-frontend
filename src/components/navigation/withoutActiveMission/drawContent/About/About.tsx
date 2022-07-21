@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Version from './Version';
 import Welcome from './Welcome';
-import Faq from './Faq';
+import Faq from './FAQ';
+import Legals from './Legals';
+import ClearData from './ClearData';
 
 type Props = {};
 
@@ -18,6 +20,8 @@ const About = (props: Props) => {
         <Version />
         <Welcome />
         <Faq />
+        <Legals />
+        <ClearData />
 
       </StyledAboutContent>
 
