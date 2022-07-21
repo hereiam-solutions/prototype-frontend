@@ -21,28 +21,33 @@ const Version = (props: Props) => {
 
 const StyledVersion = styled.div`
     width: 100%;
-    margin: 0.4rem;
-    padding: 1rem;
-    font-size: 0.8rem;
-    font-weight: 200;
+    margin-top: 0.4rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
+    padding: ${(props) => props.theme.insideDrawMargin};
+
+    font-size: 0.8rem;
+    font-weight: 200;
 `;
 
 const UpdateButton = styled.div`
-    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-    margin-top: 1.5rem;
-    background-color: ${(props) => props.theme.formSubmitFillColor};
-    border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
-    border-radius: ${(props) => props.theme.buttonBorderRadius};
-    text-align: center;
-    width: auto;
-    color: ${(props) => props.theme.formSubmitTextColor};
-    font-weight: 500;
-    opacity: 0.4;
+  width: auto;
+  margin-top: 1.5rem;
+
+  padding: ${(props) => props.theme.insideButtonPadding};
+
+  background-color: ${(props) => props.theme.formSubmitFillColor};
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.buttonBorderRadius};
+
+  text-align: center;
+  color: ${(props) => props.theme.formSubmitTextColor};
+  font-weight: 500;
+  opacity: 0.1;
 `;
 
 export default Version;

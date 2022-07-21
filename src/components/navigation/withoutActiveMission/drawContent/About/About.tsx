@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Version from './Version';
 import Welcome from './Welcome';
+import Faq from './FAQ';
 
 type Props = {};
 
@@ -16,6 +17,7 @@ const About = (props: Props) => {
       <StyledAboutContent>
         <Version />
         <Welcome />
+        <Faq/>
 
       </StyledAboutContent>
 

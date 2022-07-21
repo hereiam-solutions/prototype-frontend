@@ -112,6 +112,15 @@ export const GlobalStyles = createGlobalStyle`
     cursor: pointer
   }
 
+  ul {
+    margin: 1rem;
+
+  }
+
+  li {
+    padding-top: 0.5rem;
+  }
+
   a:focus,
   button:focus,
   input:focus,
@@ -211,9 +220,16 @@ const margins = {
   insideDrawMargin: '1rem',
 };
 
+const paddings = {
+  insideButtonPadding: '0.2rem 0.5rem 0.2rem 0.5rem',
+  sectionHeadlinePadding: '0.2rem 0 0.2rem 1rem',
+};
+
 export const darkTheme = {
   primaryBackgroundColor: 'var(--base)',
   secondaryBackgroundColor: 'var(--base-text)',
+  sectionHeadlineBackgroundColor: 'var(--gray-500)',
+  sectionHeadlineColor: 'var(--base)',
   primaryFontColor: 'var(--whiter)',
   secondaryFontColor: 'var(--base-light)',
   navIconColor: 'var(--base-light)',
@@ -229,11 +245,14 @@ export const darkTheme = {
   ...mediaQueries,
   ...font,
   ...margins,
+  ...paddings,
 };
 
 export const lightTheme = {
   primaryBackgroundColor: 'var(--base-light)',
   secondaryBackgroundColor: 'var(--gray-300)',
+  sectionHeadlineBackgroundColor: 'var(--gray-400)',
+  sectionHeadlineColor: 'var(--base-light)',
   primaryFontColor: 'var(--base-text)',
   secondaryFontColor: 'var(--base)',
   navIconColor: 'var(--base-light)',
@@ -249,6 +268,7 @@ export const lightTheme = {
   ...mediaQueries,
   ...font,
   ...margins,
+  ...paddings,
 };
 
 // Example

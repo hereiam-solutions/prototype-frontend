@@ -50,7 +50,7 @@ const StyledRotateIcon = styled.div`
 
 
 const StyledAccordionHeader = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 500;
 `;
 
