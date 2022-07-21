@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Version from './Version';
 import Welcome from './Welcome';
 import Faq from './FAQ';
+import ClearData from './ClearData';
 
 type Props = {};
 
@@ -18,6 +19,7 @@ const About = (props: Props) => {
         <Version />
         <Welcome />
         <Faq/>
+        <ClearData />
 
       </StyledAboutContent>
 
