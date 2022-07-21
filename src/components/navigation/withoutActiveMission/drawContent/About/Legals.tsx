@@ -449,7 +449,7 @@ const Legals = (props: Props) => {
 
             </Accordion>
 
-            <h4>hat is our legal basis for processing your Personal Data?</h4>
+            <h4>What is our legal basis for processing your Personal Data?</h4>
 
             <p>
                 Our legal basis for processing your personal data is dependent on the purpose for processing 
