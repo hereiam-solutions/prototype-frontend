@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Accordion from '../../Accordion';
+import { RiContrast2Fill } from "react-icons/ri";
 
 type Props = {};
 
@@ -11,9 +12,13 @@ const Settings = (props: Props) => {
         <p>Settings</p>
       </StyledHeader>
 
-      <Accordion heading={'accordion heading'}>
+      <Accordion heading={'MAP'}>
         <Child />
         <SecondChild />
+      </Accordion>
+
+      <Accordion heading={'APPEARANCE'}>
+        <ThemeSwitch />
       </Accordion>
 
       <StyledSettingsContent></StyledSettingsContent>
@@ -28,6 +33,37 @@ const Child = () => {
 const SecondChild = () => {
   return <p>Inside Accordion</p>;
 };
+
+const ThemeSwitchIcon = RiContrast2Fill;
+
+const ThemeSwitch = () => {
+
+  return (
+    <StyledThemeSwitch>
+      <p>Change Theme</p>
+      <ThemeSwitchIcon />
+    </StyledThemeSwitch>
+  )
+
+};
+
+const StyledThemeSwitch = styled.div`
+align-self: start;
+
+width: 100%;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+background-color: ${(props) => props.theme.secondaryBackgroundColor};
+color: ${(props) => props.theme.secondaryFontColor};
+
+font-size: 1.3rem;
+font-weight: 500;
+
+`
+
 
 const StyledSettingsWrapper = styled.div`
   position: absolute;

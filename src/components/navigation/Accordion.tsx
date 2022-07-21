@@ -1,24 +1,58 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { RiArrowDropRightLine } from "react-icons/ri";
 
 type AccordionProps = {
   heading: string;
   children?: React.ReactNode;
 };
 
+const ChevronLogo = RiArrowDropRightLine;
+
 const Accordion = ({ heading, children }: AccordionProps) => {
   const [accordionIsOpen, setAccordionIsOpen] = useState<boolean>(false);
+  const [rotateChevron, setRotateChevron] = useState<boolean>(false);
+
+  const handleRotate = () => setRotateChevron(!rotateChevron);
 
   return (
     <StyledWrapper>
-      <StyledHeading onClick={() => setAccordionIsOpen(!accordionIsOpen)}>
-        <p>{heading}</p>
-        <p>open</p>
+      <StyledHeading onClick={() => 
+          {
+            setAccordionIsOpen(!accordionIsOpen); 
+            setRotateChevron(!rotateChevron);
+          }
+        }>
+        <StyledAccordionHeader>
+          <p>{heading}</p>
+        </StyledAccordionHeader>
+
+        <StyledRotateIcon>
+        {/*<ChevronLogo className={"filters__chevron " + rotateChevron ? "rotate" : null} />*/}
+        </StyledRotateIcon>
+        
       </StyledHeading>
       {accordionIsOpen && <>{children}</>}
     </StyledWrapper>
   );
 };
+
+const StyledRotateIcon = styled.div`
+  .filters__chevron {
+    border-radius: 2px;
+    transition: all 2 linear;
+  }
+
+  .filters__chevron.rotate {
+    transform:rotate(180deg);
+  }
+`;
+
+
+const StyledAccordionHeader = styled.div`
+  font-size: 1.5rem;
+  font-weight: 500;
+`;
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -44,6 +78,9 @@ const StyledHeading = styled.div`
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid ${(props) => props.theme.primaryFontColor};
 `;
 
 export default Accordion;
