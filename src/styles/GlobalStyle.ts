@@ -116,6 +116,11 @@ export const GlobalStyles = createGlobalStyle`
     margin: 1rem;
 
   }
+  
+  ol {
+    margin: 1rem;
+
+  }
 
   li {
     padding-top: 0.5rem;

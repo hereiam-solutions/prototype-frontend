@@ -710,6 +710,59 @@ const Legals = (props: Props) => {
 
         </Accordion>
 
+        <Accordion heading={'GDPR'}>
+            <p>
+                The General Data Protection Regulation (“GDPR”) aims to strengthen the protection of personal data in the European Union (“EU”). 
+                Coming into force on May 25, 2018, the GDPR replaces the current EU Data Protection Directive as well as its national implementations in EU member states.
+            </p>
+            <br />
+            <p>
+                hereIam solutions (“hereIam”) builds its success on the trust its customers, partners, employees and other stakeholders place in our ability to provide premier location products and services. 
+                This includes a high level of protection and security regarding the personal data that our stakeholders entrust to us. 
+                As a controller and processor of personal data, hereIam confirms that we have the required policies, processes and procedures in place to comply with the GDPR.
+            </p>
+            <br />
+            <p>
+                Our commitment to this end is enshrined in our policies and Code of Conduct. In our work, we apply the following principles:
+            </p>
+            <ol>
+                <li>
+                    We are accountable for ensuring our fair and lawful collection and processing of personal data, meaning we collect and process data honestly, 
+                    ethically, with integrity and in a manner that is consistent with applicable laws and our values. 
+                    We maintain evidence of compliance so we can demonstrate our commitment to these principles to interested parties, including data subjects, 
+                    competent data protection supervisory authorities, internal stakeholders and regulators.
+                </li>
+                <li>
+                    We use a privacy by design and by default approach, meaning that privacy is a key consideration in the creation, delivery and support of our products and services.
+                </li>
+                <li>
+                    We focus on transparency, choice and individual participation, meaning that we provide appropriate privacy notices and information about our collection and use of personal data. 
+                    We provide fair and reasonable choices for the collection and use of personal data, and we allow individuals to access, update and delete their personal data.
+                </li>
+                <li>
+                    We abide by collection and purpose limitation practices, meaning that we only collect and process personal data that is adequate and relevant to the specified, 
+                    explicit and legitimate purposes for which it was collected.
+                </li>
+                <li>
+                    We apply responsible data management practices to govern the processing of personal data. We classify and catalogue information accordingly and in a systematic, holistic manner. 
+                    We take measures to avoid extracting or copying personal data to unmanaged environments.
+                </li>
+                <li>
+                    We do not disclose personal data to law enforcement, governmental agencies or third parties unless required by law. 
+                    We limit disclosures of personal data to our partners to what is described in our privacy notices, or to what has been authorized by our customers or end users.
+                </li>
+                <li>
+                    We implement appropriate security safeguards, including technical and organizational measures, to protect personal data against unauthorized access, use, modification or loss. 
+                    We also require our partners to apply appropriate security and privacy safeguards.
+                </li>
+            </ol>
+            <h4>
+                At hereIam, we welcome the GDPR as an opportunity to strengthen our commitment to data protection and privacy within our company for the benefit of all our stakeholders. 
+                We believe this commitment will be a significant part of the future success of hereIam, our partners and our customers.
+            </h4>
+        
+        </Accordion>
+
         <Accordion heading={'SECURITY AWARENESS'}>
             <p>
                 hereIam keeps Information Security at the forefront of our services. In doing so, we leverages best practices in our Development and Production environments. 
