@@ -288,6 +288,93 @@ const Legals = (props: Props) => {
             </Accordion>
             
         </Accordion>
+
+        <Accordion heading={'SECURITY AWARENESS'}>
+            <p>
+                hereIam keeps Information Security at the forefront of our services. In doing so, we leverages best practices in our Development and Production environments. 
+                hereIam is successfully sustaining a high level of performance securing our environments via systematically implementing and maintaining certification globally of ISO/IEC 27001 – Information Security Management.
+            </p>
+
+            <p>Visit our Certifications and Attestations for more information.</p>
+
+            <Accordion heading={'Reporting Security Issues and Concerns'}>
+            
+                <p>
+                    To report a security incident or to submit a vulnerability report for a hereIam service, 
+                    please consider reading the Vulnerability research and incident reporting section below and contact security@hereiam.solutions
+                </p>
+                <p>
+                    To file an abuse report for a hereIam service or a hereIam owned domain or IP address space, please read the Reporting abuse section below and contact contact@hereiam.solutions 
+                </p>
+                <p>
+                    To file an authority request, please read the Authority requests section below and contact dev@hereiam.solutions 
+                </p>
+
+            
+            </Accordion>
+
+            <Accordion heading={'Vulnerability Research and Incident Reporting'}>
+            
+                <p>
+                    hereIam recognizes and supports responsible vulnerability research and disclosure. 
+                    While we encourage responsible vulnerability research and incident reporting, attempt to exploit a vulnerability with malicious intent is an unlawful action and 
+                    is subject to legal prosecution by law enforcement agencies. Vulnerability research should not impact normal service activity. 
+                    Extraction of data beyond minimum required to demonstrate a vulnerability (e.g. database version and one table structure), 
+                    or testing of DoS (Denial of Service) scenarios are prohibited and will be considered as malicious activity. 
+                    Performing research activities should not involve automated tools and utilities. 
+                    All tests should be executed using researchers own accounts if applicable with no impact to other service users.
+                </p>
+
+            </Accordion>
+
+            <Accordion heading={'Responsible Disclosure'}>
+            
+                <p>
+                    Vulnerability reports should include detailed technical description of the vulnerability and steps required to reproduce erroneous behavior in plain text. 
+                    Screenshots (jpeg/png) and traffic dumps (tpcdump compatible pcap) are accepted as additional information. 
+                    Vulnerability reports should not include links to external resources or malicious code designed to compromise data of a person verifying the vulnerability.
+                </p>
+
+            </Accordion>
+
+            <Accordion heading={'Public Disclosure'}>
+            
+                <p>
+                    As part of coordinated disclosure, public disclosure is allowed 90 days after hereIam acknowledges acceptance of the report or after the bug is fixed and verified by the reporter. 
+                    Exception to this 90-day rule are issues where proper fix is by no means possible for hereIam or where hereIam and the researcher agree on longer response time. 
+                    Public disclosure may include only technical information regarding vulnerability. 
+                    Any additional information that is not required for understanding the vulnerability should be excluded out of public disclosure.
+                </p>
+
+            </Accordion>
+
+            <Accordion heading={'Reporting Abuse'}>
+            
+                <p>
+                    Abuse reports should include detailed information describing cause of the report. 
+                    Information should include the origin of malicious traffic in the case that the abuse report is filed for hereIam domains or address spaces, 
+                    or link to content if the abusive content is published somewhere within hereIam services. 
+                    If the access to abusive content is limited and requires specific actions to be executed – 
+                    steps to reproduce access to the abusive content should be included in the report. 
+                    A report should written in plain text with supporting screenshots (jpeg/png) where applicable. 
+                    Plain text log files are accepted as additional information.
+                </p>
+
+            </Accordion>
+
+            <Accordion heading={'Authority Requests'}>
+            
+                <p>
+                    Law enforcement officials seeking information from hereIam services, should file an official request. 
+                    Authority request should describe the cause of request, name of issuing law enforcement organization, 
+                    identification (badge number or ID) of the law enforcement agent in charge of the request and direct contact phone number. 
+                    The request should be coming from a law-enforcement domain. 
+                    The request should have a precise description of what type of information is requested since the hereIam organization is unable to process broad or vague requests.
+                </p>
+
+            </Accordion>
+
+        </Accordion>
             
     </StyledLegals>
   )  
