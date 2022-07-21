@@ -2,7 +2,7 @@ import { BSON } from 'realm-web';
 import { geoJSONPolygon } from './../../../components/map/mapTypes';
 import { disasterTypesEnum } from './../../../components/map/mapTypes';
 
-enum RiskLevel {
+export enum RiskLevel {
   'ONE' = '1-Minimal',
   'TWO' = '2-Low',
   'THREE' = '3-Moderate',
@@ -10,7 +10,7 @@ enum RiskLevel {
   'FIVE' = '5-High',
 }
 
-enum SecurityLevel {
+export enum SecurityLevel {
   'ZERO' = '0-Work',
   'ONE' = '1-Monitoring',
   'TWO' = '2-Hibernation',
@@ -18,7 +18,7 @@ enum SecurityLevel {
   'FOUR' = '4-Evacuation',
 }
 
-enum SecurityCategory {
+export enum SecurityCategory {
   'GENERAL' = 'General',
   'INCIDENT' = 'Incident',
   'ARMEDGROUPS' = 'Armed groups',
@@ -30,7 +30,7 @@ enum SecurityCategory {
   'OTHER' = 'Other',
 }
 
-enum ConditionsCategory {
+export enum ConditionsCategory {
   'TEMPERATURE' = 'Temperature',
   'WIND' = 'Wind',
   'RAINFALL' = 'Rainfall',
@@ -84,10 +84,10 @@ export type CreateMissionArgs = {
   identifier: string;
   estimatedPopulation: number;
   //   nuts: string;
-  mission_leader: BSON.ObjectId;
+  //   mission_leader: BSON.ObjectId;
   start_of_mission: string;
   end_of_mission: string;
-  participants: BSON.ObjectId[];
+  //   participants: BSON.ObjectId[];
   //   operating_teams: BSON.ObjectId[];
   geoJSON: geoJSONPolygon;
   disasterType: disasterTypesEnum[];

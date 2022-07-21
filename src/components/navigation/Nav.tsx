@@ -7,9 +7,11 @@ import Draw from './Draw';
 import { ReactComponent as DashboardButton } from '../../assets/Navigation/Dashboard.svg';
 import { ReactComponent as SettingsButton } from '../../assets/Navigation/Settings.svg';
 import { ReactComponent as ProfileButton } from '../../assets/Navigation/User.svg';
+import useMission from '../../hooks/useMission';
 
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
+  const { activeMission } = useMission();
 
   return (
     <>
@@ -18,7 +20,7 @@ const Nav = () => {
           onClick={() => {
             setIsDrawOpen(true);
           }}
-          to="dashboard"
+          to={activeMission ? 'dashboard' : 'join-mission'}
         >
           <DashboardButton />
         </StyledMenuButton>

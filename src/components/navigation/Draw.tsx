@@ -3,12 +3,15 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useNavigation from '../../hooks/useNavigation';
+import useMission from '../../hooks/useMission';
 
 type DrawPropsType = {
   usedInAuthentication: boolean;
 };
 const Draw = ({ usedInAuthentication }: DrawPropsType) => {
   const { setIsDrawOpen } = useNavigation();
+
+  const { activeMission } = useMission();
 
   return (
     <StyledDrawWrapper>
@@ -17,7 +20,10 @@ const Draw = ({ usedInAuthentication }: DrawPropsType) => {
       </StyledDrawContentWrapper>
 
       {!usedInAuthentication && (
-        <StyledMapOverlay to="" onClick={() => setIsDrawOpen(false)} />
+        <StyledMapOverlay
+          to={activeMission ? '' : '/'}
+          onClick={() => setIsDrawOpen(false)}
+        />
       )}
     </StyledDrawWrapper>
   );

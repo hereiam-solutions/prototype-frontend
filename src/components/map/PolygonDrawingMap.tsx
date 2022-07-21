@@ -8,14 +8,14 @@ import GetCurrentLocation from './mapEvents/CurrentLocationMarker';
 import useMission from '../../hooks/useMission';
 import { useEffect, useState } from 'react';
 
-const Map = () => {
-  const { isPolygonDrawingActive } = useMission();
+const PolygonDrawingMap = () => {
+  //   const { isPolygonDrawingActive } = useMission();
 
-  const [showDrawingTools, setShowDrawingTools] = useState<boolean>(false);
+  //   const [showDrawingTools, setShowDrawingTools] = useState<boolean>(false);
 
-  useEffect(() => {
-    setShowDrawingTools(isPolygonDrawingActive);
-  }, [isPolygonDrawingActive]);
+  //   useEffect(() => {
+  //     setShowDrawingTools(isPolygonDrawingActive);
+  //   }, [isPolygonDrawingActive]);
 
   return (
     <>
@@ -31,7 +31,7 @@ const Map = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {/* {isPolygonDrawingActive && <DrawPolygon />} */}
+        <DrawPolygon />
 
         <GetCurrentLocation />
       </StyledMapContainer>
@@ -49,4 +49,4 @@ const StyledMapContainer = styled(MapContainer)`
   z-index: -1;
 `;
 
-export default Map;
+export default PolygonDrawingMap;

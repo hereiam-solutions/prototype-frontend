@@ -1,37 +1,42 @@
-import styled from 'styled-components';
-import { MapContainer, TileLayer, FeatureGroup, Circle } from 'react-leaflet';
+import { FeatureGroup } from 'react-leaflet';
 import { EditControl } from 'react-leaflet-draw';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-draw/dist/leaflet.draw.css';
-import { useState } from 'react';
-import { Location } from './mapTypes';
+import useMission from '../../hooks/useMission';
+import useNavigation from '../../hooks/useNavigation';
+import { useNavigate } from 'react-router-dom';
 
 const DrawPolygon = () => {
-  const [polygon, setPolygon] = useState<Location[]>([]);
+  let navigate = useNavigate();
+
+  const {
+    polygonDrawingCoordinates,
+    setPolygonDrawingCoordinates,
+    setIsPolygonDrawingActive,
+  } = useMission();
+
+  const { isDrawOpen, setIsDrawOpen } = useNavigation();
 
   const handleOnCreated = (e: any) => {
     console.log('onCreated');
-    setPolygon(e.layer._latlngs);
-  };
 
-  const handleOnEdited = (e: any) => {
-    console.log('onEdited');
-    console.log(e.target);
-    setPolygon(e);
-  };
-
-  const handleOnDeleted = (e: any) => {
-    console.log('onDeleted');
-    setPolygon([]);
+    // no idea why but the states in context seem to take a tiny amount of time to update
+    // without the setTimeout the navigate() and setIsDrawOpen do not work correctly
+    setTimeout(() => {
+      setPolygonDrawingCoordinates(e.layer._latlngs);
+      setIsPolygonDrawingActive(false);
+      setIsDrawOpen(true);
+      navigate('create-mission');
+    }, 10);
   };
 
   return (
     <FeatureGroup>
       <EditControl
         position="topright"
-        // onEditStop={handleOnEdited}
         onCreated={handleOnCreated}
-        onDeleted={handleOnDeleted}
+        // onEditStop={handleOnEdited}
+        // onDeleted={handleOnDeleted}
         draw={{
           rectangle: false,
           polyline: false,
@@ -49,7 +54,7 @@ const DrawPolygon = () => {
             },
           },
         }}
-        edit={{ edit: false }}
+        edit={{ edit: false, remove: false }}
       />
     </FeatureGroup>
   );

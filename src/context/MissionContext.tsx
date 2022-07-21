@@ -6,7 +6,9 @@ type MissionContextType = {
   activeMission: MissionSchema | null;
   setActiveMission: (activeMission: MissionSchema) => void;
   isPolygonDrawingActive: boolean;
-  setIsPolygonDrawingActive: (polygonDrawingActive: boolean) => void;
+  setIsPolygonDrawingActive: (isPolygonDrawingActive: boolean) => void;
+  polygonDrawingCoordinates: Location[];
+  setPolygonDrawingCoordinates: (coordinates: Location[]) => void;
 };
 
 // create the context and set a default value that matches the context type
@@ -15,6 +17,8 @@ const MissionContext = createContext<MissionContextType>({
   setActiveMission: () => {},
   isPolygonDrawingActive: false,
   setIsPolygonDrawingActive: () => {},
+  polygonDrawingCoordinates: [],
+  setPolygonDrawingCoordinates: () => {},
 });
 
 // export the context provider which wraps (almost) all of the other components and provides the context's values
@@ -23,16 +27,22 @@ export const MissionProvider = (children: ReactNode) => {
     null
   );
 
-  const [polygonDrawingActive, setIsPolygonDrawingActive] =
+  const [isPolygonDrawingActive, setIsPolygonDrawingActive] =
     useState<boolean>(false);
+
+  const [polygonDrawingCoordinates, setPolygonDrawingCoordinates] = useState<
+    Location[]
+  >([]);
 
   return (
     <MissionContext.Provider
       value={{
         activeMission: activeMission,
         setActiveMission: setActiveMission,
-        isPolygonDrawingActive: polygonDrawingActive,
+        isPolygonDrawingActive: isPolygonDrawingActive,
         setIsPolygonDrawingActive: setIsPolygonDrawingActive,
+        polygonDrawingCoordinates: polygonDrawingCoordinates,
+        setPolygonDrawingCoordinates: setPolygonDrawingCoordinates,
       }}
     >
       <>{children}</>

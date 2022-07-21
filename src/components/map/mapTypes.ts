@@ -1,4 +1,4 @@
-export type Location = [latitude: number, longitude: number];
+export type Location = [lat: number, lng: number];
 
 export type geoJSONPoint = {
   type: 'Point';
@@ -9,12 +9,24 @@ type PolygonCoordinates<Location> = {
   0: Location;
   1: Location;
 } & Array<Location>;
-// TODO: doubled array polygon
 
 export type geoJSONPolygon = {
   type: 'Polygon';
-  coordinates: PolygonCoordinates<Location>;
+  coordinates: PolygonCoordinates<Location>[];
 };
+
+// Example
+// const poly: geoJSONPolygon = {
+//   type: 'Polygon',
+//   coordinates: [
+//     [
+//       [0, 0],
+//       [0, 0],
+//       [0, 0],
+//       [0, 0],
+//     ],
+//   ],
+// };
 
 export enum MarkerType {
   HAZARD = 'hazard',
@@ -90,40 +102,40 @@ export enum locationTypes {
 }
 
 export enum disasterTypesEnum {
-  'DROUGHT' = 'Drought',
-  'ARMEDCONFLICTS' = 'Armed Conflicts',
-  'WARS' = 'Wars',
-  'TERRORISM' = 'Terrorism',
-  'CROWDACCIDENTS' = 'Crowd accidents',
-  'STRUCTURALFAILURES' = 'Structural failures',
-  'EARTHQUAKE' = 'Earthquake',
-  'VOLCANICACTIVITY' = 'Volcanic activity',
-  'TSUNAMI' = 'Tsunami',
-  'ROCKFALL' = 'Rockfall',
-  'AVALANCHE' = 'Avalanche',
-  'LANDSLIDE' = 'Landslide',
-  'SUBSIDENCE' = 'Subsidence',
-  'TROPICALSTORM' = 'Tropical storm',
-  'WINTERSTORM' = 'Winter storm',
-  'LOCAL/CONVECTIVESTORM' = 'Local/Convective storm',
-  'RIVERFLOOD' = 'River flood',
-  'FLASHFLOOD' = 'Flash flood',
-  'COASTALFLOOD' = 'Coastal flood',
-  'HEATWAVE' = 'Heat wave',
-  'COLDWAVE' = 'Cold wave',
-  'EXTREMEWINTERCONDITIONS' = 'Extreme winter conditions',
-  'FORESTFIRE' = 'Forest fire',
-  'LANDFIRES' = 'Land fires',
-  'EPIDEMIC' = 'Epidemic',
-  'INSECTINFESTATION' = 'Insect infestation',
-  'ANIMALSTAMPEDE' = 'Animal stampede',
-  'METEORIT/ASTEORITIMPACT' = 'Meteorit/Asteorit impact',
-  'SPACEWEATHER' = 'Space weather',
-  'INDUSTRIALACCIDENT' = 'Industrial accident',
-  'TRANSPORTACCIDENT' = 'Transport accident',
-  'COLLAPSE' = 'Collapse',
-  'EXPLOSION' = 'Explosion',
-  'OTHER' = 'Other',
+  DROUGHT = 'Drought',
+  ARMEDCONFLICTS = 'Armed Conflicts',
+  WARS = 'Wars',
+  TERRORISM = 'Terrorism',
+  CROWDACCIDENTS = 'Crowd accidents',
+  STRUCTURALFAILURES = 'Structural failures',
+  EARTHQUAKE = 'Earthquake',
+  VOLCANICACTIVITY = 'Volcanic activity',
+  TSUNAMI = 'Tsunami',
+  ROCKFALL = 'Rockfall',
+  AVALANCHE = 'Avalanche',
+  LANDSLIDE = 'Landslide',
+  SUBSIDENCE = 'Subsidence',
+  TROPICALSTORM = 'Tropical storm',
+  WINTERSTORM = 'Winter storm',
+  LOCALORCONVECTIVESTORM = 'Local/Convective storm',
+  RIVERFLOOD = 'River flood',
+  FLASHFLOOD = 'Flash flood',
+  COASTALFLOOD = 'Coastal flood',
+  HEATWAVE = 'Heat wave',
+  COLDWAVE = 'Cold wave',
+  EXTREMEWINTERCONDITIONS = 'Extreme winter conditions',
+  FORESTFIRE = 'Forest fire',
+  LANDFIRES = 'Land fires',
+  EPIDEMIC = 'Epidemic',
+  INSECTINFESTATION = 'Insect infestation',
+  ANIMALSTAMPEDE = 'Animal stampede',
+  METEORITORASTEORITIMPACT = 'Meteorit/Asteorit impact',
+  SPACEWEATHER = 'Space weather',
+  INDUSTRIALACCIDENT = 'Industrial accident',
+  TRANSPORTACCIDENT = 'Transport accident',
+  COLLAPSE = 'Collapse',
+  EXPLOSION = 'Explosion',
+  OTHER = 'Other',
 }
 
 export type ActiveMarkerType = {
