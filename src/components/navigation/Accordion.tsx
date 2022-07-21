@@ -69,6 +69,8 @@ const StyledWrapper = styled.div`
   .selected {
     background-color: blue;
   }
+
+  font-size: 1rem;
 `;
 
 const StyledHeading = styled.div`
