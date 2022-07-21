@@ -10,17 +10,69 @@ const Faq= (props: Props) => {
     <StyledFaq>
         <SectionHeadline>FAQ</SectionHeadline>
       
-      <Accordion heading={'How to install?'}>
-        <HowToInstall />
-      </Accordion>
+        <Accordion heading={'Why hereIam?'}>
+            <WhyHereiam />
+        </Accordion>
+      
+        <Accordion heading={'How to install?'}>
+            <HowToInstall />
+        </Accordion>
 
-      <Accordion heading={'Why does the app load so slowly?'}>
-        <WhyLoadSlowly />
-        <Support />
-      </Accordion>
+        <Accordion heading={'Why does the app load so slowly?'}>
+            <WhyLoadSlowly />
+            <Support />
+        </Accordion>
+
+        <Accordion heading={'Does the use of GPS shorten the battery life of my cell phone?'}>
+            <GpsShortenBattery />
+        </Accordion>
+
+        <Accordion heading={'What should i do when i notice inaccurate data on the map?'}>
+            <InaccurateData />
+            <Support />
+        </Accordion>
             
     </StyledFaq>
   )  
+};
+
+const WhyHereiam = () => {
+    return (
+        <div>
+            <p>When missing information meets missing experience, lives are in danger.</p>
+            <br />
+            <p>With hereIam we enable better decisions by closing information gaps and providing best practise.</p>
+            <br />
+            <p>This app connects all teams in the field and the higher level to make them more effective.</p>
+            <br />
+            <h4>Is as easy as pen and paper - our homogeneous solution for information sharing and decision making in crisis and disasters.</h4>
+        </div>
+    );
+};
+
+const InaccurateData = () => {
+    return (
+        <div>
+            <p>We use maps and geodata material from third-party providers who keep their offer as up-to-date as possible.</p>
+            <br />
+            <p>But since data is constantly changing around the world, some of them may take a little longer to reflect changed data in the map.</p>
+            <br />
+            <p>We try to make our app as actually as possible.</p>  
+        </div>
+    );
+};
+
+const GpsShortenBattery = () => {
+    return (
+        <div>
+            <p>Since hereIam needs access to GPS, your phone may consume more battery life while you are actively using the map and features.</p>
+            <br />
+            <p>This often happens with apps that depend on these phone settings. 
+                If you think that our app consumes too much battery life, we recommend you to check the phone's battery settings and adjust them to the usage with the app.</p>
+            <br />
+            <p>We try to make our app as resource efficient as possible.</p>  
+        </div>
+    );
 };
 
 const HowToInstall = () => {
@@ -68,7 +120,7 @@ const StyledSupport = styled.div`
     flex-direction: raw;
     align-items: center;
     justify-content: space-between;
-    
+
     gap: 2rem;
 `;
 
