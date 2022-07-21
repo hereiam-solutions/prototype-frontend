@@ -13,8 +13,7 @@ const Settings = (props: Props) => {
       </StyledHeader>
 
       <Accordion heading={'MAP'}>
-        <Child />
-        <SecondChild />
+        <HintMapUse />
       </Accordion>
 
       <Accordion heading={'APPEARANCE'}>
@@ -26,25 +25,19 @@ const Settings = (props: Props) => {
   );
 };
 
-const Child = () => {
-  return <p>Inside Accordion</p>;
-};
-
-const SecondChild = () => {
-  return <p>Inside Accordion</p>;
+const HintMapUse = () => {
+  return <p>Please use the setting on the map in this version.</p>;
 };
 
 const ThemeSwitchIcon = RiContrast2Fill;
 
 const ThemeSwitch = () => {
-
   return (
     <StyledThemeSwitch>
       <p>Change Theme</p>
       <ThemeSwitchIcon />
     </StyledThemeSwitch>
   )
-
 };
 
 const StyledThemeSwitch = styled.div`
@@ -61,8 +54,7 @@ color: ${(props) => props.theme.secondaryFontColor};
 
 font-size: 1.3rem;
 font-weight: 500;
-
-`
+`;
 
 
 const StyledSettingsWrapper = styled.div`
