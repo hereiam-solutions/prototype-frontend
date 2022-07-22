@@ -19,11 +19,127 @@ const DrawPolygon = () => {
 
   const handleOnCreated = (e: any) => {
     console.log('onCreated');
+    console.log(e.layer._latlngs);
+
+    let geoJSONPolygon: any = [];
+
+    // restructuring of coordinates given by drawing tool
+    if (e.layer._latlngs[0].length === 3) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 4) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 5) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 6) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 7) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 8) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 9) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 10) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+        ],
+      ];
+    }
+
+    // const geoJSONPolygon = e.layer._latlngs[0].map((arr: []) => {
+    //   return [arr.lat, arr.lng];
+    // });
 
     // no idea why but the states in context seem to take a tiny amount of time to update
     // without the setTimeout the navigate() and setIsDrawOpen do not work correctly
     setTimeout(() => {
-      setPolygonDrawingCoordinates(e.layer._latlngs);
+      setPolygonDrawingCoordinates(geoJSONPolygon);
       setIsPolygonDrawingActive(false);
       setIsDrawOpen(true);
       navigate('create-mission');

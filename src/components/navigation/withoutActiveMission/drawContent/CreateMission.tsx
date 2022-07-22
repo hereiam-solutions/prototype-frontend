@@ -4,45 +4,58 @@ import SingleDropdown from "../../SingleDropdown";
 
 // type / enum imports
 import {
+  CreateMissionArgs,
   RiskLevel,
   SecurityLevel,
 } from "../../../../data/realm/schema/mission";
 import { disasterTypesEnum } from "../../../map/mapTypes";
 import useMission from "../../../../hooks/useMission";
 import useNavigation from "../../../../hooks/useNavigation";
+import useRealm from "../../../../hooks/useRealm";
+import { realmFunctionNames } from "../../../../data/realm/functions";
+import { useNavigate } from "react-router-dom";
 
 const CreateMission = () => {
+  const { realm } = useRealm();
+  const navigate = useNavigate();
+
   // request for mission creation
   const handleMissionSubmit = async () => {
-    // try {
-    //   if (activeMission) {
-    //     const args: CreateHazardArgs = {
-    //       identifier: identifierValue,
-    //       mission: activeMission._id,
-    //       hazard_type: selectedType,
-    //       status: "active",
-    //       //   placed_by: new BSON.ObjectId(realm.currentUser?.id),
-    //       location: { type: "Point", coordinates: location },
-    //     };
-    //     setLoading(true);
-    //     if (realm.currentUser) {
-    //       // call the Realm function
-    //       await realm.currentUser.callFunction(
-    //         realmFunctionNames.addHazard,
-    //         args
-    //       );
-    //     }
-    //     setLoading(false);
-    //     setIsDrawOpen(false);
-    //   }
-    // } catch (e) {
-    //   console.log(
-    //     "There has been an error while calling the Realm custom function called:",
-    //     realmFunctionNames.addHazard,
-    //     "Error:",
-    //     e
-    //   );
-    // }
+    try {
+      const args: CreateMissionArgs = {
+        identifier: identifierValue,
+        estimatedPopulation: parseInt(populationValue),
+        start_of_mission: startingTimeValue,
+        end_of_mission: endingTimeValue,
+        geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates },
+        disasterType: selectedDisasterType,
+        objectives: objectivesValue,
+        riskLevel: selectedRiskLevel,
+        securityLevel: selectedSecurityLevel,
+      };
+
+      // call the Realm function
+      const response = await realm.currentUser?.callFunction(
+        realmFunctionNames.createMission,
+        args
+      );
+
+      console.log("response:", response);
+
+      await realm.currentUser?.refreshCustomData();
+      // TODO: remove after testing
+      console.log(realm.currentUser?.customData);
+
+      setIsDrawOpen(false);
+      //   navigate("/mission");
+    } catch (e) {
+      console.log(
+        "There has been an error while calling the Realm custom function called:",
+        realmFunctionNames.createMission,
+        "Error:",
+        e
+      );
+    }
   };
 
   //   const endOfMission = new Date().toISOString()
@@ -153,9 +166,9 @@ const CreateMission = () => {
   } = useMission();
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
 
-  console.log("isDrawOpen", isDrawOpen);
-  console.log("isPolygonDrawingActive", isPolygonDrawingActive);
-  console.log("polygonDrawingCoordinates", polygonDrawingCoordinates);
+  //   console.log("isDrawOpen", isDrawOpen);
+  //   console.log("isPolygonDrawingActive", isPolygonDrawingActive);
+  //   console.log("polygonDrawingCoordinates", polygonDrawingCoordinates);
 
   //   const handleDrawMission = () => {
   //     setIsDrawOpen(false);

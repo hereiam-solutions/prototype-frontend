@@ -1,32 +1,32 @@
-export type Location = [lat: number, lng: number];
+export type Location = [number, number];
 
 export type geoJSONPoint = {
   type: 'Point';
   coordinates: Location;
 };
 
-type PolygonCoordinates<Location> = {
+export type PolygonCoordinates<Location> = {
   0: Location;
   1: Location;
 } & Array<Location>;
 
 export type geoJSONPolygon = {
   type: 'Polygon';
-  coordinates: PolygonCoordinates<Location>[];
+  coordinates: number[][][];
 };
 
 // Example
-// const poly: geoJSONPolygon = {
-//   type: 'Polygon',
-//   coordinates: [
-//     [
-//       [0, 0],
-//       [0, 0],
-//       [0, 0],
-//       [0, 0],
-//     ],
-//   ],
-// };
+const poly: geoJSONPolygon = {
+  type: 'Polygon',
+  coordinates: [
+    [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+    ],
+  ],
+};
 
 export enum MarkerType {
   HAZARD = 'hazard',

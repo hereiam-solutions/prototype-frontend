@@ -48,7 +48,7 @@ const App = () => {
     useState<boolean>(false);
 
   const [polygonDrawingCoordinates, setPolygonDrawingCoordinates] = useState<
-    Location[]
+    number[][][]
   >([]);
 
   return (

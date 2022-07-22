@@ -50,7 +50,7 @@ export type MissionSchema = {
   participants: BSON.ObjectId[];
   operating_teams: BSON.ObjectId[];
   geoJSON: geoJSONPolygon;
-  disasterType: disasterTypesEnum[];
+  disasterType: disasterTypesEnum;
   roleAndMandates: string[];
   objectives: string[];
   nationalAssetsDeployed: boolean;
@@ -90,15 +90,15 @@ export type CreateMissionArgs = {
   //   participants: BSON.ObjectId[];
   //   operating_teams: BSON.ObjectId[];
   geoJSON: geoJSONPolygon;
-  disasterType: disasterTypesEnum[];
+  disasterType: string;
   //   roleAndMandates: string[];
   objectives: string[];
   //   nationalAssetsDeployed: boolean;
   //   internationalAssetsDeployed: boolean;
   //   CIMICDeployed: boolean;
   //   threatsAndRisks: string[];
-  riskLevel: RiskLevel;
-  securityLevel: SecurityLevel;
+  riskLevel: string;
+  securityLevel: string;
   //   securityReport: [
   // { reported_from: BSON.ObjectId },
   // { situation: string },

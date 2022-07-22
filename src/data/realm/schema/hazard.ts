@@ -22,5 +22,5 @@ export type CreateHazardArgs = {
   // placed_by: BSON.ObjectId;
   //   timestamp: string;
   status: 'active' | 'inactive';
-  location: geoJSONPoint;
+  geoJSON: geoJSONPoint;
 };

@@ -1,3 +1,5 @@
 export const realmFunctionNames = {
-  addHazard: 'addNewHazard',
+  createHazard: 'createHazard',
+  createMission: 'createMission',
+  updateCustomData: 'updateCustomData',
 };

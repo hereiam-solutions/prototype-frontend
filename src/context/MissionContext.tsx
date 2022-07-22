@@ -7,8 +7,8 @@ type MissionContextType = {
   setActiveMission: (activeMission: MissionSchema) => void;
   isPolygonDrawingActive: boolean;
   setIsPolygonDrawingActive: (isPolygonDrawingActive: boolean) => void;
-  polygonDrawingCoordinates: Location[];
-  setPolygonDrawingCoordinates: (coordinates: Location[]) => void;
+  polygonDrawingCoordinates: number[][][];
+  setPolygonDrawingCoordinates: (coordinates: number[][][]) => void;
 };
 
 // create the context and set a default value that matches the context type
@@ -31,7 +31,7 @@ export const MissionProvider = (children: ReactNode) => {
     useState<boolean>(false);
 
   const [polygonDrawingCoordinates, setPolygonDrawingCoordinates] = useState<
-    Location[]
+    number[][][]
   >([]);
 
   return (
