@@ -1,39 +1,39 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+import { useState } from "react";
+import styled from "styled-components";
 
 // type imports
-import { hazardTypes } from '../../../../map/mapTypes';
-import { realmFunctionNames } from '../../../../../data/realm/functions';
-import { CreateHazardArgs } from '../../../../../data/realm/schema/hazard';
-import { BSON } from 'realm-web';
+import { hazardTypes } from "../../../../map/mapTypes";
+import { realmFunctionNames } from "../../../../../data/realm/functions";
+import { CreateHazardArgs } from "../../../../../data/realm/schema/hazard";
+import { BSON } from "realm-web";
 
 // hook imports
-import useCreateMarker from '../../../../../hooks/useCreateMarker';
-import useMission from '../../../../../hooks/useMission';
-import useRealm from '../../../../../hooks/useRealm';
-import useRealmFunction from '../../../../../hooks/useRealmFunction';
+import useCreateMarker from "../../../../../hooks/useCreateMarker";
+import useMission from "../../../../../hooks/useMission";
+import useRealm from "../../../../../hooks/useRealm";
+import useRealmFunction from "../../../../../hooks/useRealmFunction";
 
 // svg imports
-import { ReactComponent as AvalanceIcon } from '../../../../../assets/Hazards/Alert=Avalanche.svg';
-import { ReactComponent as BioIncidentIcon } from '../../../../../assets/Hazards/Alert=Biological Incident.svg';
-import { ReactComponent as BombIcon } from '../../../../../assets/Hazards/Alert=Bomb.svg';
-import { ReactComponent as ChemicalIcon } from '../../../../../assets/Hazards/Alert=Chemical Incident.svg';
-import { ReactComponent as ContagiousIcon } from '../../../../../assets/Hazards/Alert=Contagious Illness.svg';
-import { ReactComponent as EarthquakeIcon } from '../../../../../assets/Hazards/Alert=Earthquake.svg';
-import { ReactComponent as ExplosionIcon } from '../../../../../assets/Hazards/Alert=Explosion.svg';
-import { ReactComponent as FireIcon } from '../../../../../assets/Hazards/Alert=Fire.svg';
-import { ReactComponent as FloodIcon } from '../../../../../assets/Hazards/Alert=Flood.svg';
-import { ReactComponent as HurricaneIcon } from '../../../../../assets/Hazards/Alert=Hurricane.svg';
-import { ReactComponent as MaritimeIcon } from '../../../../../assets/Hazards/Alert=Maritime.svg';
-import { ReactComponent as NuclearIcon } from '../../../../../assets/Hazards/Alert=Nuclear.svg';
-import { ReactComponent as PlaneIcon } from '../../../../../assets/Hazards/Alert=Plane Crash.svg';
-import { ReactComponent as PowerIcon } from '../../../../../assets/Hazards/Alert=Electricity Failure.svg';
-import { ReactComponent as RiotIcon } from '../../../../../assets/Hazards/Alert=Riot.svg';
-import { ReactComponent as RockSlideIcon } from '../../../../../assets/Hazards/Alert=Rock Slide.svg';
-import { ReactComponent as TrafficIcon } from '../../../../../assets/Hazards/Alert=Traffic Accident.svg';
-import { ReactComponent as TrainIcon } from '../../../../../assets/Hazards/Alert=Train.svg';
-import { ReactComponent as WaterIcon } from '../../../../../assets/Hazards/Alert=Water Disruption.svg';
-import useNavigation from '../../../../../hooks/useNavigation';
+import { ReactComponent as AvalanceIcon } from "../../../../../assets/Hazards/Alert=Avalanche.svg";
+import { ReactComponent as BioIncidentIcon } from "../../../../../assets/Hazards/Alert=Biological Incident.svg";
+import { ReactComponent as BombIcon } from "../../../../../assets/Hazards/Alert=Bomb.svg";
+import { ReactComponent as ChemicalIcon } from "../../../../../assets/Hazards/Alert=Chemical Incident.svg";
+import { ReactComponent as ContagiousIcon } from "../../../../../assets/Hazards/Alert=Contagious Illness.svg";
+import { ReactComponent as EarthquakeIcon } from "../../../../../assets/Hazards/Alert=Earthquake.svg";
+import { ReactComponent as ExplosionIcon } from "../../../../../assets/Hazards/Alert=Explosion.svg";
+import { ReactComponent as FireIcon } from "../../../../../assets/Hazards/Alert=Fire.svg";
+import { ReactComponent as FloodIcon } from "../../../../../assets/Hazards/Alert=Flood.svg";
+import { ReactComponent as HurricaneIcon } from "../../../../../assets/Hazards/Alert=Hurricane.svg";
+import { ReactComponent as MaritimeIcon } from "../../../../../assets/Hazards/Alert=Maritime.svg";
+import { ReactComponent as NuclearIcon } from "../../../../../assets/Hazards/Alert=Nuclear.svg";
+import { ReactComponent as PlaneIcon } from "../../../../../assets/Hazards/Alert=Plane Crash.svg";
+import { ReactComponent as PowerIcon } from "../../../../../assets/Hazards/Alert=Electricity Failure.svg";
+import { ReactComponent as RiotIcon } from "../../../../../assets/Hazards/Alert=Riot.svg";
+import { ReactComponent as RockSlideIcon } from "../../../../../assets/Hazards/Alert=Rock Slide.svg";
+import { ReactComponent as TrafficIcon } from "../../../../../assets/Hazards/Alert=Traffic Accident.svg";
+import { ReactComponent as TrainIcon } from "../../../../../assets/Hazards/Alert=Train.svg";
+import { ReactComponent as WaterIcon } from "../../../../../assets/Hazards/Alert=Water Disruption.svg";
+import useNavigation from "../../../../../hooks/useNavigation";
 
 const CreateHazardMarker = () => {
   const { realm } = useRealm();
@@ -47,7 +47,7 @@ const CreateHazardMarker = () => {
     hazardTypes.AVALANCHE
   );
 
-  const [identifierValue, setIdentifierValue] = useState<string>('');
+  const [identifierValue, setIdentifierValue] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIdentifierValue(event.currentTarget.value);
@@ -58,11 +58,10 @@ const CreateHazardMarker = () => {
       if (activeMission) {
         const args: CreateHazardArgs = {
           identifier: identifierValue,
-          mission: activeMission._id,
+          mission: activeMission._id.toString(),
           hazard_type: selectedType,
-          status: 'active',
-          //   placed_by: new BSON.ObjectId(realm.currentUser?.id),
-          geoJSON: { type: 'Point', coordinates: location },
+          status: "active",
+          geoJSON: { type: "Point", coordinates: location },
         };
 
         setLoading(true);
@@ -80,9 +79,9 @@ const CreateHazardMarker = () => {
       }
     } catch (e) {
       console.log(
-        'There has been an error while calling the Realm custom function called:',
+        "There has been an error while calling the Realm custom function called:",
         realmFunctionNames.createHazard,
-        'Error:',
+        "Error:",
         e
       );
     }
@@ -95,7 +94,7 @@ const CreateHazardMarker = () => {
       <StyledIconRow>
         <AvalanceIcon
           className={`icon ${
-            selectedType === hazardTypes.AVALANCHE ? 'selected' : ''
+            selectedType === hazardTypes.AVALANCHE ? "selected" : ""
           }`}
           onClick={() => {
             setSelectedType(hazardTypes.AVALANCHE);
@@ -104,126 +103,126 @@ const CreateHazardMarker = () => {
 
         <BioIncidentIcon
           className={`icon ${
-            selectedType === hazardTypes.BIOLOGICALINCIDENT ? 'selected' : ''
+            selectedType === hazardTypes.BIOLOGICALINCIDENT ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.BIOLOGICALINCIDENT)}
         />
 
         <BombIcon
           className={`icon ${
-            selectedType === hazardTypes.BOMB ? 'selected' : ''
+            selectedType === hazardTypes.BOMB ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.BOMB)}
         />
 
         <ChemicalIcon
           className={`icon ${
-            selectedType === hazardTypes.CHEMICALINCIDENT ? 'selected' : ''
+            selectedType === hazardTypes.CHEMICALINCIDENT ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.CHEMICALINCIDENT)}
         />
 
         <ContagiousIcon
           className={`icon ${
-            selectedType === hazardTypes.CONTAGIOUSILLNESS ? 'selected' : ''
+            selectedType === hazardTypes.CONTAGIOUSILLNESS ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.CONTAGIOUSILLNESS)}
         />
 
         <EarthquakeIcon
           className={`icon ${
-            selectedType === hazardTypes.EARTHQUAKE ? 'selected' : ''
+            selectedType === hazardTypes.EARTHQUAKE ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.EARTHQUAKE)}
         />
 
         <ExplosionIcon
           className={`icon ${
-            selectedType === hazardTypes.EXPLOSION ? 'selected' : ''
+            selectedType === hazardTypes.EXPLOSION ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.EXPLOSION)}
         />
 
         <FireIcon
           className={`icon ${
-            selectedType === hazardTypes.FIRE ? 'selected' : ''
+            selectedType === hazardTypes.FIRE ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.FIRE)}
         />
 
         <FloodIcon
           className={`icon ${
-            selectedType === hazardTypes.FLOOD ? 'selected' : ''
+            selectedType === hazardTypes.FLOOD ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.FLOOD)}
         />
 
         <HurricaneIcon
           className={`icon ${
-            selectedType === hazardTypes.HURRICANE ? 'selected' : ''
+            selectedType === hazardTypes.HURRICANE ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.HURRICANE)}
         />
 
         <MaritimeIcon
           className={`icon ${
-            selectedType === hazardTypes.MARITIME ? 'selected' : ''
+            selectedType === hazardTypes.MARITIME ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.MARITIME)}
         />
 
         <NuclearIcon
           className={`icon ${
-            selectedType === hazardTypes.NUCLEAR ? 'selected' : ''
+            selectedType === hazardTypes.NUCLEAR ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.NUCLEAR)}
         />
 
         <PlaneIcon
           className={`icon ${
-            selectedType === hazardTypes.PLANECRASH ? 'selected' : ''
+            selectedType === hazardTypes.PLANECRASH ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.PLANECRASH)}
         />
 
         <PowerIcon
           className={`icon ${
-            selectedType === hazardTypes.POWEROUTAGE ? 'selected' : ''
+            selectedType === hazardTypes.POWEROUTAGE ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.POWEROUTAGE)}
         />
 
         <RiotIcon
           className={`icon ${
-            selectedType === hazardTypes.RIOT ? 'selected' : ''
+            selectedType === hazardTypes.RIOT ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.RIOT)}
         />
 
         <RockSlideIcon
           className={`icon ${
-            selectedType === hazardTypes.ROCKSLIDE ? 'selected' : ''
+            selectedType === hazardTypes.ROCKSLIDE ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.ROCKSLIDE)}
         />
 
         <TrafficIcon
           className={`icon ${
-            selectedType === hazardTypes.TRAFFICACCIDENT ? 'selected' : ''
+            selectedType === hazardTypes.TRAFFICACCIDENT ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.TRAFFICACCIDENT)}
         />
 
         <TrainIcon
           className={`icon ${
-            selectedType === hazardTypes.TRAIN ? 'selected' : ''
+            selectedType === hazardTypes.TRAIN ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.TRAIN)}
         />
 
         <WaterIcon
           className={`icon ${
-            selectedType === hazardTypes.WATERDISRUPTION ? 'selected' : ''
+            selectedType === hazardTypes.WATERDISRUPTION ? "selected" : ""
           }`}
           onClick={() => setSelectedType(hazardTypes.WATERDISRUPTION)}
         />
@@ -238,7 +237,7 @@ const CreateHazardMarker = () => {
       />
 
       <StyledButton onClick={handleSubmit}>
-        {loading ? 'loading...' : 'Submit Hazard'}
+        {loading ? "loading..." : "Submit Hazard"}
       </StyledButton>
     </StyledWrapper>
   );

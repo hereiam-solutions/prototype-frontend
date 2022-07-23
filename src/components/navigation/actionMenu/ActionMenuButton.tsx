@@ -1,18 +1,19 @@
-import styled from 'styled-components';
-import useActionMenu from '../../../hooks/useActionMenu';
+import styled from "styled-components";
+import useActionMenu from "../../../hooks/useActionMenu";
 
 // svg imports
-import { ReactComponent as DangerIcon } from '../../../assets/Action/Aktion=Gefahr.svg';
-import { ReactComponent as TaskIcon } from '../../../assets/Action/Aktion=Task.svg';
-import { ReactComponent as CasualtyIcon } from '../../../assets/Action/Aktion=Verletzte.svg';
-import { ReactComponent as DrawIcon } from '../../../assets/Action/Aktion=Zeichnen.svg';
+import { ReactComponent as DangerIcon } from "../../../assets/Action/Aktion=Gefahr.svg";
+import { ReactComponent as TaskIcon } from "../../../assets/Action/Aktion=Task.svg";
+import { ReactComponent as CasualtyIcon } from "../../../assets/Action/Aktion=Verletzte.svg";
+import { ReactComponent as DrawIcon } from "../../../assets/Action/Aktion=Zeichnen.svg";
+import { MarkerType } from "../../map/mapTypes";
 
 export enum Position {
-  TOP = 'TOP',
-  LEFT = 'LEFT',
-  MID = 'MID',
-  RIGHT = 'RIGHT',
-  BOTTOM = 'BOTTOM',
+  TOP = "TOP",
+  LEFT = "LEFT",
+  MID = "MID",
+  RIGHT = "RIGHT",
+  BOTTOM = "BOTTOM",
 }
 
 type ActionMenuButtonProps = {
@@ -24,18 +25,20 @@ type StyledComponentProps = {
 };
 
 const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
-  const { setIsActionMenuOpen, setIsCreateMarkerModeEnabled } = useActionMenu();
+  const { setIsActionMenuOpen, setIsCreateMarkerModeEnabled, setMarkerType } =
+    useActionMenu();
 
   const handleClick = () => {
-    // TODO: close action menu and either open draw or let user pick location with event
-
     setIsActionMenuOpen(false);
 
-    if (
-      [Position.LEFT, Position.RIGHT, Position.BOTTOM].includes(
-        positionInActionMenu
-      )
-    ) {
+    if (positionInActionMenu === Position.LEFT) {
+      setMarkerType(MarkerType.HAZARD);
+      setIsCreateMarkerModeEnabled(true);
+    } else if (positionInActionMenu === Position.BOTTOM) {
+      setMarkerType(MarkerType.LOCATION);
+      setIsCreateMarkerModeEnabled(true);
+    } else if (positionInActionMenu === Position.RIGHT) {
+      setMarkerType(MarkerType.PATIENT);
       setIsCreateMarkerModeEnabled(true);
     }
   };
