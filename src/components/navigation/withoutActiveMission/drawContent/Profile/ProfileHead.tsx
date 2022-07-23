@@ -1,6 +1,8 @@
+import React from 'react'
+import useRealm from '../../../../../hooks/useRealm';
 import styled from 'styled-components';
 
-const Head = () => {
+const ProfileHead = () => {
   return (
     <StyledHeadWrapper>
 
@@ -12,4 +14,4 @@ const StyledHeadWrapper = styled.div`
   position: relative;
 `;
 
-export default Head;
+export default ProfileHead;
