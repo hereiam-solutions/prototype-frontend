@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import MissionCard from '../drawContent/MissionCard';
+import MissionCard from './MissionCard';
 import CreateMission from './CreateMission';
 
 const Dashboard = () => {
