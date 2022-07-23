@@ -62,7 +62,7 @@ const CreateHazardMarker = () => {
           hazard_type: selectedType,
           status: 'active',
           //   placed_by: new BSON.ObjectId(realm.currentUser?.id),
-          location: { type: 'Point', coordinates: location },
+          geoJSON: { type: 'Point', coordinates: location },
         };
 
         setLoading(true);
@@ -70,7 +70,7 @@ const CreateHazardMarker = () => {
         if (realm.currentUser) {
           // call the Realm function
           await realm.currentUser.callFunction(
-            realmFunctionNames.addHazard,
+            realmFunctionNames.createHazard,
             args
           );
         }
@@ -81,7 +81,7 @@ const CreateHazardMarker = () => {
     } catch (e) {
       console.log(
         'There has been an error while calling the Realm custom function called:',
-        realmFunctionNames.addHazard,
+        realmFunctionNames.createHazard,
         'Error:',
         e
       );

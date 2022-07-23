@@ -18,6 +18,8 @@ import connectToRealm from './helpers/connectToRealm';
 
 // type imports
 import { MarkerType } from './components/map/mapTypes';
+import MissionContext from './context/MissionContext';
+import { MissionSchema } from './data/realm/schema/mission';
 
 const App = () => {
   // get the current theme
@@ -37,29 +39,52 @@ const App = () => {
     useState<boolean>(false);
   const [markerType, setMarkerType] = useState<MarkerType>(MarkerType.HAZARD);
 
+  // state for the mission context
+  const [activeMission, setActiveMission] = useState<MissionSchema | null>(
+    null
+  );
+
+  const [isPolygonDrawingActive, setIsPolygonDrawingActive] =
+    useState<boolean>(false);
+
+  const [polygonDrawingCoordinates, setPolygonDrawingCoordinates] = useState<
+    number[][][]
+  >([]);
+
   return (
     <>
       <RealmContext.Provider value={{ realm }}>
         {/* pass the appropriate global values for the current theme */}
         <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
-          <ActionMenuContext.Provider
-            value={{
-              isActionMenuOpen,
-              setIsActionMenuOpen,
-              isCreateMarkerModeEnabled,
-              setIsCreateMarkerModeEnabled,
-              isCreateMarkerDrawOpen,
-              setIsCreateMarkerDrawOpen,
-              markerType,
-              setMarkerType,
-            }}
-          >
-            <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>
-              {/* React Router Outlet component always renders children  */}
-              <Outlet />
-            </NavigationContext.Provider>
-          </ActionMenuContext.Provider>
-          <GlobalStyles />
+          <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>
+            <ActionMenuContext.Provider
+              value={{
+                isActionMenuOpen,
+                setIsActionMenuOpen,
+                isCreateMarkerModeEnabled,
+                setIsCreateMarkerModeEnabled,
+                isCreateMarkerDrawOpen,
+                setIsCreateMarkerDrawOpen,
+                markerType,
+                setMarkerType,
+              }}
+            >
+              <MissionContext.Provider
+                value={{
+                  activeMission,
+                  setActiveMission,
+                  isPolygonDrawingActive,
+                  setIsPolygonDrawingActive,
+                  polygonDrawingCoordinates,
+                  setPolygonDrawingCoordinates,
+                }}
+              >
+                {/* React Router Outlet component always renders children  */}
+                <Outlet />
+              </MissionContext.Provider>
+            </ActionMenuContext.Provider>
+            <GlobalStyles />
+          </NavigationContext.Provider>
         </ThemeProvider>
       </RealmContext.Provider>
     </>

@@ -21,6 +21,9 @@ import RequireAuth from './components/auth/RequireAuth';
 import CreateHazardMarker from './components/navigation/withActiveMission/drawContent/createMapMarker/CreateHazardMarker';
 import MissionLayout from './components/navigation/withActiveMission/MissionLayout';
 import RequireActiveMission from './components/navigation/RequireActiveMission';
+import JoinMission from './components/navigation/withoutActiveMission/drawContent/JoinMission';
+import CreateMission from './components/navigation/withoutActiveMission/drawContent/CreateMission';
+import MissionCreationLayout from './components/navigation/withoutActiveMission/MissionCreationLayout';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -57,9 +60,24 @@ root.render(
             }
           >
             <Route index element={<Home />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="join-mission" element={<JoinMission />} />
+            {/* <Route path="create-mission" element={<CreateMission />} /> */}
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="about" element={<About />} />
+          </Route>
+
+          {/* currently creating a mission */}
+          <Route
+            path="create-mission"
+            element={
+              <RequireAuth>
+                <MissionCreationLayout />
+              </RequireAuth>
+            }
+          >
+            <Route index element={<Home />} />
+            <Route path="create-mission" element={<CreateMission />} />
             <Route path="about" element={<About />} />
           </Route>
 

@@ -1,42 +1,39 @@
-import { useState } from "react";
 import styled from "styled-components";
 import MissionCard from "../drawContent/MissionCard";
-import CreateMission from "./CreateMission";
+import { Link, useNavigate } from "react-router-dom";
+import useMission from "../../../../hooks/useMission";
+import useNavigation from "../../../../hooks/useNavigation";
 
-const Dashboard = () => {
-  const [createMissionMode, setCreateMissionMode] = useState<boolean>(false);
+const JoinMission = () => {
+  const navigate = useNavigate();
+  const { setIsPolygonDrawingActive } = useMission();
+  const { setIsDrawOpen } = useNavigation();
+
+  // starts the polygon drawing process for a mission creation
+  const initiateMissionCreation = () => {
+    setIsDrawOpen(false);
+    navigate("/create-mission");
+
+    // setIsPolygonDrawingActive(true);
+  };
 
   return (
     <StyledDashboardWrapper>
-      <StyledHeader>Dashboard</StyledHeader>
+      <StyledHeader>Join a Mission</StyledHeader>
 
       <StyledDashboardContent>
-        {createMissionMode ? (
-          <CreateMission />
-        ) : (
-          <>
-            <MissionCard />
-            <StyledDeactivated>
-              <MissionCard />
-            </StyledDeactivated>
-          </>
-        )}
+        <MissionCard />
+        <StyledDeactivated>
+          <MissionCard />
+        </StyledDeactivated>
 
-        <StyledSwitchButton
-          onClick={() => {
-            setCreateMissionMode(!createMissionMode);
-          }}
-        >
-          {createMissionMode ? "Join a mission" : "Create a mission"}
-        </StyledSwitchButton>
+        <button onClick={initiateMissionCreation}>
+          Create your own Mission!
+        </button>
       </StyledDashboardContent>
     </StyledDashboardWrapper>
   );
 };
-
-const StyledSwitchButton = styled.div`
-  align-self: center;
-`;
 
 const StyledDashboardWrapper = styled.div`
   position: absolute;
@@ -88,4 +85,9 @@ const StyledDeactivated = styled.div`
   opacity: 0.3;
 `;
 
-export default Dashboard;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+export default JoinMission;

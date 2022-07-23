@@ -5,6 +5,7 @@ import useRealm from '../../hooks/useRealm';
 import styled from 'styled-components';
 import * as Realm from 'realm-web';
 import { useNavigate } from 'react-router-dom';
+import { realmFunctionNames } from '../../data/realm/functions';
 
 // define the schema / rules for the register form validation
 const loginSchema = Yup.object().shape({
@@ -89,6 +90,13 @@ const Authentication = () => {
 
       // log the new user in
       await realm.logIn(credentials);
+
+      const args = { firstName: values.firstName, lastName: values.lastName };
+
+      await realm.currentUser?.callFunction(
+        realmFunctionNames.updateCustomData,
+        args
+      );
 
       setLoading(false);
 
