@@ -5,6 +5,7 @@ import SingleDropdown from "../../SingleDropdown";
 // type / enum imports
 import {
   CreateMissionArgs,
+  MissionSchema,
   RiskLevel,
   SecurityLevel,
 } from "../../../../data/realm/schema/mission";
@@ -16,17 +17,27 @@ import { realmFunctionNames } from "../../../../data/realm/functions";
 import { useNavigate } from "react-router-dom";
 
 const CreateMission = () => {
-  const { realm } = useRealm();
+  // contexts
   const navigate = useNavigate();
+  const { realm } = useRealm();
+  const { setActiveMission } = useMission();
+  const { polygonDrawingCoordinates } = useMission();
+  const { setIsDrawOpen } = useNavigation();
 
   // request for mission creation
   const handleMissionSubmit = async () => {
     try {
+      // handle empty population value case
+      let estimatedPopulationValue = 0;
+      if (populationValue !== "") {
+        estimatedPopulationValue = parseInt(populationValue);
+      }
+
       const args: CreateMissionArgs = {
         identifier: identifierValue,
-        estimatedPopulation: parseInt(populationValue),
-        start_of_mission: startingTimeValue,
-        end_of_mission: endingTimeValue,
+        estimatedPopulation: estimatedPopulationValue,
+        start_of_mission: startingTimeISOStringValue,
+        end_of_mission: endingTimeISOStringValue,
         geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates },
         disasterType: selectedDisasterType,
         objectives: objectivesValue,
@@ -35,19 +46,23 @@ const CreateMission = () => {
       };
 
       // call the Realm function
-      const response = await realm.currentUser?.callFunction(
-        realmFunctionNames.createMission,
-        args
-      );
+      if (realm.currentUser) {
+        await realm.currentUser.callFunction(
+          realmFunctionNames.createMission,
+          args
+        );
 
-      console.log("response:", response);
+        await realm.currentUser.refreshCustomData();
 
-      await realm.currentUser?.refreshCustomData();
-      // TODO: remove after testing
-      console.log(realm.currentUser?.customData);
+        const newActiveMission = await realm.currentUser.callFunction(
+          realmFunctionNames.getCurrentMission
+        );
+
+        setActiveMission(newActiveMission as MissionSchema);
+      }
 
       setIsDrawOpen(false);
-      //   navigate("/mission");
+      navigate("/mission");
     } catch (e) {
       console.log(
         "There has been an error while calling the Realm custom function called:",
@@ -55,15 +70,15 @@ const CreateMission = () => {
         "Error:",
         e
       );
+
+      navigate("/");
     }
   };
 
-  //   const endOfMission = new Date().toISOString()
-
-  //   const objectives = objectivesValue;
-
   // disastertype
-  const [selectedDisasterType, setSelectedDisasterType] = useState<string>("");
+  const [selectedDisasterType, setSelectedDisasterType] = useState<string>(
+    disasterTypesEnum.DROUGHT
+  );
 
   const handleDisasterTypeChange = (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -72,15 +87,18 @@ const CreateMission = () => {
   };
 
   // risk level
-  const [selectedRiskLevel, setSelectedRiskLevel] = useState<string>("");
+  const [selectedRiskLevel, setSelectedRiskLevel] = useState<string>(
+    RiskLevel.ONE
+  );
 
   const handleRiskLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRiskLevel(e.currentTarget.value);
   };
 
   // risk level
-  const [selectedSecurityLevel, setSelectedSecurityLevel] =
-    useState<string>("");
+  const [selectedSecurityLevel, setSelectedSecurityLevel] = useState<string>(
+    SecurityLevel.ZERO
+  );
 
   const handleSecurityLevelChange = (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -98,7 +116,7 @@ const CreateMission = () => {
   };
 
   // estimated population
-  const [populationValue, setPopulationValue] = useState<string>("");
+  const [populationValue, setPopulationValue] = useState<string>("0");
 
   const handlePopulationChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -140,41 +158,35 @@ const CreateMission = () => {
 
   // starting time
   const [startingTimeValue, setStartingTimeValue] = useState<string>("");
+  const [startingTimeISOStringValue, setStartingTimeISOStringValue] =
+    useState<string>("");
 
   const handleStartingTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setStartingTimeValue(event.currentTarget.value);
-    console.log("start", startingTimeValue);
+    let start = event.currentTarget.value;
+    const date = new Date(start);
+    const isoStart = date.toISOString();
+
+    setStartingTimeValue(start);
+    setStartingTimeISOStringValue(isoStart);
   };
 
   // ending time
-  const [endingTimeValue, setEndingTimeValue] = useState<string>("");
+  const [endingTimeInputValue, setEndingTimeInputValue] = useState<string>("");
+  const [endingTimeISOStringValue, setEndingTimeISOStringValue] =
+    useState<string>("");
 
   const handleEndingTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setEndingTimeValue(event.currentTarget.value);
-    console.log("end", endingTimeValue);
+    let end = event.currentTarget.value;
+    const date = new Date(end);
+    const isoEnd = date.toISOString();
+
+    setEndingTimeInputValue(end);
+    setEndingTimeISOStringValue(isoEnd);
   };
-
-  // draw poly
-  const {
-    isPolygonDrawingActive,
-    setIsPolygonDrawingActive,
-    polygonDrawingCoordinates,
-  } = useMission();
-  const { isDrawOpen, setIsDrawOpen } = useNavigation();
-
-  //   console.log("isDrawOpen", isDrawOpen);
-  //   console.log("isPolygonDrawingActive", isPolygonDrawingActive);
-  //   console.log("polygonDrawingCoordinates", polygonDrawingCoordinates);
-
-  //   const handleDrawMission = () => {
-  //     setIsDrawOpen(false);
-  //     setIsPolygonDrawingActive(true);
-  //     console.log(isPolygonDrawingActive);
-  //   };
 
   return (
     <>
@@ -285,14 +297,16 @@ const CreateMission = () => {
             </StyledSecondaryHeading>
             <input
               type="datetime-local"
-              value={endingTimeValue}
+              value={endingTimeInputValue}
               onChange={handleEndingTimeChange}
             />
           </StyledSectionWrapper>
 
-          <StyledButton onClick={handleMissionSubmit}>
-            Submit Mission
-          </StyledButton>
+          {startingTimeISOStringValue && endingTimeISOStringValue && (
+            <StyledButton onClick={handleMissionSubmit}>
+              Submit Mission
+            </StyledButton>
+          )}
         </StyledDashboardContent>
       </StyledDashboardWrapper>
     </>

@@ -86,9 +86,9 @@ root.render(
             path="mission"
             element={
               <RequireAuth>
-                {/* <RequireActiveMission> */}
-                <MissionLayout />
-                {/* </RequireActiveMission> */}
+                <RequireActiveMission>
+                  <MissionLayout />
+                </RequireActiveMission>
               </RequireAuth>
             }
           >
