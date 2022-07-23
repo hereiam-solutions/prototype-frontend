@@ -3,9 +3,16 @@ import MissionCard from "../drawContent/MissionCard";
 import { Link, useNavigate } from "react-router-dom";
 import useMission from "../../../../hooks/useMission";
 import useNavigation from "../../../../hooks/useNavigation";
+import { useState } from "react";
+import useRealm from "../../../../hooks/useRealm";
+import { realmFunctionNames } from "../../../../data/realm/functions";
+import { BSON } from "realm-web";
+import { MissionSchema } from "../../../../data/realm/schema/mission";
 
 const JoinMission = () => {
   const navigate = useNavigate();
+  const { realm } = useRealm();
+  const { setActiveMission } = useMission();
   const { setIsPolygonDrawingActive } = useMission();
   const { setIsDrawOpen } = useNavigation();
 
@@ -17,15 +24,59 @@ const JoinMission = () => {
     // setIsPolygonDrawingActive(true);
   };
 
+  const [missionId, setMissionId] = useState<string>("");
+
+  const handleMissionIdChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setMissionId(event.currentTarget.value);
+  };
+
+  const handleJoin = async () => {
+    // call the Realm function
+    if (realm.currentUser) {
+      await realm.currentUser.refreshCustomData();
+
+      const response = await realm.currentUser.callFunction(
+        realmFunctionNames.joinMission,
+        { mission: missionId }
+      );
+      console.log(response);
+
+      // backend returns string "success" if joining the mission was successful
+      if (response === "success") {
+        await realm.currentUser.refreshCustomData();
+
+        const newActiveMission: MissionSchema =
+          await realm.currentUser.callFunction(
+            realmFunctionNames.getCurrentMission
+          );
+
+        setActiveMission(newActiveMission as MissionSchema);
+
+        setIsDrawOpen(false);
+        navigate("/mission");
+        // TODO: error handling
+      }
+    }
+  };
+
   return (
     <StyledDashboardWrapper>
       <StyledHeader>Join a Mission</StyledHeader>
 
       <StyledDashboardContent>
-        <MissionCard />
+        <StyledInput
+          type="text"
+          value={missionId}
+          onChange={handleMissionIdChange}
+          placeholder="Insert Mission ID here..."
+        />
+        <button onClick={handleJoin}>Join Mission</button>
+        {/* <MissionCard />
         <StyledDeactivated>
           <MissionCard />
-        </StyledDeactivated>
+        </StyledDeactivated> */}
 
         <button onClick={initiateMissionCreation}>
           Create your own Mission!
@@ -88,6 +139,12 @@ const StyledDeactivated = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledInput = styled.input`
+  width: 100%;
+  height: 2rem;
+  border: 1px solid black;
 `;
 
 export default JoinMission;

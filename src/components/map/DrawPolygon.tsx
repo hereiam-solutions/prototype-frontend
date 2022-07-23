@@ -1,26 +1,20 @@
-import { FeatureGroup } from 'react-leaflet';
-import { EditControl } from 'react-leaflet-draw';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-draw/dist/leaflet.draw.css';
-import useMission from '../../hooks/useMission';
-import useNavigation from '../../hooks/useNavigation';
-import { useNavigate } from 'react-router-dom';
+import { FeatureGroup } from "react-leaflet";
+import { EditControl } from "react-leaflet-draw";
+import "leaflet/dist/leaflet.css";
+import "leaflet-draw/dist/leaflet.draw.css";
+import useMission from "../../hooks/useMission";
+import useNavigation from "../../hooks/useNavigation";
+import { useNavigate } from "react-router-dom";
 
 const DrawPolygon = () => {
   let navigate = useNavigate();
 
-  const {
-    polygonDrawingCoordinates,
-    setPolygonDrawingCoordinates,
-    setIsPolygonDrawingActive,
-  } = useMission();
+  const { setPolygonDrawingCoordinates, setIsPolygonDrawingActive } =
+    useMission();
 
-  const { isDrawOpen, setIsDrawOpen } = useNavigation();
+  const { setIsDrawOpen } = useNavigation();
 
   const handleOnCreated = (e: any) => {
-    console.log('onCreated');
-    console.log(e.layer._latlngs);
-
     let geoJSONPolygon: any = [];
 
     // restructuring of coordinates given by drawing tool
@@ -142,7 +136,7 @@ const DrawPolygon = () => {
       setPolygonDrawingCoordinates(geoJSONPolygon);
       setIsPolygonDrawingActive(false);
       setIsDrawOpen(true);
-      navigate('create-mission');
+      navigate("create-mission");
     }, 10);
   };
 
@@ -162,11 +156,11 @@ const DrawPolygon = () => {
           polygon: {
             allowIntersection: false,
             drawError: {
-              color: 'red', // Color the shape will turn when intersects
-              message: 'Intersections not possible!', // Message that will show when intersect
+              color: "red", // Color the shape will turn when intersects
+              message: "Intersections not possible!", // Message that will show when intersect
             },
             shapeOptions: {
-              color: 'blue',
+              color: "blue",
             },
           },
         }}

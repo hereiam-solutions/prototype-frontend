@@ -1,6 +1,16 @@
 export const realmFunctionNames = {
-  createHazard: 'createHazard',
-  createMission: 'createMission',
-  updateCustomData: 'updateCustomData',
-  getCurrentMission: 'getCurrentMission',
+  updateCustomData: "updateCustomData",
+
+  createMission: "createMission",
+  getCurrentMission: "getCurrentMission",
+  joinMission: "joinMission",
+
+  createHazard: "createHazard",
+  getAllHazardsForMission: "getAllHazardsForMission",
+
+  createLocation: "createLocation",
+  getAllLocationsForMission: "getAllLocationsForMission",
+
+  createPatient: "createPatient",
+  getAllPatientsForMission: "getAllPatiensForMission",
 };

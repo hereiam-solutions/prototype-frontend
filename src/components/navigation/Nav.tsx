@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import useNavigation from '../../hooks/useNavigation';
-import Draw from './Draw';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import useNavigation from "../../hooks/useNavigation";
+import Draw from "./Draw";
 
 // svg imports
-import { ReactComponent as DashboardButton } from '../../assets/Navigation/Dashboard.svg';
-import { ReactComponent as SettingsButton } from '../../assets/Navigation/Settings.svg';
-import { ReactComponent as ProfileButton } from '../../assets/Navigation/User.svg';
-import useMission from '../../hooks/useMission';
+import { ReactComponent as DashboardButton } from "../../assets/Navigation/Dashboard.svg";
+import { ReactComponent as SettingsButton } from "../../assets/Navigation/Settings.svg";
+import { ReactComponent as ProfileButton } from "../../assets/Navigation/User.svg";
+import useMission from "../../hooks/useMission";
 
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
-  const { activeMission } = useMission();
+  const { activeMission, setIsPolygonDrawingActive } = useMission();
 
   return (
     <>
@@ -19,8 +19,9 @@ const Nav = () => {
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
+            setIsPolygonDrawingActive(false);
           }}
-          to={activeMission ? 'dashboard' : 'join-mission'}
+          to={activeMission ? "dashboard" : "join-mission"}
         >
           <DashboardButton />
         </StyledMenuButton>
@@ -28,6 +29,7 @@ const Nav = () => {
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
+            setIsPolygonDrawingActive(false);
           }}
           to="settings"
         >
@@ -37,6 +39,7 @@ const Nav = () => {
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
+            setIsPolygonDrawingActive(false);
           }}
           to="profile"
         >
