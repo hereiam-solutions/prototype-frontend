@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useNavigation from '../../../../../hooks/useNavigation';
 import useRealm from '../../../../../hooks/useRealm';
+import Head from './Head'
 
 const Profile = () => {
   const { realm } = useRealm();
@@ -26,7 +27,10 @@ const Profile = () => {
      
       <StyledProfileContent>
         
-        TEst
+        <head />
+        
+        
+        
         <StyledLogOutButton onClick={handleLogOut}>Bye. Log me out</StyledLogOutButton>
       </StyledProfileContent>
       
