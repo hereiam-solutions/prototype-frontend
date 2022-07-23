@@ -1,10 +1,10 @@
-import { ReactNode, createContext, useState } from 'react';
-import { MissionSchema } from '../data/realm/schema/mission';
+import { ReactNode, createContext, useState } from "react";
+import { MissionSchema } from "../data/realm/schema/mission";
 
 // create a type for the context's value
 type MissionContextType = {
   activeMission: MissionSchema | null;
-  setActiveMission: (activeMission: MissionSchema) => void;
+  setActiveMission: (activeMission: MissionSchema | null) => void;
   isPolygonDrawingActive: boolean;
   setIsPolygonDrawingActive: (isPolygonDrawingActive: boolean) => void;
   polygonDrawingCoordinates: number[][][];

@@ -1,6 +1,6 @@
-import { BSON } from 'realm-web';
-import { geoJSONPoint } from './../../../components/map/mapTypes';
-import { locationTypes } from '../../../components/map/mapTypes';
+import { BSON } from "realm-web";
+import { geoJSONPoint } from "./../../../components/map/mapTypes";
+import { locationTypes } from "../../../components/map/mapTypes";
 
 // enum roles {
 //   'LEMA' = 'lema',
@@ -18,51 +18,51 @@ import { locationTypes } from '../../../components/map/mapTypes';
 // }
 
 enum ageGroups {
-  '0-1',
-  '2-5',
-  '6-11',
-  '12-64',
-  '65+',
+  "0-1",
+  "2-5",
+  "6-11",
+  "12-64",
+  "65+",
 }
 
 enum genders {
-  'male',
-  'female',
-  'divers',
-  'unknown',
+  "male",
+  "female",
+  "divers",
+  "unknown",
 }
 
 enum statuses {
-  'ongoing CPR',
-  'urgent',
-  'less urgent',
-  'not urgent',
+  "ongoing CPR",
+  "urgent",
+  "less urgent",
+  "not urgent",
 }
 
 enum injuries {
-  'none',
-  'stable',
-  'critical',
+  "none",
+  "stable",
+  "critical",
 }
 
 enum extricated {
-  'assist only',
-  'light debris',
-  'ASR3',
-  'ASR4',
-  'ASR5',
+  "assist only",
+  "light debris",
+  "ASR3",
+  "ASR4",
+  "ASR5",
 }
 
 enum handover {
-  'Family',
-  'Locals',
-  'Ambulance',
-  'Medical Team',
-  'Field Hospital',
-  'Helicopter',
-  'Hospital',
-  'Mortuary',
-  'other',
+  "Family",
+  "Locals",
+  "Ambulance",
+  "Medical Team",
+  "Field Hospital",
+  "Helicopter",
+  "Hospital",
+  "Mortuary",
+  "other",
 }
 
 export type PatientSchema = {
@@ -95,30 +95,11 @@ export type PatientSchema = {
 };
 
 export type CreatePatientArgs = {
-  // _id: BSON.ObjectId;
-  // timestamp: string;
-  // identifier: string;
-  // active: boolean;
-  // firstName: string;
-  // lastName: string;
+  mission: BSON.ObjectId;
   agegroup: ageGroups;
   gender: genders;
-  // language: string;
   status: statuses;
   injuries: injuries;
   isTeamMember: boolean;
-  // isTeamDog: boolean;
-  // triageReport: [];
-  // lemaInformation: string;
-  // detailsVictim: [];
-  // extricatedOn: extricated;
-  // total_extrication_from: string;
-  // total_extrication_to: string;
-  found_by: BSON.ObjectId;
-  // found_on: BSON.ObjectId;
-  // positionInStructure: string;
-  // foundStreetAddress: string;
-  // handoverTo: string;
-  // handover: handover;
   geoJSON: geoJSONPoint;
 };

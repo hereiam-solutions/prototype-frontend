@@ -1,30 +1,30 @@
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import { useState } from 'react';
-import useRealm from '../../hooks/useRealm';
-import styled from 'styled-components';
-import * as Realm from 'realm-web';
-import { useNavigate } from 'react-router-dom';
-import { realmFunctionNames } from '../../data/realm/functions';
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import { useState } from "react";
+import useRealm from "../../hooks/useRealm";
+import styled from "styled-components";
+import * as Realm from "realm-web";
+import { useNavigate } from "react-router-dom";
+import { realmFunctionNames } from "../../data/realm/functions";
 
 // define the schema / rules for the register form validation
 const loginSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string().min(8, 'Too short!').required('Required'),
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string().min(8, "Too short!").required("Required"),
 });
 
 // define the schema / rules for the form validation
 const registerSchema = Yup.object().shape({
   firstName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
   lastName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string().min(8, 'Too short!').required('Required'),
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string().min(8, "Too short!").required("Required"),
 });
 
 // create a type for the values in the login form
@@ -63,9 +63,13 @@ const Authentication = () => {
 
       await realm.logIn(credentials);
 
-      setLoading(false);
+      if (realm.currentUser) {
+        await realm.currentUser.refreshCustomData();
 
-      navigate('/');
+        setLoading(false);
+
+        navigate("/");
+      }
     } catch (e) {
       console.log(e);
     }
@@ -91,16 +95,20 @@ const Authentication = () => {
       // log the new user in
       await realm.logIn(credentials);
 
-      const args = { firstName: values.firstName, lastName: values.lastName };
+      if (realm.currentUser) {
+        const args = { firstName: values.firstName, lastName: values.lastName };
 
-      await realm.currentUser?.callFunction(
-        realmFunctionNames.updateCustomData,
-        args
-      );
+        await realm.currentUser.callFunction(
+          realmFunctionNames.updateCustomData,
+          args
+        );
 
-      setLoading(false);
+        await realm.currentUser.refreshCustomData();
 
-      navigate('/');
+        setLoading(false);
+
+        navigate("/");
+      }
     } catch (e) {
       console.log(e);
     }
@@ -115,10 +123,10 @@ const Authentication = () => {
       {isLogin ? (
         <Formik
           initialValues={{
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
           }}
           validationSchema={loginSchema}
           onSubmit={handleSubmit}
@@ -154,10 +162,10 @@ const Authentication = () => {
         <>
           <Formik
             initialValues={{
-              firstName: '',
-              lastName: '',
-              email: '',
-              password: '',
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
             }}
             validationSchema={registerSchema}
             onSubmit={handleRegister}

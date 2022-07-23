@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import PolygonDrawingMap from '../../map/PolygonDrawingMap';
-import Nav from '../Nav';
-import Company from '../Company';
+import styled from "styled-components";
+import PolygonDrawingMap from "../../map/PolygonDrawingMap";
+import Nav from "../Nav";
+import Company from "../Company";
 
 const MissionCreationLayout = () => {
   return (
@@ -9,7 +9,6 @@ const MissionCreationLayout = () => {
       <PolygonDrawingMap />
       <StyledNavWrapper>
         <Nav />
-        <Company />
       </StyledNavWrapper>
     </StyledAppWrapper>
   );

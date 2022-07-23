@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Accordion from '../../Accordion';
+import React from "react";
+import styled from "styled-components";
+import Accordion from "../../Accordion";
 import { RiContrast2Fill } from "react-icons/ri";
 
 type Props = {};
@@ -12,11 +12,11 @@ const Settings = (props: Props) => {
         <p>Settings</p>
       </StyledHeader>
 
-      <Accordion heading={'MAP'}>
+      <Accordion heading={"MAP"}>
         <HintMapUse />
       </Accordion>
 
-      <Accordion heading={'APPEARANCE'}>
+      <Accordion heading={"APPEARANCE"}>
         <ThemeSwitch />
       </Accordion>
 
@@ -37,7 +37,7 @@ const ThemeSwitch = () => {
       <p>Change Theme</p>
       <ThemeSwitchIcon />
     </StyledThemeSwitch>
-  )
+  );
 };
 
 const StyledSettingsWrapper = styled.div`
@@ -78,14 +78,13 @@ const StyledSettingsContent = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
 
-  
   border-radius: ${(props) => props.theme.drawerBorderRadius}
     ${(props) => props.theme.drawerBorderRadius} 0 0;
   background: ${(props) => props.theme.secondaryBackgroundColor};
-  
+
   overflow-x: hidden;
   overflow-y: scroll;
-  
+
   z-index: 6;
 `;
 

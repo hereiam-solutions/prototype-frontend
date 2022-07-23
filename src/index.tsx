@@ -1,32 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // service worker imports
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 // component imports
-import App from './App';
-import Profile from './components/navigation/withoutActiveMission/drawContent/Profile';
-import Settings from './components/navigation/withoutActiveMission/drawContent/Settings';
-import Dashboard from './components/navigation/withoutActiveMission/drawContent/Dashboard';
-import ActiveDashboard from './components/navigation/withActiveMission/drawContent/ActiveDashboard';
-import Home from './components/navigation/Home';
-import Layout from './components/navigation/withoutActiveMission/Layout';
-import About from './components/navigation/withoutActiveMission/drawContent/About/About';
-import AuthLayout from './components/auth/AuthLayout';
-import UserDetails from './components/auth/UserDetails';
-import Authentication from './components/auth/Authentication';
-import RequireAuth from './components/auth/RequireAuth';
-import CreateHazardMarker from './components/navigation/withActiveMission/drawContent/createMapMarker/CreateHazardMarker';
-import MissionLayout from './components/navigation/withActiveMission/MissionLayout';
-import RequireActiveMission from './components/navigation/RequireActiveMission';
-import JoinMission from './components/navigation/withoutActiveMission/drawContent/JoinMission';
-import CreateMission from './components/navigation/withoutActiveMission/drawContent/CreateMission';
-import MissionCreationLayout from './components/navigation/withoutActiveMission/MissionCreationLayout';
+import App from "./App";
+import Profile from "./components/navigation/withoutActiveMission/drawContent/Profile";
+import Settings from "./components/navigation/withoutActiveMission/drawContent/Settings";
+import ActiveDashboard from "./components/navigation/withActiveMission/drawContent/ActiveDashboard";
+import Home from "./components/navigation/Home";
+import Layout from "./components/navigation/withoutActiveMission/Layout";
+import About from "./components/navigation/withoutActiveMission/drawContent/About/About";
+import AuthLayout from "./components/auth/AuthLayout";
+import UserDetails from "./components/auth/UserDetails";
+import Authentication from "./components/auth/Authentication";
+import RequireAuth from "./components/auth/RequireAuth";
+import CreateHazardMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateHazardMarker";
+import MissionLayout from "./components/navigation/withActiveMission/MissionLayout";
+import RequireActiveMission from "./components/navigation/RequireActiveMission";
+import JoinMission from "./components/navigation/withoutActiveMission/drawContent/JoinMission";
+import CreateMission from "./components/navigation/withoutActiveMission/drawContent/CreateMission";
+import MissionCreationLayout from "./components/navigation/withoutActiveMission/MissionCreationLayout";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 
 root.render(
@@ -61,7 +60,6 @@ root.render(
           >
             <Route index element={<Home />} />
             <Route path="join-mission" element={<JoinMission />} />
-            {/* <Route path="create-mission" element={<CreateMission />} /> */}
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
             <Route path="about" element={<About />} />
@@ -77,7 +75,10 @@ root.render(
             }
           >
             <Route index element={<Home />} />
-            <Route path="create-mission" element={<CreateMission />} />
+            <Route path="create-mission" element={<CreateMission />} />\
+            <Route path="join-mission" element={<JoinMission />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="about" element={<About />} />
           </Route>
 

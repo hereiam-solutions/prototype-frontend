@@ -1,18 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import useNavigation from '../../../../hooks/useNavigation';
-import useMission from '../../../../hooks/useMission';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import useNavigation from "../../../../hooks/useNavigation";
+import useMission from "../../../../hooks/useMission";
 
 const ActiveDashboard = () => {
   const { setIsDrawOpen } = useNavigation();
   const { activeMission, setActiveMission } = useMission();
 
   console.log(activeMission?._id.toString());
+  const handleLeave = () => {
+    setActiveMission(null);
+    setIsDrawOpen(false);
+  };
 
   return (
     <>
-      <StyledLink onClick={() => setIsDrawOpen(false)} to="/">
+      <StyledLink onClick={handleLeave} to="/">
         Leave Mission
       </StyledLink>
     </>
