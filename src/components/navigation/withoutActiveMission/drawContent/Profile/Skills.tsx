@@ -6,12 +6,28 @@ const Skills = () => {
   return (
     <StyledSkillsWrapper>
 
+      <SectionHeadline>
+        My Skills and Certifications
+      </SectionHeadline>
+
     </StyledSkillsWrapper>
   );
 };
 
 const StyledSkillsWrapper = styled.div`
-  position: relative;
+  margin: 0;
+  width: 100%;
+`;
+
+const SectionHeadline = styled.div`
+    width: 100%;
+    margin-top: 1rem;
+
+    padding: ${(props) => props.theme.sectionHeadlinePadding};
+
+    background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
+    color: ${(props) => props.theme.sectionHeadlineColor};
+
 `;
 
 export default Skills;

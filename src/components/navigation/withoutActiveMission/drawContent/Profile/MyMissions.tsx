@@ -6,12 +6,28 @@ const MyMissions = () => {
   return (
     <StyledMissionsWrapper>
 
+      <SectionHeadline>
+        My Missions
+      </SectionHeadline>
+
     </StyledMissionsWrapper>
   );
 };
 
 const StyledMissionsWrapper = styled.div`
-  position: relative;
+  margin: 0;
+  width: 100%;
+`;
+
+const SectionHeadline = styled.div`
+    width: 100%;
+    margin-top: 1rem;
+
+    padding: ${(props) => props.theme.sectionHeadlinePadding};
+
+    background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
+    color: ${(props) => props.theme.sectionHeadlineColor};
+
 `;
 
 export default MyMissions;

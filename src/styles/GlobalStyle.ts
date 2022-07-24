@@ -59,6 +59,20 @@ export const GlobalStyles = createGlobalStyle`
 	  font-size: calc(1vw + 1vh + .5vmin);
   }
 
+  textarea {
+    font-family: -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
+  }
+
   /* Display links when the <a> element has no text value but the href attribute has a link */
   a[href^="https"]:empty::before {
     content: attr(href);

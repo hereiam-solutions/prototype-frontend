@@ -64,21 +64,16 @@ const StyledProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   overflow: hidden;
   pointer-events: auto;
 `;
 
 const StyledPersonWrapper = styled.div`
-  position: absolute;
-  width: 100vw;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  overflow: hidden;
-  pointer-events: auto;
+  width: 80%;
+  border: 2px solid ${(props) => props.theme.formFieldColor};
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
 `;
 
 const StyledHeader = styled.div`
@@ -99,21 +94,15 @@ const StyledHeader = styled.div`
 `;
 
 const StyledProfileContent = styled.div`
-  height: 55vh;  
-  
+  height: 55vh;
+  padding: 0.5rem;  
+
   display: flex;
-  align-items: flex-start;
   flex-wrap: wrap;
-  flex-direction: column;
-  
-  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
-  
-  background: ${(props) => props.theme.secondaryBackgroundColor};
-  
+  justify-content: center;
+
   overflow-x: hidden;
   overflow-y: scroll;
-  
-  z-index: 6;
 `;
 const StyledLogOutButton = styled.button`
   padding: 0.2rem 1rem 0.2rem 1rem;
