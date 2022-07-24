@@ -2,7 +2,11 @@ import React from 'react'
 import useRealm from '../../../../../hooks/useRealm';
 import styled from 'styled-components';
 import HeroImage from '../../../../../assets/k9search.jpg';
-import { RiAtFill, RiEditBoxFill, RiPhoneFill, RiRadarFill } from "react-icons/ri";
+import { RiAtFill, RiEditBoxFill, RiRadarFill } from "react-icons/ri";
+
+import { RiPhoneFill } from "react-icons/ri";
+
+const PhoneIcon = RiPhoneFill;
 
 const ProfileHead = () => {
   return (
@@ -14,20 +18,53 @@ const ProfileHead = () => {
         backgroundRepeat: 'no-repeat'
       }}  
     >
-    
-    Avatar
+    <StyledCom>
+      <div>
+        <ul className='comlist'>
+          <li>phone</li>
+          <li>sat</li>
+          <li>mail</li>
+        </ul> 
+      </div>
+    </StyledCom>
 
+    <StyledRadio>
+      <div>
+        <ul className='comlist'>
+        <li>callsign</li>
+          <li>channel</li>
+          <li>frequency</li>
+        </ul> 
+      </div>
+    </StyledRadio> 
+
+    
+    
     </StyledHeadWrapper>
   );
 };
 
+const StyledCom = styled.div`
+  width: 50%;
+  height: 20vh;
+  background: white;
+
+`;
+
+const StyledRadio = styled.div`
+  float: right;
+  width: 50%;
+  height: 20vh;
+  background: red;
+`;
+
+
 const StyledHeadWrapper = styled.div`
   height: 20vh;
   margin: 0;
-  width: 100%;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: raw;
   align-items: center;
   justify-content: center;
 

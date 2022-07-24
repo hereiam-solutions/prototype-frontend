@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Accordion from '../../../Accordion';
-import { RiContrast2Fill, RiTranslate } from "react-icons/ri";
+import { RiContrast2Fill, RiTranslate, RiRoadMapLine } from "react-icons/ri";
 
 type Props = {};
 
@@ -13,7 +13,7 @@ const Settings = (props: Props) => {
       </StyledHeader>
 
       <Accordion heading={'MAP'}>
-        <HintMapUse />
+        <AllowTracking />
       </Accordion>
 
       <Accordion heading={'INTERFACE'}>
@@ -25,9 +25,14 @@ const Settings = (props: Props) => {
     </StyledSettingsWrapper>
   );
 };
-
-const HintMapUse = () => {
-  return <p>Please use the setting on the map in this version.</p>;
+const AllowTrackingIcon = RiRoadMapLine;
+const AllowTracking = () => {
+  return (
+    <StyledItemSwitch>
+      <p>Track me</p>
+      <AllowTrackingIcon />
+    </StyledItemSwitch>
+  )
 };
 
 //Choose Language
