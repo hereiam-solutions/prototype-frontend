@@ -1,10 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import { useMapEvents } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import { MarkerType } from '../mapTypes';
-import useActionMenu from '../../../hooks/useActionMenu';
-import useCreateMarker from '../../../hooks/useCreateMarker';
-import useNavigation from '../../../hooks/useNavigation';
+import { useNavigate } from "react-router-dom";
+import { useMapEvents } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { MarkerType } from "../mapTypes";
+import useActionMenu from "../../../hooks/useActionMenu";
+import useCreateMarker from "../../../hooks/useCreateMarker";
+import useNavigation from "../../../hooks/useNavigation";
 
 function SetMarker() {
   let navigate = useNavigate();
@@ -17,23 +17,27 @@ function SetMarker() {
     markerType,
   } = useActionMenu();
 
-  const { setLocation } = useCreateMarker();
+  const {
+    setCreateMarkerLocation: setLocation,
+    createMarkerLocation: location,
+  } = useCreateMarker();
 
   const map = useMapEvents({
     async click(e) {
       if (isCreateMarkerModeEnabled) {
         setLocation([e.latlng.lat, e.latlng.lng]);
+        console.log(location);
 
         setIsDrawOpen(true);
 
         if (markerType === MarkerType.HAZARD) {
           navigate(`create-${MarkerType.HAZARD}`);
         }
-        if (markerType === MarkerType.CASUALTY) {
-          navigate(`create-${MarkerType.CASUALTY}`);
+        if (markerType === MarkerType.PATIENT) {
+          navigate(`create-${MarkerType.PATIENT}`);
         }
-        if (markerType === MarkerType.BOO) {
-          navigate(`create-${MarkerType.BOO}`);
+        if (markerType === MarkerType.LOCATION) {
+          navigate(`create-${MarkerType.LOCATION}`);
         }
 
         map.setView(e.latlng, map.getZoom());

@@ -23,6 +23,8 @@ import RequireActiveMission from "./components/navigation/RequireActiveMission";
 import JoinMission from "./components/navigation/withoutActiveMission/drawContent/JoinMission";
 import CreateMission from "./components/navigation/withoutActiveMission/drawContent/CreateMission";
 import MissionCreationLayout from "./components/navigation/withoutActiveMission/MissionCreationLayout";
+import CreateLocationMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateLocationMarker";
+import CreatePatientMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreatePatientMarker";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -99,8 +101,8 @@ root.render(
             <Route path="profile" element={<Profile />} />
             <Route path="about" element={<About />} />
             <Route path="create-hazard" element={<CreateHazardMarker />} />
-            <Route path="create-casualty" element={<CreateHazardMarker />} />
-            <Route path="create-boo" element={<CreateHazardMarker />} />
+            <Route path="create-patient" element={<CreatePatientMarker />} />
+            <Route path="create-location" element={<CreateLocationMarker />} />
           </Route>
         </Route>
       </Routes>

@@ -47,6 +47,8 @@ const CreateMission = () => {
 
       // call the Realm function
       if (realm.currentUser) {
+        await realm.currentUser.refreshCustomData();
+
         await realm.currentUser.callFunction(
           realmFunctionNames.createMission,
           args

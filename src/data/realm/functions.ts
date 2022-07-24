@@ -12,5 +12,5 @@ export const realmFunctionNames = {
   getAllLocationsForMission: "getAllLocationsForMission",
 
   createPatient: "createPatient",
-  getAllPatientsForMission: "getAllPatiensForMission",
+  getAllPatientsForMission: "getAllPatientsForMission",
 };

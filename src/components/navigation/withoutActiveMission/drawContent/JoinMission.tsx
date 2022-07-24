@@ -13,15 +13,14 @@ const JoinMission = () => {
   const navigate = useNavigate();
   const { realm } = useRealm();
   const { setActiveMission } = useMission();
-  const { setIsPolygonDrawingActive } = useMission();
   const { setIsDrawOpen } = useNavigation();
+
+  const [error, setError] = useState<string>("");
 
   // starts the polygon drawing process for a mission creation
   const initiateMissionCreation = () => {
     setIsDrawOpen(false);
     navigate("/create-mission");
-
-    // setIsPolygonDrawingActive(true);
   };
 
   const [missionId, setMissionId] = useState<string>("");
@@ -29,6 +28,7 @@ const JoinMission = () => {
   const handleMissionIdChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    setError("");
     setMissionId(event.currentTarget.value);
   };
 
@@ -41,7 +41,6 @@ const JoinMission = () => {
         realmFunctionNames.joinMission,
         { mission: missionId }
       );
-      console.log(response);
 
       // backend returns string "success" if joining the mission was successful
       if (response === "success") {
@@ -56,7 +55,34 @@ const JoinMission = () => {
 
         setIsDrawOpen(false);
         navigate("/mission");
-        // TODO: error handling
+      } else {
+        if (response === "Mission is already your active mission") {
+          setError("The mission you entered is already your active Mission!");
+        } else {
+          setError("Invalid Mission ID!");
+        }
+      }
+    }
+  };
+
+  const handleJoinCurrentMission = async () => {
+    if (realm.currentUser) {
+      await realm.currentUser.refreshCustomData();
+
+      const response: MissionSchema = await realm.currentUser.callFunction(
+        realmFunctionNames.getCurrentMission,
+        {}
+      );
+
+      if (response._id) {
+        await realm.currentUser.refreshCustomData();
+
+        setActiveMission(response as MissionSchema);
+
+        setIsDrawOpen(false);
+        navigate("/mission");
+      } else {
+        setError("You are not currently part of a mission!");
       }
     }
   };
@@ -72,11 +98,14 @@ const JoinMission = () => {
           onChange={handleMissionIdChange}
           placeholder="Insert Mission ID here..."
         />
+
+        {error && <StyledErrorMessage>{error}</StyledErrorMessage>}
+
         <button onClick={handleJoin}>Join Mission</button>
-        {/* <MissionCard />
-        <StyledDeactivated>
-          <MissionCard />
-        </StyledDeactivated> */}
+
+        <button onClick={handleJoinCurrentMission}>
+          Join your currently active Mission!
+        </button>
 
         <button onClick={initiateMissionCreation}>
           Create your own Mission!
@@ -145,6 +174,10 @@ const StyledInput = styled.input`
   width: 100%;
   height: 2rem;
   border: 1px solid black;
+`;
+
+const StyledErrorMessage = styled.div`
+  color: red;
 `;
 
 export default JoinMission;

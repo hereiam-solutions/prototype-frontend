@@ -1,11 +1,12 @@
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import useNavigation from '../../../../hooks/useNavigation';
-import useRealm from '../../../../hooks/useRealm';
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import useMission from "../../../../hooks/useMission";
+import useNavigation from "../../../../hooks/useNavigation";
+import useRealm from "../../../../hooks/useRealm";
 
 const Profile = () => {
   const { realm } = useRealm();
-
+  const { setActiveMission, setIsPolygonDrawingActive } = useMission();
   const { setIsDrawOpen } = useNavigation();
 
   let navigate = useNavigate();
@@ -13,36 +14,37 @@ const Profile = () => {
   const handleLogOut = async () => {
     await realm.currentUser?.logOut();
 
+    setActiveMission(null);
+    setIsPolygonDrawingActive(false);
     setIsDrawOpen(false);
-    navigate('/auth');
+
+    navigate("/auth");
   };
 
   return (
     <StyledProfileWrapper>
-
       <StyledHeader>
         <p>Profile</p>
       </StyledHeader>
-     
-      <StyledProfileContent>
-        
-        TEst
-        <StyledLogOutButton onClick={handleLogOut}>Bye. Log me out</StyledLogOutButton>
-      </StyledProfileContent>
-      
 
+      <StyledProfileContent>
+        TEst
+        <StyledLogOutButton onClick={handleLogOut}>
+          Bye. Log me out
+        </StyledLogOutButton>
+      </StyledProfileContent>
     </StyledProfileWrapper>
   );
 };
 
 const StyledProfileWrapper = styled.div`
-position: absolute;
-width: 100vw;
-display: flex;
-flex-direction: column;
-align-items: center;
-overflow: hidden;
-pointer-events: auto;
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: auto;
 `;
 
 const StyledHeader = styled.div`
@@ -59,12 +61,13 @@ const StyledHeader = styled.div`
 `;
 
 const StyledProfileContent = styled.div`
-  height: 55vh;  
+  height: 55vh;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
-  border-radius: ${(props) => props.theme.drawerBorderRadius} ${(props) => props.theme.drawerBorderRadius} 0 0;
+  border-radius: ${(props) => props.theme.drawerBorderRadius}
+    ${(props) => props.theme.drawerBorderRadius} 0 0;
   background: ${(props) => props.theme.secondaryBackgroundColor};
   overflow-x: hidden;
   overflow-y: scroll;
