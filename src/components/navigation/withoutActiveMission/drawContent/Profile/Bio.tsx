@@ -106,11 +106,8 @@ const SectionHeadline = styled.div`
 
   padding: ${(props) => props.theme.sectionHeadlinePadding};
 
-  border-radius: ${(props) => props.theme.buttonBorderRadius} ${(props) => props.theme.buttonBorderRadius} 0 0;
-
   background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
   color: ${(props) => props.theme.sectionHeadlineColor};
-
 `;
 
 export default Bio;

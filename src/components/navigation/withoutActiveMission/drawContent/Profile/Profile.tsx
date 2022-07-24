@@ -72,8 +72,8 @@ const StyledProfileWrapper = styled.div`
 
 const StyledPersonWrapper = styled.div`
   width: 80%;
-  border: 1px solid ${(props) => props.theme.formFieldColor};
   border-radius: ${(props) => props.theme.primaryBorderRadius};
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 const StyledHeader = styled.div`
@@ -105,14 +105,15 @@ const StyledProfileContent = styled.div`
   overflow-y: scroll;
 `;
 const StyledLogOutButton = styled.button`
-  padding: 0.2rem 1rem 0.2rem 1rem;
-  margin-top: 1.5rem;
-  height: 3rem;
+  padding: ${(props) => props.theme.insideButtonPadding};
+  margin: 1.5rem 0 1rem; 0;
+  height: auto;
   
   background-color: ${(props) => props.theme.formSubmitFillColor};
   
   border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
   border-radius: ${(props) => props.theme.buttonBorderRadius};
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
   text-align: center;
   
