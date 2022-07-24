@@ -28,6 +28,8 @@ import { HazardSchema } from "../../data/realm/schema/hazard";
 import HazardMarker from "./markers/HazardMarker";
 import { LocationSchema } from "../../data/realm/schema/location";
 import { PatientSchema } from "../../data/realm/schema/patient";
+import PatientMarker from "./markers/PatientMarker";
+import LocationMarker from "./markers/LocationMarker";
 
 const fireHazardIcon = new Icon({
   iconUrl: "/fire_hazard_icon.svg",
@@ -108,38 +110,26 @@ const MissionMap = () => {
             </LayerGroup>
           </LayersControl.Overlay>
 
-          <LayersControl.Overlay name="Hazards">
+          <LayersControl.Overlay checked={true} name="Locations">
             <LayerGroup>
-              <HazardMarker
-                coordinates={[52.45536083656686, 13.527504299689658]}
-                type="Avalanche"
-              ></HazardMarker>
-            </LayerGroup>
-          </LayersControl.Overlay>
-
-          <LayersControl.Overlay name="Casualties">
-            <LayerGroup>
-              {mockLocationData.features.map((location) => (
-                <Marker
-                  key={location.id}
-                  position={[location.latitude, location.longitude]}
-                  icon={fireHazardIcon}
-                >
-                  <Popup>{location.name}</Popup>
-                </Marker>
+              {locations.map((location: LocationSchema) => (
+                <LocationMarker
+                  key={location._id.toString()}
+                  coordinates={location.geoJSON.coordinates}
+                  type={location.type}
+                />
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
-          <LayersControl.Overlay name="BoO">
+
+          <LayersControl.Overlay checked={true} name="Patients">
             <LayerGroup>
-              {mockLocationData.features.map((location) => (
-                <Marker
-                  key={location.id}
-                  position={[location.latitude, location.longitude]}
-                  icon={fireHazardIcon}
-                >
-                  <Popup>{location.name}</Popup>
-                </Marker>
+              {patients.map((patient: PatientSchema) => (
+                <PatientMarker
+                  key={patient._id.toString()}
+                  coordinates={patient.geoJSON.coordinates}
+                  type={patient.injuries}
+                />
               ))}
             </LayerGroup>
           </LayersControl.Overlay>

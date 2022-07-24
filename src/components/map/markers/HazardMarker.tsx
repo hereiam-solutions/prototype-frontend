@@ -1,42 +1,100 @@
-import React, { useState } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMapEvent,
-  useMap,
-  ZoomControl,
-  LayersControl,
-  LayerGroup,
-} from "react-leaflet";
-import L, { Icon, latLng, DivIcon } from "leaflet";
-
-// svg imports
-// import { ReactComponent as AvalanceIcon } from "../../../assets/Hazards/Alert=Avalanche.svg";
-import { ReactComponent as BioIncidentIcon } from "../../../assets/Hazards/Alert=Biological Incident.svg";
-import { ReactComponent as BombIcon } from "../../../assets/Hazards/Alert=Bomb.svg";
-import { ReactComponent as ChemicalIcon } from "../../../assets/Hazards/Alert=Chemical Incident.svg";
-import { ReactComponent as ContagiousIcon } from "../../../assets/Hazards/Alert=Contagious Illness.svg";
-import { ReactComponent as EarthquakeIcon } from "../../../assets/Hazards/Alert=Earthquake.svg";
-import { ReactComponent as ExplosionIcon } from "../../../assets/Hazards/Alert=Explosion.svg";
-import { ReactComponent as FireIcon } from "../../../assets/Hazards/Alert=Fire.svg";
-import { ReactComponent as FloodIcon } from "../../../assets/Hazards/Alert=Flood.svg";
-import { ReactComponent as HurricaneIcon } from "../../../assets/Hazards/Alert=Hurricane.svg";
-import { ReactComponent as MaritimeIcon } from "../../../assets/Hazards/Alert=Maritime.svg";
-import { ReactComponent as NuclearIcon } from "../../../assets/Hazards/Alert=Nuclear.svg";
-import { ReactComponent as PlaneIcon } from "../../../assets/Hazards/Alert=Plane Crash.svg";
-import { ReactComponent as PowerIcon } from "../../../assets/Hazards/Alert=Electricity Failure.svg";
-import { ReactComponent as RiotIcon } from "../../../assets/Hazards/Alert=Riot.svg";
-import { ReactComponent as RockSlideIcon } from "../../../assets/Hazards/Alert=Rock Slide.svg";
-import { ReactComponent as TrafficIcon } from "../../../assets/Hazards/Alert=Traffic Accident.svg";
-import { ReactComponent as TrainIcon } from "../../../assets/Hazards/Alert=Train.svg";
-import { ReactComponent as WaterIcon } from "../../../assets/Hazards/Alert=Water Disruption.svg";
+import { Marker } from "react-leaflet";
+import { Icon } from "leaflet";
 import { hazardTypes, Location } from "../mapTypes";
-import { prependListener } from "process";
+import { useEffect, useState } from "react";
 
 const AvalanceIcon = new Icon({
   iconUrl: "/icons/assets/Hazards/Alert=Avalanche.svg",
+  iconSize: [25, 25],
+});
+
+const BioIncidentIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Biological Incident.svg",
+  iconSize: [25, 25],
+});
+
+const BombIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Bomb.svg",
+  iconSize: [25, 25],
+});
+
+const ChemicalIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Chemical Incident.svg",
+  iconSize: [25, 25],
+});
+
+const ContagiousIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Contagious Illness.svg",
+  iconSize: [25, 25],
+});
+
+const EarthquakeIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Earthquake.svg",
+  iconSize: [25, 25],
+});
+
+const ExplosionIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Explosion.svg",
+  iconSize: [25, 25],
+});
+
+const FireIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Fire.svg",
+  iconSize: [25, 25],
+});
+
+const FloodIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Flood.svg",
+  iconSize: [25, 25],
+});
+
+const HurricaneIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Hurricane.svg",
+  iconSize: [25, 25],
+});
+
+const MaritimeIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Maritime.svg",
+  iconSize: [25, 25],
+});
+
+const NuclearIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Nuclear.svg",
+  iconSize: [25, 25],
+});
+
+const PlaneIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Plane Crash.svg",
+  iconSize: [25, 25],
+});
+
+const PowerIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Electricity Failure.svg",
+  iconSize: [25, 25],
+});
+
+const RiotIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Riot.svg",
+  iconSize: [25, 25],
+});
+
+const RockSlideIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Rock Slide.svg",
+  iconSize: [25, 25],
+});
+
+const TrafficIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Traffic Accident.svg",
+  iconSize: [25, 25],
+});
+
+const TrainIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Train.svg",
+  iconSize: [25, 25],
+});
+
+const WaterIcon = new Icon({
+  iconUrl: "/icons/assets/Hazards/Alert=Water Disruption.svg",
   iconSize: [25, 25],
 });
 
@@ -46,17 +104,88 @@ type Props = {
 };
 
 const HazardMarker = (props: Props) => {
-  //   const [Icon, setIcon] = useState<L.Icon>();
+  const [Icon, setIcon] = useState<L.Icon>(AvalanceIcon);
 
-  //   if (props.type === hazardTypes.AVALANCHE) {
-  //     setIcon(AvalanceIcon);
-  //   }
+  useEffect(() => {
+    if (props.type === hazardTypes.AVALANCHE) {
+      setIcon(AvalanceIcon);
+    }
+
+    if (props.type === hazardTypes.BIOLOGICALINCIDENT) {
+      setIcon(BioIncidentIcon);
+    }
+
+    if (props.type === hazardTypes.BOMB) {
+      setIcon(BombIcon);
+    }
+
+    if (props.type === hazardTypes.CHEMICALINCIDENT) {
+      setIcon(ChemicalIcon);
+    }
+
+    if (props.type === hazardTypes.CONTAGIOUSILLNESS) {
+      setIcon(ContagiousIcon);
+    }
+
+    if (props.type === hazardTypes.EARTHQUAKE) {
+      setIcon(EarthquakeIcon);
+    }
+
+    if (props.type === hazardTypes.EXPLOSION) {
+      setIcon(ExplosionIcon);
+    }
+
+    if (props.type === hazardTypes.FIRE) {
+      setIcon(FireIcon);
+    }
+
+    if (props.type === hazardTypes.FLOOD) {
+      setIcon(FloodIcon);
+    }
+
+    if (props.type === hazardTypes.HURRICANE) {
+      setIcon(HurricaneIcon);
+    }
+
+    if (props.type === hazardTypes.MARITIME) {
+      setIcon(MaritimeIcon);
+    }
+
+    if (props.type === hazardTypes.NUCLEAR) {
+      setIcon(NuclearIcon);
+    }
+
+    if (props.type === hazardTypes.PLANECRASH) {
+      setIcon(PlaneIcon);
+    }
+
+    if (props.type === hazardTypes.POWEROUTAGE) {
+      setIcon(PowerIcon);
+    }
+
+    if (props.type === hazardTypes.RIOT) {
+      setIcon(RiotIcon);
+    }
+
+    if (props.type === hazardTypes.ROCKSLIDE) {
+      setIcon(RockSlideIcon);
+    }
+
+    if (props.type === hazardTypes.TRAFFICACCIDENT) {
+      setIcon(TrafficIcon);
+    }
+
+    if (props.type === hazardTypes.TRAIN) {
+      setIcon(TrainIcon);
+    }
+
+    if (props.type === hazardTypes.WATERDISRUPTION) {
+      setIcon(WaterIcon);
+    }
+  }, [props.type]);
 
   return (
-    <Marker
-      position={[props.coordinates[0], props.coordinates[1]]}
-      icon={AvalanceIcon}
-    >
+    <Marker position={[props.coordinates[0], props.coordinates[1]]} icon={Icon}>
       {/* <Popup>{location.name}</Popup> */}
     </Marker>
   );
