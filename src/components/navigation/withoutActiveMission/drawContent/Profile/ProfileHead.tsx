@@ -2,60 +2,113 @@ import React from 'react'
 import useRealm from '../../../../../hooks/useRealm';
 import styled from 'styled-components';
 import HeroImage from '../../../../../assets/k9search.jpg';
-import { RiAtFill, RiEditBoxFill, RiRadarFill } from "react-icons/ri";
-
-import { RiPhoneFill } from "react-icons/ri";
+import { RiAtFill, RiEditBoxFill, RiPhoneFill, RiRadarFill, RiSignalTowerFill } from "react-icons/ri";
 
 const PhoneIcon = RiPhoneFill;
+const EmailIcon = RiAtFill;
+const SatIcon = RiRadarFill;
+const RadioIcon = RiSignalTowerFill;
+
 
 const ProfileHead = () => {
   return (
-    <StyledHeadWrapper
-      style={{ 
-        backgroundImage: `url(${HeroImage})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
-      }}  
-    >
+    <>
+
+      <StyledHeadWrapper
+        style={{ 
+          backgroundImage: `url(${HeroImage})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat'
+        }}  
+      >
+     
+    </StyledHeadWrapper>
+
     <StyledCom>
-      <div>
-        <ul className='comlist'>
-          <li>phone</li>
-          <li>sat</li>
-          <li>mail</li>
-        </ul> 
-      </div>
+        <div>
+          <ul className='comlist'>
+            {/*phone*/}
+            <li><PhoneIcon size={10}/> 0040 722 765 998</li>
+            {/*satcom*/}
+            <li><SatIcon size={10} /> +1-888-420-4354</li>
+            {/*email*/}
+            <li><EmailIcon size={10}/> ben.tester@cnec.ro</li>
+          </ul> 
+        </div>
     </StyledCom>
 
     <StyledRadio>
-      <div>
-        <ul className='comlist'>
-        <li>callsign</li>
-          <li>channel</li>
-          <li>frequency</li>
-        </ul> 
-      </div>
-    </StyledRadio> 
-
+        <div>
+          <ul className='satcomlist'>
+            <li><RadioIcon size={35}/></li>
+            {/*channel*/}
+            <li>USAR11</li>
+            {/*frequency*/}
+            <li>347-510UB<br/>347-509OB</li>
+            {/*callsign*/}
+            <li><span>RO011 Team Leader</span></li>
+          </ul> 
+        </div>
+    </StyledRadio>
     
-    
-    </StyledHeadWrapper>
-  );
-};
+    </>
 
+      );
+    };
+    
 const StyledCom = styled.div`
-  width: 50%;
+  margin-top: -20vh;
+  width: 66%;
   height: 20vh;
-  background: white;
+
+
+  ul.comlist {
+    list-style: none;
+  }
+
+  li.comlist {
+    
+  }
+
+  color: ${(props) => props.theme.primaryFontColor};
+  font-size: 0.6rem;
+  font-weight: 800;
 
 `;
 
 const StyledRadio = styled.div`
   float: right;
-  width: 50%;
+  margin-top: -22vh;
+  width: 33%;
   height: 20vh;
-  background: red;
+
+  color: ${(props) => props.theme.primaryFontColor};
+  font-size: 0.6rem;
+  font-weight: 800;
+
+  ul.satcomlist {
+    list-style: none;
+  }
+
+  li.satcomlist {
+    display: flex;
+    flex-direction: raw;
+    align-items: center;
+    justify-content: center;
+
+    line-height: 1rem;
+    
+  }
+
+  span {
+    
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1rem;
+    
+  }
+
 `;
 
 

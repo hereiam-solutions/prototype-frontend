@@ -34,14 +34,35 @@ const ProfileName = () => {
         CNEC<span> , Romania</span>
       </StyledTeam>
 
+      <StyledStatus>
+        {/* status? */}
+        Mission ready
+      </StyledStatus>
+
     </StyledNameWrapper>
   );
 };
 
+const StyledStatus = styled.div`
+  width: 35vw;
+  margin-top: 1rem;
+
+  padding: ${(props) => props.theme.insideButtonPadding};
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+
+  background-color: ${(props) => props.theme.readyColor};
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`;
+
+
 const StyledAvatar = styled.div`
   width: 30%;
   min-height: 100px;
-  margin-top: -10vh;
+  margin-top: -9vh;
 
   self-align: center;
   z-index: 7;
