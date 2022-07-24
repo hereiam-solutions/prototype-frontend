@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Accordion from '../../../Accordion';
-import { RiContrast2Fill } from "react-icons/ri";
+import { RiContrast2Fill, RiTranslate } from "react-icons/ri";
 
 type Props = {};
 
@@ -16,7 +16,8 @@ const Settings = (props: Props) => {
         <HintMapUse />
       </Accordion>
 
-      <Accordion heading={'APPEARANCE'}>
+      <Accordion heading={'INTERFACE'}>
+        <LanguageSwitch />
         <ThemeSwitch />
       </Accordion>
 
@@ -29,14 +30,25 @@ const HintMapUse = () => {
   return <p>Please use the setting on the map in this version.</p>;
 };
 
-const ThemeSwitchIcon = RiContrast2Fill;
+//Choose Language
+const LanguageSwitchIcon = RiTranslate;
+const LanguageSwitch = () => {
+  return (
+    <StyledItemSwitch>
+      <p>Choose Language</p>
+      <LanguageSwitchIcon />
+    </StyledItemSwitch>
+  )
+};
 
+//Toggle
+const ThemeSwitchIcon = RiContrast2Fill;
 const ThemeSwitch = () => {
   return (
-    <StyledThemeSwitch>
-      <p>Change Theme</p>
+    <StyledItemSwitch>
+      <p>Toggle Theme</p>
       <ThemeSwitchIcon />
-    </StyledThemeSwitch>
+    </StyledItemSwitch>
   )
 };
 
@@ -89,7 +101,7 @@ const StyledSettingsContent = styled.div`
   z-index: 6;
 `;
 
-const StyledThemeSwitch = styled.div`
+const StyledItemSwitch = styled.div`
   align-self: start;
 
   width: 100%;

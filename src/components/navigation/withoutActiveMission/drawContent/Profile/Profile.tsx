@@ -72,7 +72,7 @@ const StyledProfileWrapper = styled.div`
 
 const StyledPersonWrapper = styled.div`
   width: 80%;
-  border: 2px solid ${(props) => props.theme.formFieldColor};
+  border: 1px solid ${(props) => props.theme.formFieldColor};
   border-radius: ${(props) => props.theme.primaryBorderRadius};
 `;
 
