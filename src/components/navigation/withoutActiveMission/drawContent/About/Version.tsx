@@ -10,6 +10,8 @@ const Version = (props: Props) => {
         <img src={LogoHereiam} width="40px" alt="hereIam Logo" />
         <p>hereIam Prototype</p>
         <small>Version 0.0.1 (554234)</small>
+        <strong>&copy; 2022 hereIam solutions</strong>
+        <strong>All rights reserved.</strong>
         <UpdateButton>
             Update
         </UpdateButton>

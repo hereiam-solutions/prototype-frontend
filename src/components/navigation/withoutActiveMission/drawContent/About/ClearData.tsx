@@ -8,7 +8,7 @@ type Props = {};
 const ClearData= (props: Props) => {
   return (
     <StyledClear>
-        <SectionHeadline>Before delete the App</SectionHeadline>
+        <SectionHeadline>Before you leave</SectionHeadline>
         <ClearLocalData />
         <ClearUserData />
             
@@ -57,6 +57,8 @@ const SectionHeadline = styled.div`
     margin-top: 1rem;
 
     padding: ${(props) => props.theme.sectionHeadlinePadding};
+
+    border-radius: ${(props) => props.theme.buttonBorderRadius};
 
     background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
     color: ${(props) => props.theme.sectionHeadlineColor};

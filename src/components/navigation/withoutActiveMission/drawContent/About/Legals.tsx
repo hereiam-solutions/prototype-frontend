@@ -26,6 +26,8 @@ const Legals = (props: Props) => {
                     You as used herein refers to you as an individual end user of hereIam Products and/or the company or other legal entity which uses 
                     hereIam Products for its internal business purposes and on behalf of which you are using the hereIam Products ("you" or "your").
                 </p>
+                <p>Please note that the software is in an early stage of development and frequent releases or updates may occur.</p>
+                <p>We are also planning continuous development for future features. You are welcome to support our development with your hints and advice.</p>
 
             
             </Accordion>
@@ -881,6 +883,8 @@ const SectionHeadline = styled.div`
     margin-top: 1rem;
 
     padding: ${(props) => props.theme.sectionHeadlinePadding};
+
+    border-radius: ${(props) => props.theme.buttonBorderRadius};
 
     background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
     color: ${(props) => props.theme.sectionHeadlineColor};

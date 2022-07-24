@@ -88,6 +88,10 @@ const HowToInstall = () => {
 const WhyLoadSlowly = () => {
     return (
         <div>
+            <p>Please note that the software is in an early stage of development and frequent releases or updates may occur.</p>
+            <br />
+            <p>We are also planning continuous development for future features. You are welcome to support our development with your hints and advice.</p>
+            <br />
             <p>First, make sure you have a stable internet connection.</p>
             <br />
             <p>If you have done that, but still have problems with the app's speed, we recommend you to check the following items in the phone's settings:</p>
@@ -138,6 +142,8 @@ const SectionHeadline = styled.div`
     margin-top: 1rem;
 
     padding: ${(props) => props.theme.sectionHeadlinePadding};
+
+    border-radius: ${(props) => props.theme.buttonBorderRadius};
 
     background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
     color: ${(props) => props.theme.sectionHeadlineColor};

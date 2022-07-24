@@ -2,6 +2,7 @@ import React from 'react'
 import useRealm from '../../../../../hooks/useRealm';
 import styled from 'styled-components';
 import HeroImage from '../../../../../assets/k9search.jpg';
+import { RiAtFill, RiEditBoxFill, RiPhoneFill, RiRadarFill } from "react-icons/ri";
 
 const ProfileHead = () => {
   return (
@@ -13,7 +14,8 @@ const ProfileHead = () => {
         backgroundRepeat: 'no-repeat'
       }}  
     >
-      Hello World
+    
+    Avatar
 
     </StyledHeadWrapper>
   );

@@ -101,6 +101,19 @@ const StyledSettingsContent = styled.div`
   z-index: 6;
 `;
 
+const SectionHeadline = styled.div`
+  width: 100%;
+  margin-top: 1rem;
+
+  padding: ${(props) => props.theme.sectionHeadlinePadding};
+
+  border-radius: ${(props) => props.theme.buttonBorderRadius};
+
+  background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
+  color: ${(props) => props.theme.sectionHeadlineColor};
+
+`;
+
 const StyledItemSwitch = styled.div`
   align-self: start;
 
