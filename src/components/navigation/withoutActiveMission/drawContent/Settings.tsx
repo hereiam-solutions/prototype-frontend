@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Accordion from "../../Accordion";
+import Accordion from "../../ui/Accordion";
 import { RiContrast2Fill } from "react-icons/ri";
 
 type Props = {};

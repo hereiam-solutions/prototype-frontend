@@ -24,7 +24,7 @@ import {
   injuries,
   statuses,
 } from "../../../../../data/realm/schema/patient";
-import SingleDropdown from "../../../SingleDropdown";
+import SingleDropdown from "../../../ui/SingleDropdown";
 
 const CreatePatientMarker = () => {
   const { realm } = useRealm();

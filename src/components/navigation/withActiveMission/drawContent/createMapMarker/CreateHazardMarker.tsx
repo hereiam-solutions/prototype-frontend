@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import useNavigation from "../../../../../hooks/useNavigation";
 
 // type imports
 import { hazardTypes } from "../../../../map/mapTypes";
@@ -33,7 +34,6 @@ import { ReactComponent as RockSlideIcon } from "../../../../../assets/Hazards/A
 import { ReactComponent as TrafficIcon } from "../../../../../assets/Hazards/Alert=Traffic Accident.svg";
 import { ReactComponent as TrainIcon } from "../../../../../assets/Hazards/Alert=Train.svg";
 import { ReactComponent as WaterIcon } from "../../../../../assets/Hazards/Alert=Water Disruption.svg";
-import useNavigation from "../../../../../hooks/useNavigation";
 
 const CreateHazardMarker = () => {
   const { realm } = useRealm();

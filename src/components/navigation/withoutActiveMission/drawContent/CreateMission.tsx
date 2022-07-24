@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import SingleDropdown from "../../SingleDropdown";
+import SingleDropdown from "../../ui/SingleDropdown";
 
 // type / enum imports
 import {

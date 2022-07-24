@@ -98,18 +98,6 @@ const MissionMap = () => {
           hideSingleBase={true}
           position="topright"
         >
-          <LayersControl.Overlay checked={true} name="Hazards">
-            <LayerGroup>
-              {hazards.map((hazard: HazardSchema) => (
-                <HazardMarker
-                  key={hazard._id.toString()}
-                  coordinates={hazard.geoJSON.coordinates}
-                  type={hazard.hazard_type}
-                />
-              ))}
-            </LayerGroup>
-          </LayersControl.Overlay>
-
           <LayersControl.Overlay checked={true} name="Locations">
             <LayerGroup>
               {locations.map((location: LocationSchema) => (
@@ -122,6 +110,17 @@ const MissionMap = () => {
             </LayerGroup>
           </LayersControl.Overlay>
 
+          <LayersControl.Overlay checked={true} name="Hazards">
+            <LayerGroup>
+              {hazards.map((hazard: HazardSchema) => (
+                <HazardMarker
+                  key={hazard._id.toString()}
+                  coordinates={hazard.geoJSON.coordinates}
+                  type={hazard.hazard_type}
+                />
+              ))}
+            </LayerGroup>
+          </LayersControl.Overlay>
           <LayersControl.Overlay checked={true} name="Patients">
             <LayerGroup>
               {patients.map((patient: PatientSchema) => (

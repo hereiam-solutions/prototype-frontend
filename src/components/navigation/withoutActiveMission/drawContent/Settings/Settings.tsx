@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Accordion from '../../../Accordion';
+import React from "react";
+import styled from "styled-components";
+import Accordion from "../../../ui/Accordion";
 import { RiContrast2Fill, RiTranslate, RiRoadMapLine } from "react-icons/ri";
 
 type Props = {};
@@ -12,11 +12,11 @@ const Settings = (props: Props) => {
         <p>Settings</p>
       </StyledHeader>
 
-      <Accordion heading={'MAP'}>
+      <Accordion heading={"MAP"}>
         <AllowTracking />
       </Accordion>
 
-      <Accordion heading={'INTERFACE'}>
+      <Accordion heading={"INTERFACE"}>
         <LanguageSwitch />
         <ThemeSwitch />
       </Accordion>
@@ -32,7 +32,7 @@ const AllowTracking = () => {
       <p>Track me</p>
       <AllowTrackingIcon />
     </StyledItemSwitch>
-  )
+  );
 };
 
 //Choose Language
@@ -43,7 +43,7 @@ const LanguageSwitch = () => {
       <p>Choose Language</p>
       <LanguageSwitchIcon />
     </StyledItemSwitch>
-  )
+  );
 };
 
 //Toggle
@@ -54,7 +54,7 @@ const ThemeSwitch = () => {
       <p>Toggle Theme</p>
       <ThemeSwitchIcon />
     </StyledItemSwitch>
-  )
+  );
 };
 
 const StyledSettingsWrapper = styled.div`
@@ -95,14 +95,13 @@ const StyledSettingsContent = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
 
-  
   border-radius: ${(props) => props.theme.drawerBorderRadius}
     ${(props) => props.theme.drawerBorderRadius} 0 0;
   background: ${(props) => props.theme.secondaryBackgroundColor};
-  
+
   overflow-x: hidden;
   overflow-y: scroll;
-  
+
   z-index: 6;
 `;
 
@@ -116,7 +115,6 @@ const SectionHeadline = styled.div`
 
   background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
   color: ${(props) => props.theme.sectionHeadlineColor};
-
 `;
 
 const StyledItemSwitch = styled.div`
