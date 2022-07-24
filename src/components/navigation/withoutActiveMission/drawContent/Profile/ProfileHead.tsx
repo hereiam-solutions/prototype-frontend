@@ -65,6 +65,8 @@ const StyledCom = styled.div`
 
   ul.comlist {
     list-style: none;
+    padding: 0.5rem;
+    line-height: 0.6rem;
   }
 
   li.comlist {

@@ -858,17 +858,9 @@ const Legals = (props: Props) => {
   )  
 };
 
-
-
-
-
-
-
-
-
 const StyledLegals= styled.div`
-
-    width: 100%;
+    margin-top: 2rem;
+    width: 90vw;
 
     display: flex;
     flex-direction: column;
@@ -876,19 +868,24 @@ const StyledLegals= styled.div`
     justify-content: center;
     gap: 0.4rem;
 
+    font-size: 0.8rem;
+    font-weight: 200;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        
 `;
 
 const SectionHeadline = styled.div`
-    width: 100%;
-    margin-top: 1rem;
+    width: 90vw;
 
     padding: ${(props) => props.theme.sectionHeadlinePadding};
 
-    border-radius: ${(props) => props.theme.buttonBorderRadius};
+    border-radius: ${(props) => props.theme.buttonBorderRadius} ${(props) => props.theme.buttonBorderRadius} 0 0;
 
     background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
     color: ${(props) => props.theme.sectionHeadlineColor};
 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 export default Legals;

@@ -42,7 +42,8 @@ const ClearUserData = () => {
 
 const StyledClear= styled.div`
 
-    width: 100%;
+  margin-top: 2rem;
+  width: 90vw;
 
     display: flex;
     flex-direction: column;
@@ -50,26 +51,31 @@ const StyledClear= styled.div`
     justify-content: center;
     gap: 0.4rem;
 
+    font-size: 0.8rem;
+    font-weight: 200;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 `;
 
 const SectionHeadline = styled.div`
-    width: 100%;
-    margin-top: 1rem;
+  width: 100%;
 
-    padding: ${(props) => props.theme.sectionHeadlinePadding};
+  padding: ${(props) => props.theme.sectionHeadlinePadding};
 
-    border-radius: ${(props) => props.theme.buttonBorderRadius};
+  border-radius: ${(props) => props.theme.buttonBorderRadius} ${(props) => props.theme.buttonBorderRadius} 0 0;
 
-    background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
-    color: ${(props) => props.theme.sectionHeadlineColor};
+  background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
+  color: ${(props) => props.theme.sectionHeadlineColor};
 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 const StyledClearLocal = styled.div`
   align-self: start;
 
   width: 100%;
-  margin-top: 0.5rem;
+  padding: 1rem;
 
   display: flex;
   justify-content: space-between;
@@ -80,13 +86,16 @@ const StyledClearLocal = styled.div`
 
   font-size: 1rem;
   font-weight: 500;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 const StyledClearUser = styled.div`
   align-self: start;
 
   width: 100%;
-
+  padding: 1rem;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,6 +105,8 @@ const StyledClearUser = styled.div`
 
   font-size: 1rem;
   font-weight: 500;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 export default ClearData;

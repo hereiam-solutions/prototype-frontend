@@ -32,7 +32,7 @@ const Skills = () => {
 
 const StyledSkillsWrapper = styled.div`
   margin-top: 2rem;
-  width: 100vw;
+  width: 90vw;
 
   display: flex;
   flex-direction: column;
@@ -54,13 +54,13 @@ const StyledSkillsWrapper = styled.div`
   }
 
   li {
-    width: 100vw;
+    width: 90vw;
     padding: 1rem;
   }
 `;
 
 const SectionHeadline = styled.div`
-    width: 100%;
+    width: 90vw;
 
     padding: ${(props) => props.theme.sectionHeadlinePadding};
 
@@ -69,6 +69,7 @@ const SectionHeadline = styled.div`
     background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
     color: ${(props) => props.theme.sectionHeadlineColor};
 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 export default Skills;
