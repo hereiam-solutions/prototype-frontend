@@ -7,8 +7,8 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 // component imports
 import App from "./App";
-import Profile from "./components/navigation/withoutActiveMission/drawContent/Profile";
-import Settings from "./components/navigation/withoutActiveMission/drawContent/Settings";
+import Profile from "./components/navigation/withoutActiveMission/drawContent/Profile/Profile";
+import Settings from "./components/navigation/withoutActiveMission/drawContent/Settings/Settings";
 import ActiveDashboard from "./components/navigation/withActiveMission/drawContent/ActiveDashboard";
 import Home from "./components/navigation/Home";
 import Layout from "./components/navigation/withoutActiveMission/Layout";
