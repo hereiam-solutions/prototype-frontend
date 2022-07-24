@@ -17,12 +17,16 @@ function SetMarker() {
     markerType,
   } = useActionMenu();
 
-  const { setLocation } = useCreateMarker();
+  const {
+    setCreateMarkerLocation: setLocation,
+    createMarkerLocation: location,
+  } = useCreateMarker();
 
   const map = useMapEvents({
     async click(e) {
       if (isCreateMarkerModeEnabled) {
         setLocation([e.latlng.lat, e.latlng.lng]);
+        console.log(location);
 
         setIsDrawOpen(true);
 

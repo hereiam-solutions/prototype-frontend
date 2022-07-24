@@ -17,44 +17,50 @@ import useRealmFunction from "../../../../../hooks/useRealmFunction";
 import { ReactComponent as AvalanceIcon } from "../../../../../assets/Hazards/Alert=Avalanche.svg";
 
 import useNavigation from "../../../../../hooks/useNavigation";
+import {
+  ageGroups,
+  CreatePatientArgs,
+  genders,
+  injuries,
+  statuses,
+} from "../../../../../data/realm/schema/patient";
+import SingleDropdown from "../../../SingleDropdown";
 
 const CreatePatientMarker = () => {
   const { realm } = useRealm();
-  const { location } = useCreateMarker();
+  const { createMarkerLocation: location } = useCreateMarker();
   const { activeMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
 
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [selectedType, setSelectedType] = useState<hazardTypes>(
-    hazardTypes.AVALANCHE
-  );
-
-  const [identifierValue, setIdentifierValue] = useState<string>("");
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIdentifierValue(event.currentTarget.value);
-  };
-
   const handleSubmit = async () => {
     try {
       if (activeMission) {
-        const args: CreateHazardArgs = {
-          identifier: identifierValue,
+        console.log(realm.currentUser?.customData);
+
+        const args: CreatePatientArgs = {
           mission: activeMission._id.toString(),
-          hazard_type: selectedType,
-          status: "active",
+          agegroup: selectedAgeGroup as ageGroups,
+          gender: selectedGender as genders,
+          status: selectedStatus as statuses,
+          injuries: selectedInjuries as injuries,
+          isTeamMember: false,
           geoJSON: { type: "Point", coordinates: location },
         };
+
+        console.log("args", args);
 
         setLoading(true);
 
         if (realm.currentUser) {
           // call the Realm function
-          await realm.currentUser.callFunction(
-            realmFunctionNames.createHazard,
+          const response = await realm.currentUser.callFunction(
+            realmFunctionNames.createPatient,
             args
           );
+
+          console.log(response);
         }
 
         setLoading(false);
@@ -63,38 +69,97 @@ const CreatePatientMarker = () => {
     } catch (e) {
       console.log(
         "There has been an error while calling the Realm custom function called:",
-        realmFunctionNames.createHazard,
+        realmFunctionNames.createPatient,
         "Error:",
         e
       );
     }
   };
 
+  // ageGroup
+  const [selectedAgeGroup, setSelectedAgeGroup] = useState<string>(
+    ageGroups.ZERO
+  );
+
+  const handleAgeGroupChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedAgeGroup(e.currentTarget.value);
+  };
+
+  // gender
+  const [selectedGender, setSelectedGender] = useState<string>(genders.UNKNOWN);
+
+  const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedGender(e.currentTarget.value);
+  };
+
+  // status
+  const [selectedStatus, setSelectedStatus] = useState<string>(
+    statuses.NOTURGENT
+  );
+
+  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedStatus(e.currentTarget.value);
+  };
+
+  // injuries
+  const [selectedInjuries, setSelectedInjuries] = useState<string>(
+    injuries.NONE
+  );
+
+  const handleInjuriesChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedInjuries(e.currentTarget.value);
+  };
+
   return (
     <StyledWrapper>
-      <StyledHeader>Set Hazard</StyledHeader>
-      <StyledSecondaryHeading>Type of Hazard:</StyledSecondaryHeading>
-      <StyledIconRow>
-        <AvalanceIcon
-          className={`icon ${
-            selectedType === hazardTypes.AVALANCHE ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(hazardTypes.AVALANCHE);
-          }}
+      <StyledHeader>Set Patient</StyledHeader>
+
+      <StyledSectionWrapper>
+        <StyledSecondaryHeading>Age Group:</StyledSecondaryHeading>
+
+        <SingleDropdown
+          options={ageGroupDropwdownOptions}
+          value={selectedAgeGroup}
+          label={""}
+          onChange={handleAgeGroupChange}
         />
-      </StyledIconRow>
+      </StyledSectionWrapper>
 
-      <StyledSecondaryHeading>Hazard Description:</StyledSecondaryHeading>
+      <StyledSectionWrapper>
+        <StyledSecondaryHeading>Gender:</StyledSecondaryHeading>
 
-      <StyledIdentifierInput
-        onChange={handleInputChange}
-        type="text"
-        value={identifierValue}
-      />
+        <SingleDropdown
+          options={genderDropwdownOptions}
+          value={selectedGender}
+          label={""}
+          onChange={handleGenderChange}
+        />
+      </StyledSectionWrapper>
+
+      <StyledSectionWrapper>
+        <StyledSecondaryHeading>Status:</StyledSecondaryHeading>
+
+        <SingleDropdown
+          options={statusDropwdownOptions}
+          value={selectedStatus}
+          label={""}
+          onChange={handleStatusChange}
+        />
+      </StyledSectionWrapper>
+
+      <StyledSectionWrapper>
+        <StyledSecondaryHeading>Injuries:</StyledSecondaryHeading>
+
+        <SingleDropdown
+          options={injuryDropwdownOptions}
+          value={selectedInjuries}
+          label={""}
+          onChange={handleInjuriesChange}
+        />
+      </StyledSectionWrapper>
 
       <StyledButton onClick={handleSubmit}>
-        {loading ? "loading..." : "Submit Hazard"}
+        {loading ? "loading..." : "Submit Patient"}
       </StyledButton>
     </StyledWrapper>
   );
@@ -118,35 +183,42 @@ const StyledSecondaryHeading = styled.div`
   align-self: start;
 `;
 
-const StyledIconRow = styled.div`
-  height: 60px;
-  width: 100%;
-
-  overflow: auto;
-  white-space: nowrap;
-
-  .icon {
-    height: 50px;
-    width: 50px;
-  }
-
-  .selected {
-    background-color: grey;
-    border-radius: 50%;
-  }
-`;
-
-const StyledIdentifierInput = styled.input`
-  width: 100%;
-  height: 2rem;
-  border: 1px solid black;
-`;
-
 const StyledButton = styled.button`
   padding: 0.5rem;
   border-radius: 20px;
   color: white;
   background: grey;
 `;
+
+const StyledSectionWrapper = styled.div``;
+
+// dropdown options
+const ageGroupDropwdownOptions = [
+  { label: ageGroups.ZERO, value: ageGroups.ZERO },
+  { label: ageGroups.ONE, value: ageGroups.ONE },
+  { label: ageGroups.TWO, value: ageGroups.TWO },
+  { label: ageGroups.THREE, value: ageGroups.THREE },
+  { label: ageGroups.FOUR, value: ageGroups.FOUR },
+];
+
+const genderDropwdownOptions = [
+  { label: genders.MALE, value: genders.MALE },
+  { label: genders.FEMALE, value: genders.FEMALE },
+  { label: genders.DIVERSE, value: genders.DIVERSE },
+  { label: genders.UNKNOWN, value: genders.UNKNOWN },
+];
+
+const statusDropwdownOptions = [
+  { label: statuses.ONGOINGCPR, value: statuses.ONGOINGCPR },
+  { label: statuses.URGENT, value: statuses.URGENT },
+  { label: statuses.LESSURGENT, value: statuses.LESSURGENT },
+  { label: statuses.NOTURGENT, value: statuses.NOTURGENT },
+];
+
+const injuryDropwdownOptions = [
+  { label: injuries.NONE, value: injuries.NONE },
+  { label: injuries.STABLE, value: injuries.STABLE },
+  { label: injuries.CRITICAL, value: injuries.CRITICAL },
+];
 
 export default CreatePatientMarker;

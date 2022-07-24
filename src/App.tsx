@@ -1,25 +1,26 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 // React router imports
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
 // Context imports
-import RealmContext from './context/RealmContext';
-import NavigationContext from './context/NavigationContext';
-import ActionMenuContext from './context/ActionMenuContext';
+import RealmContext from "./context/RealmContext";
+import NavigationContext from "./context/NavigationContext";
+import ActionMenuContext from "./context/ActionMenuContext";
 
 // Theming imports
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyles, darkTheme, lightTheme } from './styles/GlobalStyle';
-import useTheme from './hooks/useTheme';
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles, darkTheme, lightTheme } from "./styles/GlobalStyle";
+import useTheme from "./hooks/useTheme";
 
 // helper functions imports
-import connectToRealm from './helpers/connectToRealm';
+import connectToRealm from "./helpers/connectToRealm";
 
 // type imports
-import { MarkerType } from './components/map/mapTypes';
-import MissionContext from './context/MissionContext';
-import { MissionSchema } from './data/realm/schema/mission';
+import { Location, MarkerType } from "./components/map/mapTypes";
+import MissionContext from "./context/MissionContext";
+import { MissionSchema } from "./data/realm/schema/mission";
+import CreateMarkerContext from "./context/CreateMarkerContext";
 
 const App = () => {
   // get the current theme
@@ -39,6 +40,11 @@ const App = () => {
     useState<boolean>(false);
   const [markerType, setMarkerType] = useState<MarkerType>(MarkerType.HAZARD);
 
+  // state for the create marker context
+  const [createMarkerLocation, setCreateMarkerLocation] = useState<Location>([
+    0, 0,
+  ]);
+
   // state for the mission context
   const [activeMission, setActiveMission] = useState<MissionSchema | null>(
     null
@@ -55,7 +61,7 @@ const App = () => {
     <>
       <RealmContext.Provider value={{ realm }}>
         {/* pass the appropriate global values for the current theme */}
-        <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
+        <ThemeProvider theme={currentTheme === "dark" ? darkTheme : lightTheme}>
           <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>
             <ActionMenuContext.Provider
               value={{
@@ -79,8 +85,12 @@ const App = () => {
                   setPolygonDrawingCoordinates,
                 }}
               >
-                {/* React Router Outlet component always renders children  */}
-                <Outlet />
+                <CreateMarkerContext.Provider
+                  value={{ createMarkerLocation, setCreateMarkerLocation }}
+                >
+                  {/* React Router Outlet component always renders children  */}
+                  <Outlet />
+                </CreateMarkerContext.Provider>
               </MissionContext.Provider>
             </ActionMenuContext.Provider>
             <GlobalStyles />

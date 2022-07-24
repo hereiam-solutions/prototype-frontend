@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 import {
   MapContainer,
   TileLayer,
@@ -10,20 +10,27 @@ import {
   ZoomControl,
   LayersControl,
   LayerGroup,
-} from 'react-leaflet';
-import L, { Icon, latLng } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import mockLocationData from '../../data/locationData.json';
-import { ActiveMarkerType } from './mapTypes';
-import GetCurrentLocation from './mapEvents/CurrentLocationMarker';
-import SetMapCenter from './mapEvents/SetMapCenter';
-import SetMarker from './mapEvents/SetMarker';
-import ActivateActionMenu from './mapEvents/ActivateActionMenu';
-import useActionMenu from '../../hooks/useActionMenu';
-import { Location } from './mapTypes';
+} from "react-leaflet";
+import L, { Icon, latLng } from "leaflet";
+import "leaflet/dist/leaflet.css";
+import mockLocationData from "../../data/locationData.json";
+import { ActiveMarkerType } from "./mapTypes";
+import GetCurrentLocation from "./mapEvents/CurrentLocationMarker";
+import SetMapCenter from "./mapEvents/SetMapCenter";
+import SetMarker from "./mapEvents/SetMarker";
+import ActivateActionMenu from "./mapEvents/ActivateActionMenu";
+import useActionMenu from "../../hooks/useActionMenu";
+import { Location } from "./mapTypes";
+import useRealm from "../../hooks/useRealm";
+import { realmFunctionNames } from "../../data/realm/functions";
+import useMission from "../../hooks/useMission";
+import { HazardSchema } from "../../data/realm/schema/hazard";
+import HazardMarker from "./markers/HazardMarker";
+import { LocationSchema } from "../../data/realm/schema/location";
+import { PatientSchema } from "../../data/realm/schema/patient";
 
 const fireHazardIcon = new Icon({
-  iconUrl: '/fire_hazard_icon.svg',
+  iconUrl: "/fire_hazard_icon.svg",
   iconSize: [25, 25],
 });
 
@@ -31,6 +38,44 @@ const MissionMap = () => {
   //   const hazardsRef = useRef<L.Layer>();
   //   const casualtiesRef = useRef();
   //   const booRef = useRef();
+
+  const { realm } = useRealm();
+  const { activeMission } = useMission();
+
+  const [patients, setPatients] = useState<PatientSchema[]>([]);
+  const [hazards, setHazards] = useState<HazardSchema[]>([]);
+  const [locations, setLocations] = useState<LocationSchema[]>([]);
+
+  useEffect(() => {
+    const getAllMarkers = async () => {
+      try {
+        if (realm.currentUser) {
+          // call the Realm function
+          const patientsResponse = await realm.currentUser.callFunction(
+            realmFunctionNames.getAllPatientsForMission,
+            { mission: activeMission?._id.toString() }
+          );
+
+          const hazardsResponse = await realm.currentUser.callFunction(
+            realmFunctionNames.getAllHazardsForMission,
+            { mission: activeMission?._id.toString() }
+          );
+
+          const locationsResponse = await realm.currentUser.callFunction(
+            realmFunctionNames.getAllLocationsForMission,
+            { mission: activeMission?._id.toString() }
+          );
+
+          setPatients(patientsResponse as PatientSchema[]);
+          setLocations(locationsResponse as LocationSchema[]);
+          setHazards(hazardsResponse as HazardSchema[]);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getAllMarkers();
+  }, []);
 
   return (
     <>
@@ -53,15 +98,22 @@ const MissionMap = () => {
         >
           <LayersControl.Overlay checked={true} name="Hazards">
             <LayerGroup>
-              {mockLocationData.features.map((location) => (
-                <Marker
-                  key={location.id}
-                  position={[location.latitude, location.longitude]}
-                  icon={fireHazardIcon}
-                >
-                  <Popup>{location.name}</Popup>
-                </Marker>
+              {hazards.map((hazard: HazardSchema) => (
+                <HazardMarker
+                  key={hazard._id.toString()}
+                  coordinates={hazard.geoJSON.coordinates}
+                  type={hazard.hazard_type}
+                />
               ))}
+            </LayerGroup>
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay name="Hazards">
+            <LayerGroup>
+              <HazardMarker
+                coordinates={[52.45536083656686, 13.527504299689658]}
+                type="Avalanche"
+              ></HazardMarker>
             </LayerGroup>
           </LayersControl.Overlay>
 
@@ -78,7 +130,6 @@ const MissionMap = () => {
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
-
           <LayersControl.Overlay name="BoO">
             <LayerGroup>
               {mockLocationData.features.map((location) => (

@@ -37,7 +37,7 @@ import useNavigation from "../../../../../hooks/useNavigation";
 
 const CreateHazardMarker = () => {
   const { realm } = useRealm();
-  const { location } = useCreateMarker();
+  const { createMarkerLocation: location } = useCreateMarker();
   const { activeMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
 

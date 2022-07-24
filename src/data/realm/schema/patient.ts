@@ -17,35 +17,35 @@ import { locationTypes } from "../../../components/map/mapTypes";
 //   'TEAMMEMBER' = 'teamMember',
 // }
 
-enum ageGroups {
-  "0-1",
-  "2-5",
-  "6-11",
-  "12-64",
-  "65+",
+export enum ageGroups {
+  ZERO = "0-1",
+  ONE = "2-5",
+  TWO = "6-11",
+  THREE = "12-64",
+  FOUR = "65+",
 }
 
-enum genders {
-  "male",
-  "female",
-  "divers",
-  "unknown",
+export enum genders {
+  MALE = "male",
+  FEMALE = "female",
+  DIVERSE = "divers",
+  UNKNOWN = "unknown",
 }
 
-enum statuses {
-  "ongoing CPR",
-  "urgent",
-  "less urgent",
-  "not urgent",
+export enum statuses {
+  ONGOINGCPR = "ongoing CPR",
+  URGENT = "urgent",
+  LESSURGENT = "less urgent",
+  NOTURGENT = "not urgent",
 }
 
-enum injuries {
-  "none",
-  "stable",
-  "critical",
+export enum injuries {
+  NONE = "none",
+  STABLE = "stable",
+  CRITICAL = "critical",
 }
 
-enum extricated {
+export enum extricated {
   "assist only",
   "light debris",
   "ASR3",
@@ -53,7 +53,7 @@ enum extricated {
   "ASR5",
 }
 
-enum handover {
+export enum handover {
   "Family",
   "Locals",
   "Ambulance",
@@ -95,7 +95,7 @@ export type PatientSchema = {
 };
 
 export type CreatePatientArgs = {
-  mission: BSON.ObjectId;
+  mission: string;
   agegroup: ageGroups;
   gender: genders;
   status: statuses;

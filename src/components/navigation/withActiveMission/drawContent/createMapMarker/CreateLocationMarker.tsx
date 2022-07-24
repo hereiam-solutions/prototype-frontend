@@ -21,7 +21,7 @@ import { CreateLocationArgs } from "../../../../../data/realm/schema/location";
 
 const CreateLocationMarker = () => {
   const { realm } = useRealm();
-  const { location } = useCreateMarker();
+  const { createMarkerLocation: location } = useCreateMarker();
   const { activeMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
 
@@ -73,8 +73,8 @@ const CreateLocationMarker = () => {
 
   return (
     <StyledWrapper>
-      <StyledHeader>Set Hazard</StyledHeader>
-      <StyledSecondaryHeading>Type of Hazard:</StyledSecondaryHeading>
+      <StyledHeader>Set Location</StyledHeader>
+      <StyledSecondaryHeading>Type of :</StyledSecondaryHeading>
       <StyledIconRow>
         <AvalanceIcon
           className={`icon ${
