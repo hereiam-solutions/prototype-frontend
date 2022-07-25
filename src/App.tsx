@@ -29,7 +29,7 @@ const App = () => {
   // initialize the MongoDB Realm connection
   const realm = connectToRealm();
 
-  const [currentTheme, setCurrentTheme] = useState<ThemeEnum>(ThemeEnum.LIGHT);
+  const [currentTheme, setCurrentTheme] = useState<ThemeEnum>(ThemeEnum.DARK);
 
   // state for the draw / navigation context
   const [isDrawOpen, setIsDrawOpen] = useState<boolean>(false);

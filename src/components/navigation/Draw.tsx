@@ -1,9 +1,8 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import useNavigation from '../../hooks/useNavigation';
-import useMission from '../../hooks/useMission';
+import { Outlet } from "react-router-dom";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import useNavigation from "../../hooks/useNavigation";
+import useMission from "../../hooks/useMission";
 
 type DrawPropsType = {
   usedInAuthentication: boolean;
@@ -21,7 +20,7 @@ const Draw = ({ usedInAuthentication }: DrawPropsType) => {
 
       {!usedInAuthentication && (
         <StyledMapOverlay
-          to={activeMission ? '' : '/'}
+          to={activeMission ? "" : "/"}
           onClick={() => setIsDrawOpen(false)}
         />
       )}
@@ -30,7 +29,7 @@ const Draw = ({ usedInAuthentication }: DrawPropsType) => {
 };
 
 const StyledDrawWrapper = styled.div`
-  position: absolute;
+  /* position: absolute; */
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -51,12 +50,14 @@ const StyledMapOverlay = styled(Link)`
 const StyledDrawContentWrapper = styled.div`
   width: 100vw;
   height: 66vh;
-  overflow: hidden;
+  overflow-y: auto;
 
   background: ${(props) => props.theme.secondaryBackgroundColor};
   color: ${(props) => props.theme.secondaryFontColor};
 
   z-index: 4;
+
+  padding: ${(props) => props.theme.drawPadding};
 
   display: flex;
   flex-direction: column;

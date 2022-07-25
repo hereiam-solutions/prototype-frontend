@@ -31,7 +31,7 @@ const Map = () => {
   return (
     <>
       <StyledMapContainer
-        center={[0, 0]}
+        center={[52.53, 13.38]}
         zoom={13}
         scrollWheelZoom={false}
         tap={true}

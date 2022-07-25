@@ -208,8 +208,9 @@ const colors = {
 };
 
 const borderConstants = {
+  inputBorderRadius: "20px",
   primaryBorderRadius: "10px",
-  drawerBorderRadius: "15px",
+  drawerBorderRadius: "50px",
   buttonBorderRadius: "5px",
 };
 
@@ -226,17 +227,14 @@ const font = {
   primaryLineHeight: "1.6rem",
 };
 
-const margins = {
-  insideDrawMargin: "1rem",
-};
-
 const paddings = {
   insideButtonPadding: "0.2rem 0.5rem 0.2rem 0.5rem",
   sectionHeadlinePadding: "0.2rem 0 0.2rem 1rem",
+  drawPadding: "1rem",
 };
 
 export const darkTheme = {
-  primaryBackgroundColor: "var(--base)",
+  primaryBackgroundColor: "#212121",
   secondaryBackgroundColor: "var(--base-text)",
   sectionHeadlineBackgroundColor: "var(--gray-500)",
   sectionHeadlineColor: "var(--base)",
@@ -245,6 +243,7 @@ export const darkTheme = {
   navIconColor: "var(--base-light)",
   mapControlBackground: "var(--gray-300)",
   mapControlColor: "var(--base)",
+  buttonColor: "#C8C8C8",
   formFieldBackground: "var(--gray-500)",
   formFieldColor: "var(--gray-200)",
   formSubmitFillColor: "#F8DE00",
@@ -254,7 +253,6 @@ export const darkTheme = {
   ...colors,
   ...mediaQueries,
   ...font,
-  ...margins,
   ...paddings,
 };
 
@@ -268,6 +266,7 @@ export const lightTheme = {
   navIconColor: "var(--base-light)",
   mapControlBackground: "var(--gray-200)",
   mapControlColor: "var(--base)",
+  buttonColor: "#C8C8C8",
   formFieldBackground: "var(--gray-200)",
   formFieldColor: "var(--base)",
   formSubmitFillColor: "var(--gray-400)",
@@ -277,7 +276,6 @@ export const lightTheme = {
   ...colors,
   ...mediaQueries,
   ...font,
-  ...margins,
   ...paddings,
 };
 

@@ -17,9 +17,6 @@ const JoinMission = () => {
 
   const [error, setError] = useState<string>("");
 
-  const theme = useTheme();
-
-  console.log(theme);
   // starts the polygon drawing process for a mission creation
   const initiateMissionCreation = () => {
     setIsDrawOpen(false);

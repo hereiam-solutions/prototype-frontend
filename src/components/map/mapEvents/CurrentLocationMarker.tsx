@@ -1,18 +1,12 @@
-import { useEffect, useState } from 'react';
-import {
-  useMap,
-  useMapEvents,
-  useMapEvent,
-  Marker,
-  Popup,
-} from 'react-leaflet';
-import { Icon } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import { Location } from '../mapTypes';
+import { useEffect, useState } from "react";
+import { useMapEvents, Marker } from "react-leaflet";
+import { Icon } from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { Location } from "../mapTypes";
 
 const locationIcon = new Icon({
-  iconUrl: '/location.svg',
-  iconSize: [25, 25],
+  iconUrl: "/icons/assets/location.svg",
+  iconSize: [15, 15],
 });
 
 function GetCurrentLocation() {
@@ -33,16 +27,11 @@ function GetCurrentLocation() {
     map.locate({
       setView: true,
       enableHighAccuracy: true,
-      //   watch: true,
-      maxZoom: 13,
+      maxZoom: 20,
     });
   }, [map]);
 
-  return (
-    <Marker position={currentLocation} icon={locationIcon}>
-      <Popup>YOU!</Popup>
-    </Marker>
-  );
+  return <Marker position={currentLocation} icon={locationIcon} />;
 }
 
 export default GetCurrentLocation;
