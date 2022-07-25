@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 import { RiArrowDropRightLine } from "react-icons/ri";
 
 type AccordionProps = {
@@ -17,37 +17,21 @@ const Accordion = ({ heading, children }: AccordionProps) => {
 
   return (
     <StyledWrapper>
-      <StyledHeading onClick={() => 
-          {
-            setAccordionIsOpen(!accordionIsOpen); 
-            setRotateChevron(!rotateChevron);
-          }
-        }>
+      <StyledHeading
+        onClick={() => {
+          setAccordionIsOpen(!accordionIsOpen);
+          setRotateChevron(!rotateChevron);
+        }}
+      >
         <StyledAccordionHeader>
           <p>{heading}</p>
         </StyledAccordionHeader>
-
-        <StyledRotateIcon>
-        {/*<ChevronLogo className={"filters__chevron " + rotateChevron ? "rotate" : null} />*/}
-        </StyledRotateIcon>
-        
+        <ChevronLogo />
       </StyledHeading>
       {accordionIsOpen && <>{children}</>}
     </StyledWrapper>
   );
 };
-
-const StyledRotateIcon = styled.div`
-  .filters__chevron {
-    border-radius: 2px;
-    transition: all 2 linear;
-  }
-
-  .filters__chevron.rotate {
-    transform:rotate(180deg);
-  }
-`;
-
 
 const StyledAccordionHeader = styled.div`
   font-size: 1.3rem;

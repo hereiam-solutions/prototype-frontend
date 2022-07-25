@@ -82,11 +82,11 @@ const MissionMap = () => {
   }, [reRenderBoolean, activeTileLayer]);
 
   const polygonOptions = {
-    color: "red",
+    color: "#cf151e",
     opacity: 0.5,
     weight: 3,
     fill: true,
-    fillColor: "red",
+    fillColor: "#cf151e",
     fillOpacity: 0.05,
   };
 
