@@ -124,6 +124,7 @@ const HowToInstall = () => {
 const WhyLoadSlowly = () => {
   return (
     <div>
+      <p>Please note that this is a project in an early stage of development. Therefore, there may be frequent updates and downtimes.</p>
       <p>First, make sure you have a stable internet connection.</p>
       <br />
       <p>
@@ -156,6 +157,7 @@ const Support = () => {
         If the problem persists, please contact the support team and let us know
         the details so that we can help you better.
       </p>
+      <p>Please note that this is a project in an early stage of development. Therefore, there may be frequent updates and downtimes.</p>
     </StyledSupport>
   );
 };
