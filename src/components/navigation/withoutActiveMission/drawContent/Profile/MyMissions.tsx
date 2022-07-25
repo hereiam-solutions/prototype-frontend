@@ -1,12 +1,7 @@
 import React from 'react';
-import useRealm from '../../../../../hooks/useRealm';
 import styled from 'styled-components';
 
 import { Card } from "./MissionCard/MissionCard";
-
-import Earthquake from 'https://i0.wp.com/eos.org/wp-content/uploads/2022/04/izmit-turkey-quake.jpg';
-import Flood from 'https://149448277.v2.pressablecdn.com/wp-content/uploads/2021/07/germany-floods-2021.jpg';
-import Explosion from 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Damages_after_2020_Beirut_explosions_1.jpg';
 
 const MyMissions = () => {
 
@@ -18,11 +13,11 @@ const MyMissions = () => {
       </SectionHeadline>
 
       <CardContainer>
-        <Card hazard={"Earthquake"} region={"Haiti"} role={"Rescue"}  from={"2021/08/15"} to={"2021/08/20"} imgUrl={Earthquake} />
+        <Card hazard={"Earthquake"} region={"Haiti"} role={"Rescue"}  from={"2021/08/15"} to={"2021/08/20"} />
         <Separator />
-        <Card hazard={"Flood"} region={"Rhineland, Germany"} role={"Team leader"}  from={"2021/07/16"} to={"2021/07/22"} imgUrl={Flood}  />
+        <Card hazard={"Flood"} region={"Rhineland"} role={"Team leader"}  from={"2021/07/16"} to={"2021/07/22"} />
         <Separator />
-        <Card hazard={"Explosion"} region={"Beirut"} role={"Dog handler"} from={"2020/08/04"} to={"2020/08/06"} imgUrl={Explosion} />
+        <Card hazard={"Explosion"} region={"Beirut"} role={"Dog handler"} from={"2020/08/04"} to={"2020/08/06"} />
       </CardContainer>
 
     </StyledMissionsWrapper>
@@ -32,24 +27,24 @@ const MyMissions = () => {
 
 
 const CardContainer = styled.div`
-  width: 100%;
+  width: 90vw;
+  padding: 1rem;
+  height: auto;
 
   display: flex;
-  flex-direction: raw;
-  align-items: center;
+  align-items: top;
   justify-content: flex-start;
   
-  gap: 0.3rem;
-
   border-radius: ${(props) => props.theme.buttonBorderRadius};
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-  
+  ooverflow-x: scroll;
+  overflow-y: hidden;
 `;
 
 const Separator = styled.span`
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 1rem;
+  margin-right: 1rem;
 `;
 
 const StyledMissionsWrapper = styled.div`

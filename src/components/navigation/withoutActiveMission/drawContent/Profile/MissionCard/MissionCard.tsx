@@ -13,28 +13,21 @@ export const Card = ({ hazard, region, role, from, to}: CardType) => {
       
         <CardWrapper>
           
-          <CardTextWrapper>
-            <CardTextDateFrom>{from}</CardTextDateFrom>
-            <CardTextDateTo>{to}</CardTextDateTo>
-            <CardTextHazard>{hazard}</CardTextHazard>
-            <CardTextRegion>{region}</CardTextRegion>
-            <CardTextRole>{role}</CardTextRole>
-          </CardTextWrapper>
+          <CardTop>
 
-          <CardStatWrapper>
-            {/* <CardStats>
-              <div>
-                1<sup>m</sup>
-              </div>
-              <div>read</div>
-            </CardStats> */}
+            <CardTextHazard>{hazard}</CardTextHazard>
+
+            <CardTextRegion>{region}</CardTextRegion>
+
+            <CardTextRole>{role}</CardTextRole>
+
             <CardStats>
-              <LinkText href="#">{from}</LinkText>
+                <small>
+                    {from} <br />to<br /> {to}
+                </small>
             </CardStats>
-            <CardStats>
-              <LinkText href="#">{to}</LinkText>
-            </CardStats>
-          </CardStatWrapper>
+
+          </CardTop>
 
         </CardWrapper>
       
@@ -43,83 +36,87 @@ export const Card = ({ hazard, region, role, from, to}: CardType) => {
 
 
 const CardWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 300px;
-  grid-template-rows: 210px 210px 80px;
-  grid-template-areas: "image" "text" "stats";
-  border-radius: 18px;
-  background: #000;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+  margin-top: 1rem;
+  min-width: 33vw;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: justify-between;
+
+  background-color: ${(props) => props.theme.secondaryBackgroundColor};
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`;
+
+const CardTop = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+ 
+`;
+
+const CardTextHazard =styled.div`
+  width: 100%;
+  
+  background-color: ${(props) => props.theme.secondaryFontColor};
+  color: ${(props) => props.theme.primaryBackgroundColor};
+
   text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+
+  border-radius: ${(props) => props.theme.primaryBorderRadius} ${(props) => props.theme.primaryBorderRadius} 0 0;
+
+
 `;
 
-const CardTextWrapper = styled.div`
-  grid-area: text;
-  margin: 25px;
+const CardTextRegion=styled.div`
+    width: 100%;
+    padding: 0.5rem;
+    
+    background-color: ${(props) => props.theme.primaryBackgroundColor};
+    color: ${(props) => props.theme.primaryFontColor};
+
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.3rem;
+
+    border-radius: 0 0 ${(props) => props.theme.primaryBorderRadius} ${(props) => props.theme.primaryBorderRadius};
+
 `;
 
-const CardTextDateFrom = styled.span`
-  color: rgb(255, 7, 110);
-  font-size: 13px;
-`;
+const CardTextRole =styled.div`
+    width: 100%;
+    padding: 1rem;
 
-const CardTextDateTo = styled.span`
-  color: rgb(255, 7, 110);
-  font-size: 13px;
-`;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
 
-const CardTextHazard = styled.h2`
-  margin-top: 0px;
-  font-size: 2rem;
-  box-sizing: border-box;
-  min-width: 0px;
-  line-height: 1.2;
-  margin: 0px;
-  
-`;
-
-const CardTextRegion = styled.h3`
-  margin-top: 0px;
-  font-size: 2rem;
-  box-sizing: border-box;
-  min-width: 0px;
-  line-height: 1.2;
-  margin: 0px;
-  
-`;
-
-const CardTextRole = styled.h3`
-  margin-top: 0px;
-  font-size: 2rem;
-  box-sizing: border-box;
-  min-width: 0px;
-  line-height: 1.2;
-  margin: 0px;
-  
-`;
-
-const CardStatWrapper = styled.div`
-  grid-area: stats;
-  display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr; */
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background: #5930e5;
 `;
 
 const CardStats = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: white;
-  padding: 10px;
-`;
+    width: 33vw;
+    padding: 1rem;
+    heigth: auto;
 
-const LinkText = styled.a`
-  color: #fff;
-  text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    text-align: center;
+    font-size: 0.8rem;
+    font-weigth: 300;
+    line-heigth: 1.2rem;
+
+
+    border-top: 1px solid ${(props) => props.theme.sectionHeadlineBackgroundColor};
+    border-radius: ${(props) => props.theme.primaryBorderRadius} ${(props) => props.theme.primaryBorderRadius} 0 0;  
 `;
