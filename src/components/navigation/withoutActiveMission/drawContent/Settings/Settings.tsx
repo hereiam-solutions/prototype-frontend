@@ -2,10 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import Accordion from "../../../ui/Accordion";
 import { RiContrast2Fill, RiTranslate, RiRoadMapLine } from "react-icons/ri";
+import useMissionMap from "../../../../../hooks/useMissionMap";
+import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
 
-type Props = {};
+const AllowTrackingIcon = RiRoadMapLine;
+const LanguageSwitchIcon = RiTranslate;
+const ThemeSwitchIcon = RiContrast2Fill;
 
-const Settings = (props: Props) => {
+const Settings = () => {
+  const { setActiveTileLayer, setReRenderBoolean, reRenderBoolean } =
+    useMissionMap();
   return (
     <StyledSettingsWrapper>
       <StyledHeader>
@@ -13,11 +19,38 @@ const Settings = (props: Props) => {
       </StyledHeader>
 
       <Accordion heading={"MAP"}>
-        <AllowTracking />
+        <StyledMapTileWrapper>
+          <div
+            onClick={() => {
+              setActiveTileLayer(ActiveTileLayerEnum.DEFAULT);
+              setReRenderBoolean(!reRenderBoolean);
+            }}
+          >
+            Default
+          </div>
+          {/* <div onClick={() => setActiveTileLayer(ActiveTileLayerEnum.CYCLOSM)}>
+            CYCLOSM
+          </div> */}
+          <div
+            onClick={() => {
+              setActiveTileLayer(ActiveTileLayerEnum.HUMANITARIAN);
+              setReRenderBoolean(!reRenderBoolean);
+            }}
+          >
+            Humanitarian
+          </div>
+          <div
+            onClick={() => {
+              setActiveTileLayer(ActiveTileLayerEnum.SATELLITE);
+              setReRenderBoolean(!reRenderBoolean);
+            }}
+          >
+            Sattelite
+          </div>
+        </StyledMapTileWrapper>
       </Accordion>
 
       <Accordion heading={"INTERFACE"}>
-        <LanguageSwitch />
         <ThemeSwitch />
       </Accordion>
 
@@ -25,29 +58,17 @@ const Settings = (props: Props) => {
     </StyledSettingsWrapper>
   );
 };
-const AllowTrackingIcon = RiRoadMapLine;
-const AllowTracking = () => {
-  return (
-    <StyledItemSwitch>
-      <p>Track me</p>
-      <AllowTrackingIcon />
-    </StyledItemSwitch>
-  );
-};
 
-//Choose Language
-const LanguageSwitchIcon = RiTranslate;
-const LanguageSwitch = () => {
-  return (
-    <StyledItemSwitch>
-      <p>Choose Language</p>
-      <LanguageSwitchIcon />
-    </StyledItemSwitch>
-  );
-};
+const StyledMapTileWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 //Toggle
-const ThemeSwitchIcon = RiContrast2Fill;
+
 const ThemeSwitch = () => {
   return (
     <StyledItemSwitch>

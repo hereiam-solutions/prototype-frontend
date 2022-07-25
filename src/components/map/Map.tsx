@@ -1,21 +1,32 @@
-import styled from 'styled-components';
-import { MapContainer, TileLayer } from 'react-leaflet';
-import DrawPolygon from './DrawPolygon';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-draw/dist/leaflet.draw.css';
+import styled from "styled-components";
+import { MapContainer, TileLayer } from "react-leaflet";
+import DrawPolygon from "./DrawPolygon";
+import "leaflet/dist/leaflet.css";
+import "leaflet-draw/dist/leaflet.draw.css";
 
-import GetCurrentLocation from './mapEvents/CurrentLocationMarker';
-import useMission from '../../hooks/useMission';
-import { useEffect, useState } from 'react';
+import GetCurrentLocation from "./mapEvents/CurrentLocationMarker";
+import useMission from "../../hooks/useMission";
+import { useEffect, useRef, useState } from "react";
+import useMissionMap from "../../hooks/useMissionMap";
 
 const Map = () => {
-  const { isPolygonDrawingActive } = useMission();
+  const { activeTileLayer, reRenderBoolean } = useMissionMap();
 
-  const [showDrawingTools, setShowDrawingTools] = useState<boolean>(false);
+  const tileLayerRef = useRef(null);
 
   useEffect(() => {
-    setShowDrawingTools(isPolygonDrawingActive);
-  }, [isPolygonDrawingActive]);
+    const getAllMarkers = async () => {
+      try {
+        if (tileLayerRef.current) {
+          // @ts-ignore
+          tileLayerRef.current.setUrl(activeTileLayer);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getAllMarkers();
+  }, [reRenderBoolean, activeTileLayer]);
 
   return (
     <>
@@ -26,12 +37,7 @@ const Map = () => {
         tap={true}
         attributionControl={false}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-
-        {/* {isPolygonDrawingActive && <DrawPolygon />} */}
+        <TileLayer ref={tileLayerRef} url={activeTileLayer} />
 
         <GetCurrentLocation />
       </StyledMapContainer>

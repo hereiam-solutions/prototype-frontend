@@ -7,7 +7,7 @@ import { ReactNode, createContext, useState } from "react";
 
 export enum ActiveTileLayerEnum {
   DEFAULT = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  CYCLOSM = "https://{s}.tile-cyclosm.openstreetmap.fr/[cyclosm|cyclosm-lite]/{z}/{x}/{y}.png",
+  //   CYCLOSM = "https://{s}.tile-cyclosm.openstreetmap.fr/[cyclosm|cyclosm-lite]/{z}/{x}/{y}.png",
   HUMANITARIAN = "https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
   SATELLITE = "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
 }

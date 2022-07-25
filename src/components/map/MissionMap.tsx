@@ -43,6 +43,8 @@ const MissionMap = () => {
   const [hazards, setHazards] = useState<HazardSchema[]>([]);
   const [locations, setLocations] = useState<LocationSchema[]>([]);
 
+  const tileLayerRef = useRef(null);
+
   useEffect(() => {
     const getAllMarkers = async () => {
       try {
@@ -67,22 +69,17 @@ const MissionMap = () => {
           setLocations(locationsResponse as LocationSchema[]);
           setHazards(hazardsResponse as HazardSchema[]);
         }
+
+        if (tileLayerRef.current) {
+          // @ts-ignore
+          tileLayerRef.current.setUrl(activeTileLayer);
+        }
       } catch (e) {
         console.log(e);
       }
     };
     getAllMarkers();
-  }, [reRenderBoolean]);
-
-  const tileLayerOptions = {
-    default: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    cyclOSM:
-      "https://{s}.tile-cyclosm.openstreetmap.fr/[cyclosm|cyclosm-lite]/{z}/{x}/{y}.png",
-    humanitarian: "https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
-    satellite: "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-    anotherSatellite:
-      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-  };
+  }, [reRenderBoolean, activeTileLayer]);
 
   const polygonOptions = {
     color: "red",
@@ -102,7 +99,7 @@ const MissionMap = () => {
         tap={true}
         attributionControl={false}
       >
-        <TileLayer url={activeTileLayer} />
+        <TileLayer ref={tileLayerRef} url={activeTileLayer} />
 
         <LayersControl
           collapsed={true}
