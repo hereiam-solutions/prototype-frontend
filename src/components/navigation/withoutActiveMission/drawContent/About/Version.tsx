@@ -7,9 +7,12 @@ type Props = {};
 const Version = (props: Props) => {
   return (
     <StyledVersion>
-        <img src={LogoHereiam} width="40px" alt="hereIam Logo" />
+        <img src={LogoHereiam} width="65px" alt="hereIam Logo" />
+        <br />
         <p>hereIam Prototype</p>
         <small>Version 0.0.1 (554234)</small>
+        <strong>&copy; 2022 hereIam solutions</strong>
+        <p>All rights reserved.</p>
         <UpdateButton>
             Update
         </UpdateButton>
@@ -30,7 +33,7 @@ const StyledVersion = styled.div`
 
     padding: ${(props) => props.theme.insideDrawMargin};
 
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 200;
 `;
 
