@@ -58,7 +58,8 @@ const Profile = () => {
           sortable={false} 
           right={false} 
           columns={undefined} 
-          defaultSortField={""} 
+          defaultSortField={""}
+          customStyles={""}
         />
 
         <StyledLogOutButton onClick={handleLogOut}>

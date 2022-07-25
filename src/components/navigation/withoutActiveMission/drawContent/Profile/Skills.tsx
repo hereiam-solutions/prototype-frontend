@@ -77,7 +77,7 @@ const Skills = ({ id, category, date, titel, institution, confirmation, columns 
       <SectionHeadline>
         My Skills and Certifications
       </SectionHeadline>
-
+{/** not working yet
       <DataTable
           title="Skills"
           columns={columns}
@@ -87,6 +87,7 @@ const Skills = ({ id, category, date, titel, institution, confirmation, columns 
           selectableRows
           customStyles={customStyles}
       />
+*/}
 
     </StyledSkillsWrapper>
   );
