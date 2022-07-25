@@ -10,6 +10,8 @@ import {
   ZoomControl,
   LayersControl,
   LayerGroup,
+  Polyline,
+  Polygon,
 } from "react-leaflet";
 import L, { Icon, latLng } from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -31,16 +33,7 @@ import { PatientSchema } from "../../data/realm/schema/patient";
 import PatientMarker from "./markers/PatientMarker";
 import LocationMarker from "./markers/LocationMarker";
 
-const fireHazardIcon = new Icon({
-  iconUrl: "/fire_hazard_icon.svg",
-  iconSize: [25, 25],
-});
-
 const MissionMap = () => {
-  //   const hazardsRef = useRef<L.Layer>();
-  //   const casualtiesRef = useRef();
-  //   const booRef = useRef();
-
   const { realm } = useRealm();
   const { activeMission } = useMission();
 
@@ -79,6 +72,25 @@ const MissionMap = () => {
     getAllMarkers();
   }, []);
 
+  const tileLayerOptions = {
+    default: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    cyclOSM:
+      "https://{s}.tile-cyclosm.openstreetmap.fr/[cyclosm|cyclosm-lite]/{z}/{x}/{y}.png",
+    humanitarian: "https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+    satellite: "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+    anotherSatellite:
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  };
+
+  const polygonOptions = {
+    color: "red",
+    opacity: 0.5,
+    weight: 3,
+    fill: true,
+    fillColor: "red",
+    fillOpacity: 0.05,
+  };
+
   return (
     <>
       <StyledMapContainer
@@ -88,16 +100,24 @@ const MissionMap = () => {
         tap={true}
         attributionControl={false}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <TileLayer url={tileLayerOptions.satellite} />
 
         <LayersControl
           collapsed={true}
           hideSingleBase={true}
           position="topright"
         >
+          <LayersControl.Overlay checked={true} name="Locations">
+            <LayerGroup>
+              <Polygon
+                pathOptions={polygonOptions}
+                positions={
+                  activeMission?.geoJSON.coordinates as L.LatLngExpression[][]
+                }
+              />
+            </LayerGroup>
+          </LayersControl.Overlay>
+
           <LayersControl.Overlay checked={true} name="Locations">
             <LayerGroup>
               {locations.map((location: LocationSchema) => (
