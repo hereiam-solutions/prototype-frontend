@@ -4,6 +4,10 @@ import styled from 'styled-components';
 
 import { Card } from "./MissionCard/MissionCard";
 
+import Earthquake from 'https://i0.wp.com/eos.org/wp-content/uploads/2022/04/izmit-turkey-quake.jpg';
+import Flood from 'https://149448277.v2.pressablecdn.com/wp-content/uploads/2021/07/germany-floods-2021.jpg';
+import Explosion from 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Damages_after_2020_Beirut_explosions_1.jpg';
+
 const MyMissions = () => {
 
   return (
@@ -14,11 +18,11 @@ const MyMissions = () => {
       </SectionHeadline>
 
       <CardContainer>
-        <Card hazard={"Earthquake"} region={"Haiti"} role={"Rescue"}  from={"2021/08/15"} to={"2021/08/20"} />
+        <Card hazard={"Earthquake"} region={"Haiti"} role={"Rescue"}  from={"2021/08/15"} to={"2021/08/20"} imgUrl={Earthquake} />
         <Separator />
-        <Card hazard={"Flood"} region={"Rhineland, Germany"} role={"Team leader"}  from={"2021/07/16"} to={"2021/07/22"} />
+        <Card hazard={"Flood"} region={"Rhineland, Germany"} role={"Team leader"}  from={"2021/07/16"} to={"2021/07/22"} imgUrl={Flood}  />
         <Separator />
-        <Card hazard={"Explosion"} region={"Beirut"} role={"Dog handler"} from={"2020/08/04"} to={"2020/08/06"} />
+        <Card hazard={"Explosion"} region={"Beirut"} role={"Dog handler"} from={"2020/08/04"} to={"2020/08/06"} imgUrl={Explosion} />
       </CardContainer>
 
     </StyledMissionsWrapper>

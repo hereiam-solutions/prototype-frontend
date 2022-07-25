@@ -1,17 +1,24 @@
-import { CardType } from "./CardTypes";
 import styled from "styled-components";
+
+type CardType = {
+    hazard: string;
+    region: string;
+    role: string;
+    from: string;
+    to: string;
+  };
 
 export const Card = ({ hazard, region, role, from, to}: CardType) => {
     return (
       
         <CardWrapper>
-
+          
           <CardTextWrapper>
             <CardTextDateFrom>{from}</CardTextDateFrom>
             <CardTextDateTo>{to}</CardTextDateTo>
             <CardTextHazard>{hazard}</CardTextHazard>
             <CardTextRegion>{region}</CardTextRegion>
-            <CardTextRole>{region}</CardTextRole>
+            <CardTextRole>{role}</CardTextRole>
           </CardTextWrapper>
 
           <CardStatWrapper>
@@ -22,10 +29,10 @@ export const Card = ({ hazard, region, role, from, to}: CardType) => {
               <div>read</div>
             </CardStats> */}
             <CardStats>
-              <LinkText href="#">website</LinkText>
+              <LinkText href="#">{from}</LinkText>
             </CardStats>
             <CardStats>
-              <LinkText href="#">github</LinkText>
+              <LinkText href="#">{to}</LinkText>
             </CardStats>
           </CardStatWrapper>
 
@@ -44,14 +51,6 @@ const CardWrapper = styled.div`
   background: #000;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
   text-align: center;
-`;
-
-const CardHazardLogo = styled.div<{ background: string }>`
-  grid-area: image;
-  background-image: url(${({ background }) => background});
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  background-size: cover;
 `;
 
 const CardTextWrapper = styled.div`
