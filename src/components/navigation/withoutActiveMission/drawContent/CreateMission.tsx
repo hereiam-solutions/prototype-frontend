@@ -304,10 +304,12 @@ const CreateMission = () => {
             />
           </StyledSectionWrapper>
 
-          {startingTimeISOStringValue && endingTimeISOStringValue && (
+          {startingTimeISOStringValue && endingTimeISOStringValue ? (
             <StyledButton onClick={handleMissionSubmit}>
               Submit Mission
             </StyledButton>
+          ) : (
+            <StyledGreyedButton>Submit Mission</StyledGreyedButton>
           )}
         </StyledDashboardContent>
       </StyledDashboardWrapper>
@@ -395,6 +397,14 @@ const StyledButton = styled.button`
   border-radius: 20px;
   color: white;
   background: grey;
+`;
+
+const StyledGreyedButton = styled.button`
+  padding: 0.5rem;
+  border-radius: 20px;
+  color: white;
+  background: grey;
+  opacity: 0.5;
 `;
 
 // dropdown options

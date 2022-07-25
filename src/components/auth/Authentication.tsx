@@ -6,7 +6,11 @@ import styled from "styled-components";
 import * as Realm from "realm-web";
 import { useNavigate } from "react-router-dom";
 import { realmFunctionNames } from "../../data/realm/functions";
+import useTheme from "../../hooks/useTheme";
+import { ThemeEnum } from "../../context/ThemeContext";
 
+import DarkLogo from "../../assets/Logo/dark/hereIam_logo_dark256x256.svg";
+import LightLogo from "../../assets/Logo/light/hereIam_logo_light256x256.svg";
 // define the schema / rules for the register form validation
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -41,6 +45,7 @@ type RegisterFormValuesType = {
 };
 
 const Authentication = () => {
+  const { currentTheme } = useTheme();
   // state for whether the login or register form should be rendered
   const [isLogin, setIsLogin] = useState<boolean>(true);
 
@@ -115,10 +120,13 @@ const Authentication = () => {
   };
 
   return (
-    <>
-      <StyledHeader>
-        <p>WELCOME</p>
-      </StyledHeader>
+    <StyledDrawWrapper>
+      <StyledLogoWrapper>
+        <StyledLogo
+          src={currentTheme === ThemeEnum.LIGHT ? DarkLogo : LightLogo}
+        />
+        <StyledCompanyName>HEREIAM</StyledCompanyName>
+      </StyledLogoWrapper>
 
       {isLogin ? (
         <Formik
@@ -151,85 +159,114 @@ const Authentication = () => {
                 </StyledInlineErrorMessage>
               ) : null}
 
-              <StyledButton type="submit">Yes. Log me in</StyledButton>
+              <StyledButton type="submit">Log In</StyledButton>
               <StyledSwitchButton onClick={() => setIsLogin(false)}>
-                No account? Sign In.
+                No account? Register.
               </StyledSwitchButton>
             </StyledForm>
           )}
         </Formik>
       ) : (
-        <>
-          <Formik
-            initialValues={{
-              firstName: "",
-              lastName: "",
-              email: "",
-              password: "",
-            }}
-            validationSchema={registerSchema}
-            onSubmit={handleRegister}
-          >
-            {({ errors, touched }) => (
-              <StyledForm>
-                <StyledField name="firstName" placeholder="First Name" />
-                {errors.firstName && touched.firstName ? (
-                  <StyledInlineErrorMessage>
-                    {errors.firstName}
-                  </StyledInlineErrorMessage>
-                ) : null}
+        <Formik
+          initialValues={{
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+          }}
+          validationSchema={registerSchema}
+          onSubmit={handleRegister}
+        >
+          {({ errors, touched }) => (
+            <StyledForm>
+              <StyledField name="firstName" placeholder="First Name" />
+              {errors.firstName && touched.firstName ? (
+                <StyledInlineErrorMessage>
+                  {errors.firstName}
+                </StyledInlineErrorMessage>
+              ) : null}
 
-                <StyledField name="lastName" placeholder="Last Name" />
-                {errors.lastName && touched.lastName ? (
-                  <StyledInlineErrorMessage>
-                    {errors.lastName}
-                  </StyledInlineErrorMessage>
-                ) : null}
+              <StyledField name="lastName" placeholder="Last Name" />
+              {errors.lastName && touched.lastName ? (
+                <StyledInlineErrorMessage>
+                  {errors.lastName}
+                </StyledInlineErrorMessage>
+              ) : null}
 
-                <StyledField name="email" type="email" placeholder="Email" />
-                {errors.email && touched.email ? (
-                  <StyledInlineErrorMessage>
-                    {errors.email}
-                  </StyledInlineErrorMessage>
-                ) : null}
+              <StyledField name="email" type="email" placeholder="Email" />
+              {errors.email && touched.email ? (
+                <StyledInlineErrorMessage>
+                  {errors.email}
+                </StyledInlineErrorMessage>
+              ) : null}
 
-                <StyledField
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                />
-                {errors.password && touched.password ? (
-                  <StyledInlineErrorMessage>
-                    {errors.password}
-                  </StyledInlineErrorMessage>
-                ) : null}
+              <StyledField
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
+              {errors.password && touched.password ? (
+                <StyledInlineErrorMessage>
+                  {errors.password}
+                </StyledInlineErrorMessage>
+              ) : null}
 
-                <StyledButton type="submit">Thats me. Sign in</StyledButton>
-                <StyledSwitchButton onClick={() => setIsLogin(true)}>
-                  I have an account. Let me Log in
-                </StyledSwitchButton>
-              </StyledForm>
-            )}
-          </Formik>
-        </>
+              <StyledButton type="submit">Register</StyledButton>
+              <StyledSwitchButton onClick={() => setIsLogin(true)}>
+                Already have an account? Log In.
+              </StyledSwitchButton>
+            </StyledForm>
+          )}
+        </Formik>
       )}
-    </>
+    </StyledDrawWrapper>
   );
 };
 
+const StyledDrawWrapper = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  /* overflow-y: scroll */
+`;
+
+const StyledLogoWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledLogo = styled.img`
+  height: 12vh;
+  width: 12vh;
+`;
+
+const StyledCompanyName = styled.p`
+  font-weight: 600;
+  font-size: 2rem;
+`;
+
 const StyledForm = styled(Form)`
-  width: 90%;
+  /* width: 90%; */
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
+  overflow-y: scroll;
+  gap: 0.5rem;
 `;
 
 const StyledField = styled(Field)`
-  background-color: ${(props) => props.theme.formFieldBackground};
+  background-color: ${(props) => props.theme.primaryBackgroundColor};
   border: 1px solid ${(props) => props.theme.formFieldColor};
-  border-radius: ${(props) => props.theme.buttonBorderRadius};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
   color: ${(props) => props.theme.formFieldColor};
   font-size: 1rem;
   line-height: 1.5rem;
@@ -247,15 +284,18 @@ const StyledInlineErrorMessage = styled.div`
 `;
 
 const StyledButton = styled.button`
-  width: 100%;
-  margin-top: 1.5rem;
-  background-color: ${(props) => props.theme.formSubmitFillColor};
-  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
-  border-radius: ${(props) => props.theme.buttonBorderRadius};
-  text-align: center;
+  width: 60%;
   height: 3rem;
-  color: ${(props) => props.theme.formSubmitTextColor};
-  font-weight: 500;
+
+  margin-top: 1.5rem;
+
+  font-weight: 700;
+  text-align: center;
+
+  color: ${(props) => props.theme.primaryBackgroundColor};
+  background-color: ${(props) => props.theme.buttonColor};
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
 const StyledHeader = styled.div`
