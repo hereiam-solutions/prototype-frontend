@@ -1,17 +1,24 @@
-import React from "react";
 import styled from "styled-components";
 import Accordion from "../../../ui/Accordion";
-import { RiContrast2Fill, RiTranslate, RiRoadMapLine } from "react-icons/ri";
+import {
+  RiContrast2Fill,
+  RiTranslate,
+  RiRoadMapLine,
+  RiContactsBookLine,
+} from "react-icons/ri";
 import useMissionMap from "../../../../../hooks/useMissionMap";
 import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
+import useTheme from "../../../../../hooks/useTheme";
+import { ThemeEnum } from "../../../../../context/ThemeContext";
 
-const AllowTrackingIcon = RiRoadMapLine;
-const LanguageSwitchIcon = RiTranslate;
 const ThemeSwitchIcon = RiContrast2Fill;
 
 const Settings = () => {
   const { setActiveTileLayer, setReRenderBoolean, reRenderBoolean } =
     useMissionMap();
+
+  const { currentTheme, setCurrentTheme } = useTheme();
+
   return (
     <StyledSettingsWrapper>
       <StyledHeader>
@@ -19,7 +26,7 @@ const Settings = () => {
       </StyledHeader>
 
       <Accordion heading={"MAP"}>
-        <StyledMapTileWrapper>
+        <StyledAccordionContentWrapper>
           <div
             onClick={() => {
               setActiveTileLayer(ActiveTileLayerEnum.DEFAULT);
@@ -28,9 +35,6 @@ const Settings = () => {
           >
             Default
           </div>
-          {/* <div onClick={() => setActiveTileLayer(ActiveTileLayerEnum.CYCLOSM)}>
-            CYCLOSM
-          </div> */}
           <div
             onClick={() => {
               setActiveTileLayer(ActiveTileLayerEnum.HUMANITARIAN);
@@ -47,11 +51,25 @@ const Settings = () => {
           >
             Sattelite
           </div>
-        </StyledMapTileWrapper>
+        </StyledAccordionContentWrapper>
       </Accordion>
 
       <Accordion heading={"INTERFACE"}>
-        <ThemeSwitch />
+        <StyledAccordionContentWrapper
+          onClick={() => {
+            currentTheme === ThemeEnum.LIGHT
+              ? setCurrentTheme(ThemeEnum.DARK)
+              : setCurrentTheme(ThemeEnum.LIGHT);
+          }}
+        >
+          <div>
+            {currentTheme === ThemeEnum.LIGHT
+              ? "Switch to Dark Mode"
+              : " Switch to Light Mode"}
+          </div>
+
+          <ThemeSwitchIcon />
+        </StyledAccordionContentWrapper>
       </Accordion>
 
       <StyledSettingsContent></StyledSettingsContent>
@@ -59,24 +77,13 @@ const Settings = () => {
   );
 };
 
-const StyledMapTileWrapper = styled.div`
+const StyledAccordionContentWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `;
-
-//Toggle
-
-const ThemeSwitch = () => {
-  return (
-    <StyledItemSwitch>
-      <p>Toggle Theme</p>
-      <ThemeSwitchIcon />
-    </StyledItemSwitch>
-  );
-};
 
 const StyledSettingsWrapper = styled.div`
   position: absolute;

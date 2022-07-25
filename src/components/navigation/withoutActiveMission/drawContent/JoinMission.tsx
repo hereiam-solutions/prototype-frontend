@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import MissionCard from "../drawContent/MissionCard";
 import { Link, useNavigate } from "react-router-dom";
 import useMission from "../../../../hooks/useMission";
@@ -17,6 +17,9 @@ const JoinMission = () => {
 
   const [error, setError] = useState<string>("");
 
+  const theme = useTheme();
+
+  console.log(theme);
   // starts the polygon drawing process for a mission creation
   const initiateMissionCreation = () => {
     setIsDrawOpen(false);
