@@ -59,7 +59,7 @@ const StyledNavigationMenu = styled.div`
   gap: 1rem;
   position: absolute;
   bottom: 1%;
-  right: 1rem;
+  right: 4%;
   z-index: 2;
   pointer-events: auto;
 `;
