@@ -15,12 +15,16 @@ export enum ActiveTileLayerEnum {
 type MissionMapContextType = {
   activeTileLayer: ActiveTileLayerEnum;
   setActiveTileLayer: (tileLayer: ActiveTileLayerEnum) => void;
+  reRenderBoolean: boolean;
+  setReRenderBoolean: (reRenderBoolean: boolean) => void;
 };
 
 // create the context and set a default value that matches the context type
 const MissionMapContext = createContext<MissionMapContextType>({
   activeTileLayer: ActiveTileLayerEnum.DEFAULT,
   setActiveTileLayer: () => {},
+  reRenderBoolean: false,
+  setReRenderBoolean: () => {},
 });
 
 // export the context provider which wraps (almost) all of the other components and provides the context's values
@@ -29,8 +33,17 @@ export const MissionMapProvider = (children: ReactNode) => {
     ActiveTileLayerEnum.DEFAULT
   );
 
+  const [reRenderBoolean, setReRenderBoolean] = useState<boolean>(false);
+
   return (
-    <MissionMapContext.Provider value={{ activeTileLayer, setActiveTileLayer }}>
+    <MissionMapContext.Provider
+      value={{
+        activeTileLayer,
+        setActiveTileLayer,
+        reRenderBoolean,
+        setReRenderBoolean,
+      }}
+    >
       <>{children}</>
     </MissionMapContext.Provider>
   );

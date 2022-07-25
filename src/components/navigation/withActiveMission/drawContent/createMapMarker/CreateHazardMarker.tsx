@@ -13,6 +13,7 @@ import useCreateMarker from "../../../../../hooks/useCreateMarker";
 import useMission from "../../../../../hooks/useMission";
 import useRealm from "../../../../../hooks/useRealm";
 import useRealmFunction from "../../../../../hooks/useRealmFunction";
+import useMissionMap from "../../../../../hooks/useMissionMap";
 
 // svg imports
 import { ReactComponent as AvalanceIcon } from "../../../../../assets/Hazards/Alert=Avalanche.svg";
@@ -40,6 +41,7 @@ const CreateHazardMarker = () => {
   const { createMarkerLocation: location } = useCreateMarker();
   const { activeMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
+  const { reRenderBoolean, setReRenderBoolean } = useMissionMap();
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -75,6 +77,7 @@ const CreateHazardMarker = () => {
         }
 
         setLoading(false);
+        setReRenderBoolean(!reRenderBoolean);
         setIsDrawOpen(false);
       }
     } catch (e) {

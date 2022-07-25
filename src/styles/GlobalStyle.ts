@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 // the styled-components global styles object
 // import in App.tsx and inserted as a Component
@@ -6,6 +6,11 @@ import { createGlobalStyle } from 'styled-components';
 
 // css improvements based on: https://github.com/AllThingsSmitty/css-protips
 export const GlobalStyles = createGlobalStyle`
+
+/* for reducing the opacity of deactived Marker Icons */
+	.deactivated {
+		opacity: 0.5 ;
+	}
 
   :root {
     --base-light: #DCE4EF;
@@ -196,55 +201,55 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 const colors = {
-  attentionColor: '#F8DE00',
-  alertColor: '#D2251E',
-  readyColor: '#4CBA4B',
-  navIconOverlay: 'var(--gray-300)',
+  attentionColor: "#F8DE00",
+  alertColor: "#D2251E",
+  readyColor: "#4CBA4B",
+  navIconOverlay: "var(--gray-300)",
 };
 
 const borderConstants = {
-  primaryBorderRadius: '10px',
-  drawerBorderRadius: '15px',
-  buttonBorderRadius: '5px',
+  primaryBorderRadius: "10px",
+  drawerBorderRadius: "15px",
+  buttonBorderRadius: "5px",
 };
 
 const mediaQueries = {
-  mediaQueryPhone: '(max-width: 43em), screen or (orientation: portrait)',
-  mediaQueryTablet: '(44em <= width <= 62em), screen',
-  mediaQueryDesktop: '(63em <= width <= 87em), screen',
-  mediaQueryWidescreen: '(min-width: 88em), screen',
-  mediaQueryWearable: '(max-width: 25em), screen',
+  mediaQueryPhone: "(max-width: 43em), screen or (orientation: portrait)",
+  mediaQueryTablet: "(44em <= width <= 62em), screen",
+  mediaQueryDesktop: "(63em <= width <= 87em), screen",
+  mediaQueryWidescreen: "(min-width: 88em), screen",
+  mediaQueryWearable: "(max-width: 25em), screen",
 };
 
 const font = {
-  calculatedFontSize: 'calc(1vw + 1vh + .5vmin)',
-  primaryLineHeight: '1.6rem',
+  calculatedFontSize: "calc(1vw + 1vh + .5vmin)",
+  primaryLineHeight: "1.6rem",
 };
 
 const margins = {
-  insideDrawMargin: '1rem',
+  insideDrawMargin: "1rem",
 };
 
 const paddings = {
-  insideButtonPadding: '0.2rem 0.5rem 0.2rem 0.5rem',
-  sectionHeadlinePadding: '0.2rem 0 0.2rem 1rem',
+  insideButtonPadding: "0.2rem 0.5rem 0.2rem 0.5rem",
+  sectionHeadlinePadding: "0.2rem 0 0.2rem 1rem",
 };
 
 export const darkTheme = {
-  primaryBackgroundColor: 'var(--base)',
-  secondaryBackgroundColor: 'var(--base-text)',
-  sectionHeadlineBackgroundColor: 'var(--gray-500)',
-  sectionHeadlineColor: 'var(--base)',
-  primaryFontColor: 'var(--whiter)',
-  secondaryFontColor: 'var(--base-light)',
-  navIconColor: 'var(--base-light)',
-  mapControlBackground: 'var(--gray-300)',
-  mapControlColor: 'var(--base)',
-  formFieldBackground: 'var(--gray-500)',
-  formFieldColor: 'var(--gray-200)',
-  formSubmitFillColor: '#F8DE00',
-  formSubmitTextColor: 'var(--base-text)',
-  formSubmitBorderColor: 'var(--base-text))',
+  primaryBackgroundColor: "var(--base)",
+  secondaryBackgroundColor: "var(--base-text)",
+  sectionHeadlineBackgroundColor: "var(--gray-500)",
+  sectionHeadlineColor: "var(--base)",
+  primaryFontColor: "var(--whiter)",
+  secondaryFontColor: "var(--base-light)",
+  navIconColor: "var(--base-light)",
+  mapControlBackground: "var(--gray-300)",
+  mapControlColor: "var(--base)",
+  formFieldBackground: "var(--gray-500)",
+  formFieldColor: "var(--gray-200)",
+  formSubmitFillColor: "#F8DE00",
+  formSubmitTextColor: "var(--base-text)",
+  formSubmitBorderColor: "var(--base-text))",
   ...borderConstants,
   ...colors,
   ...mediaQueries,
@@ -254,20 +259,20 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  primaryBackgroundColor: 'var(--base-light)',
-  secondaryBackgroundColor: 'var(--gray-300)',
-  sectionHeadlineBackgroundColor: 'var(--gray-400)',
-  sectionHeadlineColor: 'var(--base-light)',
-  primaryFontColor: 'var(--base-text)',
-  secondaryFontColor: 'var(--base)',
-  navIconColor: 'var(--base-light)',
-  mapControlBackground: 'var(--gray-200)',
-  mapControlColor: 'var(--base)',
-  formFieldBackground: 'var(--gray-200)',
-  formFieldColor: 'var(--base)',
-  formSubmitFillColor: 'var(--gray-400)',
-  formSubmitTextColor: 'var(--gray-150)',
-  formSubmitBorderColor: 'var(--gray-150)',
+  primaryBackgroundColor: "var(--base-light)",
+  secondaryBackgroundColor: "var(--gray-300)",
+  sectionHeadlineBackgroundColor: "var(--gray-400)",
+  sectionHeadlineColor: "var(--base-light)",
+  primaryFontColor: "var(--base-text)",
+  secondaryFontColor: "var(--base)",
+  navIconColor: "var(--base-light)",
+  mapControlBackground: "var(--gray-200)",
+  mapControlColor: "var(--base)",
+  formFieldBackground: "var(--gray-200)",
+  formFieldColor: "var(--base)",
+  formSubmitFillColor: "var(--gray-400)",
+  formSubmitTextColor: "var(--gray-150)",
+  formSubmitBorderColor: "var(--gray-150)",
   ...borderConstants,
   ...colors,
   ...mediaQueries,

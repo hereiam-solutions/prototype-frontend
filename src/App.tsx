@@ -7,6 +7,11 @@ import { Outlet } from "react-router-dom";
 import RealmContext from "./context/RealmContext";
 import NavigationContext from "./context/NavigationContext";
 import ActionMenuContext from "./context/ActionMenuContext";
+import MissionMapContext, {
+  ActiveTileLayerEnum,
+} from "./context/MissionMapContext";
+import CreateMarkerContext from "./context/CreateMarkerContext";
+import MissionContext from "./context/MissionContext";
 
 // Theming imports
 import { ThemeProvider } from "styled-components";
@@ -18,9 +23,7 @@ import connectToRealm from "./helpers/connectToRealm";
 
 // type imports
 import { Location, MarkerType } from "./components/map/mapTypes";
-import MissionContext from "./context/MissionContext";
 import { MissionSchema } from "./data/realm/schema/mission";
-import CreateMarkerContext from "./context/CreateMarkerContext";
 
 const App = () => {
   // get the current theme
@@ -57,6 +60,13 @@ const App = () => {
     number[][][]
   >([]);
 
+  // state for the mission map context
+  const [activeTileLayer, setActiveTileLayer] = useState<ActiveTileLayerEnum>(
+    ActiveTileLayerEnum.DEFAULT
+  );
+
+  const [reRenderBoolean, setReRenderBoolean] = useState<boolean>(false);
+
   return (
     <>
       <RealmContext.Provider value={{ realm }}>
@@ -85,12 +95,21 @@ const App = () => {
                   setPolygonDrawingCoordinates,
                 }}
               >
-                <CreateMarkerContext.Provider
-                  value={{ createMarkerLocation, setCreateMarkerLocation }}
+                <MissionMapContext.Provider
+                  value={{
+                    activeTileLayer,
+                    setActiveTileLayer,
+                    reRenderBoolean,
+                    setReRenderBoolean,
+                  }}
                 >
-                  {/* React Router Outlet component always renders children  */}
-                  <Outlet />
-                </CreateMarkerContext.Provider>
+                  <CreateMarkerContext.Provider
+                    value={{ createMarkerLocation, setCreateMarkerLocation }}
+                  >
+                    {/* React Router Outlet component always renders children  */}
+                    <Outlet />
+                  </CreateMarkerContext.Provider>
+                </MissionMapContext.Provider>
               </MissionContext.Provider>
             </ActionMenuContext.Provider>
             <GlobalStyles />

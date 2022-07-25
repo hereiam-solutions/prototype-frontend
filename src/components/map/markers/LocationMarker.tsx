@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Marker } from "react-leaflet";
+import { Marker, Popup } from "react-leaflet";
 import L, { Icon, latLng, DivIcon } from "leaflet";
 
 // svg imports
@@ -7,8 +7,20 @@ import L, { Icon, latLng, DivIcon } from "leaflet";
 
 import { hazardTypes, Location, locationTypes } from "../mapTypes";
 import { prependListener } from "process";
+import useRealm from "../../../hooks/useRealm";
+import useMission from "../../../hooks/useMission";
+import useMissionMap from "../../../hooks/useMissionMap";
+import { UpdateLocationArgs } from "../../../data/realm/schema/location";
+import { BSON } from "realm-web";
+import { realmFunctionNames } from "../../../data/realm/functions";
 
 const ApparrelIcon = new Icon({
+  iconUrl: "/icons/assets/Locations/Color/Active=apparel.svg",
+  iconSize: [25, 25],
+});
+
+const DeactivatedApparrelIcon = new Icon({
+  className: "deactivated",
   iconUrl: "/icons/assets/Locations/Color/Active=apparel.svg",
   iconSize: [25, 25],
 });
@@ -18,7 +30,19 @@ const AssemblyIcon = new Icon({
   iconSize: [25, 25],
 });
 
+const DeactivatedAssemblyIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=assemblypoint.svg",
+  iconSize: [25, 25],
+});
+
 const BarrierIcon = new Icon({
+  iconUrl: "/icons/assets/Locations/Color/Active=barrier.svg",
+  iconSize: [25, 25],
+});
+
+const DeactivatedBarrierIcon = new Icon({
+  className: "deactivated",
   iconUrl: "/icons/assets/Locations/Color/Active=barrier.svg",
   iconSize: [25, 25],
 });
@@ -33,12 +57,30 @@ const CareIcon = new Icon({
   iconSize: [25, 25],
 });
 
+const DeactivatedCareIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=care.svg",
+  iconSize: [25, 25],
+});
+
 const CheckpointIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=checkpoint.svg",
   iconSize: [25, 25],
 });
 
+const DeactivatedCheckpointIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=checkpoint.svg",
+  iconSize: [25, 25],
+});
+
 const CommandPostIcon = new Icon({
+  iconUrl: "/icons/assets/Locations/Color/Active=commandpost.svg",
+  iconSize: [25, 25],
+});
+
+const DeactivatedCommandPostIcon = new Icon({
+  className: "deactivated",
   iconUrl: "/icons/assets/Locations/Color/Active=commandpost.svg",
   iconSize: [25, 25],
 });
@@ -53,12 +95,30 @@ const FoodIcon = new Icon({
   iconSize: [25, 25],
 });
 
+const DeactivatedFoodIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=food.svg",
+  iconSize: [25, 25],
+});
+
 const MedicalPostIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=medicalpost.svg",
   iconSize: [25, 25],
 });
 
+const DeactivatedMedicalPostIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=medicalpost.svg",
+  iconSize: [25, 25],
+});
+
 const MissingPersonsIcon = new Icon({
+  iconUrl: "/icons/assets/Locations/Color/Active=missingpersons.svg",
+  iconSize: [25, 25],
+});
+
+const DeactivatedMissingPersonsIcon = new Icon({
+  className: "deactivated",
   iconUrl: "/icons/assets/Locations/Color/Active=missingpersons.svg",
   iconSize: [25, 25],
 });
@@ -73,7 +133,19 @@ const PowerIcon = new Icon({
   iconSize: [25, 25],
 });
 
+const DeactivatedPowerIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=power.svg",
+  iconSize: [25, 25],
+});
+
 const PrayerIcon = new Icon({
+  iconUrl: "/icons/assets/Locations/Color/Active=prayerspace.svg",
+  iconSize: [25, 25],
+});
+
+const DeactivatedPrayerIcon = new Icon({
+  className: "deactivated",
   iconUrl: "/icons/assets/Locations/Color/Active=prayerspace.svg",
   iconSize: [25, 25],
 });
@@ -83,7 +155,19 @@ const PsychologyIcon = new Icon({
   iconSize: [25, 25],
 });
 
+const DeactivatedPsychologyIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=psychologicalintervention.svg",
+  iconSize: [25, 25],
+});
+
 const PublicIcon = new Icon({
+  iconUrl: "/icons/assets/Locations/Color/Active=publicinformation.svg",
+  iconSize: [25, 25],
+});
+
+const DeactivatedPublicIcon = new Icon({
+  className: "deactivated",
   iconUrl: "/icons/assets/Locations/Color/Active=publicinformation.svg",
   iconSize: [25, 25],
 });
@@ -98,7 +182,19 @@ const RegistrationIcon = new Icon({
   iconSize: [25, 25],
 });
 
+const DeactivatedRegistrationIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=registration.svg",
+  iconSize: [25, 25],
+});
+
 const SafetyIcon = new Icon({
+  iconUrl: "/icons/assets/Locations/Color/Active=safety.svg",
+  iconSize: [25, 25],
+});
+
+const DeactivatedSafetyIcon = new Icon({
+  className: "deactivated",
   iconUrl: "/icons/assets/Locations/Color/Active=safety.svg",
   iconSize: [25, 25],
 });
@@ -108,7 +204,19 @@ const ShelterIcon = new Icon({
   iconSize: [25, 25],
 });
 
+const DeactivatedShelterIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=shelter.svg",
+  iconSize: [25, 25],
+});
+
 const TransportIcon = new Icon({
+  iconUrl: "/icons/assets/Locations/Color/Active=transport.svg",
+  iconSize: [25, 25],
+});
+
+const DeactivatedTransportIcon = new Icon({
+  className: "deactivated",
   iconUrl: "/icons/assets/Locations/Color/Active=transport.svg",
   iconSize: [25, 25],
 });
@@ -128,25 +236,38 @@ const WaterIcon = new Icon({
   iconSize: [25, 25],
 });
 
+const DeactivatedWaterIcon = new Icon({
+  className: "deactivated",
+  iconUrl: "/icons/assets/Locations/Color/Active=water.svg",
+  iconSize: [25, 25],
+});
+
 type Props = {
+  id: BSON.ObjectId;
   coordinates: Location;
   type: locationTypes;
+  status: "active" | "suspended" | "inactive";
 };
 
 const LocationMarker = (props: Props) => {
+  const { realm } = useRealm();
+  const { activeMission } = useMission();
+  const { reRenderBoolean, setReRenderBoolean } = useMissionMap();
+
   const [Icon, setIcon] = useState<L.Icon>(ApparrelIcon);
+  const [isActive, setIsActive] = useState<boolean>(props.status === "active");
 
   useEffect(() => {
     if (props.type === locationTypes.APPAREL) {
-      setIcon(ApparrelIcon);
+      isActive ? setIcon(ApparrelIcon) : setIcon(DeactivatedApparrelIcon);
     }
 
     if (props.type === locationTypes.ASSEMBLYPOINT) {
-      setIcon(AssemblyIcon);
+      isActive ? setIcon(AssemblyIcon) : setIcon(DeactivatedAssemblyIcon);
     }
 
     if (props.type === locationTypes.BARRIER) {
-      setIcon(BarrierIcon);
+      isActive ? setIcon(BarrierIcon) : setIcon(DeactivatedBarrierIcon);
     }
 
     // if (props.type === locationTypes.BOO) {
@@ -154,15 +275,15 @@ const LocationMarker = (props: Props) => {
     // }
 
     if (props.type === locationTypes.CARE) {
-      setIcon(CareIcon);
+      isActive ? setIcon(CareIcon) : setIcon(DeactivatedCareIcon);
     }
 
     if (props.type === locationTypes.CHECKPOINT) {
-      setIcon(CheckpointIcon);
+      isActive ? setIcon(CheckpointIcon) : setIcon(DeactivatedCheckpointIcon);
     }
 
     if (props.type === locationTypes.COMMANDPOST) {
-      setIcon(CommandPostIcon);
+      isActive ? setIcon(CommandPostIcon) : setIcon(DeactivatedCommandPostIcon);
     }
 
     // if (props.type === locationTypes.EMTCC) {
@@ -170,15 +291,17 @@ const LocationMarker = (props: Props) => {
     // }
 
     if (props.type === locationTypes.FOOD) {
-      setIcon(FoodIcon);
+      isActive ? setIcon(FoodIcon) : setIcon(DeactivatedFoodIcon);
     }
 
     if (props.type === locationTypes.MEDICALPOST) {
-      setIcon(MedicalPostIcon);
+      isActive ? setIcon(MedicalPostIcon) : setIcon(DeactivatedMedicalPostIcon);
     }
 
     if (props.type === locationTypes.MISSINGPERSONS) {
-      setIcon(MissingPersonsIcon);
+      isActive
+        ? setIcon(MissingPersonsIcon)
+        : setIcon(DeactivatedMissingPersonsIcon);
     }
 
     // if (props.type === locationTypes.OSOCC) {
@@ -186,19 +309,19 @@ const LocationMarker = (props: Props) => {
     // }
 
     if (props.type === locationTypes.POWER) {
-      setIcon(PowerIcon);
+      isActive ? setIcon(PowerIcon) : setIcon(DeactivatedPowerIcon);
     }
 
     if (props.type === locationTypes.PRAYERSPACE) {
-      setIcon(PrayerIcon);
+      isActive ? setIcon(PrayerIcon) : setIcon(DeactivatedPrayerIcon);
     }
 
     if (props.type === locationTypes.PSYCHOLOGICALINTERVENTION) {
-      setIcon(PsychologyIcon);
+      isActive ? setIcon(PsychologyIcon) : setIcon(DeactivatedPsychologyIcon);
     }
 
     if (props.type === locationTypes.PUBLICINFORMATION) {
-      setIcon(PublicIcon);
+      isActive ? setIcon(PublicIcon) : setIcon(DeactivatedPublicIcon);
     }
 
     // if (props.type === locationTypes.RDC) {
@@ -206,19 +329,21 @@ const LocationMarker = (props: Props) => {
     // }
 
     if (props.type === locationTypes.REGISTRATION) {
-      setIcon(RegistrationIcon);
+      isActive
+        ? setIcon(RegistrationIcon)
+        : setIcon(DeactivatedRegistrationIcon);
     }
 
     if (props.type === locationTypes.SAFETY) {
-      setIcon(SafetyIcon);
+      isActive ? setIcon(SafetyIcon) : setIcon(DeactivatedSafetyIcon);
     }
 
     if (props.type === locationTypes.SHELTER) {
-      setIcon(ShelterIcon);
+      isActive ? setIcon(ShelterIcon) : setIcon(DeactivatedShelterIcon);
     }
 
     if (props.type === locationTypes.TRANSPORT) {
-      setIcon(TransportIcon);
+      isActive ? setIcon(TransportIcon) : setIcon(DeactivatedTransportIcon);
     }
 
     // if (props.type === locationTypes.UCC) {
@@ -230,13 +355,44 @@ const LocationMarker = (props: Props) => {
     // }
 
     if (props.type === locationTypes.WATER) {
-      setIcon(WaterIcon);
+      isActive ? setIcon(WaterIcon) : setIcon(DeactivatedWaterIcon);
     }
-  }, [props.type]);
+  }, [props.type, props.status, isActive]);
+
+  const changeLocationStatus = async () => {
+    if (activeMission) {
+      const statusArg = isActive ? "inactive" : "active";
+
+      const args: UpdateLocationArgs = {
+        _id: props.id.toString(),
+        status: statusArg,
+      };
+
+      if (realm.currentUser) {
+        // call the Realm function
+        const response = await realm.currentUser.callFunction(
+          realmFunctionNames.updateLocation,
+          args
+        );
+
+        if (response === "success") {
+          setIsActive(!isActive);
+        }
+        console.log(response);
+      }
+
+      //   setIcon(AvalanceIcon);
+      setReRenderBoolean(!reRenderBoolean);
+    }
+  };
 
   return (
     <Marker position={[props.coordinates[0], props.coordinates[1]]} icon={Icon}>
-      {/* <Popup>{location.name}</Popup> */}
+      <Popup>
+        <div onClick={changeLocationStatus}>
+          {isActive ? "deactivate Location" : "activate Location"}
+        </div>
+      </Popup>
     </Marker>
   );
 };

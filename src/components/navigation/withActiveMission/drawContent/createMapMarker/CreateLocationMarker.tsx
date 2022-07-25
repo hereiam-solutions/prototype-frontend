@@ -40,12 +40,14 @@ import { ReactComponent as TransportIcon } from "../../../../../assets/Locations
 import { ReactComponent as UccIcon } from "../../../../../assets/Locations/Color/Active=ucc.svg";
 import { ReactComponent as UndacIcon } from "../../../../../assets/Locations/Color/Active=undac.svg";
 import { ReactComponent as WaterIcon } from "../../../../../assets/Locations/Color/Active=water.svg";
+import useMissionMap from "../../../../../hooks/useMissionMap";
 
 const CreateLocationMarker = () => {
   const { realm } = useRealm();
   const { createMarkerLocation: location } = useCreateMarker();
   const { activeMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
+  const { reRenderBoolean, setReRenderBoolean } = useMissionMap();
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -81,6 +83,7 @@ const CreateLocationMarker = () => {
         }
 
         setLoading(false);
+        setReRenderBoolean(!reRenderBoolean);
         setIsDrawOpen(false);
       }
     } catch (e) {

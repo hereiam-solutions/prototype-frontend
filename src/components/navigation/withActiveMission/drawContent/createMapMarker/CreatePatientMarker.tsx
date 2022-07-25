@@ -25,12 +25,14 @@ import {
   statuses,
 } from "../../../../../data/realm/schema/patient";
 import SingleDropdown from "../../../ui/SingleDropdown";
+import useMissionMap from "../../../../../hooks/useMissionMap";
 
 const CreatePatientMarker = () => {
   const { realm } = useRealm();
   const { createMarkerLocation: location } = useCreateMarker();
   const { activeMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
+  const { reRenderBoolean, setReRenderBoolean } = useMissionMap();
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -64,6 +66,7 @@ const CreatePatientMarker = () => {
         }
 
         setLoading(false);
+        setReRenderBoolean(!reRenderBoolean);
         setIsDrawOpen(false);
       }
     } catch (e) {

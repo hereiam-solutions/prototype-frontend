@@ -34,3 +34,8 @@ export type CreateLocationArgs = {
   type: locationTypes;
   geoJSON: geoJSONPoint;
 };
+
+export type UpdateLocationArgs = {
+  _id: string;
+  status: "active" | "suspended" | "inactive";
+};

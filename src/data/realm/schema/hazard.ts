@@ -20,3 +20,12 @@ export type CreateHazardArgs = {
   status: "active" | "inactive";
   geoJSON: geoJSONPoint;
 };
+
+// export type UpdateHazardArgs = {
+//   _id: string;
+//   status: "active" | "inactive";
+// };
+
+export type DeleteHazardArgs = {
+  _id: string;
+};

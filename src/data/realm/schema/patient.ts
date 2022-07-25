@@ -103,3 +103,12 @@ export type CreatePatientArgs = {
   isTeamMember: boolean;
   geoJSON: geoJSONPoint;
 };
+
+// export type UpdatePatientArgs = {
+//   _id: string;
+//   active: boolean;
+// };
+
+export type DeletePatientArgs = {
+  _id: string;
+};

@@ -1,7 +1,14 @@
-import { Marker } from "react-leaflet";
+import { Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import { hazardTypes, Location } from "../mapTypes";
 import { useEffect, useState } from "react";
+import { BSON } from "realm-web";
+import useRealm from "../../../hooks/useRealm";
+import useMission from "../../../hooks/useMission";
+import { DeleteHazardArgs } from "../../../data/realm/schema/hazard";
+import useMissionMap from "../../../hooks/useMissionMap";
+import { realmFunctionNames } from "../../../data/realm/functions";
+import styled from "styled-components";
 
 const AvalanceIcon = new Icon({
   iconUrl: "/icons/assets/Hazards/Alert=Avalanche.svg",
@@ -99,11 +106,16 @@ const WaterIcon = new Icon({
 });
 
 type Props = {
+  id: BSON.ObjectId;
   coordinates: Location;
   type: string;
 };
 
 const HazardMarker = (props: Props) => {
+  const { realm } = useRealm();
+  const { activeMission } = useMission();
+  const { reRenderBoolean, setReRenderBoolean } = useMissionMap();
+
   const [Icon, setIcon] = useState<L.Icon>(AvalanceIcon);
 
   useEffect(() => {
@@ -184,9 +196,31 @@ const HazardMarker = (props: Props) => {
     }
   }, [props.type]);
 
+  const deleteHazard = async () => {
+    if (activeMission) {
+      const args: DeleteHazardArgs = {
+        _id: props.id.toString(),
+      };
+
+      if (realm.currentUser) {
+        // call the Realm function
+        const response = await realm.currentUser.callFunction(
+          realmFunctionNames.deleteHazard,
+          args
+        );
+
+        console.log(response);
+      }
+
+      setReRenderBoolean(!reRenderBoolean);
+    }
+  };
+
   return (
     <Marker position={[props.coordinates[0], props.coordinates[1]]} icon={Icon}>
-      {/* <Popup>{location.name}</Popup> */}
+      <Popup>
+        <div onClick={deleteHazard}>Remove Hazard Marker</div>
+      </Popup>
     </Marker>
   );
 };

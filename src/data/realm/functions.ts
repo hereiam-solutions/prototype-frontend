@@ -7,10 +7,15 @@ export const realmFunctionNames = {
 
   createHazard: "createHazard",
   getAllHazardsForMission: "getAllHazardsForMission",
+  //   updateHazard: "updateHazard",
+  deleteHazard: "deleteHazard",
 
   createLocation: "createLocation",
   getAllLocationsForMission: "getAllLocationsForMission",
+  updateLocation: "updateLocation",
 
   createPatient: "createPatient",
   getAllPatientsForMission: "getAllPatientsForMission",
+  //   updatePatient: "updatePatient",
+  deletePatient: "deletePatient",
 };

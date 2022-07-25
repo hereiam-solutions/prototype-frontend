@@ -32,10 +32,12 @@ import { LocationSchema } from "../../data/realm/schema/location";
 import { PatientSchema } from "../../data/realm/schema/patient";
 import PatientMarker from "./markers/PatientMarker";
 import LocationMarker from "./markers/LocationMarker";
+import useMissionMap from "../../hooks/useMissionMap";
 
 const MissionMap = () => {
   const { realm } = useRealm();
   const { activeMission } = useMission();
+  const { activeTileLayer, reRenderBoolean } = useMissionMap();
 
   const [patients, setPatients] = useState<PatientSchema[]>([]);
   const [hazards, setHazards] = useState<HazardSchema[]>([]);
@@ -70,7 +72,7 @@ const MissionMap = () => {
       }
     };
     getAllMarkers();
-  }, []);
+  }, [reRenderBoolean]);
 
   const tileLayerOptions = {
     default: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -100,14 +102,14 @@ const MissionMap = () => {
         tap={true}
         attributionControl={false}
       >
-        <TileLayer url={tileLayerOptions.satellite} />
+        <TileLayer url={activeTileLayer} />
 
         <LayersControl
           collapsed={true}
           hideSingleBase={true}
           position="topright"
         >
-          <LayersControl.Overlay checked={true} name="Locations">
+          <LayersControl.Overlay checked={true} name="Mission Border">
             <LayerGroup>
               <Polygon
                 pathOptions={polygonOptions}
@@ -118,34 +120,39 @@ const MissionMap = () => {
             </LayerGroup>
           </LayersControl.Overlay>
 
-          <LayersControl.Overlay checked={true} name="Locations">
-            <LayerGroup>
-              {locations.map((location: LocationSchema) => (
-                <LocationMarker
-                  key={location._id.toString()}
-                  coordinates={location.geoJSON.coordinates}
-                  type={location.type}
-                />
-              ))}
-            </LayerGroup>
-          </LayersControl.Overlay>
-
           <LayersControl.Overlay checked={true} name="Hazards">
             <LayerGroup>
               {hazards.map((hazard: HazardSchema) => (
                 <HazardMarker
                   key={hazard._id.toString()}
+                  id={hazard._id}
                   coordinates={hazard.geoJSON.coordinates}
                   type={hazard.hazard_type}
                 />
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
+
+          <LayersControl.Overlay checked={true} name="Locations">
+            <LayerGroup>
+              {locations.map((location: LocationSchema) => (
+                <LocationMarker
+                  key={location._id.toString()}
+                  id={location._id}
+                  coordinates={location.geoJSON.coordinates}
+                  type={location.type}
+                  status={location.status}
+                />
+              ))}
+            </LayerGroup>
+          </LayersControl.Overlay>
+
           <LayersControl.Overlay checked={true} name="Patients">
             <LayerGroup>
               {patients.map((patient: PatientSchema) => (
                 <PatientMarker
                   key={patient._id.toString()}
+                  id={patient._id}
                   coordinates={patient.geoJSON.coordinates}
                   type={patient.injuries}
                 />
