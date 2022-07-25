@@ -1,13 +1,11 @@
-import React from 'react'
+import React from 'react';
 import useRealm from '../../../../../hooks/useRealm';
 import styled from 'styled-components';
-import { ReactComponent as MissionCategoryExplosion }  from '../../../../../../src/assets/Hazards/explosion.svg';
-import { ReactComponent as MissionCategoryEarthcake }  from '../../../../../../src/assets/Hazards/earthquake.svg';
-import { ReactComponent as MissionCategoryFlood }  from '../../../../../../src/assets/Hazards/flood.svg';
 
-
+import { Card } from "./MissionCard/MissionCard";
 
 const MyMissions = () => {
+
   return (
     <StyledMissionsWrapper>
 
@@ -15,71 +13,13 @@ const MyMissions = () => {
         My Missions
       </SectionHeadline>
 
-      <ul className='missionList'>
-
-        <li className='missionListItem'>
-
-          <MissionContainer>
-
-            <div className='missionCategoryLogo'>
-              <MissionCategoryEarthcake />
-            </div>
-
-            <div className='missionRegion'>Haiti</div>
-
-            <div className='missionRole'>Rescue</div>
-
-            <div className='timeslot'>
-              <div>2021/08/15</div>
-              <div>2021/08/20</div>
-            </div>
-
-          </MissionContainer>
-
-        </li>
-
-        <li className='missionListItem'>
-        
-          <MissionContainer>
-
-            <div className='missionCategoryLogo'>
-              <MissionCategoryFlood />
-            </div>
-
-            <div className='missionRegion'>Rhineland</div>
-
-            <div className='missionRole'>Team leader</div>
-
-            <div className='timeslot'>
-              <div>2021/07/16</div>
-              <div>2021/07/22</div>
-            </div>
-
-          </MissionContainer>
-
-        </li>
-
-        <li className='missionListItem'>
-        
-          <MissionContainer>
-
-            <div className='missionCategoryLogo'>
-              <MissionCategoryExplosion />
-            </div>
-
-            <div className='missionRegion'>Beirut</div>
-
-            <div className='missionRole'>Dog handler</div>
-
-            <div className='timeslot'>
-              <div>2020/08/04</div>
-              <div>2020/08/06</div>
-            </div>
-
-          </MissionContainer>
-
-        </li>
-      </ul>
+      <CardContainer>
+        <Card hazard={"Earthquake"} region={"Haiti"} role={"Rescue"}  from={"2021/08/15"} to={"2021/08/20"} />
+        <Separator />
+        <Card hazard={"Flood"} region={"Rhineland, Germany"} role={"Team leader"}  from={"2021/07/16"} to={"2021/07/22"} />
+        <Separator />
+        <Card hazard={"Explosion"} region={"Beirut"} role={"Dog handler"} from={"2020/08/04"} to={"2020/08/06"} />
+      </CardContainer>
 
     </StyledMissionsWrapper>
   );
@@ -87,56 +27,26 @@ const MyMissions = () => {
 
 
 
-const MissionContainer = styled.div`
+const CardContainer = styled.div`
   width: 100%;
 
   display: flex;
   flex-direction: raw;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   
-  gap: 0.1rem;
+  gap: 0.3rem;
 
   border-radius: ${(props) => props.theme.buttonBorderRadius};
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-  .missionCategoryLogo {
-    display: flex;
-    justify-content: center;
-  }
-  .missionRegion {
-    padding: 0.2rem 0.4rem 0.2rem 0.4rem;
-    
-    background-color: gray;
-
-    border-radius: ${(props) => props.theme.buttonBorderRadius} 0 0 ${(props) => props.theme.buttonBorderRadius};
-
-    color: white;
-
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-
-  .missionRole {
-    padding: 0.4rem;
-
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-
-  .timeslot {
-
-    display: flex;
-    flex-direction: column;
-    align-items: right;
-    justify-content: flex-start;
-    gap: 0.1rem;
-
-    font-size: 0.6rem;
-  }
-
+  
 `;
 
+const Separator = styled.span`
+  margin-left: 10px;
+  margin-right: 10px;
+`;
 
 const StyledMissionsWrapper = styled.div`
   
