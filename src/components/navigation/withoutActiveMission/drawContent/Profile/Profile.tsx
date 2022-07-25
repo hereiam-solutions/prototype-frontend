@@ -46,7 +46,20 @@ const Profile = () => {
 
         <DriverLicenses />
 
-        <Skills />
+        <Skills 
+          id={0} 
+          category={""} 
+          date={""} 
+          titel={""} 
+          institution={""} 
+          confirmation={""} 
+          name={""} 
+          selector={""} 
+          sortable={false} 
+          right={false} 
+          columns={undefined} 
+          defaultSortField={""} 
+        />
 
         <StyledLogOutButton onClick={handleLogOut}>
           Bye. Log me out
