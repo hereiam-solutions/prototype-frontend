@@ -1,5 +1,5 @@
 import React from 'react'
-import useRealm from '../../../../../hooks/useRealm';
+
 import styled from 'styled-components';
 
 const Skills = () => {
@@ -10,21 +10,7 @@ const Skills = () => {
         My Skills and Certifications
       </SectionHeadline>
 
-      <ul className='skillList'>
-        <li className='skillListItem'>
-          Skill1
-        </li>
-        <li className='skillListItem'>
-          Skill2
-        </li>
-        <li className='skillListItem'>
-          Skill3
-        </li>
-        <li className='skillListItem'>
-          Skill3
-        </li>
 
-      </ul>
 
     </StyledSkillsWrapper>
   );
@@ -56,6 +42,15 @@ const StyledSkillsWrapper = styled.div`
   li {
     width: 90vw;
     padding: 1rem;
+  }
+
+  table {
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  
+  tbody > tr:nth-child(2n) {
+    background: lightblue;
   }
 `;
 
