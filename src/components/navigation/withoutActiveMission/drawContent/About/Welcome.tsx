@@ -16,11 +16,11 @@ const Welcome = (props: Props) => {
 };
 
 const StyledAboutWelcome = styled.div`
-    width: 100%;
+    width: 90vw;
 
     padding: ${(props) => props.theme.insideDrawMargin};
 
-    font-size: 0.8rem;
+    font-size: 01rem;
     font-weight: 200;
 `;
 

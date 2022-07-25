@@ -163,29 +163,37 @@ const Support = () => {
 };
 
 const StyledSupport = styled.div`
+  padding: 1rem;
   display: flex;
-  flex-direction: raw;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
-  gap: 2rem;
+  gap: 1rem;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
 `;
 
 const StyledFaq = styled.div`
-  margin: 0;
-  width: 100%;
+  margin-top: 2rem;
+  width: 90vw;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   font-size: 0.8rem;
   font-weight: 200;
 `;
 
 const SectionHeadline = styled.div`
-  width: 100%;
-  margin-top: 1rem;
+  width: 90vw;
 
   padding: ${(props) => props.theme.sectionHeadlinePadding};
 
   background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: ${(props) => props.theme.buttonBorderRadius} ${(props) => props.theme.buttonBorderRadius} 0 0;
+
   color: ${(props) => props.theme.sectionHeadlineColor};
 `;
 
