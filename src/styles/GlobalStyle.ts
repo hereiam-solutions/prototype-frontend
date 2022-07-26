@@ -62,6 +62,8 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 1.6;
     font-weight: 100;
 	  font-size: calc(1vw + 1vh + .5vmin);
+
+
   }
 
   /* Display links when the <a> element has no text value but the href attribute has a link */

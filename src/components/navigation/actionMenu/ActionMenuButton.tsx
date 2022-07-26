@@ -6,6 +6,7 @@ import { ReactComponent as DangerIcon } from "../../../assets/Action/Aktion=Gefa
 import { ReactComponent as TaskIcon } from "../../../assets/Action/Aktion=Task.svg";
 import { ReactComponent as CasualtyIcon } from "../../../assets/Action/Aktion=Verletzte.svg";
 import { ReactComponent as DrawIcon } from "../../../assets/Action/Aktion=Zeichnen.svg";
+import { ReactComponent as CloseIcon } from "../../../assets/Action/Close.svg";
 import { MarkerType } from "../../map/mapTypes";
 
 export enum Position {
@@ -56,12 +57,12 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
 
   if (positionInActionMenu === Position.TOP) {
     return (
-      <StyledButton
+      <StyledOpacityButton
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
       >
         <DrawIcon />
-      </StyledButton>
+      </StyledOpacityButton>
     );
   }
 
@@ -89,7 +90,7 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
 
   return (
     <StyledX onClick={handleClick} positionInActionMenu={positionInActionMenu}>
-      X
+      <CloseIcon height={20} width={20} />
     </StyledX>
   );
 };
@@ -98,27 +99,43 @@ const StyledButton = styled.div`
   grid-area: ${(props: StyledComponentProps) => props.positionInActionMenu};
   border-radius: 50%;
 
-  width: 40px;
-  height: 40px;
+  height: 50px;
+  width: 50px;
 
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   z-index: 11;
+`;
+
+const StyledOpacityButton = styled.div`
+  grid-area: ${(props: StyledComponentProps) => props.positionInActionMenu};
+  border-radius: 50%;
+
+  height: 50px;
+  width: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 11;
+
+  opacity: 0.5;
 `;
 
 const StyledX = styled.div`
   grid-area: ${(props: StyledComponentProps) => props.positionInActionMenu};
 
-  color: white;
-  font-size: 2rem;
-  font-weight: 600;
-
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  z-index: 11;
 `;
 
 export default ActionMenuButton;

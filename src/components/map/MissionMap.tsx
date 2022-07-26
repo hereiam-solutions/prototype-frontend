@@ -79,7 +79,7 @@ const MissionMap = () => {
       }
     };
     getAllMarkers();
-  }, [reRenderBoolean, activeTileLayer]);
+  }, [reRenderBoolean, activeTileLayer, realm.currentUser, activeMission]);
 
   const polygonOptions = {
     color: "#cf151e",
@@ -120,12 +120,7 @@ const MissionMap = () => {
           <LayersControl.Overlay checked={true} name="Hazards">
             <LayerGroup>
               {hazards.map((hazard: HazardSchema) => (
-                <HazardMarker
-                  key={hazard._id.toString()}
-                  id={hazard._id}
-                  coordinates={hazard.geoJSON.coordinates}
-                  type={hazard.hazard_type}
-                />
+                <HazardMarker hazard={hazard} key={hazard._id.toString()} />
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
@@ -134,11 +129,8 @@ const MissionMap = () => {
             <LayerGroup>
               {locations.map((location: LocationSchema) => (
                 <LocationMarker
+                  location={location}
                   key={location._id.toString()}
-                  id={location._id}
-                  coordinates={location.geoJSON.coordinates}
-                  type={location.type}
-                  status={location.status}
                 />
               ))}
             </LayerGroup>
@@ -147,12 +139,7 @@ const MissionMap = () => {
           <LayersControl.Overlay checked={true} name="Patients">
             <LayerGroup>
               {patients.map((patient: PatientSchema) => (
-                <PatientMarker
-                  key={patient._id.toString()}
-                  id={patient._id}
-                  coordinates={patient.geoJSON.coordinates}
-                  type={patient.injuries}
-                />
+                <PatientMarker patient={patient} key={patient._id.toString()} />
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
@@ -161,8 +148,6 @@ const MissionMap = () => {
         <GetCurrentLocation />
         <ActivateActionMenu />
         <SetMarker />
-
-        {/* <SetMapCenter /> */}
       </StyledMapContainer>
     </>
   );

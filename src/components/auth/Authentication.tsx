@@ -11,6 +11,8 @@ import { ThemeEnum } from "../../context/ThemeContext";
 
 import DarkLogo from "../../assets/Logo/dark/hereIam_logo_dark256x256.svg";
 import LightLogo from "../../assets/Logo/light/hereIam_logo_light256x256.svg";
+import useMission from "../../hooks/useMission";
+import { MissionSchema } from "../../data/realm/schema/mission";
 // define the schema / rules for the register form validation
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -52,6 +54,7 @@ const Authentication = () => {
   let navigate = useNavigate();
   // get the realm connection from the context
   const { realm } = useRealm();
+  const { setActiveMission } = useMission();
 
   // initalize a loading state to conditionally render a loading indicator component
   const [loading, setLoading] = useState(false);
@@ -69,11 +72,26 @@ const Authentication = () => {
       await realm.logIn(credentials);
 
       if (realm.currentUser) {
+        console.log("hi");
         await realm.currentUser.refreshCustomData();
 
-        setLoading(false);
+        const response: MissionSchema = await realm.currentUser.callFunction(
+          realmFunctionNames.getCurrentMission,
+          {}
+        );
 
-        navigate("/");
+        if (response._id) {
+          console.log("got mission");
+          await realm.currentUser.refreshCustomData();
+
+          setActiveMission(response as MissionSchema);
+
+          navigate("/mission");
+        } else {
+          navigate("/");
+        }
+
+        setLoading(false);
       }
     } catch (e) {
       console.log(e);
@@ -129,120 +147,43 @@ const Authentication = () => {
       </StyledLogoWrapper>
 
       {isLogin ? (
-        <>
-          {" "}
-          <Formik
-            initialValues={{
-              firstName: "",
-              lastName: "",
-              email: "",
-              password: "",
-            }}
-            validationSchema={loginSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ errors, touched }) => (
-              <StyledForm>
-                <StyledField name="email" type="email" placeholder="Email" />
-                {errors.email && touched.email ? (
-                  <StyledInlineErrorMessage>
-                    {errors.email}
-                  </StyledInlineErrorMessage>
-                ) : null}
+        <Formik
+          initialValues={{
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+          }}
+          validationSchema={loginSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ errors, touched }) => (
+            <StyledForm>
+              <StyledField name="email" type="email" placeholder="Email" />
+              {errors.email && touched.email ? (
+                <StyledInlineErrorMessage>
+                  {errors.email}
+                </StyledInlineErrorMessage>
+              ) : null}
 
-                <StyledField
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                />
-                {errors.password && touched.password ? (
-                  <StyledInlineErrorMessage>
-                    {errors.password}
-                  </StyledInlineErrorMessage>
-                ) : null}
+              <StyledField
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
+              {errors.password && touched.password ? (
+                <StyledInlineErrorMessage>
+                  {errors.password}
+                </StyledInlineErrorMessage>
+              ) : null}
 
-                <StyledButton type="submit">Log In</StyledButton>
-                <StyledSwitchButton onClick={() => setIsLogin(false)}>
-                  No account? Register.
-                </StyledSwitchButton>
-              </StyledForm>
-            )}
-          </Formik>
-          <Formik
-            initialValues={{
-              firstName: "",
-              lastName: "",
-              email: "",
-              password: "",
-            }}
-            validationSchema={loginSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ errors, touched }) => (
-              <StyledForm>
-                <StyledField name="email" type="email" placeholder="Email" />
-                {errors.email && touched.email ? (
-                  <StyledInlineErrorMessage>
-                    {errors.email}
-                  </StyledInlineErrorMessage>
-                ) : null}
-
-                <StyledField
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                />
-                {errors.password && touched.password ? (
-                  <StyledInlineErrorMessage>
-                    {errors.password}
-                  </StyledInlineErrorMessage>
-                ) : null}
-
-                <StyledButton type="submit">Log In</StyledButton>
-                <StyledSwitchButton onClick={() => setIsLogin(false)}>
-                  No account? Register.
-                </StyledSwitchButton>
-              </StyledForm>
-            )}
-          </Formik>
-          <Formik
-            initialValues={{
-              firstName: "",
-              lastName: "",
-              email: "",
-              password: "",
-            }}
-            validationSchema={loginSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ errors, touched }) => (
-              <StyledForm>
-                <StyledField name="email" type="email" placeholder="Email" />
-                {errors.email && touched.email ? (
-                  <StyledInlineErrorMessage>
-                    {errors.email}
-                  </StyledInlineErrorMessage>
-                ) : null}
-
-                <StyledField
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                />
-                {errors.password && touched.password ? (
-                  <StyledInlineErrorMessage>
-                    {errors.password}
-                  </StyledInlineErrorMessage>
-                ) : null}
-
-                <StyledButton type="submit">Log In</StyledButton>
-                <StyledSwitchButton onClick={() => setIsLogin(false)}>
-                  No account? Register.
-                </StyledSwitchButton>
-              </StyledForm>
-            )}
-          </Formik>
-        </>
+              <StyledButton type="submit">Log In</StyledButton>
+              <StyledSwitchButton onClick={() => setIsLogin(false)}>
+                No account? Register.
+              </StyledSwitchButton>
+            </StyledForm>
+          )}
+        </Formik>
       ) : (
         <Formik
           initialValues={{
@@ -296,6 +237,7 @@ const Authentication = () => {
           )}
         </Formik>
       )}
+      <StyledBottomSpacer />
     </StyledDrawWrapper>
   );
 };
@@ -371,19 +313,13 @@ const StyledButton = styled.button`
 
   color: ${(props) => props.theme.primaryBackgroundColor};
   background-color: ${(props) => props.theme.buttonColor};
+
   border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
   border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
-const StyledHeader = styled.div`
-  width: 80%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.1rem;
-  font-weight: 500;
+const StyledBottomSpacer = styled.div`
+  height: 50vh;
 `;
 
 const StyledSwitchButton = styled.button`
