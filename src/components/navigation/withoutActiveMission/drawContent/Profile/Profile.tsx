@@ -46,18 +46,18 @@ const Profile = () => {
 
         <DriverLicenses />
 
-        <Skills 
-          id={0} 
-          category={""} 
-          date={""} 
-          titel={""} 
-          institution={""} 
-          confirmation={""} 
-          name={""} 
-          selector={""} 
-          sortable={false} 
-          right={false} 
-          columns={undefined} 
+        <Skills
+          id={0}
+          category={""}
+          date={""}
+          titel={""}
+          institution={""}
+          confirmation={""}
+          name={""}
+          selector={""}
+          sortable={false}
+          right={false}
+          columns={undefined}
           defaultSortField={""}
           customStyles={""}
         />
@@ -109,6 +109,8 @@ const StyledHeader = styled.div`
 const StyledProfileContent = styled.div`
   height: 55vh;
   padding: 0.5rem;
+
+  background: ${(props) => props.theme.primaryBackgroundColor};
 
   display: flex;
   flex-wrap: wrap;

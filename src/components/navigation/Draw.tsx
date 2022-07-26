@@ -7,6 +7,7 @@ import useMission from "../../hooks/useMission";
 type DrawPropsType = {
   usedInAuthentication: boolean;
 };
+
 const Draw = ({ usedInAuthentication }: DrawPropsType) => {
   const { setIsDrawOpen } = useNavigation();
 
@@ -19,7 +20,7 @@ const Draw = ({ usedInAuthentication }: DrawPropsType) => {
       </StyledDrawContentWrapper>
 
       {!usedInAuthentication && (
-        <StyledMapOverlay
+        <StyledBackgroundBehindDraw
           to={activeMission ? "" : "/"}
           onClick={() => setIsDrawOpen(false)}
         />
@@ -29,18 +30,18 @@ const Draw = ({ usedInAuthentication }: DrawPropsType) => {
 };
 
 const StyledDrawWrapper = styled.div`
-  /* position: absolute; */
   width: 100vw;
   height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: end;
+
   pointer-events: auto;
   z-index: 3;
-  overflow: hidden;
 `;
 
-const StyledMapOverlay = styled(Link)`
+const StyledBackgroundBehindDraw = styled(Link)`
   position: fixed;
   background: rgba(1, 1, 1, 0.1);
   height: 100vh;
@@ -50,10 +51,8 @@ const StyledMapOverlay = styled(Link)`
 const StyledDrawContentWrapper = styled.div`
   width: 100vw;
   height: 66vh;
-  overflow-y: auto;
 
-  background: ${(props) => props.theme.secondaryBackgroundColor};
-  color: ${(props) => props.theme.secondaryFontColor};
+  color: ${(props) => props.theme.primaryFontColor};
 
   z-index: 4;
 
@@ -67,6 +66,9 @@ const StyledDrawContentWrapper = styled.div`
     ${(props) => props.theme.drawerBorderRadius} 0 0;
 
   opacity: 1;
+
+  background: ${(props) => props.theme.primaryBackgroundColor};
+  overflow-y: scroll;
 
   animation-name: fadeInBottom;
   animation-timing-function: ease-in;

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import Map from '../map/Map';
-import Draw from '../navigation/Draw';
+import styled from "styled-components";
+import Map from "../map/Map";
+import Draw from "../navigation/Draw";
 
 const AuthLayout = () => {
   return (

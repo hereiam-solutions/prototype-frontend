@@ -129,43 +129,120 @@ const Authentication = () => {
       </StyledLogoWrapper>
 
       {isLogin ? (
-        <Formik
-          initialValues={{
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-          }}
-          validationSchema={loginSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ errors, touched }) => (
-            <StyledForm>
-              <StyledField name="email" type="email" placeholder="Email" />
-              {errors.email && touched.email ? (
-                <StyledInlineErrorMessage>
-                  {errors.email}
-                </StyledInlineErrorMessage>
-              ) : null}
+        <>
+          {" "}
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+            }}
+            validationSchema={loginSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ errors, touched }) => (
+              <StyledForm>
+                <StyledField name="email" type="email" placeholder="Email" />
+                {errors.email && touched.email ? (
+                  <StyledInlineErrorMessage>
+                    {errors.email}
+                  </StyledInlineErrorMessage>
+                ) : null}
 
-              <StyledField
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
-              {errors.password && touched.password ? (
-                <StyledInlineErrorMessage>
-                  {errors.password}
-                </StyledInlineErrorMessage>
-              ) : null}
+                <StyledField
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+                {errors.password && touched.password ? (
+                  <StyledInlineErrorMessage>
+                    {errors.password}
+                  </StyledInlineErrorMessage>
+                ) : null}
 
-              <StyledButton type="submit">Log In</StyledButton>
-              <StyledSwitchButton onClick={() => setIsLogin(false)}>
-                No account? Register.
-              </StyledSwitchButton>
-            </StyledForm>
-          )}
-        </Formik>
+                <StyledButton type="submit">Log In</StyledButton>
+                <StyledSwitchButton onClick={() => setIsLogin(false)}>
+                  No account? Register.
+                </StyledSwitchButton>
+              </StyledForm>
+            )}
+          </Formik>
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+            }}
+            validationSchema={loginSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ errors, touched }) => (
+              <StyledForm>
+                <StyledField name="email" type="email" placeholder="Email" />
+                {errors.email && touched.email ? (
+                  <StyledInlineErrorMessage>
+                    {errors.email}
+                  </StyledInlineErrorMessage>
+                ) : null}
+
+                <StyledField
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+                {errors.password && touched.password ? (
+                  <StyledInlineErrorMessage>
+                    {errors.password}
+                  </StyledInlineErrorMessage>
+                ) : null}
+
+                <StyledButton type="submit">Log In</StyledButton>
+                <StyledSwitchButton onClick={() => setIsLogin(false)}>
+                  No account? Register.
+                </StyledSwitchButton>
+              </StyledForm>
+            )}
+          </Formik>
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+            }}
+            validationSchema={loginSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ errors, touched }) => (
+              <StyledForm>
+                <StyledField name="email" type="email" placeholder="Email" />
+                {errors.email && touched.email ? (
+                  <StyledInlineErrorMessage>
+                    {errors.email}
+                  </StyledInlineErrorMessage>
+                ) : null}
+
+                <StyledField
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+                {errors.password && touched.password ? (
+                  <StyledInlineErrorMessage>
+                    {errors.password}
+                  </StyledInlineErrorMessage>
+                ) : null}
+
+                <StyledButton type="submit">Log In</StyledButton>
+                <StyledSwitchButton onClick={() => setIsLogin(false)}>
+                  No account? Register.
+                </StyledSwitchButton>
+              </StyledForm>
+            )}
+          </Formik>
+        </>
       ) : (
         <Formik
           initialValues={{

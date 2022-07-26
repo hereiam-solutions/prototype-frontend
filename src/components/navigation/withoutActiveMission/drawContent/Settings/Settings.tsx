@@ -16,7 +16,8 @@ import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
 import useTheme from "../../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../../context/ThemeContext";
 
-import { ReactComponent as SettingsButton } from "../../../../../assets/Navigation/Settings.svg";
+import { ReactComponent as SettingsButtonLight } from "../../../../../assets/Navigation/Settings.svg";
+import { ReactComponent as SettingsButtonDark } from "../../../../../assets/Navigation/Settings_Dark.svg";
 
 const Settings = () => {
   const { setActiveTileLayer, setReRenderBoolean, reRenderBoolean } =
@@ -27,43 +28,57 @@ const Settings = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <SettingsButton height={40} />
+        {currentTheme === ThemeEnum.LIGHT ? (
+          <SettingsButtonDark height={40} />
+        ) : (
+          <SettingsButtonLight height={40} />
+        )}
         <StyledHeading>Settings</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Map Type</StyledSecondaryHeading>
+          <StyledSecondaryHeading>Map type</StyledSecondaryHeading>
+
           <StyledMapTypesWrapper>
-            <StyledMapIconWrapper>
-              <BsMap
-                size={30}
-                onClick={() => {
-                  setActiveTileLayer(ActiveTileLayerEnum.DEFAULT);
-                  setReRenderBoolean(!reRenderBoolean);
-                }}
-              />
-            </StyledMapIconWrapper>
+            <StyledMapTypeSwitchWrapper>
+              <StyledMapIconWrapper>
+                <BsMap
+                  size={30}
+                  onClick={() => {
+                    setActiveTileLayer(ActiveTileLayerEnum.DEFAULT);
+                    setReRenderBoolean(!reRenderBoolean);
+                  }}
+                />
+              </StyledMapIconWrapper>
+              <StyledMapTypeText>Default</StyledMapTypeText>
+            </StyledMapTypeSwitchWrapper>
 
-            <StyledMapIconWrapper>
-              <GiHumanPyramid
-                size={30}
-                onClick={() => {
-                  setActiveTileLayer(ActiveTileLayerEnum.HUMANITARIAN);
-                  setReRenderBoolean(!reRenderBoolean);
-                }}
-              />
-            </StyledMapIconWrapper>
+            <StyledMapTypeSwitchWrapper>
+              <StyledMapIconWrapper>
+                <GiHumanPyramid
+                  size={30}
+                  onClick={() => {
+                    setActiveTileLayer(ActiveTileLayerEnum.HUMANITARIAN);
+                    setReRenderBoolean(!reRenderBoolean);
+                  }}
+                />
+              </StyledMapIconWrapper>
+              <p>Humanitarian</p>
+            </StyledMapTypeSwitchWrapper>
 
-            <StyledMapIconWrapper>
-              <GiSattelite
-                size={30}
-                onClick={() => {
-                  setActiveTileLayer(ActiveTileLayerEnum.SATELLITE);
-                  setReRenderBoolean(!reRenderBoolean);
-                }}
-              />
-            </StyledMapIconWrapper>
+            <StyledMapTypeSwitchWrapper>
+              <StyledMapIconWrapper>
+                <GiSattelite
+                  size={30}
+                  onClick={() => {
+                    setActiveTileLayer(ActiveTileLayerEnum.SATELLITE);
+                    setReRenderBoolean(!reRenderBoolean);
+                  }}
+                />
+              </StyledMapIconWrapper>
+              <StyledMapTypeText>Sattelite</StyledMapTypeText>
+            </StyledMapTypeSwitchWrapper>
           </StyledMapTypesWrapper>
         </StyledSectionWrapper>
 
@@ -77,7 +92,88 @@ const Settings = () => {
                 : setCurrentTheme(ThemeEnum.LIGHT);
             }}
           >
-            <div>Dark Mode:</div>
+            <StyledMapTypeText>Dark Mode:</StyledMapTypeText>
+
+            <Switch
+              onChange={() => {
+                currentTheme === ThemeEnum.LIGHT
+                  ? setCurrentTheme(ThemeEnum.DARK)
+                  : setCurrentTheme(ThemeEnum.LIGHT);
+              }}
+              checked={currentTheme === ThemeEnum.DARK}
+              onColor="#7b7b7d"
+              offColor="#D1D1D6"
+            />
+          </StyledThemeSwitch>
+        </StyledSectionWrapper>
+
+        {/*  */}
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Theme</StyledSecondaryHeading>
+
+          <StyledThemeSwitch
+            onClick={() => {
+              currentTheme === ThemeEnum.LIGHT
+                ? setCurrentTheme(ThemeEnum.DARK)
+                : setCurrentTheme(ThemeEnum.LIGHT);
+            }}
+          >
+            <StyledMapTypeText>Dark Mode:</StyledMapTypeText>
+
+            <Switch
+              onChange={() => {
+                currentTheme === ThemeEnum.LIGHT
+                  ? setCurrentTheme(ThemeEnum.DARK)
+                  : setCurrentTheme(ThemeEnum.LIGHT);
+              }}
+              checked={currentTheme === ThemeEnum.DARK}
+              onColor="#7b7b7d"
+              offColor="#D1D1D6"
+            />
+          </StyledThemeSwitch>
+        </StyledSectionWrapper>
+
+        {/*  */}
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Theme</StyledSecondaryHeading>
+
+          <StyledThemeSwitch
+            onClick={() => {
+              currentTheme === ThemeEnum.LIGHT
+                ? setCurrentTheme(ThemeEnum.DARK)
+                : setCurrentTheme(ThemeEnum.LIGHT);
+            }}
+          >
+            <StyledMapTypeText>Dark Mode:</StyledMapTypeText>
+
+            <Switch
+              onChange={() => {
+                currentTheme === ThemeEnum.LIGHT
+                  ? setCurrentTheme(ThemeEnum.DARK)
+                  : setCurrentTheme(ThemeEnum.LIGHT);
+              }}
+              checked={currentTheme === ThemeEnum.DARK}
+              onColor="#7b7b7d"
+              offColor="#D1D1D6"
+            />
+          </StyledThemeSwitch>
+        </StyledSectionWrapper>
+
+        {/*  */}
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Theme</StyledSecondaryHeading>
+
+          <StyledThemeSwitch
+            onClick={() => {
+              currentTheme === ThemeEnum.LIGHT
+                ? setCurrentTheme(ThemeEnum.DARK)
+                : setCurrentTheme(ThemeEnum.LIGHT);
+            }}
+          >
+            <StyledMapTypeText>Dark Mode:</StyledMapTypeText>
 
             <Switch
               onChange={() => {
@@ -103,8 +199,9 @@ const StyledDrawWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
-  /* overflow-y: scroll */
+  gap: 5rem;
+  background: ${(props) => props.theme.primaryBackgroundColor};
+  overflow: auto;
 `;
 
 const StyledDrawHeader = styled.div`
@@ -119,16 +216,21 @@ const StyledDrawHeader = styled.div`
 const StyledHeading = styled.p`
   font-weight: 500;
   font-size: 2rem;
+  color: ${(props) => props.theme.primaryFontColor};
 `;
 
 const StyledContentWrapper = styled.div`
   width: 100%;
+
+  background: ${(props) => props.theme.primaryBackgroundColor};
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* align-items: center; */
   gap: 2.5rem;
+
+  overflow-y: scroll;
 `;
 
 const StyledSectionWrapper = styled.div`
@@ -143,6 +245,7 @@ const StyledSectionWrapper = styled.div`
 const StyledSecondaryHeading = styled.p`
   font-weight: 500;
   font-size: 1.4rem;
+  color: ${(props) => props.theme.primaryFontColor};
 `;
 
 // styles for this component only
@@ -154,6 +257,14 @@ const StyledMapTypesWrapper = styled.div`
   align-items: center;
 `;
 
+const StyledMapTypeSwitchWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
 const StyledMapIconWrapper = styled.div`
   height: 60px;
   width: 60px;
@@ -162,7 +273,7 @@ const StyledMapIconWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  border: solid 1px white;
+  border: solid 1px ${(props) => props.theme.primaryFontColor};
   border-radius: 10px;
 `;
 
@@ -172,6 +283,10 @@ const StyledThemeSwitch = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const StyledMapTypeText = styled.div`
+  color: ${(props) => props.theme.primaryFontColor};
 `;
 
 // const StyledAccordionContentWrapper = styled.div`
