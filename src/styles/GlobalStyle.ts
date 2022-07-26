@@ -230,20 +230,21 @@ const font = {
 const paddings = {
   insideButtonPadding: "0.2rem 0.5rem 0.2rem 0.5rem",
   sectionHeadlinePadding: "0.2rem 0 0.2rem 1rem",
-  drawPadding: "1rem",
+  drawPadding: "1.5rem",
 };
 
 export const darkTheme = {
   primaryBackgroundColor: "#212121",
+  primaryFontColor: "#FFFFFF",
+  buttonColor: "#C8C8C8",
+
   secondaryBackgroundColor: "var(--base-text)",
   sectionHeadlineBackgroundColor: "var(--gray-500)",
   sectionHeadlineColor: "var(--base)",
-  primaryFontColor: "var(--whiter)",
   secondaryFontColor: "var(--base-light)",
   navIconColor: "var(--base-light)",
   mapControlBackground: "var(--gray-300)",
   mapControlColor: "var(--base)",
-  buttonColor: "#C8C8C8",
   formFieldBackground: "var(--gray-500)",
   formFieldColor: "var(--gray-200)",
   formSubmitFillColor: "#F8DE00",
@@ -257,16 +258,17 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  primaryBackgroundColor: "var(--base-light)",
+  primaryBackgroundColor: "#FFFFFF",
+  primaryFontColor: "#000000",
+  buttonColor: "#C8C8C8",
+
   secondaryBackgroundColor: "var(--gray-300)",
   sectionHeadlineBackgroundColor: "var(--gray-400)",
   sectionHeadlineColor: "var(--base-light)",
-  primaryFontColor: "var(--base-text)",
   secondaryFontColor: "var(--base)",
   navIconColor: "var(--base-light)",
   mapControlBackground: "var(--gray-200)",
   mapControlColor: "var(--base)",
-  buttonColor: "#C8C8C8",
   formFieldBackground: "var(--gray-200)",
   formFieldColor: "var(--base)",
   formSubmitFillColor: "var(--gray-400)",
