@@ -219,7 +219,7 @@ const CreateMission = () => {
           />
         </StyledSectionWrapper>
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Mission type</StyledSecondaryHeading>
+          <StyledSecondaryHeading>Disaster type</StyledSecondaryHeading>
           <SingleDropdown
             options={disasterDropdownOptions}
             value={selectedDisasterType}
@@ -374,13 +374,14 @@ const StyledButton = styled.button`
   height: 3rem;
 
   margin-top: 1.5rem;
+  margin-bottom: 4rem;
 
   font-weight: 700;
   text-align: center;
 
   align-self: center;
 
-  color: ${(props) => props.theme.primaryBackgroundColor};
+  color: ${(props) => props.theme.buttonFontColor};
   background-color: ${(props) => props.theme.buttonColor};
 
   border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
@@ -435,8 +436,8 @@ const StyledList = styled.ul`
 `;
 
 const StyledListEntry = styled.li`
-  color: ${(props) => props.theme.primaryBackgroundColor};
-  background: ${(props) => props.theme.primaryFontColor};
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
 
   margin-bottom: 0.3rem;
   padding: 0.2rem 0.6rem;

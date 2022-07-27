@@ -29,9 +29,9 @@ const Profile = () => {
 
   return (
     <StyledProfileWrapper>
-      <StyledHeader>
-        <p>Profile</p>
-      </StyledHeader>
+      <StyledDrawHeader>
+        <StyledHeading>Profile</StyledHeading>
+      </StyledDrawHeader>
 
       <StyledProfileContent>
         <StyledPersonWrapper>
@@ -46,7 +46,7 @@ const Profile = () => {
 
         <DriverLicenses />
 
-        <Skills
+        {/* <Skills
           id={0}
           category={""}
           date={""}
@@ -60,15 +60,49 @@ const Profile = () => {
           columns={undefined}
           defaultSortField={""}
           customStyles={""}
-        />
+        /> */}
 
-        <StyledLogOutButton onClick={handleLogOut}>
-          Bye. Log me out
-        </StyledLogOutButton>
+        <StyledButton onClick={handleLogOut}>Log out</StyledButton>
       </StyledProfileContent>
     </StyledProfileWrapper>
   );
 };
+
+const StyledDrawHeader = styled.div`
+  padding-bottom: 1rem;
+  /* margin-bottom: 0.8rem; */
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledHeading = styled.p`
+  font-weight: 500;
+  font-size: 2rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledButton = styled.button`
+  width: 60%;
+  height: 3rem;
+
+  margin-top: 1.5rem;
+  margin-bottom: 4rem;
+
+  font-weight: 700;
+  text-align: center;
+
+  align-self: center;
+
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+`;
 
 const StyledProfileWrapper = styled.div`
   position: absolute;

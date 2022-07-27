@@ -221,7 +221,7 @@ const StyledButton = styled.button`
 
   align-self: center;
 
-  color: ${(props) => props.theme.primaryBackgroundColor};
+  color: ${(props) => props.theme.buttonFontColor};
   background-color: ${(props) => props.theme.buttonColor};
 
   border: 1px solid ${(props) => props.theme.formSubmitBorderColor};

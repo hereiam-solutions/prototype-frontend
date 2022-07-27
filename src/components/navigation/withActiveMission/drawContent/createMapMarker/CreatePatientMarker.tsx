@@ -114,86 +114,138 @@ const CreatePatientMarker = () => {
   };
 
   return (
-    <StyledWrapper>
-      <StyledHeader>Set Patient</StyledHeader>
+    <StyledDrawWrapper>
+      <StyledDrawHeader>
+        <StyledHeading>Patient</StyledHeading>
+      </StyledDrawHeader>
 
-      <StyledSectionWrapper>
-        <StyledSecondaryHeading>Age Group:</StyledSecondaryHeading>
+      <StyledContentWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Age Group:</StyledSecondaryHeading>
 
-        <SingleDropdown
-          options={ageGroupDropwdownOptions}
-          value={selectedAgeGroup}
-          label={""}
-          onChange={handleAgeGroupChange}
-        />
-      </StyledSectionWrapper>
+          <SingleDropdown
+            options={ageGroupDropwdownOptions}
+            value={selectedAgeGroup}
+            label={""}
+            onChange={handleAgeGroupChange}
+          />
+        </StyledSectionWrapper>
 
-      <StyledSectionWrapper>
-        <StyledSecondaryHeading>Gender:</StyledSecondaryHeading>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Gender:</StyledSecondaryHeading>
 
-        <SingleDropdown
-          options={genderDropwdownOptions}
-          value={selectedGender}
-          label={""}
-          onChange={handleGenderChange}
-        />
-      </StyledSectionWrapper>
+          <SingleDropdown
+            options={genderDropwdownOptions}
+            value={selectedGender}
+            label={""}
+            onChange={handleGenderChange}
+          />
+        </StyledSectionWrapper>
 
-      <StyledSectionWrapper>
-        <StyledSecondaryHeading>Status:</StyledSecondaryHeading>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Status:</StyledSecondaryHeading>
 
-        <SingleDropdown
-          options={statusDropwdownOptions}
-          value={selectedStatus}
-          label={""}
-          onChange={handleStatusChange}
-        />
-      </StyledSectionWrapper>
+          <SingleDropdown
+            options={statusDropwdownOptions}
+            value={selectedStatus}
+            label={""}
+            onChange={handleStatusChange}
+          />
+        </StyledSectionWrapper>
 
-      <StyledSectionWrapper>
-        <StyledSecondaryHeading>Injuries:</StyledSecondaryHeading>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Injuries:</StyledSecondaryHeading>
 
-        <SingleDropdown
-          options={injuryDropwdownOptions}
-          value={selectedInjuries}
-          label={""}
-          onChange={handleInjuriesChange}
-        />
-      </StyledSectionWrapper>
+          <SingleDropdown
+            options={injuryDropwdownOptions}
+            value={selectedInjuries}
+            label={""}
+            onChange={handleInjuriesChange}
+          />
+        </StyledSectionWrapper>
 
-      <StyledButton onClick={handleSubmit}>
-        {loading ? "loading..." : "Submit Patient"}
-      </StyledButton>
-    </StyledWrapper>
+        <StyledButton onClick={handleSubmit}>
+          {loading ? "loading..." : "Submit Patient"}
+        </StyledButton>
+      </StyledContentWrapper>
+    </StyledDrawWrapper>
   );
 };
 
-const StyledWrapper = styled.div`
-  height: 100%;
+const StyledDrawWrapper = styled.div`
   width: 100%;
-
-  padding: 2rem;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
+  background: ${(props) => props.theme.primaryBackgroundColor};
+`;
+
+const StyledDrawHeader = styled.div`
+  padding-bottom: 1rem;
+  margin-bottom: 0.8rem;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
   align-items: center;
+`;
+
+const StyledHeading = styled.p`
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledContentWrapper = styled.div`
+  /* padding-top: 8rem; */
+  width: 100%;
+  background: ${(props) => props.theme.primaryBackgroundColor};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+
+  overflow-y: scroll;
+`;
+
+const StyledSectionWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 1rem;
 `;
 
-const StyledHeader = styled.h2``;
-
-const StyledSecondaryHeading = styled.div`
-  align-self: start;
+const StyledSecondaryHeading = styled.p`
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: ${(props) => props.theme.primaryFontColor};
 `;
 
+// styled components for this component only
 const StyledButton = styled.button`
-  padding: 0.5rem;
-  border-radius: 20px;
-  color: white;
-  background: grey;
-`;
+  width: 60%;
+  height: 3rem;
 
-const StyledSectionWrapper = styled.div``;
+  margin-top: 0.5rem;
+  margin-bottom: 4rem;
+
+  font-weight: 700;
+  text-align: center;
+
+  align-self: center;
+
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+`;
 
 // dropdown options
 const ageGroupDropwdownOptions = [

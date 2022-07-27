@@ -9,9 +9,9 @@ import ClearData from "./ClearData";
 const About = () => {
   return (
     <StyledAboutWrapper>
-      <StyledHeader>
-        <p>About</p>
-      </StyledHeader>
+      <StyledDrawHeader>
+        <StyledHeading>About</StyledHeading>
+      </StyledDrawHeader>
 
       <StyledAboutContent>
         <Version />
@@ -24,6 +24,23 @@ const About = () => {
   );
 };
 
+const StyledDrawHeader = styled.div`
+  padding-bottom: 1rem;
+  /* margin-bottom: 0.8rem; */
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledHeading = styled.p`
+  font-weight: 500;
+  font-size: 2rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
 const StyledAboutWrapper = styled.div`
   position: absolute;
   width: 100vw;
@@ -33,17 +50,6 @@ const StyledAboutWrapper = styled.div`
   justify-content: center;
   overflow: hidden;
   pointer-events: auto;
-`;
-
-const StyledHeader = styled.div`
-  width: 80%;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  color: ${(props) => props.theme.primaryFontColor};
-  font-size: 1.1rem;
-  font-weight: 500;
-  overflow: hidden;
 `;
 
 const StyledAboutContent = styled.div`

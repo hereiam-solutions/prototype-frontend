@@ -238,7 +238,8 @@ const paddings = {
 export const darkTheme = {
   primaryBackgroundColor: "#212121",
   primaryFontColor: "#FFFFFF",
-  buttonColor: "#C8C8C8",
+  buttonColor: "#DCE4EF",
+  buttonFontColor: "#212121",
 
   secondaryBackgroundColor: "var(--base-text)",
   sectionHeadlineBackgroundColor: "var(--gray-500)",
@@ -263,6 +264,7 @@ export const lightTheme = {
   primaryBackgroundColor: "#FFFFFF",
   primaryFontColor: "#000000",
   buttonColor: "#C8C8C8",
+  buttonFontColor: "#000000",
 
   secondaryBackgroundColor: "var(--gray-300)",
   sectionHeadlineBackgroundColor: "var(--gray-400)",

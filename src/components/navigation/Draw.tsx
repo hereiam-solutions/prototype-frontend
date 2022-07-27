@@ -18,13 +18,20 @@ const Draw = ({ usedInAuthentication }: DrawPropsType) => {
       <StyledDrawContentWrapper>
         <Outlet />
       </StyledDrawContentWrapper>
-
+      {/* 
       {!usedInAuthentication && (
         <StyledBackgroundBehindDraw
           to={activeMission ? "" : "/"}
           onClick={() => setIsDrawOpen(false)}
         />
-      )}
+      )} */}
+
+      <StyledBackgroundBehindDraw
+        to={usedInAuthentication ? "/auth" : activeMission ? "" : "/"}
+        onClick={() => {
+          !usedInAuthentication && setIsDrawOpen(false);
+        }}
+      />
     </StyledDrawWrapper>
   );
 };

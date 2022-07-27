@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useNavigation from "../../../../../hooks/useNavigation";
 
@@ -49,6 +49,9 @@ const CreateHazardMarker = () => {
     hazardTypes.AVALANCHE
   );
 
+  const [upperCaseSelectedType, setUpperCaseSelectedType] =
+    useState<string>("Hazard");
+
   const [identifierValue, setIdentifierValue] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,178 +93,272 @@ const CreateHazardMarker = () => {
     }
   };
 
+  useEffect(() => {
+    const hazardTypeArray = selectedType.split(" ");
+
+    const hazardType = hazardTypeArray
+      .map((word) => {
+        return word[0].toUpperCase() + word.substring(1);
+      })
+      .join(" ");
+
+    setUpperCaseSelectedType(hazardType);
+  }, [selectedType]);
+
   return (
-    <StyledWrapper>
-      <StyledHeader>Set Hazard</StyledHeader>
-      <StyledSecondaryHeading>Type of Hazard:</StyledSecondaryHeading>
-      <StyledIconRow>
-        <AvalanceIcon
-          className={`icon ${
-            selectedType === hazardTypes.AVALANCHE ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(hazardTypes.AVALANCHE);
-          }}
-        />
+    <StyledDrawWrapper>
+      <StyledDrawHeader>
+        <StyledHeading>{upperCaseSelectedType}</StyledHeading>
+      </StyledDrawHeader>
 
-        <BioIncidentIcon
-          className={`icon ${
-            selectedType === hazardTypes.BIOLOGICALINCIDENT ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.BIOLOGICALINCIDENT)}
-        />
+      <StyledContentWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Hazard type</StyledSecondaryHeading>
+          <StyledIconRow>
+            <AvalanceIcon
+              className={`icon ${
+                selectedType === hazardTypes.AVALANCHE ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(hazardTypes.AVALANCHE);
+              }}
+            />
 
-        <BombIcon
-          className={`icon ${
-            selectedType === hazardTypes.BOMB ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.BOMB)}
-        />
+            <BioIncidentIcon
+              className={`icon ${
+                selectedType === hazardTypes.BIOLOGICALINCIDENT
+                  ? "selected"
+                  : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.BIOLOGICALINCIDENT)}
+            />
 
-        <ChemicalIcon
-          className={`icon ${
-            selectedType === hazardTypes.CHEMICALINCIDENT ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.CHEMICALINCIDENT)}
-        />
+            <BombIcon
+              className={`icon ${
+                selectedType === hazardTypes.BOMB ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.BOMB)}
+            />
 
-        <ContagiousIcon
-          className={`icon ${
-            selectedType === hazardTypes.CONTAGIOUSILLNESS ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.CONTAGIOUSILLNESS)}
-        />
+            <ChemicalIcon
+              className={`icon ${
+                selectedType === hazardTypes.CHEMICALINCIDENT ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.CHEMICALINCIDENT)}
+            />
 
-        <EarthquakeIcon
-          className={`icon ${
-            selectedType === hazardTypes.EARTHQUAKE ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.EARTHQUAKE)}
-        />
+            <ContagiousIcon
+              className={`icon ${
+                selectedType === hazardTypes.CONTAGIOUSILLNESS ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.CONTAGIOUSILLNESS)}
+            />
 
-        <ExplosionIcon
-          className={`icon ${
-            selectedType === hazardTypes.EXPLOSION ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.EXPLOSION)}
-        />
+            <EarthquakeIcon
+              className={`icon ${
+                selectedType === hazardTypes.EARTHQUAKE ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.EARTHQUAKE)}
+            />
 
-        <FireIcon
-          className={`icon ${
-            selectedType === hazardTypes.FIRE ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.FIRE)}
-        />
+            <ExplosionIcon
+              className={`icon ${
+                selectedType === hazardTypes.EXPLOSION ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.EXPLOSION)}
+            />
 
-        <FloodIcon
-          className={`icon ${
-            selectedType === hazardTypes.FLOOD ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.FLOOD)}
-        />
+            <FireIcon
+              className={`icon ${
+                selectedType === hazardTypes.FIRE ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.FIRE)}
+            />
 
-        <HurricaneIcon
-          className={`icon ${
-            selectedType === hazardTypes.HURRICANE ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.HURRICANE)}
-        />
+            <FloodIcon
+              className={`icon ${
+                selectedType === hazardTypes.FLOOD ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.FLOOD)}
+            />
 
-        <MaritimeIcon
-          className={`icon ${
-            selectedType === hazardTypes.MARITIME ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.MARITIME)}
-        />
+            <HurricaneIcon
+              className={`icon ${
+                selectedType === hazardTypes.HURRICANE ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.HURRICANE)}
+            />
 
-        <NuclearIcon
-          className={`icon ${
-            selectedType === hazardTypes.NUCLEAR ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.NUCLEAR)}
-        />
+            <MaritimeIcon
+              className={`icon ${
+                selectedType === hazardTypes.MARITIME ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.MARITIME)}
+            />
 
-        <PlaneIcon
-          className={`icon ${
-            selectedType === hazardTypes.PLANECRASH ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.PLANECRASH)}
-        />
+            <NuclearIcon
+              className={`icon ${
+                selectedType === hazardTypes.NUCLEAR ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.NUCLEAR)}
+            />
 
-        <PowerIcon
-          className={`icon ${
-            selectedType === hazardTypes.POWEROUTAGE ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.POWEROUTAGE)}
-        />
+            <PlaneIcon
+              className={`icon ${
+                selectedType === hazardTypes.PLANECRASH ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.PLANECRASH)}
+            />
 
-        <RiotIcon
-          className={`icon ${
-            selectedType === hazardTypes.RIOT ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.RIOT)}
-        />
+            <PowerIcon
+              className={`icon ${
+                selectedType === hazardTypes.POWEROUTAGE ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.POWEROUTAGE)}
+            />
 
-        <RockSlideIcon
-          className={`icon ${
-            selectedType === hazardTypes.ROCKSLIDE ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.ROCKSLIDE)}
-        />
+            <RiotIcon
+              className={`icon ${
+                selectedType === hazardTypes.RIOT ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.RIOT)}
+            />
 
-        <TrafficIcon
-          className={`icon ${
-            selectedType === hazardTypes.TRAFFICACCIDENT ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.TRAFFICACCIDENT)}
-        />
+            <RockSlideIcon
+              className={`icon ${
+                selectedType === hazardTypes.ROCKSLIDE ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.ROCKSLIDE)}
+            />
 
-        <TrainIcon
-          className={`icon ${
-            selectedType === hazardTypes.TRAIN ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.TRAIN)}
-        />
+            <TrafficIcon
+              className={`icon ${
+                selectedType === hazardTypes.TRAFFICACCIDENT ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.TRAFFICACCIDENT)}
+            />
 
-        <WaterIcon
-          className={`icon ${
-            selectedType === hazardTypes.WATERDISRUPTION ? "selected" : ""
-          }`}
-          onClick={() => setSelectedType(hazardTypes.WATERDISRUPTION)}
-        />
-      </StyledIconRow>
+            <TrainIcon
+              className={`icon ${
+                selectedType === hazardTypes.TRAIN ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.TRAIN)}
+            />
 
-      <StyledSecondaryHeading>Hazard Description:</StyledSecondaryHeading>
+            <WaterIcon
+              className={`icon ${
+                selectedType === hazardTypes.WATERDISRUPTION ? "selected" : ""
+              }`}
+              onClick={() => setSelectedType(hazardTypes.WATERDISRUPTION)}
+            />
+          </StyledIconRow>
+        </StyledSectionWrapper>
 
-      <StyledIdentifierInput
-        onChange={handleInputChange}
-        type="text"
-        value={identifierValue}
-      />
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Description</StyledSecondaryHeading>
 
-      <StyledButton onClick={handleSubmit}>
-        {loading ? "loading..." : "Submit Hazard"}
-      </StyledButton>
-    </StyledWrapper>
+          <StyledInput
+            placeholder="Set the hazard's description..."
+            onChange={handleInputChange}
+            type="text"
+            value={identifierValue}
+          />
+        </StyledSectionWrapper>
+
+        <StyledButton onClick={handleSubmit}>
+          {loading ? "loading..." : "Submit Hazard"}
+        </StyledButton>
+      </StyledContentWrapper>
+    </StyledDrawWrapper>
   );
 };
 
-const StyledWrapper = styled.div`
-  height: 100%;
+const StyledDrawWrapper = styled.div`
   width: 100%;
-
-  padding: 2rem;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
+  background: ${(props) => props.theme.primaryBackgroundColor};
+`;
+
+const StyledDrawHeader = styled.div`
+  padding-bottom: 1rem;
+  margin-bottom: 0.8rem;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
   align-items: center;
+`;
+
+const StyledHeading = styled.p`
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledContentWrapper = styled.div`
+  /* padding-top: 8rem; */
+  width: 100%;
+  background: ${(props) => props.theme.primaryBackgroundColor};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+
+  overflow-y: scroll;
+`;
+
+const StyledSectionWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 1rem;
 `;
 
-const StyledHeader = styled.h2``;
+const StyledSecondaryHeading = styled.p`
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
 
-const StyledSecondaryHeading = styled.div`
-  align-self: start;
+// styled components for this component only
+const StyledInput = styled.input`
+  background-color: ${(props) => props.theme.primaryBackgroundColor};
+  border: 1px solid ${(props) => props.theme.formFieldColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+  color: ${(props) => props.theme.formFieldColor};
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  width: 100%;
+  /* margin-top: 0.6rem; */
+  padding: 0.75rem;
+`;
+
+const StyledButton = styled.button`
+  width: 60%;
+  height: 3rem;
+
+  margin-top: 0.5rem;
+
+  font-weight: 700;
+  text-align: center;
+
+  align-self: center;
+
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
 const StyledIconRow = styled.div`
@@ -277,22 +374,9 @@ const StyledIconRow = styled.div`
   }
 
   .selected {
-    background-color: grey;
+    background-color: ${(props) => props.theme.buttonColor};
     border-radius: 50%;
   }
-`;
-
-const StyledIdentifierInput = styled.input`
-  width: 100%;
-  height: 2rem;
-  border: 1px solid black;
-`;
-
-const StyledButton = styled.button`
-  padding: 0.5rem;
-  border-radius: 20px;
-  color: white;
-  background: grey;
 `;
 
 export default CreateHazardMarker;

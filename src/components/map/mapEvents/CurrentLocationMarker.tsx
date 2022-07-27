@@ -11,6 +11,12 @@ const locationIcon = new Icon({
 
 function GetCurrentLocation() {
   const map = useMapEvents({
+    click: () => {
+      map.locate();
+    },
+    zoomstart: () => {
+      map.locate();
+    },
     locationfound(e) {
       setCurrentLocation([e.latlng.lat, e.latlng.lng]);
     },

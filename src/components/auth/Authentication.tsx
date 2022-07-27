@@ -4,7 +4,7 @@ import { useState } from "react";
 import useRealm from "../../hooks/useRealm";
 import styled from "styled-components";
 import * as Realm from "realm-web";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { realmFunctionNames } from "../../data/realm/functions";
 import useTheme from "../../hooks/useTheme";
 import { ThemeEnum } from "../../context/ThemeContext";
@@ -13,6 +13,7 @@ import DarkLogo from "../../assets/Logo/dark/hereIam_logo_dark256x256.svg";
 import LightLogo from "../../assets/Logo/light/hereIam_logo_light256x256.svg";
 import useMission from "../../hooks/useMission";
 import { MissionSchema } from "../../data/realm/schema/mission";
+import useNavigation from "../../hooks/useNavigation";
 // define the schema / rules for the register form validation
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -48,13 +49,13 @@ type RegisterFormValuesType = {
 
 const Authentication = () => {
   const { currentTheme } = useTheme();
-  // state for whether the login or register form should be rendered
-  const [isLogin, setIsLogin] = useState<boolean>(true);
-
   let navigate = useNavigate();
-  // get the realm connection from the context
   const { realm } = useRealm();
   const { setActiveMission } = useMission();
+  const { setIsDrawOpen } = useNavigation();
+
+  // state for whether the login or register form should be rendered
+  const [isLogin, setIsLogin] = useState<boolean>(true);
 
   // initalize a loading state to conditionally render a loading indicator component
   const [loading, setLoading] = useState(false);
@@ -92,6 +93,7 @@ const Authentication = () => {
         }
 
         setLoading(false);
+        setIsDrawOpen(false);
       }
     } catch (e) {
       console.log(e);
@@ -131,6 +133,7 @@ const Authentication = () => {
         setLoading(false);
 
         navigate("/");
+        setIsDrawOpen(false);
       }
     } catch (e) {
       console.log(e);
@@ -181,6 +184,8 @@ const Authentication = () => {
               <StyledSwitchButton onClick={() => setIsLogin(false)}>
                 No account? Register.
               </StyledSwitchButton>
+
+              <StyledLink to="/about">About hereIam.</StyledLink>
             </StyledForm>
           )}
         </Formik>
@@ -230,9 +235,12 @@ const Authentication = () => {
               ) : null}
 
               <StyledButton type="submit">Register</StyledButton>
+
               <StyledSwitchButton onClick={() => setIsLogin(true)}>
                 Already have an account? Log In.
               </StyledSwitchButton>
+
+              <StyledLink to="/about">About hereIam.</StyledLink>
             </StyledForm>
           )}
         </Formik>
@@ -243,14 +251,13 @@ const Authentication = () => {
 };
 
 const StyledDrawWrapper = styled.div`
-  margin-top: 1rem;
+  margin-top: 2rem;
   width: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  /* overflow-y: scroll */
 `;
 
 const StyledLogoWrapper = styled.div`
@@ -311,7 +318,7 @@ const StyledButton = styled.button`
   font-weight: 700;
   text-align: center;
 
-  color: ${(props) => props.theme.primaryBackgroundColor};
+  color: ${(props) => props.theme.buttonFontColor};
   background-color: ${(props) => props.theme.buttonColor};
 
   border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
@@ -323,6 +330,12 @@ const StyledBottomSpacer = styled.div`
 `;
 
 const StyledSwitchButton = styled.button`
+  margin-top: 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.primaryFontColor};
+  text-decoration: none;
   margin-top: 1rem;
 `;
 
