@@ -351,14 +351,15 @@ const DrawPolygon = () => {
       ];
     }
 
+    setIsPolygonDrawingActive(false);
+
     // no idea why but the states in context seem to take a tiny amount of time to update
     // without the setTimeout the navigate() and setIsDrawOpen do not work correctly
     setTimeout(() => {
       setPolygonDrawingCoordinates(geoJSONPolygon);
-      setIsPolygonDrawingActive(false);
       setIsDrawOpen(true);
       navigate("create-mission");
-    }, 10);
+    }, 50);
   };
 
   return (

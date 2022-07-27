@@ -11,6 +11,7 @@ import useRealm from "../../../hooks/useRealm";
 import useMission from "../../../hooks/useMission";
 import useMissionMap from "../../../hooks/useMissionMap";
 import {
+  DeleteLocationArgs,
   LocationSchema,
   UpdateLocationArgs,
 } from "../../../data/realm/schema/location";
@@ -398,7 +399,29 @@ const LocationMarker = ({ location }: Props) => {
         }
       }
 
-      //   setIcon(AvalanceIcon);
+      setReRenderBoolean(!reRenderBoolean);
+    }
+  };
+
+  const deleteLocation = async () => {
+    if (activeMission) {
+      const args: DeleteLocationArgs = {
+        _id: location._id.toString(),
+      };
+
+      if (realm.currentUser) {
+        // call the Realm function
+        const response = await realm.currentUser.callFunction(
+          realmFunctionNames.deleteLocation,
+          args
+        );
+
+        console.log(response);
+        // if (response === "success") {
+        //   setIsActive(!isActive);
+        // }
+      }
+
       setReRenderBoolean(!reRenderBoolean);
     }
   };
@@ -442,7 +465,9 @@ const LocationMarker = ({ location }: Props) => {
             </StyledActivateButton>
           )}
 
-          <div onClick={changeLocationStatus}></div>
+          <StyledDeactivateButton onClick={deleteLocation}>
+            Remove
+          </StyledDeactivateButton>
         </StyledPopupContentWrapper>
       </Popup>
     </Marker>

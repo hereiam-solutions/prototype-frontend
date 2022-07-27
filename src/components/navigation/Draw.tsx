@@ -50,7 +50,7 @@ const StyledBackgroundBehindDraw = styled(Link)`
 
 const StyledDrawContentWrapper = styled.div`
   width: 100vw;
-  height: 66vh;
+  height: 75vh;
 
   color: ${(props) => props.theme.primaryFontColor};
 
@@ -78,7 +78,7 @@ const StyledDrawContentWrapper = styled.div`
       height: 0rem;
     }
     100% {
-      height: 66vh;
+      height: 75vh;
     }
   }
 `;

@@ -117,7 +117,7 @@ const JoinMission = () => {
           />
 
           <StyledButton onClick={handleJoin}>
-            {error ? error : "Join Mission"}
+            {error ? error : "Join"}
           </StyledButton>
         </StyledSectionWrapper>
 
@@ -147,24 +147,17 @@ const StyledDrawWrapper = styled.div`
   justify-content: center;
 
   background: ${(props) => props.theme.primaryBackgroundColor};
-
-  overflow: hidden;
 `;
 
 const StyledDrawHeader = styled.div`
-  padding: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0.8rem;
 
   width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
-
-  position: relative;
-  /* top: 1rem; */
-
-  overflow: hidden;
-
-  margin-bottom: 0.8rem;
 `;
 
 const StyledHeading = styled.p`
@@ -174,7 +167,7 @@ const StyledHeading = styled.p`
 `;
 
 const StyledContentWrapper = styled.div`
-  padding-top: 8rem;
+  /* padding-top: 8rem; */
   width: 100%;
   background: ${(props) => props.theme.primaryBackgroundColor};
 
@@ -213,19 +206,15 @@ const StyledInput = styled.input`
   font-style: normal;
   font-weight: 500;
   width: 100%;
-  margin-top: 0.6rem;
-  padding: 0.75rem 0.75rem;
-`;
-
-const StyledErrorMessage = styled.div`
-  color: #f5646c;
+  /* margin-top: 0.6rem; */
+  padding: 0.75rem;
 `;
 
 const StyledButton = styled.button`
   width: 60%;
   height: 3rem;
 
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
 
   font-weight: 700;
   text-align: center;
@@ -238,70 +227,5 @@ const StyledButton = styled.button`
   border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
   border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
-
-// const StyledDashboardWrapper = styled.div`
-//   position: absolute;
-//   width: 100vw;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   overflow-x: hidden;
-//   overflow-y: scroll;
-//   pointer-events: auto;
-// `;
-
-// const StyledHeader = styled.div`
-//   width: 80%;
-//   padding: 1rem;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   color: ${(props) => props.theme.primaryFontColor};
-//   font-size: 1.1rem;
-//   font-weight: 500;
-//   overflow: hidden;
-// `;
-
-// const StyledDashboardContent = styled.div`
-//   height: 55vh;
-//   width: 100%;
-//   padding: 2rem;
-
-//   display: flex;
-//   flex-direction: column;
-//   /* justify-content: center; */
-//   /* align-items: center; */
-//   gap: 2rem;
-
-//   border-radius: ${(props) => props.theme.drawerBorderRadius}
-//     ${(props) => props.theme.drawerBorderRadius} 0 0;
-
-//   background: ${(props) => props.theme.secondaryBackgroundColor};
-
-//   overflow-x: hidden;
-//   overflow-y: scroll;
-
-//   z-index: 6;
-// `;
-
-// const StyledDeactivated = styled.div`
-//   opacity: 0.3;
-// `;
-
-// const StyledLink = styled(Link)`
-//   text-decoration: none;
-//   color: ${(props) => props.theme.primaryFontColor};
-// `;
-
-// const StyledInput = styled.input`
-//   width: 100%;
-//   height: 2rem;
-//   border: 1px solid black;
-// `;
-
-// const StyledErrorMessage = styled.div`
-//   color: red;
-// `;
 
 export default JoinMission;
