@@ -6,11 +6,17 @@ import { Location } from "../mapTypes";
 
 const locationIcon = new Icon({
   iconUrl: "/icons/assets/location.svg",
-  iconSize: [15, 15],
+  iconSize: [20, 20],
 });
 
 function GetCurrentLocation() {
   const map = useMapEvents({
+    click: () => {
+      map.locate();
+    },
+    zoomstart: () => {
+      map.locate();
+    },
     locationfound(e) {
       setCurrentLocation([e.latlng.lat, e.latlng.lng]);
     },
@@ -27,7 +33,7 @@ function GetCurrentLocation() {
     map.locate({
       setView: true,
       enableHighAccuracy: true,
-      maxZoom: 20,
+      maxZoom: 13,
     });
   }, [map]);
 

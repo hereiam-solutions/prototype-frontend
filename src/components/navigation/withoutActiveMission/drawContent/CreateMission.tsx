@@ -15,6 +15,11 @@ import useNavigation from "../../../../hooks/useNavigation";
 import useRealm from "../../../../hooks/useRealm";
 import { realmFunctionNames } from "../../../../data/realm/functions";
 import { useNavigate } from "react-router-dom";
+import useTheme from "../../../../hooks/useTheme";
+import { ThemeEnum } from "../../../../context/ThemeContext";
+
+import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
+import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
 
 const CreateMission = () => {
   // contexts
@@ -23,6 +28,7 @@ const CreateMission = () => {
   const { setActiveMission } = useMission();
   const { polygonDrawingCoordinates } = useMission();
   const { setIsDrawOpen } = useNavigation();
+  const { currentTheme } = useTheme();
 
   // request for mission creation
   const handleMissionSubmit = async () => {
@@ -191,221 +197,357 @@ const CreateMission = () => {
   };
 
   return (
-    <>
-      <StyledDashboardWrapper>
-        <StyledHeader>Create a Mission</StyledHeader>
+    <StyledDrawWrapper>
+      <StyledDrawHeader>
+        {currentTheme === ThemeEnum.LIGHT ? (
+          <DashboardButtonDark height={40} />
+        ) : (
+          <DashboardButtonLight height={40} />
+        )}
+        <StyledHeading>Create Mission</StyledHeading>
+      </StyledDrawHeader>
 
-        <StyledDashboardContent>
-          {/* <StyledSectionWrapper>
-            <button onClick={handleDrawMission}>draw</button>
-          </StyledSectionWrapper> */}
+      <StyledContentWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Mission name</StyledSecondaryHeading>
+          <StyledInput
+            value={identifierValue}
+            onChange={handleIdentifierChange}
+            placeholder="Give this mission a name..."
+          />
+        </StyledSectionWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Disaster type</StyledSecondaryHeading>
+          <SingleDropdown
+            options={disasterDropdownOptions}
+            value={selectedDisasterType}
+            label={""}
+            onChange={handleDisasterTypeChange}
+          />
+        </StyledSectionWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
 
-          <StyledSectionWrapper>
-            <StyledSecondaryHeading>Type of Mission:</StyledSecondaryHeading>
+          <SingleDropdown
+            options={riskLevelDropdownOptions}
+            value={selectedRiskLevel}
+            label={""}
+            onChange={handleRiskLevelChange}
+          />
+        </StyledSectionWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
 
-            <SingleDropdown
-              options={disasterDropdownOptions}
-              value={selectedDisasterType}
-              label={""}
-              onChange={handleDisasterTypeChange}
-            />
-          </StyledSectionWrapper>
+          <SingleDropdown
+            options={securityLevelDropdownOptions}
+            value={selectedSecurityLevel}
+            label={""}
+            onChange={handleSecurityLevelChange}
+          />
+        </StyledSectionWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
+          <StyledInput
+            type="number"
+            value={populationValue}
+            onChange={handlePopulationChange}
+          />
+        </StyledSectionWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Objectives</StyledSecondaryHeading>
 
-          <StyledSectionWrapper>
-            <StyledSecondaryHeading>Risk Level:</StyledSecondaryHeading>
+          <StyledList>
+            {objectivesValue.map((objective: string, index: number) => {
+              return (
+                <StyledListEntry key={index}>
+                  {objective}
+                  <StyledObjectiveButton
+                    onClick={() => handleRemoveObject(objective)}
+                  >
+                    X
+                  </StyledObjectiveButton>
+                </StyledListEntry>
+              );
+            })}
+          </StyledList>
 
-            <SingleDropdown
-              options={riskLevelDropdownOptions}
-              value={selectedRiskLevel}
-              label={""}
-              onChange={handleRiskLevelChange}
-            />
-          </StyledSectionWrapper>
+          <StyledForm onSubmit={handleObjectivesChange}>
+            <StyledFormContentWrapper>
+              <StyledInput
+                value={objectiveValue}
+                onChange={handleObjectiveChange}
+              />
+              <StyledFormButton type="submit">+</StyledFormButton>
+            </StyledFormContentWrapper>
+          </StyledForm>
+        </StyledSectionWrapper>
 
-          <StyledSectionWrapper>
-            <StyledSecondaryHeading>Security Level:</StyledSecondaryHeading>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Starting time</StyledSecondaryHeading>
+          <StyledTimeInput
+            type="datetime-local"
+            value={startingTimeValue}
+            onChange={handleStartingTimeChange}
+          />
+        </StyledSectionWrapper>
 
-            <SingleDropdown
-              options={securityLevelDropdownOptions}
-              value={selectedSecurityLevel}
-              label={""}
-              onChange={handleSecurityLevelChange}
-            />
-          </StyledSectionWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Ending time</StyledSecondaryHeading>
+          <StyledTimeInput
+            type="datetime-local"
+            value={endingTimeInputValue}
+            onChange={handleEndingTimeChange}
+          />
+        </StyledSectionWrapper>
 
-          <StyledSectionWrapper>
-            <StyledSecondaryHeading>
-              Name of the Mission:
-            </StyledSecondaryHeading>
-            <StyledInput
-              value={identifierValue}
-              onChange={handleIdentifierChange}
-            />
-          </StyledSectionWrapper>
-
-          <StyledSectionWrapper>
-            <StyledSecondaryHeading>
-              Estimated Population:
-            </StyledSecondaryHeading>
-            <StyledInput
-              type="number"
-              value={populationValue}
-              onChange={handlePopulationChange}
-            />
-          </StyledSectionWrapper>
-
-          <StyledSectionWrapper>
-            <StyledSecondaryHeading>Mission Objectives:</StyledSecondaryHeading>
-
-            <StyledList>
-              {objectivesValue.map((objective: string, index: number) => {
-                return (
-                  <StyledListEntry key={index}>
-                    {objective}
-                    <span onClick={() => handleRemoveObject(objective)}>
-                      {" "}
-                      x
-                    </span>
-                  </StyledListEntry>
-                );
-              })}
-            </StyledList>
-
-            <form onSubmit={handleObjectivesChange}>
-              <StyledInputWrapper>
-                <StyledInput
-                  value={objectiveValue}
-                  onChange={handleObjectiveChange}
-                />
-                <StyledButton type="submit">+</StyledButton>
-              </StyledInputWrapper>
-            </form>
-          </StyledSectionWrapper>
-
-          <StyledSectionWrapper>
-            <StyledSecondaryHeading>
-              Mission Starting Time:
-            </StyledSecondaryHeading>
-            <input
-              type="datetime-local"
-              value={startingTimeValue}
-              onChange={handleStartingTimeChange}
-            />
-          </StyledSectionWrapper>
-
-          <StyledSectionWrapper>
-            <StyledSecondaryHeading>
-              Mission Ending Time:
-            </StyledSecondaryHeading>
-            <input
-              type="datetime-local"
-              value={endingTimeInputValue}
-              onChange={handleEndingTimeChange}
-            />
-          </StyledSectionWrapper>
-
-          {startingTimeISOStringValue && endingTimeISOStringValue ? (
-            <StyledButton onClick={handleMissionSubmit}>
-              Submit Mission
-            </StyledButton>
-          ) : (
-            <StyledGreyedButton>Submit Mission</StyledGreyedButton>
-          )}
-        </StyledDashboardContent>
-      </StyledDashboardWrapper>
-    </>
+        <StyledButton onClick={handleMissionSubmit}>
+          {startingTimeISOStringValue && endingTimeISOStringValue
+            ? "Submit"
+            : "Start & End time required"}
+        </StyledButton>
+      </StyledContentWrapper>
+    </StyledDrawWrapper>
   );
 };
 
-const StyledDashboardWrapper = styled.div`
-  position: absolute;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  pointer-events: auto;
-`;
+const StyledDrawWrapper = styled.div`
+  width: 100%;
 
-const StyledHeader = styled.div`
-  width: 80%;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  color: ${(props) => props.theme.primaryFontColor};
-  font-size: 1.1rem;
-  font-weight: 500;
-  overflow: hidden;
+
+  background: ${(props) => props.theme.primaryBackgroundColor};
 `;
 
-const StyledDashboardContent = styled.div`
-  height: 55vh;
+const StyledDrawHeader = styled.div`
+  padding-bottom: 1rem;
+  margin-bottom: 0.8rem;
+
   width: 100%;
-  padding: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledHeading = styled.p`
+  font-weight: 500;
+  font-size: 2rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledContentWrapper = styled.div`
+  /* padding-top: 41rem; */
+  width: 100%;
+  background: ${(props) => props.theme.primaryBackgroundColor};
 
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  gap: 2rem;
+  justify-content: center;
+  gap: 2.5rem;
 
-  border-radius: ${(props) => props.theme.drawerBorderRadius}
-    ${(props) => props.theme.drawerBorderRadius} 0 0;
-
-  background: ${(props) => props.theme.secondaryBackgroundColor};
-
-  overflow-x: hidden;
   overflow-y: scroll;
-
-  z-index: 6;
 `;
 
-// styling
-const StyledSectionWrapper = styled.div``;
+const StyledSectionWrapper = styled.div`
+  width: 100%;
 
-const StyledSecondaryHeading = styled.div`
-  align-self: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+const StyledSecondaryHeading = styled.p`
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+// this component only
+
+const StyledButton = styled.button`
+  width: 60%;
+  height: 3rem;
+
+  margin-top: 1.5rem;
+  margin-bottom: 4rem;
+
+  font-weight: 700;
+  text-align: center;
+
+  align-self: center;
+
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
 const StyledInput = styled.input`
+  background-color: ${(props) => props.theme.primaryBackgroundColor};
+  color: ${(props) => props.theme.formFieldColor};
+
+  border: 1px solid ${(props) => props.theme.formFieldColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+
   width: 100%;
-  height: 2rem;
-  border: 1px solid black;
+  /* margin-top: 0.6rem; */
+  padding: 0.75rem;
+`;
+
+const StyledForm = styled.form``;
+
+const StyledFormContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: 3rem;
+`;
+
+const StyledFormButton = styled.button`
+  width: 20%;
+  height: 100%;
+
+  font-weight: 700;
+  text-align: center;
+  align-self: center;
+
+  color: ${(props) => props.theme.primaryBackgroundColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
 const StyledList = styled.ul`
-  color: white;
+  margin: 0;
+  color: ${(props) => props.theme.primaryFontColor};
 `;
 
 const StyledListEntry = styled.li`
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  margin-bottom: 0.3rem;
+  padding: 0.2rem 0.6rem;
+
+  font-weight: 500;
+
   list-style: none;
   display: inline-block;
   margin-right: 1rem;
+
+  border-radius: 12px;
 `;
 
-const StyledInputWrapper = styled.div`
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+const StyledObjectiveButton = styled.span`
+  color: ${(props) => props.theme.primaryBackgroundColor};
+
+  font-weight: 200;
+  opacity: 0.7;
+
+  margin-left: 0.7rem;
 `;
 
-const StyledButton = styled.button`
-  padding: 0.5rem;
-  border-radius: 20px;
-  color: white;
-  background: grey;
+const StyledTimeInput = styled.input`
+  background-color: ${(props) => props.theme.primaryBackgroundColor};
+  border: 1px solid ${(props) => props.theme.formFieldColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+  color: ${(props) => props.theme.formFieldColor};
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  width: 100%;
+
+  padding: 0.75rem;
+
+  color-scheme: ${(props) =>
+    props.theme.primaryFontColor === "#FFFFFF" ? "dark" : "light"};
 `;
 
-const StyledGreyedButton = styled.button`
-  padding: 0.5rem;
-  border-radius: 20px;
-  color: white;
-  background: grey;
-  opacity: 0.5;
-`;
+// const StyledDashboardWrapper = styled.div`
+//   position: absolute;
+//   width: 100vw;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   overflow-x: hidden;
+//   overflow-y: scroll;
+//   pointer-events: auto;
+// `;
+
+// const StyledHeader = styled.div`
+//   width: 80%;
+//   padding: 1rem;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   color: ${(props) => props.theme.primaryFontColor};
+//   font-size: 1.1rem;
+//   font-weight: 500;
+//   overflow: hidden;
+// `;
+
+// const StyledDashboardContent = styled.div`
+//   height: 55vh;
+//   width: 100%;
+//   padding: 2rem;
+
+//   display: flex;
+//   flex-direction: column;
+//   /* justify-content: center; */
+//   /* align-items: center; */
+//   gap: 2rem;
+
+//   border-radius: ${(props) => props.theme.drawerBorderRadius}
+//     ${(props) => props.theme.drawerBorderRadius} 0 0;
+
+//   background: ${(props) => props.theme.secondaryBackgroundColor};
+
+//   overflow-x: hidden;
+//   overflow-y: scroll;
+
+//   z-index: 6;
+// `;
+
+// // styling
+// const StyledSectionWrapper = styled.div``;
+
+// const StyledSecondaryHeading = styled.div`
+//   align-self: start;
+// `;
+
+// const StyledInput = styled.input`
+//   width: 100%;
+//   height: 2rem;
+//   border: 1px solid black;
+// `;
+
+// const StyledButton = styled.button`
+//   padding: 0.5rem;
+//   border-radius: 20px;
+//   color: white;
+//   background: grey;
+// `;
+
+// const StyledGreyedButton = styled.button`
+//   padding: 0.5rem;
+//   border-radius: 20px;
+//   color: white;
+//   background: grey;
+//   opacity: 0.5;
+// `;
 
 // dropdown options
 const disasterDropdownOptions = [

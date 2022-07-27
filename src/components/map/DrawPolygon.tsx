@@ -126,18 +126,240 @@ const DrawPolygon = () => {
       ];
     }
 
-    // const geoJSONPolygon = e.layer._latlngs[0].map((arr: []) => {
-    //   return [arr.lat, arr.lng];
-    // });
+    if (e.layer._latlngs[0].length === 11) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 12) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+          [e.layer._latlngs[0][11].lat, e.layer._latlngs[0][11].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 13) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+          [e.layer._latlngs[0][11].lat, e.layer._latlngs[0][11].lng],
+          [e.layer._latlngs[0][12].lat, e.layer._latlngs[0][12].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 14) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+          [e.layer._latlngs[0][11].lat, e.layer._latlngs[0][11].lng],
+          [e.layer._latlngs[0][12].lat, e.layer._latlngs[0][12].lng],
+          [e.layer._latlngs[0][13].lat, e.layer._latlngs[0][13].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 15) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+          [e.layer._latlngs[0][11].lat, e.layer._latlngs[0][11].lng],
+          [e.layer._latlngs[0][12].lat, e.layer._latlngs[0][12].lng],
+          [e.layer._latlngs[0][13].lat, e.layer._latlngs[0][13].lng],
+          [e.layer._latlngs[0][14].lat, e.layer._latlngs[0][14].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 16) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+          [e.layer._latlngs[0][11].lat, e.layer._latlngs[0][11].lng],
+          [e.layer._latlngs[0][12].lat, e.layer._latlngs[0][12].lng],
+          [e.layer._latlngs[0][13].lat, e.layer._latlngs[0][13].lng],
+          [e.layer._latlngs[0][14].lat, e.layer._latlngs[0][14].lng],
+          [e.layer._latlngs[0][15].lat, e.layer._latlngs[0][15].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 17) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+          [e.layer._latlngs[0][11].lat, e.layer._latlngs[0][11].lng],
+          [e.layer._latlngs[0][12].lat, e.layer._latlngs[0][12].lng],
+          [e.layer._latlngs[0][13].lat, e.layer._latlngs[0][13].lng],
+          [e.layer._latlngs[0][14].lat, e.layer._latlngs[0][14].lng],
+          [e.layer._latlngs[0][15].lat, e.layer._latlngs[0][15].lng],
+          [e.layer._latlngs[0][16].lat, e.layer._latlngs[0][16].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 18) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+          [e.layer._latlngs[0][11].lat, e.layer._latlngs[0][11].lng],
+          [e.layer._latlngs[0][12].lat, e.layer._latlngs[0][12].lng],
+          [e.layer._latlngs[0][13].lat, e.layer._latlngs[0][13].lng],
+          [e.layer._latlngs[0][14].lat, e.layer._latlngs[0][14].lng],
+          [e.layer._latlngs[0][15].lat, e.layer._latlngs[0][15].lng],
+          [e.layer._latlngs[0][16].lat, e.layer._latlngs[0][16].lng],
+          [e.layer._latlngs[0][17].lat, e.layer._latlngs[0][17].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 19) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+          [e.layer._latlngs[0][11].lat, e.layer._latlngs[0][11].lng],
+          [e.layer._latlngs[0][12].lat, e.layer._latlngs[0][12].lng],
+          [e.layer._latlngs[0][13].lat, e.layer._latlngs[0][13].lng],
+          [e.layer._latlngs[0][14].lat, e.layer._latlngs[0][14].lng],
+          [e.layer._latlngs[0][15].lat, e.layer._latlngs[0][15].lng],
+          [e.layer._latlngs[0][16].lat, e.layer._latlngs[0][16].lng],
+          [e.layer._latlngs[0][17].lat, e.layer._latlngs[0][17].lng],
+          [e.layer._latlngs[0][18].lat, e.layer._latlngs[0][18].lng],
+        ],
+      ];
+    }
+
+    if (e.layer._latlngs[0].length === 20) {
+      geoJSONPolygon = [
+        [
+          [e.layer._latlngs[0][0].lat, e.layer._latlngs[0][0].lng],
+          [e.layer._latlngs[0][1].lat, e.layer._latlngs[0][1].lng],
+          [e.layer._latlngs[0][2].lat, e.layer._latlngs[0][2].lng],
+          [e.layer._latlngs[0][3].lat, e.layer._latlngs[0][3].lng],
+          [e.layer._latlngs[0][4].lat, e.layer._latlngs[0][4].lng],
+          [e.layer._latlngs[0][5].lat, e.layer._latlngs[0][5].lng],
+          [e.layer._latlngs[0][6].lat, e.layer._latlngs[0][6].lng],
+          [e.layer._latlngs[0][7].lat, e.layer._latlngs[0][7].lng],
+          [e.layer._latlngs[0][8].lat, e.layer._latlngs[0][8].lng],
+          [e.layer._latlngs[0][9].lat, e.layer._latlngs[0][9].lng],
+          [e.layer._latlngs[0][10].lat, e.layer._latlngs[0][10].lng],
+          [e.layer._latlngs[0][11].lat, e.layer._latlngs[0][11].lng],
+          [e.layer._latlngs[0][12].lat, e.layer._latlngs[0][12].lng],
+          [e.layer._latlngs[0][13].lat, e.layer._latlngs[0][13].lng],
+          [e.layer._latlngs[0][14].lat, e.layer._latlngs[0][14].lng],
+          [e.layer._latlngs[0][15].lat, e.layer._latlngs[0][15].lng],
+          [e.layer._latlngs[0][16].lat, e.layer._latlngs[0][16].lng],
+          [e.layer._latlngs[0][17].lat, e.layer._latlngs[0][17].lng],
+          [e.layer._latlngs[0][18].lat, e.layer._latlngs[0][18].lng],
+          [e.layer._latlngs[0][19].lat, e.layer._latlngs[0][19].lng],
+        ],
+      ];
+    }
+
+    setIsPolygonDrawingActive(false);
 
     // no idea why but the states in context seem to take a tiny amount of time to update
     // without the setTimeout the navigate() and setIsDrawOpen do not work correctly
     setTimeout(() => {
       setPolygonDrawingCoordinates(geoJSONPolygon);
-      setIsPolygonDrawingActive(false);
       setIsDrawOpen(true);
       navigate("create-mission");
-    }, 10);
+    }, 50);
   };
 
   return (

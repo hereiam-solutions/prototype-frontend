@@ -39,17 +39,8 @@ root.render(
           {/* Login and Register need another layout than the actual app */}
 
           <Route element={<AuthLayout />}>
-            {/* /user is just for realm testing */}
-            <Route
-              path="user"
-              element={
-                <RequireAuth>
-                  <UserDetails />
-                </RequireAuth>
-              }
-            />
-
-            <Route path="auth" element={<Authentication />} />
+            <Route path="about" element={<About />} />
+            <Route path="auth" element={<Authentication />}></Route>
           </Route>
 
           {/* no active mission */}

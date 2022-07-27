@@ -10,9 +10,25 @@ import { prependListener } from "process";
 import useRealm from "../../../hooks/useRealm";
 import useMission from "../../../hooks/useMission";
 import useMissionMap from "../../../hooks/useMissionMap";
-import { UpdateLocationArgs } from "../../../data/realm/schema/location";
+import {
+  DeleteLocationArgs,
+  LocationSchema,
+  UpdateLocationArgs,
+} from "../../../data/realm/schema/location";
 import { BSON } from "realm-web";
 import { realmFunctionNames } from "../../../data/realm/functions";
+
+// styling imports
+import {
+  StyledPopupContentWrapper,
+  StyledPopupHeading,
+  StyledDate,
+  StyledSection,
+  StyledBoldText,
+  StyledText,
+  StyledDeactivateButton,
+  StyledActivateButton,
+} from "./styles/markerStyles";
 
 const ApparrelIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=apparel.svg",
@@ -243,30 +259,33 @@ const DeactivatedWaterIcon = new Icon({
 });
 
 type Props = {
-  id: BSON.ObjectId;
-  coordinates: Location;
-  type: locationTypes;
-  status: "active" | "suspended" | "inactive";
+  location: LocationSchema;
+  //   id: BSON.ObjectId;
+  //   coordinates: Location;
+  //   type: locationTypes;
+  //   status: "active" | "suspended" | "inactive";
 };
 
-const LocationMarker = (props: Props) => {
+const LocationMarker = ({ location }: Props) => {
   const { realm } = useRealm();
   const { activeMission } = useMission();
   const { reRenderBoolean, setReRenderBoolean } = useMissionMap();
 
   const [Icon, setIcon] = useState<L.Icon>(ApparrelIcon);
-  const [isActive, setIsActive] = useState<boolean>(props.status === "active");
+  const [isActive, setIsActive] = useState<boolean>(
+    location.status === "active"
+  );
 
   useEffect(() => {
-    if (props.type === locationTypes.APPAREL) {
+    if (location.type === locationTypes.APPAREL) {
       isActive ? setIcon(ApparrelIcon) : setIcon(DeactivatedApparrelIcon);
     }
 
-    if (props.type === locationTypes.ASSEMBLYPOINT) {
+    if (location.type === locationTypes.ASSEMBLYPOINT) {
       isActive ? setIcon(AssemblyIcon) : setIcon(DeactivatedAssemblyIcon);
     }
 
-    if (props.type === locationTypes.BARRIER) {
+    if (location.type === locationTypes.BARRIER) {
       isActive ? setIcon(BarrierIcon) : setIcon(DeactivatedBarrierIcon);
     }
 
@@ -274,15 +293,15 @@ const LocationMarker = (props: Props) => {
     //   setIcon(BooIcon);
     // }
 
-    if (props.type === locationTypes.CARE) {
+    if (location.type === locationTypes.CARE) {
       isActive ? setIcon(CareIcon) : setIcon(DeactivatedCareIcon);
     }
 
-    if (props.type === locationTypes.CHECKPOINT) {
+    if (location.type === locationTypes.CHECKPOINT) {
       isActive ? setIcon(CheckpointIcon) : setIcon(DeactivatedCheckpointIcon);
     }
 
-    if (props.type === locationTypes.COMMANDPOST) {
+    if (location.type === locationTypes.COMMANDPOST) {
       isActive ? setIcon(CommandPostIcon) : setIcon(DeactivatedCommandPostIcon);
     }
 
@@ -290,15 +309,15 @@ const LocationMarker = (props: Props) => {
     //   setIcon(EmtccIcon);
     // }
 
-    if (props.type === locationTypes.FOOD) {
+    if (location.type === locationTypes.FOOD) {
       isActive ? setIcon(FoodIcon) : setIcon(DeactivatedFoodIcon);
     }
 
-    if (props.type === locationTypes.MEDICALPOST) {
+    if (location.type === locationTypes.MEDICALPOST) {
       isActive ? setIcon(MedicalPostIcon) : setIcon(DeactivatedMedicalPostIcon);
     }
 
-    if (props.type === locationTypes.MISSINGPERSONS) {
+    if (location.type === locationTypes.MISSINGPERSONS) {
       isActive
         ? setIcon(MissingPersonsIcon)
         : setIcon(DeactivatedMissingPersonsIcon);
@@ -308,19 +327,19 @@ const LocationMarker = (props: Props) => {
     //   setIcon(OsoccIcon);
     // }
 
-    if (props.type === locationTypes.POWER) {
+    if (location.type === locationTypes.POWER) {
       isActive ? setIcon(PowerIcon) : setIcon(DeactivatedPowerIcon);
     }
 
-    if (props.type === locationTypes.PRAYERSPACE) {
+    if (location.type === locationTypes.PRAYERSPACE) {
       isActive ? setIcon(PrayerIcon) : setIcon(DeactivatedPrayerIcon);
     }
 
-    if (props.type === locationTypes.PSYCHOLOGICALINTERVENTION) {
+    if (location.type === locationTypes.PSYCHOLOGICALINTERVENTION) {
       isActive ? setIcon(PsychologyIcon) : setIcon(DeactivatedPsychologyIcon);
     }
 
-    if (props.type === locationTypes.PUBLICINFORMATION) {
+    if (location.type === locationTypes.PUBLICINFORMATION) {
       isActive ? setIcon(PublicIcon) : setIcon(DeactivatedPublicIcon);
     }
 
@@ -328,21 +347,21 @@ const LocationMarker = (props: Props) => {
     //   setIcon(RdcIcon);
     // }
 
-    if (props.type === locationTypes.REGISTRATION) {
+    if (location.type === locationTypes.REGISTRATION) {
       isActive
         ? setIcon(RegistrationIcon)
         : setIcon(DeactivatedRegistrationIcon);
     }
 
-    if (props.type === locationTypes.SAFETY) {
+    if (location.type === locationTypes.SAFETY) {
       isActive ? setIcon(SafetyIcon) : setIcon(DeactivatedSafetyIcon);
     }
 
-    if (props.type === locationTypes.SHELTER) {
+    if (location.type === locationTypes.SHELTER) {
       isActive ? setIcon(ShelterIcon) : setIcon(DeactivatedShelterIcon);
     }
 
-    if (props.type === locationTypes.TRANSPORT) {
+    if (location.type === locationTypes.TRANSPORT) {
       isActive ? setIcon(TransportIcon) : setIcon(DeactivatedTransportIcon);
     }
 
@@ -354,17 +373,17 @@ const LocationMarker = (props: Props) => {
     //   setIcon(UndacIcon);
     // }
 
-    if (props.type === locationTypes.WATER) {
+    if (location.type === locationTypes.WATER) {
       isActive ? setIcon(WaterIcon) : setIcon(DeactivatedWaterIcon);
     }
-  }, [props.type, props.status, isActive]);
+  }, [location, isActive]);
 
   const changeLocationStatus = async () => {
     if (activeMission) {
       const statusArg = isActive ? "inactive" : "active";
 
       const args: UpdateLocationArgs = {
-        _id: props.id.toString(),
+        _id: location._id.toString(),
         status: statusArg,
       };
 
@@ -378,20 +397,73 @@ const LocationMarker = (props: Props) => {
         if (response === "success") {
           setIsActive(!isActive);
         }
-        console.log(response);
       }
 
-      //   setIcon(AvalanceIcon);
       setReRenderBoolean(!reRenderBoolean);
     }
   };
 
+  const deleteLocation = async () => {
+    if (activeMission) {
+      const args: DeleteLocationArgs = {
+        _id: location._id.toString(),
+      };
+
+      if (realm.currentUser) {
+        // call the Realm function
+        const response = await realm.currentUser.callFunction(
+          realmFunctionNames.deleteLocation,
+          args
+        );
+      }
+
+      setReRenderBoolean(!reRenderBoolean);
+    }
+  };
+
+  const locationTypeArray = location.type.split(" ");
+
+  const locationType = locationTypeArray
+    .map((word) => {
+      return word[0].toUpperCase() + word.substring(1);
+    })
+    .join(" ");
+
   return (
-    <Marker position={[props.coordinates[0], props.coordinates[1]]} icon={Icon}>
+    <Marker
+      position={[
+        location.geoJSON.coordinates[0],
+        location.geoJSON.coordinates[1],
+      ]}
+      icon={Icon}
+    >
       <Popup>
-        <div onClick={changeLocationStatus}>
-          {isActive ? "deactivate Location" : "activate Location"}
-        </div>
+        <StyledPopupContentWrapper>
+          <StyledPopupHeading>{locationType}</StyledPopupHeading>
+
+          <StyledDate>
+            {new Date(location.timestamp).toLocaleString()}
+          </StyledDate>
+
+          <StyledSection>
+            <StyledBoldText>Description: </StyledBoldText>
+            <StyledText>{location.name}</StyledText>
+          </StyledSection>
+
+          {isActive ? (
+            <StyledDeactivateButton onClick={changeLocationStatus}>
+              Deactivate
+            </StyledDeactivateButton>
+          ) : (
+            <StyledActivateButton onClick={changeLocationStatus}>
+              Activate
+            </StyledActivateButton>
+          )}
+
+          <StyledDeactivateButton onClick={deleteLocation}>
+            Remove
+          </StyledDeactivateButton>
+        </StyledPopupContentWrapper>
       </Popup>
     </Marker>
   );

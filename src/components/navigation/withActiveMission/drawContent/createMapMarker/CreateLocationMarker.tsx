@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useNavigation from "../../../../../hooks/useNavigation";
 
@@ -55,6 +55,9 @@ const CreateLocationMarker = () => {
     locationTypes.APPAREL
   );
 
+  const [upperCaseSelectedType, setUpperCaseSelectedType] =
+    useState<string>("Location");
+
   const [nameValue, setNameValue] = useState<string>("");
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,38 +99,56 @@ const CreateLocationMarker = () => {
     }
   };
 
+  useEffect(() => {
+    const locationTypeArray = selectedType.split(" ");
+
+    const locationType = locationTypeArray
+      .map((word) => {
+        return word[0].toUpperCase() + word.substring(1);
+      })
+      .join(" ");
+
+    setUpperCaseSelectedType(locationType);
+  }, [selectedType]);
+
   return (
-    <StyledWrapper>
-      <StyledHeader>Set Location</StyledHeader>
-      <StyledSecondaryHeading>Type of :</StyledSecondaryHeading>
-      <StyledIconRow>
-        <ApparrelIcon
-          className={`icon ${
-            selectedType === locationTypes.APPAREL ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.APPAREL);
-          }}
-        />
+    <StyledDrawWrapper>
+      <StyledDrawHeader>
+        <StyledHeading>{upperCaseSelectedType}</StyledHeading>
+      </StyledDrawHeader>
 
-        <AssemblyIcon
-          className={`icon ${
-            selectedType === locationTypes.ASSEMBLYPOINT ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.ASSEMBLYPOINT);
-          }}
-        />
+      <StyledContentWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Location type</StyledSecondaryHeading>
 
-        <BarrierIcon
-          className={`icon ${
-            selectedType === locationTypes.BARRIER ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.BARRIER);
-          }}
-        />
-        {/* 
+          <StyledIconRow>
+            <ApparrelIcon
+              className={`icon ${
+                selectedType === locationTypes.APPAREL ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.APPAREL);
+              }}
+            />
+
+            <AssemblyIcon
+              className={`icon ${
+                selectedType === locationTypes.ASSEMBLYPOINT ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.ASSEMBLYPOINT);
+              }}
+            />
+
+            <BarrierIcon
+              className={`icon ${
+                selectedType === locationTypes.BARRIER ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.BARRIER);
+              }}
+            />
+            {/* 
         <BooIcon
           className={`icon ${
             selectedType === locationTypes.BOO ? "selected" : ""
@@ -137,34 +158,34 @@ const CreateLocationMarker = () => {
           }}
         /> */}
 
-        <CareIcon
-          className={`icon ${
-            selectedType === locationTypes.CARE ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.CARE);
-          }}
-        />
+            <CareIcon
+              className={`icon ${
+                selectedType === locationTypes.CARE ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.CARE);
+              }}
+            />
 
-        <CheckpointIcon
-          className={`icon ${
-            selectedType === locationTypes.CHECKPOINT ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.CHECKPOINT);
-          }}
-        />
+            <CheckpointIcon
+              className={`icon ${
+                selectedType === locationTypes.CHECKPOINT ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.CHECKPOINT);
+              }}
+            />
 
-        <CommandPostIcon
-          className={`icon ${
-            selectedType === locationTypes.COMMANDPOST ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.COMMANDPOST);
-          }}
-        />
+            <CommandPostIcon
+              className={`icon ${
+                selectedType === locationTypes.COMMANDPOST ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.COMMANDPOST);
+              }}
+            />
 
-        {/* <EmtccIcon
+            {/* <EmtccIcon
           className={`icon ${
             selectedType === locationTypes.EMTCC ? "selected" : ""
           }`}
@@ -173,34 +194,34 @@ const CreateLocationMarker = () => {
           }}
         /> */}
 
-        <FoodIcon
-          className={`icon ${
-            selectedType === locationTypes.FOOD ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.FOOD);
-          }}
-        />
+            <FoodIcon
+              className={`icon ${
+                selectedType === locationTypes.FOOD ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.FOOD);
+              }}
+            />
 
-        <MedicalPostIcon
-          className={`icon ${
-            selectedType === locationTypes.MEDICALPOST ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.MEDICALPOST);
-          }}
-        />
+            <MedicalPostIcon
+              className={`icon ${
+                selectedType === locationTypes.MEDICALPOST ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.MEDICALPOST);
+              }}
+            />
 
-        <MissingPersonsIcon
-          className={`icon ${
-            selectedType === locationTypes.MISSINGPERSONS ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.MISSINGPERSONS);
-          }}
-        />
+            <MissingPersonsIcon
+              className={`icon ${
+                selectedType === locationTypes.MISSINGPERSONS ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.MISSINGPERSONS);
+              }}
+            />
 
-        {/* <OsoccIcon
+            {/* <OsoccIcon
           className={`icon ${
             selectedType === locationTypes.OSOCC ? "selected" : ""
           }`}
@@ -209,45 +230,47 @@ const CreateLocationMarker = () => {
           }}
         /> */}
 
-        <PowerIcon
-          className={`icon ${
-            selectedType === locationTypes.POWER ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.POWER);
-          }}
-        />
+            <PowerIcon
+              className={`icon ${
+                selectedType === locationTypes.POWER ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.POWER);
+              }}
+            />
 
-        <PrayerIcon
-          className={`icon ${
-            selectedType === locationTypes.PRAYERSPACE ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.PRAYERSPACE);
-          }}
-        />
+            <PrayerIcon
+              className={`icon ${
+                selectedType === locationTypes.PRAYERSPACE ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.PRAYERSPACE);
+              }}
+            />
 
-        <PsychologyIcon
-          className={`icon ${
-            selectedType === locationTypes.PSYCHOLOGICALINTERVENTION
-              ? "selected"
-              : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.PSYCHOLOGICALINTERVENTION);
-          }}
-        />
+            <PsychologyIcon
+              className={`icon ${
+                selectedType === locationTypes.PSYCHOLOGICALINTERVENTION
+                  ? "selected"
+                  : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.PSYCHOLOGICALINTERVENTION);
+              }}
+            />
 
-        <PublicIcon
-          className={`icon ${
-            selectedType === locationTypes.PUBLICINFORMATION ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.PUBLICINFORMATION);
-          }}
-        />
+            <PublicIcon
+              className={`icon ${
+                selectedType === locationTypes.PUBLICINFORMATION
+                  ? "selected"
+                  : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.PUBLICINFORMATION);
+              }}
+            />
 
-        {/* <RdcIcon
+            {/* <RdcIcon
           className={`icon ${
             selectedType === locationTypes.RDC ? "selected" : ""
           }`}
@@ -256,43 +279,43 @@ const CreateLocationMarker = () => {
           }}
         /> */}
 
-        <RegistrationIcon
-          className={`icon ${
-            selectedType === locationTypes.REGISTRATION ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.REGISTRATION);
-          }}
-        />
+            <RegistrationIcon
+              className={`icon ${
+                selectedType === locationTypes.REGISTRATION ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.REGISTRATION);
+              }}
+            />
 
-        <SafetyIcon
-          className={`icon ${
-            selectedType === locationTypes.SAFETY ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.SAFETY);
-          }}
-        />
+            <SafetyIcon
+              className={`icon ${
+                selectedType === locationTypes.SAFETY ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.SAFETY);
+              }}
+            />
 
-        <ShelterIcon
-          className={`icon ${
-            selectedType === locationTypes.SHELTER ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.SHELTER);
-          }}
-        />
+            <ShelterIcon
+              className={`icon ${
+                selectedType === locationTypes.SHELTER ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.SHELTER);
+              }}
+            />
 
-        <TransportIcon
-          className={`icon ${
-            selectedType === locationTypes.TRANSPORT ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.TRANSPORT);
-          }}
-        />
+            <TransportIcon
+              className={`icon ${
+                selectedType === locationTypes.TRANSPORT ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.TRANSPORT);
+              }}
+            />
 
-        {/* <UccIcon
+            {/* <UccIcon
           className={`icon ${
             selectedType === locationTypes.UCC ? "selected" : ""
           }`}
@@ -301,7 +324,7 @@ const CreateLocationMarker = () => {
           }}
         /> */}
 
-        {/* <UndacIcon
+            {/* <UndacIcon
           className={`icon ${
             selectedType === locationTypes.UNDAC ? "selected" : ""
           }`}
@@ -310,48 +333,129 @@ const CreateLocationMarker = () => {
           }}
         /> */}
 
-        <WaterIcon
-          className={`icon ${
-            selectedType === locationTypes.WATER ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.WATER);
-          }}
-        />
-      </StyledIconRow>
+            <WaterIcon
+              className={`icon ${
+                selectedType === locationTypes.WATER ? "selected" : ""
+              }`}
+              onClick={() => {
+                setSelectedType(locationTypes.WATER);
+              }}
+            />
+          </StyledIconRow>
+        </StyledSectionWrapper>
 
-      <StyledSecondaryHeading>Location Description:</StyledSecondaryHeading>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Description</StyledSecondaryHeading>
 
-      <StyledInput onChange={handleNameChange} type="text" value={nameValue} />
+          <StyledInput
+            placeholder="Set the location's description..."
+            onChange={handleNameChange}
+            type="text"
+            value={nameValue}
+          />
+        </StyledSectionWrapper>
 
-      <StyledButton onClick={handleSubmit}>
-        {loading ? "loading..." : "Submit Location"}
-      </StyledButton>
-    </StyledWrapper>
+        <StyledButton onClick={handleSubmit}>
+          {loading ? "loading..." : "Submit Location"}
+        </StyledButton>
+      </StyledContentWrapper>
+    </StyledDrawWrapper>
   );
 };
 
-const StyledWrapper = styled.div`
-  height: 100%;
+const StyledDrawWrapper = styled.div`
   width: 100%;
-
-  padding: 2rem;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
+  background: ${(props) => props.theme.primaryBackgroundColor};
+`;
+
+const StyledDrawHeader = styled.div`
+  padding-bottom: 1rem;
+  margin-bottom: 0.8rem;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
   align-items: center;
+`;
+
+const StyledHeading = styled.p`
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledContentWrapper = styled.div`
+  /* padding-top: 8rem; */
+  width: 100%;
+  background: ${(props) => props.theme.primaryBackgroundColor};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+
+  overflow-y: scroll;
+`;
+
+const StyledSectionWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 1rem;
 `;
 
-const StyledHeader = styled.h2``;
+const StyledSecondaryHeading = styled.p`
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
 
-const StyledSecondaryHeading = styled.div`
-  align-self: start;
+// styled components for this component only
+const StyledInput = styled.input`
+  background-color: ${(props) => props.theme.primaryBackgroundColor};
+  border: 1px solid ${(props) => props.theme.formFieldColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+  color: ${(props) => props.theme.formFieldColor};
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  width: 100%;
+  /* margin-top: 0.6rem; */
+  padding: 0.75rem;
+`;
+
+const StyledButton = styled.button`
+  width: 60%;
+  height: 3rem;
+
+  margin-top: 0.5rem;
+
+  font-weight: 700;
+  text-align: center;
+
+  align-self: center;
+
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
 const StyledIconRow = styled.div`
   height: 60px;
   width: 100%;
+
+  gap: 1rem;
 
   overflow: auto;
   white-space: nowrap;
@@ -362,22 +466,9 @@ const StyledIconRow = styled.div`
   }
 
   .selected {
-    background-color: grey;
+    background-color: ${(props) => props.theme.buttonColor};
     border-radius: 50%;
   }
-`;
-
-const StyledInput = styled.input`
-  width: 100%;
-  height: 2rem;
-  border: 1px solid black;
-`;
-
-const StyledButton = styled.button`
-  padding: 0.5rem;
-  border-radius: 20px;
-  color: white;
-  background: grey;
 `;
 
 export default CreateLocationMarker;

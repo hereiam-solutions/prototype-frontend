@@ -49,11 +49,6 @@ const StyledWrapper = styled.div`
   align-items: center;
   gap: 1rem;
 
-  /* for the child elements  */
-  .selected {
-    background-color: blue;
-  }
-
   font-size: 1rem;
 `;
 

@@ -39,3 +39,7 @@ export type UpdateLocationArgs = {
   _id: string;
   status: "active" | "suspended" | "inactive";
 };
+
+export type DeleteLocationArgs = {
+  _id: string;
+};

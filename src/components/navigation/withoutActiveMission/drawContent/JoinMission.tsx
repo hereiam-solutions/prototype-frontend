@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import MissionCard from "../drawContent/MissionCard";
 import { Link, useNavigate } from "react-router-dom";
 import useMission from "../../../../hooks/useMission";
@@ -8,12 +8,18 @@ import useRealm from "../../../../hooks/useRealm";
 import { realmFunctionNames } from "../../../../data/realm/functions";
 import { BSON } from "realm-web";
 import { MissionSchema } from "../../../../data/realm/schema/mission";
+import useTheme from "../../../../hooks/useTheme";
+import { ThemeEnum } from "../../../../context/ThemeContext";
+
+import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
+import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
 
 const JoinMission = () => {
   const navigate = useNavigate();
   const { realm } = useRealm();
   const { setActiveMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
+  const { currentTheme } = useTheme();
 
   const [error, setError] = useState<string>("");
 
@@ -88,96 +94,138 @@ const JoinMission = () => {
   };
 
   return (
-    <StyledDashboardWrapper>
-      <StyledHeader>Join a Mission</StyledHeader>
+    <StyledDrawWrapper>
+      <StyledDrawHeader>
+        {currentTheme === ThemeEnum.LIGHT ? (
+          <DashboardButtonDark height={40} />
+        ) : (
+          <DashboardButtonLight height={40} />
+        )}
+        <StyledHeading>Mission</StyledHeading>
+      </StyledDrawHeader>
 
-      <StyledDashboardContent>
-        <StyledInput
-          type="text"
-          value={missionId}
-          onChange={handleMissionIdChange}
-          placeholder="Insert Mission ID here..."
-        />
+      <StyledContentWrapper>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Join a Mission</StyledSecondaryHeading>
 
-        {error && <StyledErrorMessage>{error}</StyledErrorMessage>}
+          <StyledInput
+            type="text"
+            value={missionId}
+            onChange={handleMissionIdChange}
+            placeholder="Insert Mission ID..."
+            onSubmit={handleJoin}
+          />
 
-        <button onClick={handleJoin}>Join Mission</button>
+          <StyledButton onClick={handleJoin}>
+            {error ? error : "Join"}
+          </StyledButton>
+        </StyledSectionWrapper>
 
-        <button onClick={handleJoinCurrentMission}>
-          Join your currently active Mission!
-        </button>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>
+            Join last active Mission
+          </StyledSecondaryHeading>
 
-        <button onClick={initiateMissionCreation}>
-          Create your own Mission!
-        </button>
-      </StyledDashboardContent>
-    </StyledDashboardWrapper>
+          <StyledButton onClick={handleJoinCurrentMission}>Join</StyledButton>
+        </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Create a Mission</StyledSecondaryHeading>
+
+          <StyledButton onClick={initiateMissionCreation}>Create</StyledButton>
+        </StyledSectionWrapper>
+      </StyledContentWrapper>
+    </StyledDrawWrapper>
   );
 };
 
-const StyledDashboardWrapper = styled.div`
-  position: absolute;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  pointer-events: auto;
-`;
+const StyledDrawWrapper = styled.div`
+  width: 100%;
 
-const StyledHeader = styled.div`
-  width: 80%;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  color: ${(props) => props.theme.primaryFontColor};
-  font-size: 1.1rem;
-  font-weight: 500;
-  overflow: hidden;
+
+  background: ${(props) => props.theme.primaryBackgroundColor};
 `;
 
-const StyledDashboardContent = styled.div`
-  height: 55vh;
+const StyledDrawHeader = styled.div`
+  padding-bottom: 1rem;
+  margin-bottom: 0.8rem;
+
   width: 100%;
-  padding: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledHeading = styled.p`
+  font-weight: 500;
+  font-size: 2rem;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledContentWrapper = styled.div`
+  /* padding-top: 8rem; */
+  width: 100%;
+  background: ${(props) => props.theme.primaryBackgroundColor};
 
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  gap: 2rem;
+  justify-content: center;
+  gap: 2.5rem;
 
-  border-radius: ${(props) => props.theme.drawerBorderRadius}
-    ${(props) => props.theme.drawerBorderRadius} 0 0;
-
-  background: ${(props) => props.theme.secondaryBackgroundColor};
-
-  overflow-x: hidden;
   overflow-y: scroll;
-
-  z-index: 6;
 `;
 
-const StyledDeactivated = styled.div`
-  opacity: 0.3;
+const StyledSectionWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
+const StyledSecondaryHeading = styled.p`
+  font-weight: 500;
+  font-size: 1.4rem;
   color: ${(props) => props.theme.primaryFontColor};
 `;
 
+// styled components relevant for this component only
+
 const StyledInput = styled.input`
+  background-color: ${(props) => props.theme.primaryBackgroundColor};
+  border: 1px solid ${(props) => props.theme.formFieldColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+  color: ${(props) => props.theme.formFieldColor};
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
   width: 100%;
-  height: 2rem;
-  border: 1px solid black;
+  /* margin-top: 0.6rem; */
+  padding: 0.75rem;
 `;
 
-const StyledErrorMessage = styled.div`
-  color: red;
+const StyledButton = styled.button`
+  width: 60%;
+  height: 3rem;
+
+  margin-top: 0.5rem;
+
+  font-weight: 700;
+  text-align: center;
+
+  align-self: center;
+
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
 export default JoinMission;

@@ -5,10 +5,24 @@ import { useEffect, useState } from "react";
 import { BSON } from "realm-web";
 import useRealm from "../../../hooks/useRealm";
 import useMission from "../../../hooks/useMission";
-import { DeleteHazardArgs } from "../../../data/realm/schema/hazard";
+import {
+  DeleteHazardArgs,
+  HazardSchema,
+} from "../../../data/realm/schema/hazard";
 import useMissionMap from "../../../hooks/useMissionMap";
 import { realmFunctionNames } from "../../../data/realm/functions";
 import styled from "styled-components";
+
+// styling imports
+import {
+  StyledPopupContentWrapper,
+  StyledPopupHeading,
+  StyledDate,
+  StyledSection,
+  StyledBoldText,
+  StyledText,
+  StyledDeactivateButton,
+} from "./styles/markerStyles";
 
 const AvalanceIcon = new Icon({
   iconUrl: "/icons/assets/Hazards/Alert=Avalanche.svg",
@@ -106,12 +120,10 @@ const WaterIcon = new Icon({
 });
 
 type Props = {
-  id: BSON.ObjectId;
-  coordinates: Location;
-  type: string;
+  hazard: HazardSchema;
 };
 
-const HazardMarker = (props: Props) => {
+const HazardMarker = ({ hazard }: Props) => {
   const { realm } = useRealm();
   const { activeMission } = useMission();
   const { reRenderBoolean, setReRenderBoolean } = useMissionMap();
@@ -119,107 +131,128 @@ const HazardMarker = (props: Props) => {
   const [Icon, setIcon] = useState<L.Icon>(AvalanceIcon);
 
   useEffect(() => {
-    if (props.type === hazardTypes.AVALANCHE) {
+    if (hazard.hazard_type === hazardTypes.AVALANCHE) {
       setIcon(AvalanceIcon);
     }
 
-    if (props.type === hazardTypes.BIOLOGICALINCIDENT) {
+    if (hazard.hazard_type === hazardTypes.BIOLOGICALINCIDENT) {
       setIcon(BioIncidentIcon);
     }
 
-    if (props.type === hazardTypes.BOMB) {
+    if (hazard.hazard_type === hazardTypes.BOMB) {
       setIcon(BombIcon);
     }
 
-    if (props.type === hazardTypes.CHEMICALINCIDENT) {
+    if (hazard.hazard_type === hazardTypes.CHEMICALINCIDENT) {
       setIcon(ChemicalIcon);
     }
 
-    if (props.type === hazardTypes.CONTAGIOUSILLNESS) {
+    if (hazard.hazard_type === hazardTypes.CONTAGIOUSILLNESS) {
       setIcon(ContagiousIcon);
     }
 
-    if (props.type === hazardTypes.EARTHQUAKE) {
+    if (hazard.hazard_type === hazardTypes.EARTHQUAKE) {
       setIcon(EarthquakeIcon);
     }
 
-    if (props.type === hazardTypes.EXPLOSION) {
+    if (hazard.hazard_type === hazardTypes.EXPLOSION) {
       setIcon(ExplosionIcon);
     }
 
-    if (props.type === hazardTypes.FIRE) {
+    if (hazard.hazard_type === hazardTypes.FIRE) {
       setIcon(FireIcon);
     }
 
-    if (props.type === hazardTypes.FLOOD) {
+    if (hazard.hazard_type === hazardTypes.FLOOD) {
       setIcon(FloodIcon);
     }
 
-    if (props.type === hazardTypes.HURRICANE) {
+    if (hazard.hazard_type === hazardTypes.HURRICANE) {
       setIcon(HurricaneIcon);
     }
 
-    if (props.type === hazardTypes.MARITIME) {
+    if (hazard.hazard_type === hazardTypes.MARITIME) {
       setIcon(MaritimeIcon);
     }
 
-    if (props.type === hazardTypes.NUCLEAR) {
+    if (hazard.hazard_type === hazardTypes.NUCLEAR) {
       setIcon(NuclearIcon);
     }
 
-    if (props.type === hazardTypes.PLANECRASH) {
+    if (hazard.hazard_type === hazardTypes.PLANECRASH) {
       setIcon(PlaneIcon);
     }
 
-    if (props.type === hazardTypes.POWEROUTAGE) {
+    if (hazard.hazard_type === hazardTypes.POWEROUTAGE) {
       setIcon(PowerIcon);
     }
 
-    if (props.type === hazardTypes.RIOT) {
+    if (hazard.hazard_type === hazardTypes.RIOT) {
       setIcon(RiotIcon);
     }
 
-    if (props.type === hazardTypes.ROCKSLIDE) {
+    if (hazard.hazard_type === hazardTypes.ROCKSLIDE) {
       setIcon(RockSlideIcon);
     }
 
-    if (props.type === hazardTypes.TRAFFICACCIDENT) {
+    if (hazard.hazard_type === hazardTypes.TRAFFICACCIDENT) {
       setIcon(TrafficIcon);
     }
 
-    if (props.type === hazardTypes.TRAIN) {
+    if (hazard.hazard_type === hazardTypes.TRAIN) {
       setIcon(TrainIcon);
     }
 
-    if (props.type === hazardTypes.WATERDISRUPTION) {
+    if (hazard.hazard_type === hazardTypes.WATERDISRUPTION) {
       setIcon(WaterIcon);
     }
-  }, [props.type]);
+  }, [hazard]);
 
   const deleteHazard = async () => {
     if (activeMission) {
       const args: DeleteHazardArgs = {
-        _id: props.id.toString(),
+        _id: hazard._id.toString(),
       };
 
       if (realm.currentUser) {
         // call the Realm function
-        const response = await realm.currentUser.callFunction(
+        await realm.currentUser.callFunction(
           realmFunctionNames.deleteHazard,
           args
         );
-
-        console.log(response);
       }
 
       setReRenderBoolean(!reRenderBoolean);
     }
   };
 
+  const hazardTypeArray = hazard.hazard_type.split(" ");
+
+  const hazardType = hazardTypeArray
+    .map((word) => {
+      return word[0].toUpperCase() + word.substring(1);
+    })
+    .join(" ");
+
   return (
-    <Marker position={[props.coordinates[0], props.coordinates[1]]} icon={Icon}>
+    <Marker
+      position={[hazard.geoJSON.coordinates[0], hazard.geoJSON.coordinates[1]]}
+      icon={Icon}
+    >
       <Popup>
-        <div onClick={deleteHazard}>Remove Hazard Marker</div>
+        <StyledPopupContentWrapper>
+          <StyledPopupHeading>{hazardType}</StyledPopupHeading>
+          <StyledDate>{new Date(hazard.timestamp).toLocaleString()}</StyledDate>
+
+          <StyledSection>
+            <StyledBoldText>Description: </StyledBoldText>
+            <StyledText>{hazard.identifier}</StyledText>
+          </StyledSection>
+
+          <StyledDeactivateButton onClick={deleteHazard}>
+            Remove
+          </StyledDeactivateButton>
+        </StyledPopupContentWrapper>
       </Popup>
     </Marker>
   );

@@ -4,12 +4,10 @@ import Draw from "../navigation/Draw";
 
 const AuthLayout = () => {
   return (
-    <div>
-      <StyledAppWrapper>
-        <Map />
-        <Draw usedInAuthentication={true} />
-      </StyledAppWrapper>
-    </div>
+    <StyledAppWrapper>
+      <Map />
+      <Draw usedInAuthentication={true} />
+    </StyledAppWrapper>
   );
 };
 

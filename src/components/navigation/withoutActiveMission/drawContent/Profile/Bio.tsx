@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import useRealm from '../../../../../hooks/useRealm';
-import styled from 'styled-components';
+import useRealm from "../../../../../hooks/useRealm";
+import styled from "styled-components";
 import { RiEditBoxFill } from "react-icons/ri";
 
 const Bio = () => {
-
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   // The value of the textarea
@@ -25,10 +24,7 @@ const Bio = () => {
 
   return (
     <StyledBioWrapper>
-
-      <SectionHeadline>
-        Bio
-      </SectionHeadline>
+      <SectionHeadline>Bio</SectionHeadline>
 
       {/* new input bio 
       <textarea
@@ -43,16 +39,18 @@ const Bio = () => {
 
       <StyledBio>
         <p>
-        I am Ben from Bucharest, Romania. After more than ten years working as a volunteer for several organizations, 
-        I have turned my commitment into a profession. For the past five years, I have been supporting the operations 
-        of fire departments and civil protection in the south of the country through my expertise in managing and organizing operations. 
-        I have been able to gain international experience in three foreign assignments so far. 
-        I have a small family with one child and live on the outskirts of our capital.
+          I am Ben from Bucharest, Romania. After more than ten years working as
+          a volunteer for several organizations, I have turned my commitment
+          into a profession. For the past five years, I have been supporting the
+          operations of fire departments and civil protection in the south of
+          the country through my expertise in managing and organizing
+          operations. I have been able to gain international experience in three
+          foreign assignments so far. I have a small family with one child and
+          live on the outskirts of our capital.
         </p>
         {/* central edit */}
-      <RiEditBoxFill size={25} />
+        <RiEditBoxFill size={25} />
       </StyledBio>
-
     </StyledBioWrapper>
   );
 };
@@ -66,11 +64,10 @@ const styles: { [name: string]: React.CSSProperties } = {
   },
   textareaDefaultStyle: {
     padding: 10,
-    
+
     display: "block",
     resize: "none",
     backgroundColor: "var(--gray-200)",
-    
   },
 };
 
@@ -78,7 +75,6 @@ const StyledBio = styled.div`
   padding: 1rem;
   font-size: 0.8rem;
 `;
-
 
 const StyledBioWrapper = styled.div`
   margin: 0;
@@ -106,8 +102,8 @@ const SectionHeadline = styled.div`
 
   padding: ${(props) => props.theme.sectionHeadlinePadding};
 
-  background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
-  color: ${(props) => props.theme.sectionHeadlineColor};
+  background-color: ${(props) => props.theme.buttonColor};
+  color: ${(props) => props.theme.buttonFontColor};
 `;
 
 export default Bio;
