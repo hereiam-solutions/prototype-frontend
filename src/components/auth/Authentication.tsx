@@ -73,7 +73,6 @@ const Authentication = () => {
       await realm.logIn(credentials);
 
       if (realm.currentUser) {
-        console.log("hi");
         await realm.currentUser.refreshCustomData();
 
         const response: MissionSchema = await realm.currentUser.callFunction(
@@ -82,7 +81,6 @@ const Authentication = () => {
         );
 
         if (response._id) {
-          console.log("got mission");
           await realm.currentUser.refreshCustomData();
 
           setActiveMission(response as MissionSchema);

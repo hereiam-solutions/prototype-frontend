@@ -145,8 +145,6 @@ const CreateMission = () => {
   const handleObjectivesChange = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    console.log("hi");
-
     if (objectiveValue) {
       const objectives: string[] = objectivesValue;
       objectives.push(objectiveValue);

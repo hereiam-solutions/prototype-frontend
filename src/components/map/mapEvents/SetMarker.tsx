@@ -26,7 +26,6 @@ function SetMarker() {
     async click(e) {
       if (isCreateMarkerModeEnabled) {
         setLocation([e.latlng.lat, e.latlng.lng]);
-        console.log(location);
 
         setIsDrawOpen(true);
 

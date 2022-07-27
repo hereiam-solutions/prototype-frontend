@@ -39,8 +39,6 @@ const CreatePatientMarker = () => {
   const handleSubmit = async () => {
     try {
       if (activeMission) {
-        console.log(realm.currentUser?.customData);
-
         const args: CreatePatientArgs = {
           mission: activeMission._id.toString(),
           agegroup: selectedAgeGroup as ageGroups,
@@ -51,18 +49,14 @@ const CreatePatientMarker = () => {
           geoJSON: { type: "Point", coordinates: location },
         };
 
-        console.log("args", args);
-
         setLoading(true);
 
         if (realm.currentUser) {
           // call the Realm function
-          const response = await realm.currentUser.callFunction(
+          await realm.currentUser.callFunction(
             realmFunctionNames.createPatient,
             args
           );
-
-          console.log(response);
         }
 
         setLoading(false);

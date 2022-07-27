@@ -415,11 +415,6 @@ const LocationMarker = ({ location }: Props) => {
           realmFunctionNames.deleteLocation,
           args
         );
-
-        console.log(response);
-        // if (response === "success") {
-        //   setIsActive(!isActive);
-        // }
       }
 
       setReRenderBoolean(!reRenderBoolean);
