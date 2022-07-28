@@ -33,7 +33,6 @@ function GetCurrentLocation() {
     map.locate({
       setView: true,
       enableHighAccuracy: true,
-      maxZoom: 13,
     });
   }, [map]);
 

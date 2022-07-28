@@ -95,6 +95,7 @@ const MissionMap = () => {
       <StyledMapContainer
         center={[52.454937, 13.525194]}
         zoom={13}
+        maxZoom={18}
         scrollWheelZoom={false}
         tap={true}
         attributionControl={false}
