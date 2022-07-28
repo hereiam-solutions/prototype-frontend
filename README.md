@@ -92,7 +92,7 @@ You need a validated user to work with the hereIam prototype. If you are a contr
 
 Open your system browser and surf to:
 
-<a href="https://prototype-gold-five.vercel.app/" alt="hereIam prototype" target="_blank">https://prototype-gold-five.vercel.app/</a>
+<a href="http://prototype.hereiam.solutions" alt="hereIam prototype" target="_blank">http://prototype.hereiam.solutions</a>
 
 You will get an interactive prompt where you'll sign up.
 
@@ -100,7 +100,7 @@ You will get an interactive prompt where you'll sign up.
 
 Please follow these steps for a local setup:
 
-1. Open your system browser and open <a href="https://prototype-gold-five.vercel.app/" alt="hereIam prototype" target="_blank">https://prototype-gold-five.vercel.app/</a>
+1. Open your system browser and open <a href="http://prototype.hereiam.solutions" alt="hereIam prototype" target="_blank">http://prototype.hereiam.solutions</a>
 2. Confirm [Installation] for a local copy of the progressive web app (PWA) on your device
 3. Start hereIam prototype per click on the logo on your desktop
 
