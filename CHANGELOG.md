@@ -10,10 +10,12 @@
 
 ### Misc
 
-- Add LICENSE.md
-- Add CHANGELOG.md
-- Add CODE_OF_CONDUCT.md
-- Add CONTRIBUTING.md
-- Modify README.md
-- Make PWA
+- Add Framework (App, DB, PWA)
+- Add Styling, Dark mode
+- Add Authentication
+- Add Profile
+- Mission flow
+- show Hazards
+- show Locations
+- record Patients
 
