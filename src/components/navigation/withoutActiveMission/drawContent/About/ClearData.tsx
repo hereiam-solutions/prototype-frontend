@@ -1,69 +1,67 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 type Props = {};
 
-const ClearData= (props: Props) => {
+const ClearData = (props: Props) => {
   return (
     <StyledClear>
-        <SectionHeadline>Before you leave</SectionHeadline>
-        <ClearLocalData />
-        <ClearUserData />
-            
+      <SectionHeadline>Before you leave</SectionHeadline>
+      <ClearLocalData />
+      <ClearUserData />
     </StyledClear>
-  )  
+  );
 };
-
-
 
 const TrashIcon = RiDeleteBin6Line;
 
 const ClearLocalData = () => {
-    return (
-      <StyledClearLocal>
-        <p>Clear local data</p>
-        <TrashIcon />
-      </StyledClearLocal>
-    )
+  return (
+    <StyledClearLocal>
+      <p>Clear local data</p>
+      <TrashIcon />
+    </StyledClearLocal>
+  );
 };
 
 const ClearUserData = () => {
-    return (
-      <StyledClearUser>
-        <p>Delete User</p>
-        <TrashIcon />
-      </StyledClearUser>
-    )
+  return (
+    <StyledClearUser>
+      <p>Delete User</p>
+      <TrashIcon />
+    </StyledClearUser>
+  );
 };
 
+const StyledClear = styled.div`
+  margin-top: 2rem;
+  width: 90vw;
 
+  /* color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor}; */
 
-const StyledClear= styled.div`
-    margin-top: 2rem;
-    width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 const SectionHeadline = styled.div`
-    width: 90vw;
+  width: 90vw;
 
-    padding: ${(props) => props.theme.sectionHeadlinePadding};
+  padding: ${(props) => props.theme.sectionHeadlinePadding};
 
-    background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
-    color: ${(props) => props.theme.sectionHeadlineColor};
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
 
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: ${(props) => props.theme.buttonBorderRadius} ${(props) => props.theme.buttonBorderRadius} 0 0;
-
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: ${(props) => props.theme.buttonBorderRadius}
+    ${(props) => props.theme.buttonBorderRadius} 0 0;
 `;
 
 const StyledClearLocal = styled.div`
@@ -77,8 +75,8 @@ const StyledClearLocal = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  background-color: ${(props) => props.theme.secondaryBackgroundColor};
-  color: ${(props) => props.theme.secondaryFontColor};
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
 
   font-size: 1rem;
   font-weight: 500;
@@ -97,8 +95,8 @@ const StyledClearUser = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  background-color: ${(props) => props.theme.secondaryBackgroundColor};
-  color: ${(props) => props.theme.secondaryFontColor};
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
 
   font-size: 1rem;
   font-weight: 500;

@@ -17,7 +17,7 @@ import useNavigation from "../../hooks/useNavigation";
 // define the schema / rules for the register form validation
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string().min(8, "Too short!").required("Required"),
+  password: Yup.string().min(8, "Invalid password").required("Required"),
 });
 
 // define the schema / rules for the form validation
@@ -183,7 +183,7 @@ const Authentication = () => {
                 No account? Register.
               </StyledSwitchButton>
 
-              <StyledLink to="/about">About hereIam.</StyledLink>
+              <StyledLink to="/auth-about">About hereIam.</StyledLink>
             </StyledForm>
           )}
         </Formik>
@@ -238,7 +238,7 @@ const Authentication = () => {
                 Already have an account? Log In.
               </StyledSwitchButton>
 
-              <StyledLink to="/about">About hereIam.</StyledLink>
+              <StyledLink to="/auth-about">About hereIam.</StyledLink>
             </StyledForm>
           )}
         </Formik>

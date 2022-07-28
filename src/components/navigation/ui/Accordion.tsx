@@ -41,7 +41,7 @@ const StyledAccordionHeader = styled.div`
 const StyledWrapper = styled.div`
   width: 100%;
 
-  padding: ${(props) => props.theme.insideDrawMargin};
+  padding: 0.5rem;
 
   display: flex;
   flex-direction: column;
