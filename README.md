@@ -72,7 +72,7 @@ We see the prototype as an experiment. With it, we want to validate the internal
 - [Leaflet](https://react-leaflet.js.org)
 - [realm](https://www.mongodb.com/docs/realm/sdk/react-native/use-realm-react/)
 - [styled-components](https://styled-components.com/) (for styling)
-- [formik](https://www.npmjs.com/package/formik) (for handling form input)
+- [formik](https://www.npmjs.com/package/formik) and [yup](https://github.com/jquense/yup) (for handling form input)
 - [swr](https://www.npmjs.com/package/swr) and [axios](https://www.npmjs.com/package/axios) (for handling http requests)
 - [cra-pwa](https://cra.link/PWA) (for PWA Approach)
 
