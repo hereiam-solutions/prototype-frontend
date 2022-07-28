@@ -17,7 +17,7 @@ import useNavigation from "../../hooks/useNavigation";
 // define the schema / rules for the register form validation
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string().min(8, "Too short!").required("Required"),
+  password: Yup.string().min(8, "Invalid password").required("Required"),
 });
 
 // define the schema / rules for the form validation
@@ -58,11 +58,13 @@ const Authentication = () => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
 
   // initalize a loading state to conditionally render a loading indicator component
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   // function that is called upon form submission, tries to login the user in realm
   const handleSubmit = async (values: LoginFormValuesType) => {
     try {
+      setError(false);
       setLoading(true);
 
       const credentials = Realm.Credentials.emailPassword(
@@ -94,13 +96,15 @@ const Authentication = () => {
         setIsDrawOpen(false);
       }
     } catch (e) {
-      console.log(e);
+      setLoading(false);
+      setError(true);
     }
   };
 
   // function that is called upon form submission, tries to register the user in realm
   const handleRegister = async (values: RegisterFormValuesType) => {
     try {
+      setError(false);
       setLoading(true);
 
       // register the new user
@@ -134,7 +138,8 @@ const Authentication = () => {
         setIsDrawOpen(false);
       }
     } catch (e) {
-      console.log(e);
+      setLoading(false);
+      setError(true);
     }
   };
 
@@ -159,7 +164,7 @@ const Authentication = () => {
           onSubmit={handleSubmit}
         >
           {({ errors, touched }) => (
-            <StyledForm>
+            <StyledForm onChange={() => setError(false)}>
               <StyledField name="email" type="email" placeholder="Email" />
               {errors.email && touched.email ? (
                 <StyledInlineErrorMessage>
@@ -178,12 +183,14 @@ const Authentication = () => {
                 </StyledInlineErrorMessage>
               ) : null}
 
-              <StyledButton type="submit">Log In</StyledButton>
+              <StyledButton type="submit">
+                {loading ? "loading..." : error ? "Invalid login" : "Log In"}
+              </StyledButton>
               <StyledSwitchButton onClick={() => setIsLogin(false)}>
                 No account? Register.
               </StyledSwitchButton>
 
-              <StyledLink to="/about">About hereIam.</StyledLink>
+              <StyledLink to="/auth-about">About hereIam.</StyledLink>
             </StyledForm>
           )}
         </Formik>
@@ -199,7 +206,7 @@ const Authentication = () => {
           onSubmit={handleRegister}
         >
           {({ errors, touched }) => (
-            <StyledForm>
+            <StyledForm onChange={() => setError(false)}>
               <StyledField name="firstName" placeholder="First Name" />
               {errors.firstName && touched.firstName ? (
                 <StyledInlineErrorMessage>
@@ -232,13 +239,15 @@ const Authentication = () => {
                 </StyledInlineErrorMessage>
               ) : null}
 
-              <StyledButton type="submit">Register</StyledButton>
+              <StyledButton type="submit">
+                {loading ? "loading..." : error ? "Invalid login" : "Register"}
+              </StyledButton>
 
               <StyledSwitchButton onClick={() => setIsLogin(true)}>
                 Already have an account? Log In.
               </StyledSwitchButton>
 
-              <StyledLink to="/about">About hereIam.</StyledLink>
+              <StyledLink to="/auth-about">About hereIam.</StyledLink>
             </StyledForm>
           )}
         </Formik>

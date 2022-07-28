@@ -3,10 +3,15 @@ import MissionMap from "../../map/MissionMap";
 import ActionMenu from "../actionMenu/ActionMenu";
 import Nav from "../Nav";
 import Company from "../Company";
+import useModal from "../../../hooks/useModal";
+import Modal from "../Modal";
 
 const MissionLayout = () => {
+  const { isModalActive } = useModal();
+
   return (
     <StyledAppWrapper>
+      {isModalActive && <Modal />}
       <ActionMenu />
       <MissionMap />
       <StyledNavWrapper>

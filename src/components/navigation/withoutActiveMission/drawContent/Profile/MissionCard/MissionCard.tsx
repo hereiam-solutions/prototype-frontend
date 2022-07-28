@@ -95,7 +95,7 @@ const CardTextRole = styled.div`
 const CardStats = styled.div`
   width: 33vw;
   padding: 1rem;
-  heigth: auto;
+  /* height: auto; */
 
   display: flex;
   flex-direction: column;
@@ -104,8 +104,8 @@ const CardStats = styled.div`
 
   text-align: center;
   font-size: 0.8rem;
-  font-weigth: 300;
-  line-heigth: 1.2rem;
+  font-weight: 700;
+  line-height: 1.2rem;
 
   border-top: 1px solid ${(props) => props.theme.sectionHeadlineBackgroundColor};
   border-radius: ${(props) => props.theme.primaryBorderRadius}

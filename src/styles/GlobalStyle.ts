@@ -138,9 +138,8 @@ export const GlobalStyles = createGlobalStyle`
   input:focus,
   select:focus,
   textarea:focus {
-    box-shadow: none;
-    outline: var (--gray-400) dotted 2px;
-    outline-offset: .05em;
+	box-shadow: none;
+	outline-color: #DCE4EF;
   }
 
   /* avoid mobile browsers from zooming in on HTML form elements */

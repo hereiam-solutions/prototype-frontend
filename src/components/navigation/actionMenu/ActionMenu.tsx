@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import useActionMenu from '../../../hooks/useActionMenu';
-import ActionMenuButton from './ActionMenuButton';
-import { Position } from './ActionMenuButton';
+import React from "react";
+import styled from "styled-components";
+import useActionMenu from "../../../hooks/useActionMenu";
+import ActionMenuButton from "./ActionMenuButton";
+import { Position } from "./ActionMenuButton";
 
 // this menu should open when a user long presses anywhere on the map
 // a context in combination with react-long-press is probably a good idea
@@ -27,7 +27,6 @@ const StyledBackground = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: 10;
-  /* background: rgba(0, 0, 0, 0.1); */
 `;
 
 const StyledActionContainer = styled.div`
@@ -43,9 +42,9 @@ const StyledActionContainer = styled.div`
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 5vw;
   grid-template-areas:
-    '. TOP .'
-    'LEFT MID RIGHT'
-    '. BOTTOM .';
+    ". TOP ."
+    "LEFT MID RIGHT"
+    ". BOTTOM .";
 `;
 
 export default ActionMenu;

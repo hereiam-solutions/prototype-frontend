@@ -1,8 +1,13 @@
-import React from 'react'
-import useRealm from '../../../../../hooks/useRealm';
-import styled from 'styled-components';
-import { RiCarFill, RiBus2Fill, RiMotorbikeFill, RiShip2Fill, RiEditBoxFill } from "react-icons/ri";
-
+import React from "react";
+import useRealm from "../../../../../hooks/useRealm";
+import styled from "styled-components";
+import {
+  RiCarFill,
+  RiBus2Fill,
+  RiMotorbikeFill,
+  RiShip2Fill,
+  RiEditBoxFill,
+} from "react-icons/ri";
 
 const HasCarLicense = RiCarFill;
 const HasBusLicense = RiBus2Fill;
@@ -13,14 +18,22 @@ const EditLicense = RiEditBoxFill;
 const DriverLicenses = () => {
   return (
     <StyledLicensesWrapper>
-      <ul>
-        <li><HasCarLicense size={15}/></li>
-        <li><HasBusLicense size={15}/></li>
-        <li><HasBikeLicense size={15}/></li>
-        <li className='false'><HasBoatLicense size={15}/></li>
-      </ul>
       <p>Driving licenses</p>
-      <EditLicense size={15}/>
+      <ul>
+        <li>
+          <HasCarLicense size={15} />
+        </li>
+        <li>
+          <HasBusLicense size={15} />
+        </li>
+        <li>
+          <HasBikeLicense size={15} />
+        </li>
+        <li className="false">
+          <HasBoatLicense size={15} />
+        </li>
+      </ul>
+      {/* <EditLicense size={15}/> */}
     </StyledLicensesWrapper>
   );
 };
@@ -28,12 +41,12 @@ const DriverLicenses = () => {
 const StyledLicensesWrapper = styled.div`
   margin-top: 2rem;
   width: 90vw;
-  padding-right: 1rem;
+  padding: 0 1rem;
 
   display: flex;
   flex-direction: raw;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -58,7 +71,6 @@ const StyledLicensesWrapper = styled.div`
   .false {
     opacity: 0.5;
   }
-
 `;
 
 export default DriverLicenses;

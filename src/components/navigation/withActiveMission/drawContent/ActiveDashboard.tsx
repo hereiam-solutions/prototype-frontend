@@ -80,12 +80,12 @@ const ActiveDashboard = () => {
           </StyledText>
         </StyledSectionWrapper>
 
-        <StyledSectionWrapper>
+        {/* <StyledSectionWrapper>
           <StyledSecondaryHeading>Ending time</StyledSecondaryHeading>
           <StyledText>
             {new Date(activeMission.end_of_mission).toLocaleString()}
           </StyledText>
-        </StyledSectionWrapper>
+        </StyledSectionWrapper> */}
 
         <StyledLinkWrapper>
           <StyledButton onClick={handleLeave} to="/">

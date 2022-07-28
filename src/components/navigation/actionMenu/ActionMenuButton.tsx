@@ -8,6 +8,7 @@ import { ReactComponent as CasualtyIcon } from "../../../assets/Action/Aktion=Ve
 import { ReactComponent as DrawIcon } from "../../../assets/Action/Aktion=Zeichnen.svg";
 import { ReactComponent as CloseIcon } from "../../../assets/Action/Close.svg";
 import { MarkerType } from "../../map/mapTypes";
+import useModal from "../../../hooks/useModal";
 
 export enum Position {
   TOP = "TOP",
@@ -26,8 +27,20 @@ type StyledComponentProps = {
 };
 
 const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
+  const { setIsModalActive, setModalContent } = useModal();
+
   const { setIsActionMenuOpen, setIsCreateMarkerModeEnabled, setMarkerType } =
     useActionMenu();
+
+  const handleModal = () => {
+    setModalContent("Tap once at the location you want to set the marker");
+
+    // setTimeout(() => {
+    //   setIsModalActive(false);
+    // }, 6000);
+
+    setIsModalActive(true);
+  };
 
   const handleClick = () => {
     setIsActionMenuOpen(false);
@@ -35,12 +48,15 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
     if (positionInActionMenu === Position.LEFT) {
       setMarkerType(MarkerType.HAZARD);
       setIsCreateMarkerModeEnabled(true);
+      handleModal();
     } else if (positionInActionMenu === Position.BOTTOM) {
       setMarkerType(MarkerType.LOCATION);
       setIsCreateMarkerModeEnabled(true);
+      handleModal();
     } else if (positionInActionMenu === Position.RIGHT) {
       setMarkerType(MarkerType.PATIENT);
       setIsCreateMarkerModeEnabled(true);
+      handleModal();
     }
   };
 

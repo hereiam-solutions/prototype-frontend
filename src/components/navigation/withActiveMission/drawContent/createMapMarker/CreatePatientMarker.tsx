@@ -110,7 +110,7 @@ const CreatePatientMarker = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Patient</StyledHeading>
+        <StyledHeading>Set Patient</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>

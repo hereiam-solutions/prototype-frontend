@@ -38,7 +38,7 @@ const Bio = () => {
       */}
 
       <StyledBio>
-        <p>
+        <StyledText>
           I am Ben from Bucharest, Romania. After more than ten years working as
           a volunteer for several organizations, I have turned my commitment
           into a profession. For the past five years, I have been supporting the
@@ -47,9 +47,9 @@ const Bio = () => {
           operations. I have been able to gain international experience in three
           foreign assignments so far. I have a small family with one child and
           live on the outskirts of our capital.
-        </p>
+        </StyledText>
         {/* central edit */}
-        <RiEditBoxFill size={25} />
+        {/* <RiEditBoxFill size={25} /> */}
       </StyledBio>
     </StyledBioWrapper>
   );
@@ -97,6 +97,8 @@ const StyledBioWrapper = styled.div`
 `;
 
 const SectionHeadline = styled.div`
+  font-size: 1rem;
+  font-weight: 500;
   width: 100%;
   margin-top: 1rem;
 
@@ -104,6 +106,11 @@ const SectionHeadline = styled.div`
 
   background-color: ${(props) => props.theme.buttonColor};
   color: ${(props) => props.theme.buttonFontColor};
+`;
+
+const StyledText = styled.p`
+  color: ${(props) => props.theme.primaryFontColor};
+  font-size: 1rem;
 `;
 
 export default Bio;

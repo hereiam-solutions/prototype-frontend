@@ -13,8 +13,8 @@ import ActiveDashboard from "./components/navigation/withActiveMission/drawConte
 import Home from "./components/navigation/Home";
 import Layout from "./components/navigation/withoutActiveMission/Layout";
 import About from "./components/navigation/withoutActiveMission/drawContent/About/About";
+import AuthAbout from "./components/auth/AuthAbout";
 import AuthLayout from "./components/auth/AuthLayout";
-import UserDetails from "./components/auth/UserDetails";
 import Authentication from "./components/auth/Authentication";
 import RequireAuth from "./components/auth/RequireAuth";
 import CreateHazardMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateHazardMarker";
@@ -39,8 +39,8 @@ root.render(
           {/* Login and Register need another layout than the actual app */}
 
           <Route element={<AuthLayout />}>
-            <Route path="about" element={<About />} />
-            <Route path="auth" element={<Authentication />}></Route>
+            <Route path="auth-about" element={<AuthAbout />} />
+            <Route path="auth" element={<Authentication />} />
           </Route>
 
           {/* no active mission */}

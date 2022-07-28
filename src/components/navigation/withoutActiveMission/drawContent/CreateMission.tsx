@@ -20,6 +20,7 @@ import { ThemeEnum } from "../../../../context/ThemeContext";
 
 import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
 import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
+import useModal from "../../../../hooks/useModal";
 
 const CreateMission = () => {
   // contexts
@@ -29,6 +30,7 @@ const CreateMission = () => {
   const { polygonDrawingCoordinates } = useMission();
   const { setIsDrawOpen } = useNavigation();
   const { currentTheme } = useTheme();
+  const { setIsModalActive, isModalActive, setModalContent } = useModal();
 
   // request for mission creation
   const handleMissionSubmit = async () => {
@@ -43,7 +45,8 @@ const CreateMission = () => {
         identifier: identifierValue,
         estimatedPopulation: estimatedPopulationValue,
         start_of_mission: startingTimeISOStringValue,
-        end_of_mission: endingTimeISOStringValue,
+        end_of_mission: new Date().toISOString(),
+        // end_of_mission: endingTimeISOStringValue,
         geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates },
         disasterType: selectedDisasterType,
         objectives: objectivesValue,
@@ -67,6 +70,14 @@ const CreateMission = () => {
         );
 
         setActiveMission(newActiveMission as MissionSchema);
+
+        setModalContent("Mission created and set as your active Mission!");
+
+        setTimeout(() => {
+          setIsModalActive(false);
+        }, 5000);
+
+        setIsModalActive(true);
       }
 
       setIsDrawOpen(false);
@@ -291,19 +302,17 @@ const CreateMission = () => {
           />
         </StyledSectionWrapper>
 
-        <StyledSectionWrapper>
+        {/* <StyledSectionWrapper>
           <StyledSecondaryHeading>Ending time</StyledSecondaryHeading>
           <StyledTimeInput
             type="datetime-local"
             value={endingTimeInputValue}
             onChange={handleEndingTimeChange}
           />
-        </StyledSectionWrapper>
+        </StyledSectionWrapper> */}
 
         <StyledButton onClick={handleMissionSubmit}>
-          {startingTimeISOStringValue && endingTimeISOStringValue
-            ? "Submit"
-            : "Start & End time required"}
+          {startingTimeISOStringValue ? "Submit" : "Starting time required"}
         </StyledButton>
       </StyledContentWrapper>
     </StyledDrawWrapper>

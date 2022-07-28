@@ -1,16 +1,9 @@
 import styled from "styled-components";
 import Switch from "react-switch";
-import Accordion from "../../../ui/Accordion";
-import {
-  RiContrast2Fill,
-  RiTranslate,
-  RiRoadMapLine,
-  RiContactsBookLine,
-} from "react-icons/ri";
 
 import { GiSattelite, GiHumanPyramid } from "react-icons/gi";
-
 import { BsMap } from "react-icons/bs";
+
 import useMissionMap from "../../../../../hooks/useMissionMap";
 import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
 import useTheme from "../../../../../hooks/useTheme";

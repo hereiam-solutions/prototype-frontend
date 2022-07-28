@@ -1096,11 +1096,12 @@ const SectionHeadline = styled.div`
 
   padding: ${(props) => props.theme.sectionHeadlinePadding};
 
-  background-color: ${(props) => props.theme.sectionHeadlineBackgroundColor};
-  color: ${(props) => props.theme.sectionHeadlineColor};
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: ${(props) => props.theme.buttonBorderRadius} ${(props) => props.theme.buttonBorderRadius} 0 0;
+  border-radius: ${(props) => props.theme.buttonBorderRadius}
+    ${(props) => props.theme.buttonBorderRadius} 0 0;
 `;
 
 const StyledClearLocal = styled.div`
