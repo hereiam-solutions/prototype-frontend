@@ -27,7 +27,7 @@ type StyledComponentProps = {
 };
 
 const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
-  const { setIsModalActive, isModalActive, setModalContent } = useModal();
+  const { setIsModalActive, setModalContent } = useModal();
 
   const { setIsActionMenuOpen, setIsCreateMarkerModeEnabled, setMarkerType } =
     useActionMenu();

@@ -27,7 +27,6 @@ const StyledBackground = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: 10;
-  /* background: rgba(0, 0, 0, 0.1); */
 `;
 
 const StyledActionContainer = styled.div`

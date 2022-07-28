@@ -27,11 +27,11 @@ const StyledModalWrapper = styled.div`
   justify-content: center;
 
   pointer-events: none;
-
-  /* z-index: 100; */
 `;
 
 const StyledModal = styled.div`
+  pointer-events: auto;
+
   max-width: 65vw;
   max-height: 15vh;
 
