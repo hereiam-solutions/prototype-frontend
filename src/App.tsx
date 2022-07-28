@@ -12,6 +12,7 @@ import MissionMapContext, {
 } from "./context/MissionMapContext";
 import CreateMarkerContext from "./context/CreateMarkerContext";
 import MissionContext from "./context/MissionContext";
+import ModalContext from "./context/ModalContext";
 
 // Theming imports
 import { ThemeProvider } from "styled-components";
@@ -66,6 +67,10 @@ const App = () => {
 
   const [reRenderBoolean, setReRenderBoolean] = useState<boolean>(false);
 
+  // state for the modal context
+  const [isModalActive, setIsModalActive] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<string>("");
+
   return (
     <>
       <RealmContext.Provider value={{ realm }}>
@@ -74,48 +79,60 @@ const App = () => {
           <ThemeProvider
             theme={currentTheme === "dark" ? darkTheme : lightTheme}
           >
-            <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>
-              <ActionMenuContext.Provider
-                value={{
-                  isActionMenuOpen,
-                  setIsActionMenuOpen,
-                  isCreateMarkerModeEnabled,
-                  setIsCreateMarkerModeEnabled,
-                  isCreateMarkerDrawOpen,
-                  setIsCreateMarkerDrawOpen,
-                  markerType,
-                  setMarkerType,
-                }}
-              >
-                <MissionContext.Provider
+            <ModalContext.Provider
+              value={{
+                isModalActive,
+                setIsModalActive,
+                modalContent,
+                setModalContent,
+              }}
+            >
+              <NavigationContext.Provider value={{ isDrawOpen, setIsDrawOpen }}>
+                <ActionMenuContext.Provider
                   value={{
-                    activeMission,
-                    setActiveMission,
-                    isPolygonDrawingActive,
-                    setIsPolygonDrawingActive,
-                    polygonDrawingCoordinates,
-                    setPolygonDrawingCoordinates,
+                    isActionMenuOpen,
+                    setIsActionMenuOpen,
+                    isCreateMarkerModeEnabled,
+                    setIsCreateMarkerModeEnabled,
+                    isCreateMarkerDrawOpen,
+                    setIsCreateMarkerDrawOpen,
+                    markerType,
+                    setMarkerType,
                   }}
                 >
-                  <MissionMapContext.Provider
+                  <MissionContext.Provider
                     value={{
-                      activeTileLayer,
-                      setActiveTileLayer,
-                      reRenderBoolean,
-                      setReRenderBoolean,
+                      activeMission,
+                      setActiveMission,
+                      isPolygonDrawingActive,
+                      setIsPolygonDrawingActive,
+                      polygonDrawingCoordinates,
+                      setPolygonDrawingCoordinates,
                     }}
                   >
-                    <CreateMarkerContext.Provider
-                      value={{ createMarkerLocation, setCreateMarkerLocation }}
+                    <MissionMapContext.Provider
+                      value={{
+                        activeTileLayer,
+                        setActiveTileLayer,
+                        reRenderBoolean,
+                        setReRenderBoolean,
+                      }}
                     >
-                      {/* React Router Outlet component always renders children  */}
-                      <Outlet />
-                    </CreateMarkerContext.Provider>
-                  </MissionMapContext.Provider>
-                </MissionContext.Provider>
-              </ActionMenuContext.Provider>
-              <GlobalStyles theme={currentTheme} />
-            </NavigationContext.Provider>
+                      <CreateMarkerContext.Provider
+                        value={{
+                          createMarkerLocation,
+                          setCreateMarkerLocation,
+                        }}
+                      >
+                        {/* React Router Outlet component always renders children  */}
+                        <Outlet />
+                      </CreateMarkerContext.Provider>
+                    </MissionMapContext.Provider>
+                  </MissionContext.Provider>
+                </ActionMenuContext.Provider>
+                <GlobalStyles theme={currentTheme} />
+              </NavigationContext.Provider>
+            </ModalContext.Provider>
           </ThemeProvider>
         </ThemeContext.Provider>
       </RealmContext.Provider>

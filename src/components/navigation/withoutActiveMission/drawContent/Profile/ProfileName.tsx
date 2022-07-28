@@ -1,36 +1,31 @@
 import React from "react";
-import useRealm from '../../../../../hooks/useRealm';
-import styled from 'styled-components';
-import Avatar from '../../../../../assets/avatar.jpg';
+import useRealm from "../../../../../hooks/useRealm";
+import styled from "styled-components";
+import Avatar from "../../../../../assets/avatar.jpg";
 import { RiEditBoxFill } from "react-icons/ri";
 
 const ProfileName = () => {
-
   return (
     <StyledNameWrapper>
-
       <StyledAvatar
-
-        style={{ 
+        style={{
           backgroundImage: `url(${Avatar})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat'
-        }} 
-      
-      >
-      </StyledAvatar>
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></StyledAvatar>
 
       {/* central edit */}
-      <RiEditBoxFill size={25} />
-
+      {/* <RiEditBoxFill size={25} /> */}
 
       <StyledName>
         {/*firstName*/} {/* + */} {/*lastName*/}
         Ben Tester
       </StyledName>
       <StyledTeam>
-        {/*teamName?*/}{/*<span> , */} {/*countryName?*/} {/*</span>>*/}
+        {/*teamName?*/}
+        {/*<span> , */} {/*countryName?*/} {/*</span>>*/}
         CNEC<span> , Romania</span>
       </StyledTeam>
 
@@ -38,7 +33,6 @@ const ProfileName = () => {
         {/* status? */}
         Mission ready
       </StyledStatus>
-
     </StyledNameWrapper>
   );
 };
@@ -58,7 +52,6 @@ const StyledStatus = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
-
 const StyledAvatar = styled.div`
   width: 30%;
   min-height: 100px;
@@ -70,9 +63,7 @@ const StyledAvatar = styled.div`
   border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
   border-radius: ${(props) => props.theme.buttonBorderRadius};
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
 `;
-
 
 const StyledName = styled.div`
   font-size: 1.8rem;
@@ -80,16 +71,13 @@ const StyledName = styled.div`
 `;
 
 const StyledTeam = styled.div`
-font-size: 1.3rem;
-font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 600;
 
-span {
-  font-size: 1rem;
-}
-
+  span {
+    font-size: 1rem;
+  }
 `;
-
-
 
 const StyledNameWrapper = styled.div`
   margin: 0;

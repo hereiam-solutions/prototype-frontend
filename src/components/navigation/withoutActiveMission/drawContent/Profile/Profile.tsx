@@ -30,7 +30,7 @@ const Profile = () => {
   return (
     <StyledProfileWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Profile</StyledHeading>
+        <StyledHeading>Profile (Mockup)</StyledHeading>
       </StyledDrawHeader>
 
       <StyledProfileContent>

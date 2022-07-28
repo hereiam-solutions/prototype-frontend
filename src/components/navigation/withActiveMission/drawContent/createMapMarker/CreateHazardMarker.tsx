@@ -108,12 +108,14 @@ const CreateHazardMarker = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>{upperCaseSelectedType}</StyledHeading>
+        <StyledHeading>Set Hazard</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Hazard type</StyledSecondaryHeading>
+
+          <StyledSelectedType>{upperCaseSelectedType}</StyledSelectedType>
           <StyledIconRow>
             <AvalanceIcon
               className={`icon ${
@@ -371,12 +373,20 @@ const StyledIconRow = styled.div`
   .icon {
     height: 50px;
     width: 50px;
+    margin-right: 1rem;
   }
 
   .selected {
     background-color: ${(props) => props.theme.buttonColor};
     border-radius: 50%;
   }
+`;
+
+const StyledSelectedType = styled.div`
+  font-size: 1rem;
+  font-weight: 500;
+
+  color: ${(props) => props.theme.primaryFontColor};
 `;
 
 export default CreateHazardMarker;

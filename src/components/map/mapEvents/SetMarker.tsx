@@ -5,11 +5,13 @@ import { MarkerType } from "../mapTypes";
 import useActionMenu from "../../../hooks/useActionMenu";
 import useCreateMarker from "../../../hooks/useCreateMarker";
 import useNavigation from "../../../hooks/useNavigation";
+import useModal from "../../../hooks/useModal";
 
 function SetMarker() {
   let navigate = useNavigate();
 
   const { setIsDrawOpen } = useNavigation();
+  const { setIsModalActive } = useModal();
 
   const {
     isCreateMarkerModeEnabled,
@@ -26,6 +28,8 @@ function SetMarker() {
     async click(e) {
       if (isCreateMarkerModeEnabled) {
         setLocation([e.latlng.lat, e.latlng.lng]);
+
+        setIsModalActive(false);
 
         setIsDrawOpen(true);
 

@@ -43,7 +43,8 @@ const CreateMission = () => {
         identifier: identifierValue,
         estimatedPopulation: estimatedPopulationValue,
         start_of_mission: startingTimeISOStringValue,
-        end_of_mission: endingTimeISOStringValue,
+        end_of_mission: new Date().toISOString(),
+        // end_of_mission: endingTimeISOStringValue,
         geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates },
         disasterType: selectedDisasterType,
         objectives: objectivesValue,
@@ -291,19 +292,17 @@ const CreateMission = () => {
           />
         </StyledSectionWrapper>
 
-        <StyledSectionWrapper>
+        {/* <StyledSectionWrapper>
           <StyledSecondaryHeading>Ending time</StyledSecondaryHeading>
           <StyledTimeInput
             type="datetime-local"
             value={endingTimeInputValue}
             onChange={handleEndingTimeChange}
           />
-        </StyledSectionWrapper>
+        </StyledSectionWrapper> */}
 
         <StyledButton onClick={handleMissionSubmit}>
-          {startingTimeISOStringValue && endingTimeISOStringValue
-            ? "Submit"
-            : "Start & End time required"}
+          {startingTimeISOStringValue ? "Submit" : "Starting time required"}
         </StyledButton>
       </StyledContentWrapper>
     </StyledDrawWrapper>

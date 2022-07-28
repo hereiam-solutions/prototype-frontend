@@ -13,6 +13,7 @@ import { ThemeEnum } from "../../../../context/ThemeContext";
 
 import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
 import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
+import useModal from "../../../../hooks/useModal";
 
 const JoinMission = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const JoinMission = () => {
   const { setActiveMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
   const { currentTheme } = useTheme();
+  const { setIsModalActive, isModalActive, setModalContent } = useModal();
 
   const [error, setError] = useState<string>("");
 
@@ -132,7 +134,23 @@ const JoinMission = () => {
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Create a Mission</StyledSecondaryHeading>
 
-          <StyledButton onClick={initiateMissionCreation}>Create</StyledButton>
+          <StyledButton
+            onClick={() => {
+              initiateMissionCreation();
+
+              setModalContent(
+                "Start drawing the mission border with the help of the polygon tool on the right >"
+              );
+
+              setTimeout(() => {
+                setIsModalActive(false);
+              }, 6000);
+
+              setIsModalActive(true);
+            }}
+          >
+            Create
+          </StyledButton>
         </StyledSectionWrapper>
       </StyledContentWrapper>
     </StyledDrawWrapper>
