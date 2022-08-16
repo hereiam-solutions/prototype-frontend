@@ -4,7 +4,7 @@ import useNavigation from "../../hooks/useNavigation";
 import LightLogo from "../../assets/Logo/light/hereIam_logo_light96x96.svg";
 
 function Company() {
-  const { isDrawOpen, setIsDrawOpen } = useNavigation();
+  const { setIsDrawOpen } = useNavigation();
   return (
     <>
       <StyledCompanyMenu role="navigation">
