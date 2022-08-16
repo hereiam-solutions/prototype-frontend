@@ -16,6 +16,7 @@ export type geoJSONPolygon = {
 };
 
 // Example
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const poly: geoJSONPolygon = {
   type: "Polygon",
   coordinates: [
