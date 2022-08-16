@@ -2,19 +2,12 @@ import { useState } from "react";
 import styled from "styled-components";
 
 // type imports
-import { hazardTypes } from "../../../../map/mapTypes";
 import { realmFunctionNames } from "../../../../../data/realm/functions";
-import { CreateHazardArgs } from "../../../../../data/realm/schema/hazard";
-import { BSON } from "realm-web";
 
 // hook imports
 import useCreateMarker from "../../../../../hooks/useCreateMarker";
 import useMission from "../../../../../hooks/useMission";
 import useRealm from "../../../../../hooks/useRealm";
-import useRealmFunction from "../../../../../hooks/useRealmFunction";
-
-// svg imports
-import { ReactComponent as AvalanceIcon } from "../../../../../assets/Hazards/Alert=Avalanche.svg";
 
 import useNavigation from "../../../../../hooks/useNavigation";
 import {
