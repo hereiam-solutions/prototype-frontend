@@ -21,6 +21,7 @@ function SetMarker() {
 
   const {
     setCreateMarkerLocation: setLocation,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     createMarkerLocation: location,
   } = useCreateMarker();
 
