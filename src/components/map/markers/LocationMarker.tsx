@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Marker, Popup } from "react-leaflet";
-import L, { Icon, latLng, DivIcon } from "leaflet";
+import L, { Icon } from "leaflet";
 
 // svg imports
 // import { ReactComponent as AvalanceIcon } from "../../../assets/Hazards/Alert=Avalanche.svg";
 
-import { hazardTypes, Location, locationTypes } from "../mapTypes";
-import { prependListener } from "process";
+import { locationTypes } from "../mapTypes";
 import useRealm from "../../../hooks/useRealm";
 import useMission from "../../../hooks/useMission";
 import useMissionMap from "../../../hooks/useMissionMap";
@@ -15,7 +14,6 @@ import {
   LocationSchema,
   UpdateLocationArgs,
 } from "../../../data/realm/schema/location";
-import { BSON } from "realm-web";
 import { realmFunctionNames } from "../../../data/realm/functions";
 
 // styling imports
@@ -411,6 +409,7 @@ const LocationMarker = ({ location }: Props) => {
 
       if (realm.currentUser) {
         // call the Realm function
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const response = await realm.currentUser.callFunction(
           realmFunctionNames.deleteLocation,
           args
