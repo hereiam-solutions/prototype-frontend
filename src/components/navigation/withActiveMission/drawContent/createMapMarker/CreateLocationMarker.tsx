@@ -3,17 +3,14 @@ import styled from "styled-components";
 import useNavigation from "../../../../../hooks/useNavigation";
 
 // type imports
-import { hazardTypes, locationTypes } from "../../../../map/mapTypes";
+import { locationTypes } from "../../../../map/mapTypes";
 import { realmFunctionNames } from "../../../../../data/realm/functions";
-import { CreateHazardArgs } from "../../../../../data/realm/schema/hazard";
-import { BSON } from "realm-web";
 import { CreateLocationArgs } from "../../../../../data/realm/schema/location";
 
 // hook imports
 import useCreateMarker from "../../../../../hooks/useCreateMarker";
 import useMission from "../../../../../hooks/useMission";
 import useRealm from "../../../../../hooks/useRealm";
-import useRealmFunction from "../../../../../hooks/useRealmFunction";
 
 // svg imports
 import { ReactComponent as ApparrelIcon } from "../../../../../assets/Locations/Color/Active=apparel.svg";
