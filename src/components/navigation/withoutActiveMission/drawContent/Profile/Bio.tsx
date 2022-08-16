@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import useRealm from "../../../../../hooks/useRealm";
 import styled from "styled-components";
-import { RiEditBoxFill } from "react-icons/ri";
 
 const Bio = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
