@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import MissionCard from "../drawContent/MissionCard";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useMission from "../../../../hooks/useMission";
 import useNavigation from "../../../../hooks/useNavigation";
 import { useState } from "react";
 import useRealm from "../../../../hooks/useRealm";
 import { realmFunctionNames } from "../../../../data/realm/functions";
-import { BSON } from "realm-web";
 import { MissionSchema } from "../../../../data/realm/schema/mission";
 import useTheme from "../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../context/ThemeContext";
@@ -21,7 +19,7 @@ const JoinMission = () => {
   const { setActiveMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
   const { currentTheme } = useTheme();
-  const { setIsModalActive, isModalActive, setModalContent } = useModal();
+  const { setIsModalActive, setModalContent } = useModal();
 
   const [error, setError] = useState<string>("");
 
