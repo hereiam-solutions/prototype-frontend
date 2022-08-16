@@ -3,14 +3,8 @@ import styled from "styled-components";
 import {
   MapContainer,
   TileLayer,
-  Marker,
-  Popup,
-  useMapEvent,
-  useMap,
-  ZoomControl,
   LayersControl,
   LayerGroup,
-  Polyline,
   Polygon,
 } from "react-leaflet";
 import L, { Icon, latLng } from "leaflet";
