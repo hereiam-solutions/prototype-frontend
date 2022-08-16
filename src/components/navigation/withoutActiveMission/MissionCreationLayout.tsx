@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import PolygonDrawingMap from "../../map/PolygonDrawingMap";
 import Nav from "../Nav";
-import Company from "../Company";
+
 import useModal from "../../../hooks/useModal";
 import Modal from "../Modal";
 
