@@ -4,7 +4,6 @@ import useNavigation from "../../../../../hooks/useNavigation";
 import useRealm from "../../../../../hooks/useRealm";
 import ProfileName from "./ProfileName";
 import ProfileHead from "./ProfileHead";
-import Bio from "./Bio";
 import MyMissions from "./MyMissions";
 import DriverLicenses from "./DriverLicenses";
 import useMission from "../../../../../hooks/useMission";
@@ -35,10 +34,7 @@ const Profile = () => {
       <StyledProfileContent>
         <StyledPersonWrapper>
           <ProfileHead />
-
           <ProfileName />
-
-          <Bio />
         </StyledPersonWrapper>
 
         <MyMissions />
