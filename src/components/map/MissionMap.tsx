@@ -23,6 +23,7 @@ import PatientMarker from "./markers/PatientMarker";
 import LocationMarker from "./markers/LocationMarker";
 import useMissionMap from "../../hooks/useMissionMap";
 
+
 const MissionMap = () => {
   const { realm } = useRealm();
   const { activeMission } = useMission();

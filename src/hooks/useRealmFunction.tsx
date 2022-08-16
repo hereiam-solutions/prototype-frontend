@@ -52,7 +52,7 @@ const useRealmFunction = ({
     };
 
     callRealmFunction();
-  }, [realm.currentUser]);
+  }, [args, functionName, realm.currentUser]);
 
   return { data, loading, error };
 };
