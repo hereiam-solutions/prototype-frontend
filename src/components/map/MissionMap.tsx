@@ -7,16 +7,11 @@ import {
   LayerGroup,
   Polygon,
 } from "react-leaflet";
-import L, { Icon, latLng } from "leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import mockLocationData from "../../data/locationData.json";
-import { ActiveMarkerType } from "./mapTypes";
 import GetCurrentLocation from "./mapEvents/CurrentLocationMarker";
-import SetMapCenter from "./mapEvents/SetMapCenter";
 import SetMarker from "./mapEvents/SetMarker";
 import ActivateActionMenu from "./mapEvents/ActivateActionMenu";
-import useActionMenu from "../../hooks/useActionMenu";
-import { Location } from "./mapTypes";
 import useRealm from "../../hooks/useRealm";
 import { realmFunctionNames } from "../../data/realm/functions";
 import useMission from "../../hooks/useMission";
