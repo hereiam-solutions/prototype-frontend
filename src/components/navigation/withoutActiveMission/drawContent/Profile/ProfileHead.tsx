@@ -1,8 +1,7 @@
 import React from 'react'
-import useRealm from '../../../../../hooks/useRealm';
 import styled from 'styled-components';
 import HeroImage from '../../../../../assets/k9search.jpg';
-import { RiAtFill, RiEditBoxFill, RiPhoneFill, RiRadarFill, RiSignalTowerFill } from "react-icons/ri";
+import { RiAtFill, RiPhoneFill, RiRadarFill, RiSignalTowerFill } from "react-icons/ri";
 
 const PhoneIcon = RiPhoneFill;
 const EmailIcon = RiAtFill;

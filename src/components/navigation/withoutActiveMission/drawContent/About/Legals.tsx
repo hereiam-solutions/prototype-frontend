@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+
 import Accordion from "../../../ui/Accordion";
-import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -1102,39 +1102,6 @@ const SectionHeadline = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: ${(props) => props.theme.buttonBorderRadius}
     ${(props) => props.theme.buttonBorderRadius} 0 0;
-`;
-
-const StyledClearLocal = styled.div`
-  align-self: start;
-
-  width: 100%;
-  margin-top: 0.5rem;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background-color: ${(props) => props.theme.secondaryBackgroundColor};
-  color: ${(props) => props.theme.secondaryFontColor};
-
-  font-size: 1rem;
-  font-weight: 500;
-`;
-
-const StyledClearUser = styled.div`
-  align-self: start;
-
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background-color: ${(props) => props.theme.secondaryBackgroundColor};
-  color: ${(props) => props.theme.secondaryFontColor};
-
-  font-size: 1rem;
-  font-weight: 500;
 `;
 
 export default Legals;

@@ -1,8 +1,6 @@
 import React from "react";
-import useRealm from "../../../../../hooks/useRealm";
 import styled from "styled-components";
 import Avatar from "../../../../../assets/avatar.jpg";
-import { RiEditBoxFill } from "react-icons/ri";
 
 const ProfileName = () => {
   return (

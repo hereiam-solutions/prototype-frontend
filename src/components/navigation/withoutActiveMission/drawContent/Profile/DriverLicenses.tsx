@@ -1,19 +1,17 @@
 import React from "react";
-import useRealm from "../../../../../hooks/useRealm";
 import styled from "styled-components";
+
 import {
   RiCarFill,
   RiBus2Fill,
   RiMotorbikeFill,
   RiShip2Fill,
-  RiEditBoxFill,
 } from "react-icons/ri";
 
 const HasCarLicense = RiCarFill;
 const HasBusLicense = RiBus2Fill;
 const HasBikeLicense = RiMotorbikeFill;
 const HasBoatLicense = RiShip2Fill;
-const EditLicense = RiEditBoxFill;
 
 const DriverLicenses = () => {
   return (

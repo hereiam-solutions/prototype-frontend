@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import { MapContainer, TileLayer } from "react-leaflet";
-import DrawPolygon from "./DrawPolygon";
 import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
 
 import GetCurrentLocation from "./mapEvents/CurrentLocationMarker";
-import useMission from "../../hooks/useMission";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import useMissionMap from "../../hooks/useMissionMap";
 
 const Map = () => {
