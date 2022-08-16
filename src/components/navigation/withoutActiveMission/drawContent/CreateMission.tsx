@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import styled from "styled-components";
 import SingleDropdown from "../../ui/SingleDropdown";
@@ -30,7 +31,7 @@ const CreateMission = () => {
   const { polygonDrawingCoordinates } = useMission();
   const { setIsDrawOpen } = useNavigation();
   const { currentTheme } = useTheme();
-  const { setIsModalActive, isModalActive, setModalContent } = useModal();
+  const { setIsModalActive, setModalContent } = useModal();
 
   // request for mission creation
   const handleMissionSubmit = async () => {
