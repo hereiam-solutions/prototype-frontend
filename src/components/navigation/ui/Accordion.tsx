@@ -13,8 +13,6 @@ const Accordion = ({ heading, children }: AccordionProps) => {
   const [accordionIsOpen, setAccordionIsOpen] = useState<boolean>(false);
   const [rotateChevron, setRotateChevron] = useState<boolean>(false);
 
-  const handleRotate = () => setRotateChevron(!rotateChevron);
-
   return (
     <StyledWrapper>
       <StyledHeading

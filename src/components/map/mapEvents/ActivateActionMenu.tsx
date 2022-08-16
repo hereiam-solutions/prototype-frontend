@@ -1,11 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { useMapEvents, Marker, Popup } from 'react-leaflet';
+import { useContext } from 'react';
+import { useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Icon } from 'leaflet';
-import { ActiveMarkerType, screenCoordinatesType } from '../mapTypes';
-import axios from 'axios';
+import { screenCoordinatesType } from '../mapTypes';
 import useActionMenu from '../../../hooks/useActionMenu';
-import useTheme from '../../../hooks/useTheme';
 import { ThemeContext } from 'styled-components';
 
 function ActivateActionMenu() {
@@ -13,6 +10,7 @@ function ActivateActionMenu() {
 
   const themeContext = useContext(ThemeContext);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const map = useMapEvents({
     contextmenu(e) {
       // get the dimensions of the screen

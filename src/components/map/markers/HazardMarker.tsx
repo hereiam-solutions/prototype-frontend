@@ -1,8 +1,7 @@
 import { Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
-import { hazardTypes, Location } from "../mapTypes";
+import { hazardTypes } from "../mapTypes";
 import { useEffect, useState } from "react";
-import { BSON } from "realm-web";
 import useRealm from "../../../hooks/useRealm";
 import useMission from "../../../hooks/useMission";
 import {
@@ -11,7 +10,6 @@ import {
 } from "../../../data/realm/schema/hazard";
 import useMissionMap from "../../../hooks/useMissionMap";
 import { realmFunctionNames } from "../../../data/realm/functions";
-import styled from "styled-components";
 
 // styling imports
 import {

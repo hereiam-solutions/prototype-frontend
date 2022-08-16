@@ -1,6 +1,5 @@
 import { BSON } from "realm-web";
 import { geoJSONPoint } from "./../../../components/map/mapTypes";
-import { locationTypes } from "../../../components/map/mapTypes";
 
 // enum roles {
 //   'LEMA' = 'lema',

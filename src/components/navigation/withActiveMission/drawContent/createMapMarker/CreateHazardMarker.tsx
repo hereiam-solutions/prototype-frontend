@@ -6,13 +6,11 @@ import useNavigation from "../../../../../hooks/useNavigation";
 import { hazardTypes } from "../../../../map/mapTypes";
 import { realmFunctionNames } from "../../../../../data/realm/functions";
 import { CreateHazardArgs } from "../../../../../data/realm/schema/hazard";
-import { BSON } from "realm-web";
 
 // hook imports
 import useCreateMarker from "../../../../../hooks/useCreateMarker";
 import useMission from "../../../../../hooks/useMission";
 import useRealm from "../../../../../hooks/useRealm";
-import useRealmFunction from "../../../../../hooks/useRealmFunction";
 import useMissionMap from "../../../../../hooks/useMissionMap";
 
 // svg imports
