@@ -199,6 +199,15 @@ export const GlobalStyles = createGlobalStyle`
       animation: none;
     }  }
 
+  /* iOS map Control Visibility Bug */
+  
+  .leaflet-control-container .leaflet-top, .leaflet-control-container .leaflet-bottom {
+	transform: translate3d(0px, 0px, 0px);
+  }
+  .leaflet-control-container .leaflet-top {
+    margin-top: 2rem;
+  }
+
 `;
 
 const colors = {
