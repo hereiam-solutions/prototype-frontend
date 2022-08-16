@@ -1,21 +1,6 @@
 import { BSON } from "realm-web";
 import { geoJSONPoint } from "./../../../components/map/mapTypes";
 
-// enum roles {
-//   'LEMA' = 'lema',
-//   'OCC' = 'occ',
-//   'LEMAAPPROVER' = 'lemaApprover',
-//   'UCC' = 'ucc',
-//   'SCC' = 'scc',
-//   'LOGISTICS' = 'logistics',
-//   'SAFETYANDSECURITY' = 'safety and security',
-//   'COMMUNICATIONS' = 'communications',
-//   'TEAMLEADER' = 'teamLeader',
-//   'MEDIC' = 'medic',
-//   'DOGHANDLER' = 'dogHandler',
-//   'TEAMMEMBER' = 'teamMember',
-// }
-
 export enum ageGroups {
   ZERO = "0-1",
   ONE = "2-5",
