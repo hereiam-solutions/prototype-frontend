@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 import useNavigation from "../../../../hooks/useNavigation";
 import useMission from "../../../../hooks/useMission";
 
+import {
+  RiFileCopyLine,
+} from "react-icons/ri";
+
 import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
 import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
 import useTheme from "../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../context/ThemeContext";
+
+const CopyMissionID = RiFileCopyLine;
 
 const ActiveDashboard = () => {
   const { setIsDrawOpen } = useNavigation();
@@ -33,6 +39,8 @@ const ActiveDashboard = () => {
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Mission ID</StyledSecondaryHeading>
           <StyledText>{activeMission._id.toString()}</StyledText>
+          <CopyMissionID height={80} />
+          {/* Logo Copy and function clipboard.ts */}
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
