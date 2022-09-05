@@ -4,7 +4,7 @@ import useNavigation from "../../hooks/useNavigation";
 import Draw from "./Draw";
 
 // svg imports
-import { ReactComponent as DashboardButton } from "../../assets/Navigation/Dashboard.svg";
+import { ReactComponent as DashboardButton } from "../../assets/Navigation/Dashboard_Dark.svg";
 import { ReactComponent as SettingsButton } from "../../assets/Navigation/Settings.svg";
 import { ReactComponent as ProfileButton } from "../../assets/Navigation/User.svg";
 import useMission from "../../hooks/useMission";
@@ -58,7 +58,7 @@ const StyledNavigationMenu = styled.div`
   align-items: center;
   gap: 1rem;
   position: absolute;
-  bottom: 1%;
+  bottom: 2%;
   right: 4%;
   z-index: 2;
   pointer-events: auto;
