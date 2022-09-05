@@ -3,10 +3,18 @@ import { Link } from "react-router-dom";
 import useNavigation from "../../../../hooks/useNavigation";
 import useMission from "../../../../hooks/useMission";
 
+import {
+  RiFileCopyLine,
+} from "react-icons/ri";
+
+import { copyToClipboard } from "../../../../helpers/clipboard"
+
 import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
 import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
 import useTheme from "../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../context/ThemeContext";
+
+const CopyMissionID = RiFileCopyLine;
 
 const ActiveDashboard = () => {
   const { setIsDrawOpen } = useNavigation();
@@ -32,7 +40,15 @@ const ActiveDashboard = () => {
       <StyledContentWrapper>
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Mission ID</StyledSecondaryHeading>
-          <StyledText>{activeMission._id.toString()}</StyledText>
+          <StyledText id="MissionID">{activeMission._id.toString()}</StyledText>
+          
+          <button>
+            <CopyMissionID
+              height={80}
+            />
+          </button>
+
+          {/* Logo Copy and function clipboard.ts */}
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
@@ -81,11 +97,11 @@ const ActiveDashboard = () => {
         </StyledSectionWrapper>
 
         {/* <StyledSectionWrapper>
-          <StyledSecondaryHeading>Ending time</StyledSecondaryHeading>
-          <StyledText>
-            {new Date(activeMission.end_of_mission).toLocaleString()}
-          </StyledText>
-        </StyledSectionWrapper> */}
+              <StyledSecondaryHeading>Ending time</StyledSecondaryHeading>
+              <StyledText>
+                {new Date(activeMission.end_of_mission).toLocaleString()}
+              </StyledText>
+            </StyledSectionWrapper> */}
 
         <StyledLinkWrapper>
           <StyledButton onClick={handleLeave} to="/">
@@ -97,7 +113,7 @@ const ActiveDashboard = () => {
   ) : (
     <></>
   );
-};
+}
 
 const StyledDrawWrapper = styled.div`
   width: 100%;
