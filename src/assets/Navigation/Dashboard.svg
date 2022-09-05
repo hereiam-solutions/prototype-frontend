@@ -1,9 +1,9 @@
-<svg width="50" height="52" viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="80" height="84" viewBox="0 0 50 54" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_431_1303)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 6.25H39.5833C41.875 6.25 43.75 8.125 43.75 10.4167V39.5833C43.75 41.875 41.875 43.75 39.5833 43.75H10.4167C8.125 43.75 6.25 41.875 6.25 39.5833V10.4167C6.25 8.125 8.125 6.25 10.4167 6.25ZM14.5833 35.4167H18.75V20.8333H14.5833V35.4167ZM27.0833 35.4167H22.9167V14.5833H27.0833V35.4167ZM31.25 35.4167H35.4167V27.0833H31.25V35.4167Z" fill="#FEFEFF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8,2L3,2C2.451,2 2,2.451 2,3L2,8C2,8.549 2.451,9 3,9C3.549,9 4,8.549 4,8L4,4L8,4C8.549,4 9,3.549 9,3C9,2.451 8.549,2 8,2ZM8,20L4,20L4,16C4,15.451 3.549,15 3,15C2.451,15 2,15.451 2,16L2,21C2,21.549 2.451,22 3,22L8,22C8.549,22 9,21.549 9,21C9,20.451 8.549,20 8,20ZM21,2L16,2C15.451,2 15,2.451 15,3C15,3.549 15.451,4 16,4L20,4L20,8C20,8.549 20.451,9 21,9C21.549,9 22,8.549 22,8L22,3C22,2.451 21.549,2 21,2ZM21,15C20.451,15 20,15.451 20,16L20,20L16,20C15.451,20 15,20.451 15,21C15,21.549 15.451,22 16,22L21,22C21.549,22 22,21.549 22,21L22,16C22,15.451 21.549,15 21,15Z" fill="#FEFEFF"/>
 </g>
 <defs>
-<filter id="filter0_d_431_1303" x="-4" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d_431_1303" x="-4" y="0" width="70" height="70" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="4"/>
