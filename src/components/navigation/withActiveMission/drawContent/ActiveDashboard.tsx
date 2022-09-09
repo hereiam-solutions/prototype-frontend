@@ -42,7 +42,13 @@ const ActiveDashboard = () => {
           <StyledSecondaryHeading>Mission ID</StyledSecondaryHeading>
           <StyledText id="MissionID">{activeMission._id.toString()}</StyledText>
           
-          <button>
+          <button
+            onClick={ () => copyToClipboard({
+              target: "MissionID",
+              value: activeMission._id.toString(),
+              message: "successfully copied!"
+            })} 
+          >
             <CopyMissionID
               height={80}
             />
