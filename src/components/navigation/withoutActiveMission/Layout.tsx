@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Map from "../../map/Map";
 import Nav from "../Nav";
-import Company from "../Company";
+
 
 const Layout = () => {
   return (
@@ -9,7 +9,7 @@ const Layout = () => {
       <Map />
       <StyledNavWrapper>
         <Nav />
-        <Company />
+        
       </StyledNavWrapper>
     </StyledAppWrapper>
   );
