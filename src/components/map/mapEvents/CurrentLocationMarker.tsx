@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
 import { useMapEvents, Marker } from "react-leaflet";
-import { Icon } from "leaflet";
+import { divIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Location } from "../mapTypes";
 
-const locationIcon = new Icon({
-  iconUrl: "/icons/assets/location.svg",
-  iconSize: [20, 20],
+import { RiExternalLinkLine } from "react-icons/ri";
+import { renderToStaticMarkup } from "react-dom/server";
+
+const iconMarker = renderToStaticMarkup(
+  <RiExternalLinkLine
+    size={30}
+  />
+);
+const locationIcon = divIcon({
+  html: iconMarker,
 });
 
 function GetCurrentLocation() {
