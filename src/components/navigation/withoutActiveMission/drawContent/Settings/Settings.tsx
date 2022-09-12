@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Switch from "react-switch";
 
-import { GiSattelite, GiHumanPyramid } from "react-icons/gi";
-import { BsMap } from "react-icons/bs";
+import Default from "../../../../../assets/Navigation/default.png";
+import Humanitarian from "../../../../../assets/Navigation/humanitarian.png";
+import Sattelite from "../../../../../assets/Navigation/sattelite.png";
 
 import useMissionMap from "../../../../../hooks/useMissionMap";
 import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
@@ -34,42 +35,36 @@ const Settings = () => {
           <StyledSecondaryHeading>Map type</StyledSecondaryHeading>
 
           <StyledMapTypesWrapper>
-            <StyledMapTypeSwitchWrapper>
-              <StyledMapIconWrapper>
-                <BsMap
-                  size={30}
-                  onClick={() => {
-                    setActiveTileLayer(ActiveTileLayerEnum.DEFAULT);
-                    setReRenderBoolean(!reRenderBoolean);
-                  }}
-                />
-              </StyledMapIconWrapper>
+            <StyledMapTypeSwitchWrapper
+              onClick={() => {
+                setActiveTileLayer(ActiveTileLayerEnum.DEFAULT);
+                setReRenderBoolean(!reRenderBoolean);
+              }}
+            >
+              <StyledDefaultWrapper>
+              </StyledDefaultWrapper>
               <StyledMapTypeText>Default</StyledMapTypeText>
             </StyledMapTypeSwitchWrapper>
 
             <StyledMapTypeSwitchWrapper>
-              <StyledMapIconWrapper>
-                <GiHumanPyramid
-                  size={30}
-                  onClick={() => {
-                    setActiveTileLayer(ActiveTileLayerEnum.HUMANITARIAN);
-                    setReRenderBoolean(!reRenderBoolean);
-                  }}
-                />
-              </StyledMapIconWrapper>
+              <StyledHumanitarianWrapper
+                onClick={() => {
+                  setActiveTileLayer(ActiveTileLayerEnum.HUMANITARIAN);
+                  setReRenderBoolean(!reRenderBoolean);
+                }}
+              >
+              </StyledHumanitarianWrapper>
               <p>Humanitarian</p>
             </StyledMapTypeSwitchWrapper>
 
             <StyledMapTypeSwitchWrapper>
-              <StyledMapIconWrapper>
-                <GiSattelite
-                  size={30}
-                  onClick={() => {
-                    setActiveTileLayer(ActiveTileLayerEnum.SATELLITE);
-                    setReRenderBoolean(!reRenderBoolean);
-                  }}
-                />
-              </StyledMapIconWrapper>
+              <StyledSatteliteWrapper
+                onClick={() => {
+                  setActiveTileLayer(ActiveTileLayerEnum.SATELLITE);
+                  setReRenderBoolean(!reRenderBoolean);
+                }}
+              >
+              </StyledSatteliteWrapper>
               <StyledMapTypeText>Sattelite</StyledMapTypeText>
             </StyledMapTypeSwitchWrapper>
           </StyledMapTypesWrapper>
@@ -182,7 +177,7 @@ const StyledMapTypeSwitchWrapper = styled.div`
   gap: 0.5rem;
 `;
 
-const StyledMapIconWrapper = styled.div`
+const StyledDefaultWrapper = styled.div`
   height: 60px;
   width: 60px;
 
@@ -190,6 +185,36 @@ const StyledMapIconWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
+  background-image: url(${Default});
+  background-size: 60px, 60px, cover;
+  border: solid 1px ${(props) => props.theme.primaryFontColor};
+  border-radius: 10px;
+`;
+
+const StyledHumanitarianWrapper = styled.div`
+  height: 60px;
+  width: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url(${Humanitarian});
+  background-size: 60px, 60px, cover;
+  border: solid 1px ${(props) => props.theme.primaryFontColor};
+  border-radius: 10px;
+`;
+
+const StyledSatteliteWrapper = styled.div`
+  height: 60px;
+  width: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url(${Sattelite});
+  background-size: 60px, 60px, cover;
   border: solid 1px ${(props) => props.theme.primaryFontColor};
   border-radius: 10px;
 `;
