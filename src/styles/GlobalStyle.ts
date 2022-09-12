@@ -248,6 +248,7 @@ export const darkTheme = {
   primaryFontColor: "#FFFFFF",
   buttonColor: "#DCE4EF",
   buttonFontColor: "#212121",
+  iconColor: "#fffff8",
 
   secondaryBackgroundColor: "var(--base-text)",
   sectionHeadlineBackgroundColor: "var(--gray-500)",
@@ -273,6 +274,7 @@ export const lightTheme = {
   primaryFontColor: "#000000",
   buttonColor: "#C8C8C8",
   buttonFontColor: "#000000",
+  iconColor: "#fffff8",
 
   secondaryBackgroundColor: "var(--gray-300)",
   sectionHeadlineBackgroundColor: "var(--gray-400)",
