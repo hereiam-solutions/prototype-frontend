@@ -59,15 +59,20 @@ const StyledDrawHeader = styled.div`
   padding-bottom: 1rem;
   /* margin-bottom: 0.8rem; */
 
-  width: 100%;
+  width: 100vw;
 
   display: flex;
+  flex-direction: raw;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+
+  font-size: 1.6rem;
+  font-weight: 500;
 `;
 
 const StyledButton = styled.button`
-  width: 60%;
+  min-width: 30vw;
   height: 3rem;
 
   margin-top: 1.5rem;
