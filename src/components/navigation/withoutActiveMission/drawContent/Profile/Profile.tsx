@@ -1,17 +1,24 @@
-
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 import useNavigation from "../../../../../hooks/useNavigation";
+
 import useRealm from "../../../../../hooks/useRealm";
 
 import useMission from "../../../../../hooks/useMission";
 
+// type / enum imports
+import {
+  UpdatePersonArgs,
+  PersonSchema,
+} from "../../../../../data/realm/schema/person";
+
 const Profile = () => {
+  let navigate = useNavigate();
   const { realm } = useRealm();
   const { setActiveMission, setIsPolygonDrawingActive } = useMission();
   const { setIsDrawOpen } = useNavigation();
-
-  let navigate = useNavigate();
 
   const handleLogOut = async () => {
     await realm.currentUser?.logOut();
@@ -22,11 +29,21 @@ const Profile = () => {
 
     navigate("/auth");
   };
+  
+  //read custom 
+  // @ts-ignore
+  const [userState, setUserState] = useState<any>(realm.currentUser.customData);
+  console.log(realm.currentUser?.customData)
+
+  //State for form elements as CreateMission
+
+  //handle submit as CreateMission
 
   return (
     <StyledProfileWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Profile (Mockup)</StyledHeading>
+        <div>{userState.firstName}</div>
+        <div>{userState.lastName}</div>
       </StyledDrawHeader>
 
       <StyledProfileContent>
@@ -47,12 +64,6 @@ const StyledDrawHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const StyledHeading = styled.p`
-  font-weight: 500;
-  font-size: 2rem;
-  color: ${(props) => props.theme.primaryFontColor};
 `;
 
 const StyledButton = styled.button`
