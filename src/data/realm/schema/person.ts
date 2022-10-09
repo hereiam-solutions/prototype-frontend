@@ -5,10 +5,9 @@ enum roles {
   "LEMA" = "lema",
   "OCC" = "occ",
   "LEMAAPPROVER" = "lemaApprover",
-  "UCC" = "ucc",
-  "SCC" = "scc",
+  "COORDINATION" = "coordination",
   "LOGISTICS" = "logistics",
-  "SAFETYANDSECURITY" = "safety and security",
+  "SAFETY" = "safety",
   "COMMUNICATIONS" = "communications",
   "TEAMLEADER" = "teamLeader",
   "MEDIC" = "medic",
@@ -21,6 +20,7 @@ export type PersonSchema = {
   //   userId: BSON.ObjectId;
   firstName: string;
   lastName: string;
+  identifier: string;
   //   managingOrganization: BSON.ObjectId;
   //   team: BSON.ObjectId;
   //   role: roles[];
@@ -35,6 +35,7 @@ export type UpdatePersonArgs = {
   userId: BSON.ObjectId;
   firstName: string;
   lastName: string;
+  identifier: string;
   managingOrganization: BSON.ObjectId;
   team: BSON.ObjectId;
   role: roles[];
