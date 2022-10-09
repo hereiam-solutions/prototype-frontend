@@ -1,19 +1,24 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 import useNavigation from "../../../../../hooks/useNavigation";
+
 import useRealm from "../../../../../hooks/useRealm";
-import ProfileName from "./ProfileName";
-import ProfileHead from "./ProfileHead";
-import MyMissions from "./MyMissions";
-import DriverLicenses from "./DriverLicenses";
+
 import useMission from "../../../../../hooks/useMission";
 
+// type / enum imports
+import {
+  UpdatePersonArgs,
+  PersonSchema,
+} from "../../../../../data/realm/schema/person";
+
 const Profile = () => {
+  let navigate = useNavigate();
   const { realm } = useRealm();
   const { setActiveMission, setIsPolygonDrawingActive } = useMission();
   const { setIsDrawOpen } = useNavigation();
-
-  let navigate = useNavigate();
 
   const handleLogOut = async () => {
     await realm.currentUser?.logOut();
@@ -24,22 +29,25 @@ const Profile = () => {
 
     navigate("/auth");
   };
+  
+  //read custom 
+  // @ts-ignore
+  const [userState, setUserState] = useState<any>(realm.currentUser.customData);
+  console.log(realm.currentUser?.customData)
+
+  //State for form elements as CreateMission
+
+  //handle submit as CreateMission
 
   return (
     <StyledProfileWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Profile (Mockup)</StyledHeading>
+        <div>{userState.firstName}</div>
+        <div>{userState.lastName}</div>
       </StyledDrawHeader>
 
       <StyledProfileContent>
-        <StyledPersonWrapper>
-          <ProfileHead />
-          <ProfileName />
-        </StyledPersonWrapper>
-
-        <MyMissions />
-
-        <DriverLicenses />
+        
 
         <StyledButton onClick={handleLogOut}>Log out</StyledButton>
       </StyledProfileContent>
@@ -51,21 +59,20 @@ const StyledDrawHeader = styled.div`
   padding-bottom: 1rem;
   /* margin-bottom: 0.8rem; */
 
-  width: 100%;
+  width: 100vw;
 
   display: flex;
+  flex-direction: raw;
   justify-content: center;
   align-items: center;
-`;
+  gap: 1rem;
 
-const StyledHeading = styled.p`
+  font-size: 1.6rem;
   font-weight: 500;
-  font-size: 2rem;
-  color: ${(props) => props.theme.primaryFontColor};
 `;
 
 const StyledButton = styled.button`
-  width: 60%;
+  min-width: 30vw;
   height: 3rem;
 
   margin-top: 1.5rem;
@@ -94,12 +101,6 @@ const StyledProfileWrapper = styled.div`
 
   overflow: hidden;
   pointer-events: auto;
-`;
-
-const StyledPersonWrapper = styled.div`
-  width: 80%;
-  border-radius: ${(props) => props.theme.primaryBorderRadius};
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 const StyledProfileContent = styled.div`
