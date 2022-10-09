@@ -1,11 +1,9 @@
+
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useNavigation from "../../../../../hooks/useNavigation";
 import useRealm from "../../../../../hooks/useRealm";
-import ProfileName from "./ProfileName";
-import ProfileHead from "./ProfileHead";
-import MyMissions from "./MyMissions";
-import DriverLicenses from "./DriverLicenses";
+
 import useMission from "../../../../../hooks/useMission";
 
 const Profile = () => {
@@ -32,14 +30,7 @@ const Profile = () => {
       </StyledDrawHeader>
 
       <StyledProfileContent>
-        <StyledPersonWrapper>
-          <ProfileHead />
-          <ProfileName />
-        </StyledPersonWrapper>
-
-        <MyMissions />
-
-        <DriverLicenses />
+        
 
         <StyledButton onClick={handleLogOut}>Log out</StyledButton>
       </StyledProfileContent>
@@ -94,12 +85,6 @@ const StyledProfileWrapper = styled.div`
 
   overflow: hidden;
   pointer-events: auto;
-`;
-
-const StyledPersonWrapper = styled.div`
-  width: 80%;
-  border-radius: ${(props) => props.theme.primaryBorderRadius};
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 const StyledProfileContent = styled.div`
