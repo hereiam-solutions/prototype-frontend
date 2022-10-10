@@ -16,10 +16,11 @@ enum roles {
 }
 
 export type PersonSchema = {
-  //   _id: BSON.ObjectId;
-  //   userId: BSON.ObjectId;
+  _id: BSON.ObjectId;
+  userId: BSON.ObjectId;
   firstName: string;
   lastName: string;
+  bio: string;
   identifier: string;
   //   managingOrganization: BSON.ObjectId;
   //   team: BSON.ObjectId;
@@ -31,10 +32,11 @@ export type PersonSchema = {
 };
 
 export type UpdatePersonArgs = {
-  _id: BSON.ObjectId;
-  userId: BSON.ObjectId;
+  //  _id: BSON.ObjectId;
+  //  userId: BSON.ObjectId;
   firstName: string;
   lastName: string;
+  bio: string;
   identifier: string;
   managingOrganization: BSON.ObjectId;
   team: BSON.ObjectId;

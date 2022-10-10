@@ -44,8 +44,10 @@ const Profile = () => {
       <StyledDrawHeader>
         <div>{userState.firstName}</div>
         <div>{userState.lastName}</div>
+        <div>{userState.bio}</div>
         
       </StyledDrawHeader>
+      
 
       <StyledProfileContent>
         
