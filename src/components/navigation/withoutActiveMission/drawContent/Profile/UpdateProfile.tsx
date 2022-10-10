@@ -27,7 +27,7 @@ const UpdateProfile = () => {
         // paste args 
         const UpdatePersonArgs = {
             bio: bioValue,
-        }
+        };
 
         // call the Realm function
         if (realm.currentUser) {
