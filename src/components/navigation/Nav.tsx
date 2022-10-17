@@ -6,7 +6,7 @@ import Draw from "./Draw";
 // logo imports
 import { RiFocus2Fill } from "react-icons/ri";
 import { RiSettings4Fill } from "react-icons/ri";
-import { RiTShirtFill } from "react-icons/ri";
+import { RiAccountPinCircleFill } from "react-icons/ri";
 
 import LightLogo from "../../assets/Logo/light/hereIam_logo_light96x96.svg";
 
@@ -17,7 +17,7 @@ import useMission from "../../hooks/useMission";
 
 let DashboardButton = RiFocus2Fill;
 let SettingsButton = RiSettings4Fill;
-let ProfileButton = RiTShirtFill;
+let ProfileButton = RiAccountPinCircleFill;
 
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
@@ -58,7 +58,8 @@ const Nav = () => {
           </StyledSettingsButton>
           
         </StyledMenuButton>
-
+        
+        {/** Hide Profile Section - waiting CRUD and Team
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
@@ -71,6 +72,7 @@ const Nav = () => {
           </StyledProfileButton>
           
         </StyledMenuButton>
+         */}
       </StyledNavigationMenu>
 
       {isDrawOpen && <Draw usedInAuthentication={false} />}

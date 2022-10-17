@@ -1,12 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import useNavigation from "../../../../../hooks/useNavigation";
 
 import useRealm from "../../../../../hooks/useRealm";
-
-import useMission from "../../../../../hooks/useMission";
 
 // type / enum imports
 import {
@@ -17,14 +15,11 @@ import {
 const Profile = () => {
   let navigate = useNavigate();
   const { realm } = useRealm();
-  const { setActiveMission, setIsPolygonDrawingActive } = useMission();
   const { setIsDrawOpen } = useNavigation();
 
   const handleLogOut = async () => {
     await realm.currentUser?.logOut();
 
-    setActiveMission(null);
-    setIsPolygonDrawingActive(false);
     setIsDrawOpen(false);
 
     navigate("/auth");
@@ -33,18 +28,16 @@ const Profile = () => {
   //read custom 
   // @ts-ignore
   const [userState, setUserState] = useState<any>(realm.currentUser.customData);
-  console.log(realm.currentUser?.customData)
-
-  //State for form elements as CreateMission
-
-  //handle submit as CreateMission
 
   return (
     <StyledProfileWrapper>
       <StyledDrawHeader>
         <div>{userState.firstName}</div>
         <div>{userState.lastName}</div>
+        <div>{userState.bio}</div>
+        
       </StyledDrawHeader>
+      
 
       <StyledProfileContent>
         
