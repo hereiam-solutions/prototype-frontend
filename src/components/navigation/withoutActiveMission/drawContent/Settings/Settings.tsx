@@ -7,11 +7,9 @@ import Sattelite from "../../../../../assets/Navigation/sattelite.png";
 
 import useMissionMap from "../../../../../hooks/useMissionMap";
 import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
+
 import useTheme from "../../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../../context/ThemeContext";
-
-import { ReactComponent as SettingsButtonLight } from "../../../../../assets/Navigation/Settings.svg";
-import { ReactComponent as SettingsButtonDark } from "../../../../../assets/Navigation/Settings_Dark.svg";
 
 const Settings = () => {
   const { setActiveTileLayer, setReRenderBoolean, reRenderBoolean } =
@@ -22,17 +20,12 @@ const Settings = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        {currentTheme === ThemeEnum.LIGHT ? (
-          <SettingsButtonDark height={40} />
-        ) : (
-          <SettingsButtonLight height={40} />
-        )}
         <StyledHeading>Settings</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Map type</StyledSecondaryHeading>
+          <StyledSecondaryHeading>Map</StyledSecondaryHeading>
 
           <StyledMapTypesWrapper>
             <StyledMapTypeSwitchWrapper
@@ -71,7 +64,7 @@ const Settings = () => {
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Theme</StyledSecondaryHeading>
+          <StyledSecondaryHeading>Appearance</StyledSecondaryHeading>
 
           <StyledThemeSwitch
             onClick={() => {
@@ -80,7 +73,7 @@ const Settings = () => {
                 : setCurrentTheme(ThemeEnum.LIGHT);
             }}
           >
-            <StyledMapTypeText>Dark Mode:</StyledMapTypeText>
+            <StyledMapTypeText>Dark Mode</StyledMapTypeText>
 
             <Switch
               onChange={() => {
