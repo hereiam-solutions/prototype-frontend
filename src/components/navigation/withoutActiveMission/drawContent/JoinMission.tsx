@@ -1,17 +1,20 @@
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import useMission from "../../../../hooks/useMission";
-import useNavigation from "../../../../hooks/useNavigation";
 import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
+import useNavigation from "../../../../hooks/useNavigation";
+
 import useRealm from "../../../../hooks/useRealm";
 import { realmFunctionNames } from "../../../../data/realm/functions";
+
+import useMission from "../../../../hooks/useMission";
 import { MissionSchema } from "../../../../data/realm/schema/mission";
+
 import useTheme from "../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../context/ThemeContext";
 
-import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
-import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
 import useModal from "../../../../hooks/useModal";
+
+import styled from "styled-components";
 
 const JoinMission = () => {
   const navigate = useNavigate();
@@ -96,11 +99,6 @@ const JoinMission = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        {currentTheme === ThemeEnum.LIGHT ? (
-          <DashboardButtonDark height={40} />
-        ) : (
-          <DashboardButtonLight height={40} />
-        )}
         <StyledHeading>Mission</StyledHeading>
       </StyledDrawHeader>
 
@@ -119,14 +117,9 @@ const JoinMission = () => {
           <StyledButton onClick={handleJoin}>
             {error ? error : "Join"}
           </StyledButton>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>
-            Join last active Mission
-          </StyledSecondaryHeading>
-
-          <StyledButton onClick={handleJoinCurrentMission}>Join</StyledButton>
+          <StyledHint onClick={handleJoinCurrentMission}>
+            Droped out? Join last active mission.
+          </StyledHint>
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
@@ -242,6 +235,13 @@ const StyledButton = styled.button`
 
   border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
   border-radius: ${(props) => props.theme.inputBorderRadius};
+`;
+
+const StyledHint = styled.div`
+  margin-top: 0.3rem;
+   font-size: 0.8rem;
+   align-self: center;
+
 `;
 
 export default JoinMission;

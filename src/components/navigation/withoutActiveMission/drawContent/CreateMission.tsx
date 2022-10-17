@@ -11,16 +11,18 @@ import {
   SecurityLevel,
 } from "../../../../data/realm/schema/mission";
 import { disasterTypesEnum } from "../../../map/mapTypes";
+
 import useMission from "../../../../hooks/useMission";
-import useNavigation from "../../../../hooks/useNavigation";
+
 import useRealm from "../../../../hooks/useRealm";
 import { realmFunctionNames } from "../../../../data/realm/functions";
+
 import { useNavigate } from "react-router-dom";
+import useNavigation from "../../../../hooks/useNavigation";
+
 import useTheme from "../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../context/ThemeContext";
 
-import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
-import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
 import useModal from "../../../../hooks/useModal";
 
 const CreateMission = () => {
@@ -211,11 +213,6 @@ const CreateMission = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        {currentTheme === ThemeEnum.LIGHT ? (
-          <DashboardButtonDark height={40} />
-        ) : (
-          <DashboardButtonLight height={40} />
-        )}
         <StyledHeading>Create Mission</StyledHeading>
       </StyledDrawHeader>
 
