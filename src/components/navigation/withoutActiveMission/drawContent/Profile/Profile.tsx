@@ -28,11 +28,6 @@ const Profile = () => {
   //read custom 
   // @ts-ignore
   const [userState, setUserState] = useState<any>(realm.currentUser.customData);
-  console.log(realm.currentUser?.customData)
-
-  //State for form elements as CreateMission
-
-  //handle submit as CreateMission
 
   return (
     <StyledProfileWrapper>
