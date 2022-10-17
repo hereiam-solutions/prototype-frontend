@@ -7,15 +7,17 @@ type Props = {};
 const Version = (props: Props) => {
   return (
     <StyledVersion>
-        <img src={LogoHereiam} width="65px" alt="hereIam Logo" />
-        <br />
-        <p>hereIam Prototype</p>
-        <small>Version 0.0.1 (554234)</small>
-        <strong>&copy; 2022 hereIam solutions</strong>
-        <p>All rights reserved.</p>
-        <UpdateButton>
+      <img src={LogoHereiam} width="65px" alt="hereIam Logo" />
+      <br />
+        
+      <p>hereIam Prototype</p>
+      <strong>&copy; 2022 hereIam solutions</strong>
+      <p>All rights reserved.</p>
+        
+      <UpdateButton>
             Update
-        </UpdateButton>
+      </UpdateButton>
+      <small>No Update available.</small>
         
             
     </StyledVersion>

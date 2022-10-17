@@ -14,7 +14,7 @@ const Welcome = (props: Props) => {
       <p>
         hereIam is a project of Project X Consulting GmbH, a German based
         company - supported by professionals and experts in Urban Search &
-        Rescue from all over Europe. Thank you for that.
+        Rescue and disaster management from all over Europe. Thank you for your inputs.
       </p>
     </StyledAboutWelcome>
   );

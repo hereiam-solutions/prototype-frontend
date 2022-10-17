@@ -8,7 +8,7 @@ type Props = {};
 const Legals = (props: Props) => {
   return (
     <StyledLegals>
-      <SectionHeadline>Legals, Terms, Privacy</SectionHeadline>
+      <SectionHeadline>Legals</SectionHeadline>
 
       <Accordion heading={"TERMS"}>
         <Accordion heading={"Acceptance"}>
@@ -1079,20 +1079,23 @@ const Legals = (props: Props) => {
 };
 
 const StyledLegals = styled.div`
-  margin-top: 2rem;
+  margin-top: 3rem;
   width: 90vw;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 0.8rem;
+  font-weight: 200;
 `;
 
 const SectionHeadline = styled.div`
   width: 90vw;
+
+  font-size: 1.2rem;
+  font-weight: 600;
 
   padding: ${(props) => props.theme.sectionHeadlinePadding};
 

@@ -3,7 +3,6 @@ import Version from "../navigation/withoutActiveMission/drawContent/About/Versio
 import Welcome from "../navigation/withoutActiveMission/drawContent/About/Welcome";
 import Faq from "../navigation/withoutActiveMission/drawContent/About/FAQ";
 import Legals from "../navigation/withoutActiveMission/drawContent/About/Legals";
-import ClearData from "../navigation/withoutActiveMission/drawContent/About/ClearData";
 
 const AuthAbout = () => {
   return (
@@ -17,7 +16,6 @@ const AuthAbout = () => {
         <Welcome />
         <Faq />
         <Legals />
-        <ClearData />
       </StyledAboutContent>
     </StyledAboutWrapper>
   );
