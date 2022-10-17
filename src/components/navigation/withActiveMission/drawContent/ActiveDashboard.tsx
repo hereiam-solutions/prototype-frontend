@@ -7,54 +7,46 @@ import {
   RiFileCopyLine,
 } from "react-icons/ri";
 
-import { copyToClipboard } from "../../../../helpers/clipboard"
-
-import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
-import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
-import useTheme from "../../../../hooks/useTheme";
-import { ThemeEnum } from "../../../../context/ThemeContext";
+import useCopyToClipboard from '../../../../hooks/useCopyToClipboard'
 
 const CopyMissionID = RiFileCopyLine;
 
 const ActiveDashboard = () => {
   const { setIsDrawOpen } = useNavigation();
   const { activeMission, setActiveMission } = useMission();
-  const { currentTheme } = useTheme();
 
   const handleLeave = () => {
     setActiveMission(null);
     setIsDrawOpen(false);
   };
 
+  const [value, copy] = useCopyToClipboard();
+
   return activeMission ? (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        {currentTheme === ThemeEnum.LIGHT ? (
-          <DashboardButtonDark height={40} />
-        ) : (
-          <DashboardButtonLight height={40} />
-        )}
-        <StyledHeading>Dashboard</StyledHeading>
+        <StyledHeading>Mission briefing</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
+
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Mission ID</StyledSecondaryHeading>
-          <StyledText id="MissionID">{activeMission._id.toString()}</StyledText>
-          
-          <button
-            onClick={ () => copyToClipboard({
-              target: "MissionID",
-              value: activeMission._id.toString(),
-              message: "successfully copied!"
-            })} 
-          >
-            <CopyMissionID
-              height={80}
-            />
-          </button>
 
-          {/* Logo Copy and function clipboard.ts */}
+          {/* Mission ID */}
+          <StyledMissionIDWrapper onClick={() => copy('')} >
+
+            <StyledText id="missionID">{activeMission._id.toString()}</StyledText>
+
+            <button>
+              <CopyMissionID
+                size={25}
+              />
+            </button>
+
+          </StyledMissionIDWrapper>
+          <p>Copied value: {value ?? 'Nothing is copied yet!'}</p>
+
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
@@ -102,12 +94,6 @@ const ActiveDashboard = () => {
           </StyledText>
         </StyledSectionWrapper>
 
-        {/* <StyledSectionWrapper>
-              <StyledSecondaryHeading>Ending time</StyledSecondaryHeading>
-              <StyledText>
-                {new Date(activeMission.end_of_mission).toLocaleString()}
-              </StyledText>
-            </StyledSectionWrapper> */}
 
         <StyledLinkWrapper>
           <StyledButton onClick={handleLeave} to="/">
@@ -181,6 +167,14 @@ const StyledText = styled.p`
 `;
 
 // styles for this component only
+
+const StyledMissionIDWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: 3rem;
+`;
 
 const StyledList = styled.ul`
   margin: 0;
