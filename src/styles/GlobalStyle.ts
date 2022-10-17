@@ -200,12 +200,30 @@ export const GlobalStyles = createGlobalStyle`
     }  }
 
   /* iOS map Control Visibility Bug */
-  
   .leaflet-control-container .leaflet-top, .leaflet-control-container .leaflet-bottom {
 	transform: translate3d(0px, 0px, 0px);
   }
+  /* leaflet overides*/
   .leaflet-control-container .leaflet-top {
     margin-top: 2rem;
+  }
+  .leaflet-control {
+    background-color: var(--gray-200);
+  }
+  .leaflet-control-layers label {
+    font-size: 1rem;
+    font-weight: 300;
+    font-family: -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
   }
 
 `;

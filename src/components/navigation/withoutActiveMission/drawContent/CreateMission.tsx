@@ -213,20 +213,25 @@ const CreateMission = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Create Mission</StyledHeading>
+        <StyledHeading>Define Mission</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
+
+        {/* Identifier */}
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Mission name</StyledSecondaryHeading>
           <StyledInput
             value={identifierValue}
             onChange={handleIdentifierChange}
-            placeholder="Give this mission a name..."
+            placeholder="Give this mission a meaningfull name..."
           />
         </StyledSectionWrapper>
+
+        {/* Disaster Type */}
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Disaster type</StyledSecondaryHeading>
+          <StyledHint>Select the main disaster type for this mission.</StyledHint>
           <SingleDropdown
             options={disasterDropdownOptions}
             value={selectedDisasterType}
@@ -234,36 +239,12 @@ const CreateMission = () => {
             onChange={handleDisasterTypeChange}
           />
         </StyledSectionWrapper>
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
 
-          <SingleDropdown
-            options={riskLevelDropdownOptions}
-            value={selectedRiskLevel}
-            label={""}
-            onChange={handleRiskLevelChange}
-          />
-        </StyledSectionWrapper>
+        {/* Objectives */}
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
 
-          <SingleDropdown
-            options={securityLevelDropdownOptions}
-            value={selectedSecurityLevel}
-            label={""}
-            onChange={handleSecurityLevelChange}
-          />
-        </StyledSectionWrapper>
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
-          <StyledInput
-            type="number"
-            value={populationValue}
-            onChange={handlePopulationChange}
-          />
-        </StyledSectionWrapper>
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Objectives</StyledSecondaryHeading>
+          <StyledSecondaryHeading>Mission objectives</StyledSecondaryHeading>
+          <StyledHint>Define the main objectives for this mission based on strategy.</StyledHint>
 
           <StyledList>
             {objectivesValue.map((objective: string, index: number) => {
@@ -281,6 +262,7 @@ const CreateMission = () => {
           </StyledList>
 
           <StyledForm onSubmit={handleObjectivesChange}>
+
             <StyledFormContentWrapper>
               <StyledInput
                 value={objectiveValue}
@@ -288,11 +270,40 @@ const CreateMission = () => {
               />
               <StyledFormButton type="submit">+</StyledFormButton>
             </StyledFormContentWrapper>
+
           </StyledForm>
+
         </StyledSectionWrapper>
 
+        {/* Risk Level */}
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Starting time</StyledSecondaryHeading>
+          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+          <StyledHint>Set the initial risk level for this mission.</StyledHint>
+
+          <SingleDropdown
+            options={riskLevelDropdownOptions}
+            value={selectedRiskLevel}
+            label={""}
+            onChange={handleRiskLevelChange}
+          />
+        </StyledSectionWrapper>
+
+        {/* Estimated Population */}
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
+          <StyledHint>How many people may be infected by this disaster?</StyledHint>
+
+          <StyledInput
+            type="number"
+            value={populationValue}
+            onChange={handlePopulationChange}
+          />
+        </StyledSectionWrapper>
+
+        {/* Mission starts */}
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Mission starts</StyledSecondaryHeading>
+          <StyledHint>Set date and time, this mission will start.</StyledHint>
           <StyledTimeInput
             type="datetime-local"
             value={startingTimeValue}
@@ -300,19 +311,11 @@ const CreateMission = () => {
           />
         </StyledSectionWrapper>
 
-        {/* <StyledSectionWrapper>
-          <StyledSecondaryHeading>Ending time</StyledSecondaryHeading>
-          <StyledTimeInput
-            type="datetime-local"
-            value={endingTimeInputValue}
-            onChange={handleEndingTimeChange}
-          />
-        </StyledSectionWrapper> */}
-
         <StyledButton onClick={handleMissionSubmit}>
           {startingTimeISOStringValue ? "Submit" : "Starting time required"}
         </StyledButton>
       </StyledContentWrapper>
+
     </StyledDrawWrapper>
   );
 };
@@ -363,7 +366,7 @@ const StyledSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.7rem;
 `;
 
 const StyledSecondaryHeading = styled.p`
@@ -381,7 +384,8 @@ const StyledButton = styled.button`
   margin-top: 1.5rem;
   margin-bottom: 4rem;
 
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 500;
   text-align: center;
 
   align-self: center;
@@ -424,7 +428,9 @@ const StyledFormButton = styled.button`
   width: 20%;
   height: 100%;
 
+  font-size: 1.5rem;
   font-weight: 700;
+
   text-align: center;
   align-self: center;
 
@@ -447,6 +453,7 @@ const StyledListEntry = styled.li`
   margin-bottom: 0.3rem;
   padding: 0.2rem 0.6rem;
 
+  font-size: 1.2rem;
   font-weight: 500;
 
   list-style: none;
@@ -482,79 +489,12 @@ const StyledTimeInput = styled.input`
     props.theme.primaryFontColor === "#FFFFFF" ? "dark" : "light"};
 `;
 
-// const StyledDashboardWrapper = styled.div`
-//   position: absolute;
-//   width: 100vw;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   overflow-x: hidden;
-//   overflow-y: scroll;
-//   pointer-events: auto;
-// `;
+const StyledHint = styled.div`
+margin-top: -0.4rem;
+font-size: 0.8rem;
+font-weight: 300;
 
-// const StyledHeader = styled.div`
-//   width: 80%;
-//   padding: 1rem;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   color: ${(props) => props.theme.primaryFontColor};
-//   font-size: 1.1rem;
-//   font-weight: 500;
-//   overflow: hidden;
-// `;
-
-// const StyledDashboardContent = styled.div`
-//   height: 55vh;
-//   width: 100%;
-//   padding: 2rem;
-
-//   display: flex;
-//   flex-direction: column;
-//   /* justify-content: center; */
-//   /* align-items: center; */
-//   gap: 2rem;
-
-//   border-radius: ${(props) => props.theme.drawerBorderRadius}
-//     ${(props) => props.theme.drawerBorderRadius} 0 0;
-
-//   background: ${(props) => props.theme.secondaryBackgroundColor};
-
-//   overflow-x: hidden;
-//   overflow-y: scroll;
-
-//   z-index: 6;
-// `;
-
-// // styling
-// const StyledSectionWrapper = styled.div``;
-
-// const StyledSecondaryHeading = styled.div`
-//   align-self: start;
-// `;
-
-// const StyledInput = styled.input`
-//   width: 100%;
-//   height: 2rem;
-//   border: 1px solid black;
-// `;
-
-// const StyledButton = styled.button`
-//   padding: 0.5rem;
-//   border-radius: 20px;
-//   color: white;
-//   background: grey;
-// `;
-
-// const StyledGreyedButton = styled.button`
-//   padding: 0.5rem;
-//   border-radius: 20px;
-//   color: white;
-//   background: grey;
-//   opacity: 0.5;
-// `;
+`;
 
 // dropdown options
 const disasterDropdownOptions = [
