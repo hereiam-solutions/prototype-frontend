@@ -58,7 +58,8 @@ const Nav = () => {
           </StyledSettingsButton>
           
         </StyledMenuButton>
-
+        
+        {/** Hide Profile Section - waiting CRUD and Team
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
@@ -71,6 +72,7 @@ const Nav = () => {
           </StyledProfileButton>
           
         </StyledMenuButton>
+         */}
       </StyledNavigationMenu>
 
       {isDrawOpen && <Draw usedInAuthentication={false} />}
