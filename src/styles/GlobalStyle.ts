@@ -207,9 +207,15 @@ export const GlobalStyles = createGlobalStyle`
   .leaflet-control-container .leaflet-top {
     margin-top: 2rem;
   }
+
   .leaflet-control {
     background-color: var(--gray-200);
   }
+
+  .leaflet-draw-draw-polygon {
+    background-color: var(--gray-200);
+  }
+
   .leaflet-control-layers label {
     font-size: 1rem;
     font-weight: 300;
