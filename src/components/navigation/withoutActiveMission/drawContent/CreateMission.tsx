@@ -8,7 +8,6 @@ import {
   CreateMissionArgs,
   MissionSchema,
   RiskLevel,
-  SecurityLevel,
 } from "../../../../data/realm/schema/mission";
 import { disasterTypesEnum } from "../../../map/mapTypes";
 
@@ -24,6 +23,8 @@ import useTheme from "../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../context/ThemeContext";
 
 import useModal from "../../../../hooks/useModal";
+
+import Accordion from "../../../navigation/ui/Accordion";
 
 const CreateMission = () => {
   // contexts
@@ -46,15 +47,12 @@ const CreateMission = () => {
 
       const args: CreateMissionArgs = {
         identifier: identifierValue,
-        estimatedPopulation: estimatedPopulationValue,
-        start_of_mission: startingTimeISOStringValue,
-        end_of_mission: new Date().toISOString(),
-        // end_of_mission: endingTimeISOStringValue,
         geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates },
         disasterType: selectedDisasterType,
         objectives: objectivesValue,
         riskLevel: selectedRiskLevel,
-        securityLevel: selectedSecurityLevel,
+        estimatedPopulation: estimatedPopulationValue,
+        start_of_mission: startingTimeISOStringValue,
       };
 
       // call the Realm function
@@ -97,6 +95,15 @@ const CreateMission = () => {
     }
   };
 
+  // name
+  const [identifierValue, setIdentifierValue] = useState<string>("");
+
+  const handleIdentifierChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setIdentifierValue(event.currentTarget.value);
+  };
+
   // disastertype
   const [selectedDisasterType, setSelectedDisasterType] = useState<string>(
     disasterTypesEnum.DROUGHT
@@ -106,44 +113,6 @@ const CreateMission = () => {
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setSelectedDisasterType(e.currentTarget.value);
-  };
-
-  // risk level
-  const [selectedRiskLevel, setSelectedRiskLevel] = useState<string>(
-    RiskLevel.ONE
-  );
-
-  const handleRiskLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedRiskLevel(e.currentTarget.value);
-  };
-
-  // risk level
-  const [selectedSecurityLevel, setSelectedSecurityLevel] = useState<string>(
-    SecurityLevel.ZERO
-  );
-
-  const handleSecurityLevelChange = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedSecurityLevel(e.currentTarget.value);
-  };
-
-  // identifier
-  const [identifierValue, setIdentifierValue] = useState<string>("");
-
-  const handleIdentifierChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setIdentifierValue(event.currentTarget.value);
-  };
-
-  // estimated population
-  const [populationValue, setPopulationValue] = useState<string>("0");
-
-  const handlePopulationChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setPopulationValue(event.currentTarget.value);
   };
 
   // objectives
@@ -178,6 +147,24 @@ const CreateMission = () => {
     setObjectivesValue(reducedObjectives);
   };
 
+  // risk level
+  const [selectedRiskLevel, setSelectedRiskLevel] = useState<string>(
+    RiskLevel.ONE
+  );
+
+  const handleRiskLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedRiskLevel(e.currentTarget.value);
+  };
+
+  // estimated population
+  const [populationValue, setPopulationValue] = useState<string>("0");
+
+  const handlePopulationChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPopulationValue(event.currentTarget.value);
+  };
+
   // starting time
   const [startingTimeValue, setStartingTimeValue] = useState<string>("");
   const [startingTimeISOStringValue, setStartingTimeISOStringValue] =
@@ -194,20 +181,35 @@ const CreateMission = () => {
     setStartingTimeISOStringValue(isoStart);
   };
 
-  // ending time
-  const [endingTimeInputValue, setEndingTimeInputValue] = useState<string>("");
-  const [endingTimeISOStringValue, setEndingTimeISOStringValue] =
-    useState<string>("");
+  const CreateMissionMore = () => {
+    return (
+      <div>
+        {/* Risk Level */}
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+          <StyledHint>Set the initial risk level for this mission.</StyledHint>
 
-  const handleEndingTimeChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    let end = event.currentTarget.value;
-    const date = new Date(end);
-    const isoEnd = date.toISOString();
+          <SingleDropdown
+            options={riskLevelDropdownOptions}
+            value={selectedRiskLevel}
+            label={""}
+            onChange={handleRiskLevelChange}
+          />
+        </StyledSectionWrapper>
 
-    setEndingTimeInputValue(end);
-    setEndingTimeISOStringValue(isoEnd);
+        {/* Estimated Population */}
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
+          <StyledHint>How many people may be infected by this disaster?</StyledHint>
+
+          <StyledInput
+            type="number"
+            value={populationValue}
+            onChange={handlePopulationChange}
+          />
+        </StyledSectionWrapper>
+      </div>
+    );
   };
 
   return (
@@ -275,30 +277,9 @@ const CreateMission = () => {
 
         </StyledSectionWrapper>
 
-        {/* Risk Level */}
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-          <StyledHint>Set the initial risk level for this mission.</StyledHint>
-
-          <SingleDropdown
-            options={riskLevelDropdownOptions}
-            value={selectedRiskLevel}
-            label={""}
-            onChange={handleRiskLevelChange}
-          />
-        </StyledSectionWrapper>
-
-        {/* Estimated Population */}
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
-          <StyledHint>How many people may be infected by this disaster?</StyledHint>
-
-          <StyledInput
-            type="number"
-            value={populationValue}
-            onChange={handlePopulationChange}
-          />
-        </StyledSectionWrapper>
+        <Accordion heading={"More..."}>
+          <CreateMissionMore />
+        </Accordion>
 
         {/* Mission starts */}
         <StyledSectionWrapper>
@@ -362,11 +343,11 @@ const StyledContentWrapper = styled.div`
 
 const StyledSectionWrapper = styled.div`
   width: 100%;
-
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.7rem;
+  gap: 0.5rem;
 `;
 
 const StyledSecondaryHeading = styled.p`
@@ -585,14 +566,6 @@ const riskLevelDropdownOptions = [
   { label: RiskLevel.THREE, value: RiskLevel.THREE },
   { label: RiskLevel.FOUR, value: RiskLevel.FOUR },
   { label: RiskLevel.FIVE, value: RiskLevel.FIVE },
-];
-
-const securityLevelDropdownOptions = [
-  { label: SecurityLevel.ZERO, value: SecurityLevel.ZERO },
-  { label: SecurityLevel.ONE, value: SecurityLevel.ONE },
-  { label: SecurityLevel.TWO, value: SecurityLevel.TWO },
-  { label: SecurityLevel.THREE, value: SecurityLevel.THREE },
-  { label: SecurityLevel.FOUR, value: SecurityLevel.FOUR },
 ];
 
 export default CreateMission;

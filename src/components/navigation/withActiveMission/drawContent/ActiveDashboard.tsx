@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import useNavigation from "../../../../hooks/useNavigation";
 import useMission from "../../../../hooks/useMission";
 
+import Accordion from "../../../navigation/ui/Accordion";
+
 import {
   RiFileCopyLine,
 } from "react-icons/ri";
@@ -20,10 +22,27 @@ const ActiveDashboard = () => {
     setIsDrawOpen(false);
   };
 
+  const MissionMore = () => {
+    return (
+      <div>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+          <StyledText>{activeMission?.riskLevel}</StyledText>
+        </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
+          <StyledText>{activeMission?.estimatedPopulation}</StyledText>
+        </StyledSectionWrapper>
+      </div>
+    );
+  };
+
   const [value, copy] = useCopyToClipboard();
 
   return activeMission ? (
     <StyledDrawWrapper>
+
       <StyledDrawHeader>
         <StyledHeading>Mission briefing</StyledHeading>
       </StyledDrawHeader>
@@ -72,15 +91,9 @@ const ActiveDashboard = () => {
           </StyledList>
         </StyledSectionWrapper>
 
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-          <StyledText>{activeMission.riskLevel}</StyledText>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
-          <StyledText>{activeMission.estimatedPopulation}</StyledText>
-        </StyledSectionWrapper>
+        <Accordion heading={"More..."}>
+          <MissionMore />
+        </Accordion>
 
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Starting time</StyledSecondaryHeading>
@@ -143,11 +156,11 @@ const StyledContentWrapper = styled.div`
 
 const StyledSectionWrapper = styled.div`
   width: 100%;
-
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.7rem;
+  
 `;
 
 const StyledSecondaryHeading = styled.p`
