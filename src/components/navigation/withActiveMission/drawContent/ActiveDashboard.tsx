@@ -160,7 +160,6 @@ const StyledSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
 `;
 
 const StyledSecondaryHeading = styled.p`
