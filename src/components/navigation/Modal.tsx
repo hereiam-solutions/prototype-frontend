@@ -39,11 +39,12 @@ const StyledModal = styled.div`
   padding: 1rem;
 
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 700;
 
-  border-radius: 20px;
+  border-radius: 15px;
 
-  background: white;
+  background: var(--gray-200);
+  color: var(--base);
 
   display: flex;
   justify-content: center;
