@@ -65,6 +65,7 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
       <StyledButton
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
+        className={"item"}
       >
         <DangerIcon />
       </StyledButton>
@@ -87,6 +88,7 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
       <StyledButton
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
+        className={"item"}
       >
         <CasualtyIcon />
       </StyledButton>
@@ -98,6 +100,7 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
       <StyledButton
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
+        className={"item"}
       >
         <TaskIcon />
       </StyledButton>
@@ -113,7 +116,8 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
 
 const StyledButton = styled.div`
   grid-area: ${(props: StyledComponentProps) => props.positionInActionMenu};
-  border-radius: 50%;
+  border-radius: 5px;
+  padding-top: 5px;
 
   height: 50px;
   width: 50px;
