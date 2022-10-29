@@ -11,8 +11,6 @@ import {
   RiFileCopyLine,
 } from "react-icons/ri";
 
-import useCopyToClipboard from '../../../../hooks/useCopyToClipboard'
-
 const CopyMissionID = RiFileCopyLine;
 
 
@@ -42,8 +40,6 @@ const ActiveDashboard = () => {
     );
   };
 
-  const [value, copy] = useCopyToClipboard();
-
   return activeMission ? (
     <StyledDrawWrapper>
 
@@ -57,18 +53,11 @@ const ActiveDashboard = () => {
           <StyledSecondaryHeading>Mission ID</StyledSecondaryHeading>
 
           {/* Mission ID */}
-          <StyledMissionIDWrapper onClick={() => copy('')} >
+          <StyledMissionIDWrapper>
 
             <StyledText id="missionID">{activeMission._id.toString()}</StyledText>
 
-            <button>
-              <CopyMissionID
-                size={25}
-              />
-            </button>
-
           </StyledMissionIDWrapper>
-          <p>Copied value: {value ?? 'Nothing is copied yet!'}</p>
 
         </StyledSectionWrapper>
 
