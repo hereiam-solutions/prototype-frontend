@@ -12,7 +12,7 @@ import { RiCloseCircleFill } from "react-icons/ri";
 import { RiHealthBookFill } from "react-icons/ri";
 import { RiFlag2Fill } from "react-icons/ri";
 import { MdReportProblem } from "react-icons/md";
-import { RiUserLocationFill } from "react-icons/ri";
+import { MdNotListedLocation } from "react-icons/md";
 
 
 import { MarkerType } from "../../map/mapTypes";
@@ -88,8 +88,8 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
       >
-        <RiUserLocationFill
-          size={35}
+        <MdNotListedLocation
+          size={55}
         />
       </StyledOpacityButton>
     );
@@ -143,7 +143,7 @@ const StyledButton = styled.div`
   justify-content: center;
   align-items: center;
 
-  color: ${(props) => props.theme.attentionColor};
+  color: var(--gray-200);
 
   z-index: 11;
 `;
@@ -174,7 +174,7 @@ const StyledX = styled.div`
   justify-content: center;
   align-items: center;
 
-  color: ${(props) => props.theme.attentionColor};
+  color: var(--gray-200);
 
   z-index: 11;
 `;
