@@ -60,21 +60,6 @@ const ActiveDashboard = () => {
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-          <StyledText>{activeMission.riskLevel}</StyledText>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
-          <StyledText>{activeMission.securityLevel}</StyledText>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
-          <StyledText>{activeMission.estimatedPopulation}</StyledText>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
           <StyledSecondaryHeading>Objectives</StyledSecondaryHeading>
           <StyledList>
             {activeMission.objectives.map(
@@ -88,18 +73,28 @@ const ActiveDashboard = () => {
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
+          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+          <StyledText>{activeMission.riskLevel}</StyledText>
+        </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
+          <StyledText>{activeMission.estimatedPopulation}</StyledText>
+        </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
           <StyledSecondaryHeading>Starting time</StyledSecondaryHeading>
           <StyledText>
             {new Date(activeMission.start_of_mission).toLocaleString()}
           </StyledText>
         </StyledSectionWrapper>
 
-
         <StyledLinkWrapper>
           <StyledButton onClick={handleLeave} to="/">
             Leave Mission
           </StyledButton>
         </StyledLinkWrapper>
+
       </StyledContentWrapper>
     </StyledDrawWrapper>
   ) : (
