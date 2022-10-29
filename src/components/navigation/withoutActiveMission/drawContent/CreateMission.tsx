@@ -183,7 +183,7 @@ const CreateMission = () => {
 
   const CreateMissionMore = () => {
     return (
-      <div>
+      <>
         {/* Risk Level */}
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
@@ -208,7 +208,7 @@ const CreateMission = () => {
             onChange={handlePopulationChange}
           />
         </StyledSectionWrapper>
-      </div>
+      </>
     );
   };
 
@@ -276,7 +276,8 @@ const CreateMission = () => {
           </StyledForm>
 
         </StyledSectionWrapper>
-
+        
+        {/* More Mission Details */}
         <Accordion heading={"More..."}>
           <CreateMissionMore />
         </Accordion>

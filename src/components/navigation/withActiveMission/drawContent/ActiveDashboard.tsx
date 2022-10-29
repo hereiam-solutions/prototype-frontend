@@ -24,7 +24,7 @@ const ActiveDashboard = () => {
 
   const MissionMore = () => {
     return (
-      <div>
+      <>
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
           <StyledText>{activeMission?.riskLevel}</StyledText>
@@ -34,7 +34,7 @@ const ActiveDashboard = () => {
           <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
           <StyledText>{activeMission?.estimatedPopulation}</StyledText>
         </StyledSectionWrapper>
-      </div>
+      </>
     );
   };
 
