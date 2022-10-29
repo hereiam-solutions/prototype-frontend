@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import useNavigation from "../../../../hooks/useNavigation";
 import useMission from "../../../../hooks/useMission";
 
+import useTheme from "../../../../hooks/useTheme";
+
 import Accordion from "../../../navigation/ui/Accordion";
 
 import {
@@ -13,9 +15,11 @@ import useCopyToClipboard from '../../../../hooks/useCopyToClipboard'
 
 const CopyMissionID = RiFileCopyLine;
 
+
 const ActiveDashboard = () => {
   const { setIsDrawOpen } = useNavigation();
   const { activeMission, setActiveMission } = useMission();
+  const { currentTheme } = useTheme();
 
   const handleLeave = () => {
     setActiveMission(null);
