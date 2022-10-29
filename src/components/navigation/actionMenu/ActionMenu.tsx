@@ -45,6 +45,10 @@ const StyledActionContainer = styled.div`
     ". TOP ."
     "LEFT MID RIGHT"
     ". BOTTOM .";
+
+  .item {
+    background-color: var(--gray-400);
+  }  
 `;
 
 export default ActionMenu;

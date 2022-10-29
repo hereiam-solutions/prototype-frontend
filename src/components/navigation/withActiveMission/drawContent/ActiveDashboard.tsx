@@ -3,58 +3,52 @@ import { Link } from "react-router-dom";
 import useNavigation from "../../../../hooks/useNavigation";
 import useMission from "../../../../hooks/useMission";
 
-import {
-  RiFileCopyLine,
-} from "react-icons/ri";
-
-import { copyToClipboard } from "../../../../helpers/clipboard"
-
-import { ReactComponent as DashboardButtonLight } from "../../../../assets/Navigation/Dashboard.svg";
-import { ReactComponent as DashboardButtonDark } from "../../../../assets/Navigation/Dashboard_Dark.svg";
-import useTheme from "../../../../hooks/useTheme";
-import { ThemeEnum } from "../../../../context/ThemeContext";
-
-const CopyMissionID = RiFileCopyLine;
+import Accordion from "../../../navigation/ui/Accordion";
 
 const ActiveDashboard = () => {
   const { setIsDrawOpen } = useNavigation();
   const { activeMission, setActiveMission } = useMission();
-  const { currentTheme } = useTheme();
 
   const handleLeave = () => {
     setActiveMission(null);
     setIsDrawOpen(false);
   };
 
+  const MissionMore = () => {
+    return (
+      <>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+          <StyledText>{activeMission?.riskLevel}</StyledText>
+        </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
+          <StyledText>{activeMission?.estimatedPopulation}</StyledText>
+        </StyledSectionWrapper>
+      </>
+    );
+  };
+
   return activeMission ? (
     <StyledDrawWrapper>
+
       <StyledDrawHeader>
-        {currentTheme === ThemeEnum.LIGHT ? (
-          <DashboardButtonDark height={40} />
-        ) : (
-          <DashboardButtonLight height={40} />
-        )}
-        <StyledHeading>Dashboard</StyledHeading>
+        <StyledHeading>Mission briefing</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
+
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Mission ID</StyledSecondaryHeading>
-          <StyledText id="MissionID">{activeMission._id.toString()}</StyledText>
-          
-          <button
-            onClick={ () => copyToClipboard({
-              target: "MissionID",
-              value: activeMission._id.toString(),
-              message: "successfully copied!"
-            })} 
-          >
-            <CopyMissionID
-              height={80}
-            />
-          </button>
 
-          {/* Logo Copy and function clipboard.ts */}
+          {/* Mission ID */}
+          <StyledMissionIDWrapper>
+
+            <StyledText id="missionID">{activeMission._id.toString()}</StyledText>
+
+          </StyledMissionIDWrapper>
+
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
@@ -65,21 +59,6 @@ const ActiveDashboard = () => {
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Disaster type</StyledSecondaryHeading>
           <StyledText>{activeMission.disasterType}</StyledText>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-          <StyledText>{activeMission.riskLevel}</StyledText>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
-          <StyledText>{activeMission.securityLevel}</StyledText>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
-          <StyledText>{activeMission.estimatedPopulation}</StyledText>
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
@@ -95,6 +74,10 @@ const ActiveDashboard = () => {
           </StyledList>
         </StyledSectionWrapper>
 
+        <Accordion heading={"More..."}>
+          <MissionMore />
+        </Accordion>
+
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Starting time</StyledSecondaryHeading>
           <StyledText>
@@ -102,18 +85,12 @@ const ActiveDashboard = () => {
           </StyledText>
         </StyledSectionWrapper>
 
-        {/* <StyledSectionWrapper>
-              <StyledSecondaryHeading>Ending time</StyledSecondaryHeading>
-              <StyledText>
-                {new Date(activeMission.end_of_mission).toLocaleString()}
-              </StyledText>
-            </StyledSectionWrapper> */}
-
         <StyledLinkWrapper>
           <StyledButton onClick={handleLeave} to="/">
             Leave Mission
           </StyledButton>
         </StyledLinkWrapper>
+
       </StyledContentWrapper>
     </StyledDrawWrapper>
   ) : (
@@ -162,11 +139,10 @@ const StyledContentWrapper = styled.div`
 
 const StyledSectionWrapper = styled.div`
   width: 100%;
-
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.7rem;
 `;
 
 const StyledSecondaryHeading = styled.p`
@@ -181,6 +157,14 @@ const StyledText = styled.p`
 `;
 
 // styles for this component only
+
+const StyledMissionIDWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: 3rem;
+`;
 
 const StyledList = styled.ul`
   margin: 0;

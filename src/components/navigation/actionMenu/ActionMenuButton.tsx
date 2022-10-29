@@ -7,6 +7,14 @@ import { ReactComponent as TaskIcon } from "../../../assets/Action/Aktion=Task.s
 import { ReactComponent as CasualtyIcon } from "../../../assets/Action/Aktion=Verletzte.svg";
 import { ReactComponent as DrawIcon } from "../../../assets/Action/Aktion=Zeichnen.svg";
 import { ReactComponent as CloseIcon } from "../../../assets/Action/Close.svg";
+
+import { RiCloseCircleFill } from "react-icons/ri";
+import { RiHealthBookFill } from "react-icons/ri";
+import { RiFlag2Fill } from "react-icons/ri";
+import { MdReportProblem } from "react-icons/md";
+import { MdNotListedLocation } from "react-icons/md";
+
+
 import { MarkerType } from "../../map/mapTypes";
 import useModal from "../../../hooks/useModal";
 
@@ -65,8 +73,11 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
       <StyledButton
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
+        className={"item"}
       >
-        <DangerIcon />
+        <MdReportProblem
+          size={35}
+        />
       </StyledButton>
     );
   }
@@ -77,7 +88,9 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
       >
-        <DrawIcon />
+        <MdNotListedLocation
+          size={55}
+        />
       </StyledOpacityButton>
     );
   }
@@ -87,8 +100,11 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
       <StyledButton
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
+        className={"item"}
       >
-        <CasualtyIcon />
+        <RiHealthBookFill
+          size={35}
+        />
       </StyledButton>
     );
   }
@@ -98,22 +114,27 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
       <StyledButton
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
+        className={"item"}
       >
-        <TaskIcon />
+        <RiFlag2Fill
+        size={35}
+        />
       </StyledButton>
     );
   }
 
   return (
     <StyledX onClick={handleClick} positionInActionMenu={positionInActionMenu}>
-      <CloseIcon height={20} width={20} />
+      <RiCloseCircleFill
+        size={35}
+      />
     </StyledX>
   );
 };
 
 const StyledButton = styled.div`
   grid-area: ${(props: StyledComponentProps) => props.positionInActionMenu};
-  border-radius: 50%;
+  border-radius: 5px;
 
   height: 50px;
   width: 50px;
@@ -121,6 +142,8 @@ const StyledButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  color: var(--gray-200);
 
   z-index: 11;
 `;
@@ -150,6 +173,8 @@ const StyledX = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  color: var(--gray-200);
 
   z-index: 11;
 `;

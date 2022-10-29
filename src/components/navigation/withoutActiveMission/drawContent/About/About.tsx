@@ -4,7 +4,7 @@ import Version from "./Version";
 import Welcome from "./Welcome";
 import Faq from "./FAQ";
 import Legals from "./Legals";
-import ClearData from "./ClearData";
+
 
 const About = () => {
   return (
@@ -18,7 +18,7 @@ const About = () => {
         <Welcome />
         <Faq />
         <Legals />
-        <ClearData />
+
       </StyledAboutContent>
     </StyledAboutWrapper>
   );
@@ -44,20 +44,24 @@ const StyledHeading = styled.p`
 const StyledAboutWrapper = styled.div`
   position: absolute;
   width: 100vw;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   overflow: hidden;
   pointer-events: auto;
 `;
 
 const StyledAboutContent = styled.div`
+  height: 55vh;
+
   display: flex;
   flex-wrap: wrap;
   padding: 0.5rem;
   justify-content: center;
-  height: 55vh;
+  
   overflow-x: hidden;
   overflow-y: scroll;
 `;

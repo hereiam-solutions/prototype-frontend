@@ -8,7 +8,7 @@ type Props = {};
 const Faq = (props: Props) => {
   return (
     <StyledFaq>
-      <SectionHeadline>FAQ</SectionHeadline>
+      <SectionHeadline>First Answers</SectionHeadline>
 
       <Accordion heading={"Why hereIam?"}>
         <WhyHereiam />
@@ -155,7 +155,7 @@ const Icon = RiCustomerService2Fill;
 const Support = () => {
   return (
     <StyledSupport>
-      <Icon size={80} />
+      <Icon size={65} />
       <p>
         If the problem persists, please contact the support team and let us know
         the details so that we can help you better.
@@ -169,7 +169,8 @@ const Support = () => {
 };
 
 const StyledSupport = styled.div`
-  padding: 1rem;
+margin-top: 2rem;
+width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,15 +178,11 @@ const StyledSupport = styled.div`
 
   gap: 1rem;
 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: ${(props) => props.theme.primaryBorderRadius};
 `;
 
 const StyledFaq = styled.div`
-  margin-top: 2rem;
+  margin-top: 3rem;
   width: 90vw;
-
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   font-size: 0.8rem;
   font-weight: 200;
@@ -193,6 +190,9 @@ const StyledFaq = styled.div`
 
 const SectionHeadline = styled.div`
   width: 90vw;
+
+  font-size: 1.2rem;
+  font-weight: 600;
 
   padding: ${(props) => props.theme.sectionHeadlinePadding};
 

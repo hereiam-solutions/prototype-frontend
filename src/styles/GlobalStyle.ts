@@ -200,12 +200,36 @@ export const GlobalStyles = createGlobalStyle`
     }  }
 
   /* iOS map Control Visibility Bug */
-  
   .leaflet-control-container .leaflet-top, .leaflet-control-container .leaflet-bottom {
 	transform: translate3d(0px, 0px, 0px);
   }
+  /* leaflet overides*/
   .leaflet-control-container .leaflet-top {
     margin-top: 2rem;
+  }
+
+  .leaflet-control {
+    background-color: var(--gray-200);
+  }
+
+  .leaflet-draw-draw-polygon {
+    background-color: var(--gray-200);
+  }
+
+  .leaflet-control-layers label {
+    font-size: 1rem;
+    font-weight: 300;
+    font-family: -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
   }
 
 `;
@@ -218,9 +242,9 @@ const colors = {
 };
 
 const borderConstants = {
-  inputBorderRadius: "20px",
+  inputBorderRadius: "10px",
   primaryBorderRadius: "10px",
-  drawerBorderRadius: "50px",
+  drawerBorderRadius: "20px",
   buttonBorderRadius: "5px",
 };
 
@@ -244,11 +268,11 @@ const paddings = {
 };
 
 export const darkTheme = {
-  primaryBackgroundColor: "#212121",
-  primaryFontColor: "#FFFFFF",
+  primaryBackgroundColor: "#494440",
+  primaryFontColor: "#DCE4EF",
   buttonColor: "#DCE4EF",
   buttonFontColor: "#212121",
-  iconColor: "#fffff8",
+  iconColor: "#DCE4EF",
 
   secondaryBackgroundColor: "var(--base-text)",
   sectionHeadlineBackgroundColor: "var(--gray-500)",
@@ -270,11 +294,11 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  primaryBackgroundColor: "#FFFFFF",
-  primaryFontColor: "#000000",
-  buttonColor: "#C8C8C8",
-  buttonFontColor: "#000000",
-  iconColor: "#fffff8",
+  primaryBackgroundColor: "#DCE4EF",
+  primaryFontColor: "#494440",
+  buttonColor: "#323A45",
+  buttonFontColor: "#DCE4EF",
+  iconColor: "#112E51",
 
   secondaryBackgroundColor: "var(--gray-300)",
   sectionHeadlineBackgroundColor: "var(--gray-400)",
@@ -296,22 +320,7 @@ export const lightTheme = {
 };
 
 // Example
-// const StyledMapContainer = styled(MapContainer)`
-//   height: 100vh;
-//   width: 100vw;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   z-index: -1;
 //   background-color: ${(props) => props.theme.primaryBackgroundColor};
 //   border-radius: ${(props) => props.theme.primaryBorderRadius};
-
-//   @media (max-width: ${(props) => props.theme.mediaQueryPhone}) {
-
-//   }
-
-//   @media (max-width: ${(props) => props.theme.mediaQueryTablet}) {
-
-// }
-
-// `;
+//   @media (max-width: ${(props) => props.theme.mediaQueryPhone});
+//   @media (max-width: ${(props) => props.theme.mediaQueryTablet});

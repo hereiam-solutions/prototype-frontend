@@ -12,10 +12,13 @@ const MissionLayout = () => {
     <StyledAppWrapper>
       {isModalActive && <Modal />}
       <ActionMenu />
+      
       <MissionMap />
+
       <StyledNavWrapper>
         <Nav />
       </StyledNavWrapper>
+
     </StyledAppWrapper>
   );
 };

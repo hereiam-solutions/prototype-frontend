@@ -15,6 +15,7 @@ const Accordion = ({ heading, children }: AccordionProps) => {
 
   return (
     <StyledWrapper>
+
       <StyledHeading
         onClick={() => {
           setAccordionIsOpen(!accordionIsOpen);
@@ -24,9 +25,16 @@ const Accordion = ({ heading, children }: AccordionProps) => {
         <StyledAccordionHeader>
           <p>{heading}</p>
         </StyledAccordionHeader>
-        <ChevronLogo />
+        <ChevronLogo
+          size={35}
+        />
+        
       </StyledHeading>
-      {accordionIsOpen && <>{children}</>}
+      
+      <StyledContent>
+        {accordionIsOpen && <>{children}</>}
+      </StyledContent>
+
     </StyledWrapper>
   );
 };
@@ -38,6 +46,7 @@ const StyledAccordionHeader = styled.div`
 
 const StyledWrapper = styled.div`
   width: 100%;
+  margin-top: 1.5rem;
 
   padding: 0.5rem;
 
@@ -48,6 +57,11 @@ const StyledWrapper = styled.div`
   gap: 1rem;
 
   font-size: 1rem;
+`;
+
+const StyledContent = styled.div`
+  width: 100%;
+  
 `;
 
 const StyledHeading = styled.div`

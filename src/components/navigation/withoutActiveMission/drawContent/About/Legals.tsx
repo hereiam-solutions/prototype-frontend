@@ -8,7 +8,7 @@ type Props = {};
 const Legals = (props: Props) => {
   return (
     <StyledLegals>
-      <SectionHeadline>Legals, Terms, Privacy</SectionHeadline>
+      <SectionHeadline>Legals</SectionHeadline>
 
       <Accordion heading={"TERMS"}>
         <Accordion heading={"Acceptance"}>
@@ -50,7 +50,7 @@ const Legals = (props: Props) => {
 
         <Accordion heading={"Personal Data"}>
           <p>
-            The HERE Privacy Policy and additional privacy information made
+            The hereIam Privacy Policy and additional privacy information made
             available to you govern the use of your personal data.
           </p>
         </Accordion>
@@ -104,7 +104,7 @@ const Legals = (props: Props) => {
           <br />
           <p>
             hereIam may remove any content stored, sent or otherwise processed
-            via HERE Products if necessary to protect its rights or the rights
+            via hereIam Products if necessary to protect its rights or the rights
             of third parties. hereIam may do so with immediate effect and
             without prior notice, but it will try to inform you in advance to
             give you reasonable time to mitigate the infringement itself. To the
@@ -167,8 +167,8 @@ const Legals = (props: Props) => {
           <p>
             HEREIAM PRODUCTS ARE PROVIDED ON AN "AS IS" AND ON AN "AS AVAILABLE"
             BASIS. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE MANDATORY LAW
-            (DWINGEND RECHT), NEITHER HERE, ITS AFFILIATES NOR ITS SUPPLIERS
-            WARRANT THAT HERE PRODUCTS WILL BE UNINTERRUPTED, ERROR OR
+            (DWINGEND RECHT), NEITHER HEREIAM, ITS AFFILIATES NOR ITS SUPPLIERS
+            WARRANT THAT HEREIAM PRODUCTS WILL BE UNINTERRUPTED, ERROR OR
             VIRUS-FREE, ACCURATE OR COMPLETE. NO WARRANTY OF ANY KIND, EITHER
             EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
             TITLE, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A
@@ -354,7 +354,7 @@ const Legals = (props: Props) => {
           <br />
           <p>
             Apple Inc. ("Apple") is not a party to these Terms and hereIam is
-            responsible for the offering and content of HERE Products via mobile
+            responsible for the offering and content of hereIam Products via mobile
             apps of hereIam and its partners in the Apple App-store. To the
             extent that these Terms deviate from Apple’s Media Services Terms
             and Conditions, the latter terms apply and shall have priority and
@@ -416,7 +416,7 @@ const Legals = (props: Props) => {
         <br />
         <h4>
           If you do not agree with this Policy, do not use our products and
-          services or provide HERE with your personal data.
+          services or provide hereIam with your personal data.
         </h4>
 
         <Accordion heading={"What information do we collect?"}>
@@ -1079,20 +1079,23 @@ const Legals = (props: Props) => {
 };
 
 const StyledLegals = styled.div`
-  margin-top: 2rem;
+  margin-top: 3rem;
   width: 90vw;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 0.8rem;
+  font-weight: 200;
 `;
 
 const SectionHeadline = styled.div`
   width: 90vw;
+
+  font-size: 1.2rem;
+  font-weight: 600;
 
   padding: ${(props) => props.theme.sectionHeadlinePadding};
 
