@@ -14,7 +14,7 @@ import useRealm from "../../../../../hooks/useRealm";
 import useMissionMap from "../../../../../hooks/useMissionMap";
 
 // svg imports
-import { ReactComponent as AvalanceIcon } from "../../../../../assets/Hazards/Alert=Avalanche.svg";
+import { ReactComponent as AvalancheIcon } from "../../../../../assets/Hazards/Alert=Avalanche.svg";
 import { ReactComponent as BioIncidentIcon } from "../../../../../assets/Hazards/Alert=Biological Incident.svg";
 import { ReactComponent as BombIcon } from "../../../../../assets/Hazards/Alert=Bomb.svg";
 import { ReactComponent as ChemicalIcon } from "../../../../../assets/Hazards/Alert=Chemical Incident.svg";
@@ -106,7 +106,7 @@ const CreateHazardMarker = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Set Hazard</StyledHeading>
+        <StyledHeading>Mark Hazard</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
@@ -115,7 +115,7 @@ const CreateHazardMarker = () => {
 
           <StyledSelectedType>{upperCaseSelectedType}</StyledSelectedType>
           <StyledIconRow>
-            <AvalanceIcon
+            <AvalancheIcon
               className={`icon ${
                 selectedType === hazardTypes.AVALANCHE ? "selected" : ""
               }`}
@@ -256,9 +256,9 @@ const CreateHazardMarker = () => {
 
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Description</StyledSecondaryHeading>
-
+          <StyledHint>Provide a short description for that Hazard or Obstacle.</StyledHint>
           <StyledInput
-            placeholder="Set the hazard's description..."
+            placeholder="..."
             onChange={handleInputChange}
             type="text"
             value={identifierValue}
@@ -330,17 +330,21 @@ const StyledSecondaryHeading = styled.p`
 
 // styled components for this component only
 const StyledInput = styled.input`
+  width: 100%;
+  /* margin-top: 0.6rem; */
+  padding: 0.75rem;
+
   background-color: ${(props) => props.theme.primaryBackgroundColor};
+  color: ${(props) => props.theme.formFieldColor};
+
   border: 1px solid ${(props) => props.theme.formFieldColor};
   border-radius: ${(props) => props.theme.inputBorderRadius};
-  color: ${(props) => props.theme.formFieldColor};
+  
   font-size: 1rem;
   line-height: 1.5rem;
   font-style: normal;
   font-weight: 500;
-  width: 100%;
-  /* margin-top: 0.6rem; */
-  padding: 0.75rem;
+  
 `;
 
 const StyledButton = styled.button`
@@ -371,12 +375,12 @@ const StyledIconRow = styled.div`
   .icon {
     height: 50px;
     width: 50px;
-    margin-right: 1rem;
+    margin-right: 1.3rem;
   }
 
   .selected {
-    background-color: ${(props) => props.theme.buttonColor};
-    border-radius: 50%;
+    background-color: #F8DE00;
+    border-radius: 10px;
   }
 `;
 
@@ -385,6 +389,13 @@ const StyledSelectedType = styled.div`
   font-weight: 500;
 
   color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledHint = styled.div`
+margin-top: -0.4rem;
+font-size: 0.8rem;
+font-weight: 300;
+
 `;
 
 export default CreateHazardMarker;
