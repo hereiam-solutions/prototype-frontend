@@ -17,21 +17,13 @@ import useRealm from "../../../../../hooks/useRealm";
 import { ReactComponent as ApparrelIcon } from "../../../../../assets/Locations/Color/Active=apparel.svg";
 import { ReactComponent as AssemblyIcon } from "../../../../../assets/Locations/Color/Active=assemblypoint.svg";
 import { ReactComponent as BarrierIcon } from "../../../../../assets/Locations/Color/Active=barrier.svg";
-import { ReactComponent as CareIcon } from "../../../../../assets/Locations/Color/Active=care.svg";
 import { ReactComponent as CheckpointIcon } from "../../../../../assets/Locations/Color/Active=checkpoint.svg";
-import { ReactComponent as CommandPostIcon } from "../../../../../assets/Locations/Color/Active=commandpost.svg";
 import { ReactComponent as FoodIcon } from "../../../../../assets/Locations/Color/Active=food.svg";
-import { ReactComponent as MedicalPostIcon } from "../../../../../assets/Locations/Color/Active=medicalpost.svg";
 import { ReactComponent as MissingPersonsIcon } from "../../../../../assets/Locations/Color/Active=missingpersons.svg";
-import { ReactComponent as PowerIcon } from "../../../../../assets/Locations/Color/Active=power.svg";
-import { ReactComponent as PrayerIcon } from "../../../../../assets/Locations/Color/Active=prayerspace.svg";
-import { ReactComponent as PsychologyIcon } from "../../../../../assets/Locations/Color/Active=psychologicalintervention.svg";
 import { ReactComponent as PublicIcon } from "../../../../../assets/Locations/Color/Active=publicinformation.svg";
 import { ReactComponent as RegistrationIcon } from "../../../../../assets/Locations/Color/Active=registration.svg";
 import { ReactComponent as SafetyIcon } from "../../../../../assets/Locations/Color/Active=safety.svg";
-import { ReactComponent as ShelterIcon } from "../../../../../assets/Locations/Color/Active=shelter.svg";
 import { ReactComponent as TransportIcon } from "../../../../../assets/Locations/Color/Active=transport.svg";
-import { ReactComponent as WaterIcon } from "../../../../../assets/Locations/Color/Active=water.svg";
 
 import useMissionMap from "../../../../../hooks/useMissionMap";
 
