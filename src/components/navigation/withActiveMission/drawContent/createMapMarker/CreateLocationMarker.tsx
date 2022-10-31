@@ -125,12 +125,20 @@ const CreateLocationMarker = () => {
 
           <StyledSelectedType>{upperCaseSelectedType}</StyledSelectedType>
           <StyledIconRow>
-            <ApparrelIcon
-              className={`icon ${
-                selectedType === locationTypes.APPAREL ? "selected" : ""
-              }`}
+
+            <CheckpointIcon
+              className={`icon ${selectedType === locationTypes.CHECKPOINT ? "selected" : ""
+                }`}
               onClick={() => {
-                setSelectedType(locationTypes.APPAREL);
+                setSelectedType(locationTypes.CHECKPOINT);
+              }}
+            />
+
+            <BarrierIcon
+              className={`icon ${selectedType === locationTypes.BARRIER ? "selected" : ""
+                }`}
+              onClick={() => {
+                setSelectedType(locationTypes.BARRIER);
               }}
             />
 
@@ -143,59 +151,21 @@ const CreateLocationMarker = () => {
               }}
             />
 
-            <BarrierIcon
-              className={`icon ${
-                selectedType === locationTypes.BARRIER ? "selected" : ""
-              }`}
+            <RegistrationIcon
+              className={`icon ${selectedType === locationTypes.REGISTRATION ? "selected" : ""
+                }`}
               onClick={() => {
-                setSelectedType(locationTypes.BARRIER);
-              }}
-            />
-            {/* 
-        <BooIcon
-          className={`icon ${
-            selectedType === locationTypes.BOO ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.BOO);
-          }}
-        /> */}
-
-            <CareIcon
-              className={`icon ${
-                selectedType === locationTypes.CARE ? "selected" : ""
-              }`}
-              onClick={() => {
-                setSelectedType(locationTypes.CARE);
+                setSelectedType(locationTypes.REGISTRATION);
               }}
             />
 
-            <CheckpointIcon
-              className={`icon ${
-                selectedType === locationTypes.CHECKPOINT ? "selected" : ""
-              }`}
+            <MissingPersonsIcon
+              className={`icon ${selectedType === locationTypes.MISSINGPERSONS ? "selected" : ""
+                }`}
               onClick={() => {
-                setSelectedType(locationTypes.CHECKPOINT);
+                setSelectedType(locationTypes.MISSINGPERSONS);
               }}
             />
-
-            <CommandPostIcon
-              className={`icon ${
-                selectedType === locationTypes.COMMANDPOST ? "selected" : ""
-              }`}
-              onClick={() => {
-                setSelectedType(locationTypes.COMMANDPOST);
-              }}
-            />
-
-            {/* <EmtccIcon
-          className={`icon ${
-            selectedType === locationTypes.EMTCC ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.EMTCC);
-          }}
-        /> */}
 
             <FoodIcon
               className={`icon ${
@@ -206,61 +176,14 @@ const CreateLocationMarker = () => {
               }}
             />
 
-            <MedicalPostIcon
-              className={`icon ${
-                selectedType === locationTypes.MEDICALPOST ? "selected" : ""
-              }`}
+            <ApparrelIcon
+              className={`icon ${selectedType === locationTypes.APPAREL ? "selected" : ""
+                }`}
               onClick={() => {
-                setSelectedType(locationTypes.MEDICALPOST);
+                setSelectedType(locationTypes.APPAREL);
               }}
             />
 
-            <MissingPersonsIcon
-              className={`icon ${
-                selectedType === locationTypes.MISSINGPERSONS ? "selected" : ""
-              }`}
-              onClick={() => {
-                setSelectedType(locationTypes.MISSINGPERSONS);
-              }}
-            />
-
-            {/* <OsoccIcon
-          className={`icon ${
-            selectedType === locationTypes.OSOCC ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.OSOCC);
-          }}
-        /> */}
-
-            <PowerIcon
-              className={`icon ${
-                selectedType === locationTypes.POWER ? "selected" : ""
-              }`}
-              onClick={() => {
-                setSelectedType(locationTypes.POWER);
-              }}
-            />
-
-            <PrayerIcon
-              className={`icon ${
-                selectedType === locationTypes.PRAYERSPACE ? "selected" : ""
-              }`}
-              onClick={() => {
-                setSelectedType(locationTypes.PRAYERSPACE);
-              }}
-            />
-
-            <PsychologyIcon
-              className={`icon ${
-                selectedType === locationTypes.PSYCHOLOGICALINTERVENTION
-                  ? "selected"
-                  : ""
-              }`}
-              onClick={() => {
-                setSelectedType(locationTypes.PSYCHOLOGICALINTERVENTION);
-              }}
-            />
 
             <PublicIcon
               className={`icon ${
@@ -273,23 +196,7 @@ const CreateLocationMarker = () => {
               }}
             />
 
-            {/* <RdcIcon
-          className={`icon ${
-            selectedType === locationTypes.RDC ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.RDC);
-          }}
-        /> */}
-
-            <RegistrationIcon
-              className={`icon ${
-                selectedType === locationTypes.REGISTRATION ? "selected" : ""
-              }`}
-              onClick={() => {
-                setSelectedType(locationTypes.REGISTRATION);
-              }}
-            />
+            
 
             <SafetyIcon
               className={`icon ${
@@ -297,15 +204,6 @@ const CreateLocationMarker = () => {
               }`}
               onClick={() => {
                 setSelectedType(locationTypes.SAFETY);
-              }}
-            />
-
-            <ShelterIcon
-              className={`icon ${
-                selectedType === locationTypes.SHELTER ? "selected" : ""
-              }`}
-              onClick={() => {
-                setSelectedType(locationTypes.SHELTER);
               }}
             />
 
@@ -318,38 +216,12 @@ const CreateLocationMarker = () => {
               }}
             />
 
-            {/* <UccIcon
-          className={`icon ${
-            selectedType === locationTypes.UCC ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.UCC);
-          }}
-        /> */}
-
-            {/* <UndacIcon
-          className={`icon ${
-            selectedType === locationTypes.UNDAC ? "selected" : ""
-          }`}
-          onClick={() => {
-            setSelectedType(locationTypes.UNDAC);
-          }}
-        /> */}
-
-            <WaterIcon
-              className={`icon ${
-                selectedType === locationTypes.WATER ? "selected" : ""
-              }`}
-              onClick={() => {
-                setSelectedType(locationTypes.WATER);
-              }}
-            />
           </StyledIconRow>
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Description</StyledSecondaryHeading>
-
+          <StyledHint>Provide a short description for that Location, like contact information, callsign with channel.</StyledHint>
           <StyledInput
             placeholder="Set the location's description..."
             onChange={handleNameChange}
@@ -466,12 +338,12 @@ const StyledIconRow = styled.div`
   .icon {
     height: 50px;
     width: 50px;
-    margin-right: 1rem;
+    margin-right: 1.3rem;
   }
 
   .selected {
-    background-color: ${(props) => props.theme.buttonColor};
-    border-radius: 50%;
+    background-color: var(--cta-200);
+    border-radius: 10px;
   }
 `;
 
@@ -480,6 +352,13 @@ const StyledSelectedType = styled.div`
   font-weight: 500;
 
   color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledHint = styled.div`
+margin-top: -0.4rem;
+
+font-size: 0.8rem;
+font-weight: 300;
 `;
 
 export default CreateLocationMarker;
