@@ -99,11 +99,6 @@ const DeactivatedCommandPostIcon = new Icon({
   iconSize: [25, 25],
 });
 
-// const EmtccIcon = new Icon({
-//   iconUrl: "/icons/assets/Locations/Color/Active=emtcc.svg",
-//   iconSize: [25, 25],
-// });
-
 const FoodIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=food.svg",
   iconSize: [25, 25],
@@ -136,11 +131,6 @@ const DeactivatedMissingPersonsIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=missingpersons.svg",
   iconSize: [25, 25],
 });
-
-// const OsoccIcon = new Icon({
-//   iconUrl: "/icons/assets/Locations/Color/Active=osocc.svg",
-//   iconSize: [25, 25],
-// });
 
 const PowerIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=power.svg",
@@ -186,11 +176,6 @@ const DeactivatedPublicIcon = new Icon({
   iconSize: [25, 25],
 });
 
-// const RdcIcon = new Icon({
-//   iconUrl: "/icons/assets/Locations/Color/Active=rdc.svg",
-//   iconSize: [25, 25],
-// });
-
 const RegistrationIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=registration.svg",
   iconSize: [25, 25],
@@ -235,16 +220,6 @@ const DeactivatedTransportIcon = new Icon({
   iconSize: [25, 25],
 });
 
-// const UccIcon = new Icon({
-//   iconUrl: "/icons/assets/Locations/Color/Active=ucc.svg",
-//   iconSize: [25, 25],
-// });
-
-// const UndacIcon = new Icon({
-//   iconUrl: "/icons/assets/Locations/Color/Active=undac.svg",
-//   iconSize: [25, 25],
-// });
-
 const WaterIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=water.svg",
   iconSize: [25, 25],
@@ -287,10 +262,6 @@ const LocationMarker = ({ location }: Props) => {
       isActive ? setIcon(BarrierIcon) : setIcon(DeactivatedBarrierIcon);
     }
 
-    // if (props.type === locationTypes.BOO) {
-    //   setIcon(BooIcon);
-    // }
-
     if (location.type === locationTypes.CARE) {
       isActive ? setIcon(CareIcon) : setIcon(DeactivatedCareIcon);
     }
@@ -302,10 +273,6 @@ const LocationMarker = ({ location }: Props) => {
     if (location.type === locationTypes.COMMANDPOST) {
       isActive ? setIcon(CommandPostIcon) : setIcon(DeactivatedCommandPostIcon);
     }
-
-    // if (props.type === locationTypes.EMTCC) {
-    //   setIcon(EmtccIcon);
-    // }
 
     if (location.type === locationTypes.FOOD) {
       isActive ? setIcon(FoodIcon) : setIcon(DeactivatedFoodIcon);
@@ -320,10 +287,6 @@ const LocationMarker = ({ location }: Props) => {
         ? setIcon(MissingPersonsIcon)
         : setIcon(DeactivatedMissingPersonsIcon);
     }
-
-    // if (props.type === locationTypes.OSOCC) {
-    //   setIcon(OsoccIcon);
-    // }
 
     if (location.type === locationTypes.POWER) {
       isActive ? setIcon(PowerIcon) : setIcon(DeactivatedPowerIcon);
@@ -340,10 +303,6 @@ const LocationMarker = ({ location }: Props) => {
     if (location.type === locationTypes.PUBLICINFORMATION) {
       isActive ? setIcon(PublicIcon) : setIcon(DeactivatedPublicIcon);
     }
-
-    // if (props.type === locationTypes.RDC) {
-    //   setIcon(RdcIcon);
-    // }
 
     if (location.type === locationTypes.REGISTRATION) {
       isActive
@@ -362,14 +321,6 @@ const LocationMarker = ({ location }: Props) => {
     if (location.type === locationTypes.TRANSPORT) {
       isActive ? setIcon(TransportIcon) : setIcon(DeactivatedTransportIcon);
     }
-
-    // if (props.type === locationTypes.UCC) {
-    //   setIcon(UccIcon);
-    // }
-
-    // if (props.type === locationTypes.UNDAC) {
-    //   setIcon(UndacIcon);
-    // }
 
     if (location.type === locationTypes.WATER) {
       isActive ? setIcon(WaterIcon) : setIcon(DeactivatedWaterIcon);
@@ -440,12 +391,8 @@ const LocationMarker = ({ location }: Props) => {
         <StyledPopupContentWrapper>
           <StyledPopupHeading>{locationType}</StyledPopupHeading>
 
-          <StyledDate>
-            {new Date(location.timestamp).toLocaleString()}
-          </StyledDate>
-
           <StyledSection>
-            <StyledBoldText>Description: </StyledBoldText>
+            <StyledBoldText>Details: </StyledBoldText>
             <StyledText>{location.name}</StyledText>
           </StyledSection>
 
@@ -462,6 +409,11 @@ const LocationMarker = ({ location }: Props) => {
           <StyledDeactivateButton onClick={deleteLocation}>
             Remove
           </StyledDeactivateButton>
+
+          <StyledDate>
+            {new Date(location.timestamp).toLocaleString()}
+          </StyledDate>
+
         </StyledPopupContentWrapper>
       </Popup>
     </Marker>

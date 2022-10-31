@@ -6,6 +6,7 @@ export const StyledPopupContentWrapper = styled.div`
   justify-content: center;
   align-items: start;
   gap: 0.3rem;
+
 `;
 
 export const StyledPopupHeading = styled.div`
@@ -15,18 +16,27 @@ export const StyledPopupHeading = styled.div`
 `;
 
 export const StyledDate = styled.div`
+  margin-top: 0.3rem;
   align-self: center;
+  font-size: 0.7rem;
+  font-weight: 200;
 `;
 
 export const StyledSection = styled.div`
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const StyledBoldText = styled.span`
+export const StyledBoldText = styled.div`
+  width: 100%;
+  font-weight: 600;
+`;
+
+export const StyledStatusText = styled.div`
+  align-self: center;
+  font-size: 1.5rem;
   font-weight: 600;
 `;
 
@@ -37,7 +47,7 @@ export const StyledDeactivateButton = styled.button`
 
   margin-top: 0.3rem;
 
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 0.2rem 0.3rem;
 
   background: #eb5257;

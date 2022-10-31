@@ -240,16 +240,19 @@ const HazardMarker = ({ hazard }: Props) => {
       <Popup>
         <StyledPopupContentWrapper>
           <StyledPopupHeading>{hazardType}</StyledPopupHeading>
-          <StyledDate>{new Date(hazard.timestamp).toLocaleString()}</StyledDate>
+          
 
           <StyledSection>
-            <StyledBoldText>Description: </StyledBoldText>
+            <StyledBoldText>Details: </StyledBoldText>
             <StyledText>{hazard.identifier}</StyledText>
           </StyledSection>
 
           <StyledDeactivateButton onClick={deleteHazard}>
             Remove
           </StyledDeactivateButton>
+
+          <StyledDate>{new Date(hazard.timestamp).toLocaleString()}</StyledDate>
+        
         </StyledPopupContentWrapper>
       </Popup>
     </Marker>
