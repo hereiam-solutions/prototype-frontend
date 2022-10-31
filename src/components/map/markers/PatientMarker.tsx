@@ -16,7 +16,7 @@ import {
   StyledDate,
   StyledSection,
   StyledBoldText,
-  StyledText,
+  StyledStatusText,
   StyledDeactivateButton,
 } from "./styles/markerStyles";
 
@@ -62,40 +62,33 @@ const PatientMarker = ({ patient }: Props) => {
     >
       <Popup>
         <StyledPopupContentWrapper>
-          <StyledPopupHeading>Patient</StyledPopupHeading>
+          
+          <StyledPopupHeading>Victim</StyledPopupHeading>
+
+          <StyledStatusText>{patient.status}</StyledStatusText>
+
+
+          <StyledSection>
+            
+            <StyledBoldText>{patient.agegroup} years</StyledBoldText>
+            <StyledBoldText>{patient.gender}</StyledBoldText>
+
+          </StyledSection>
+
+          <StyledSection>
+      
+            <StyledBoldText>{patient.injuries} Injuries</StyledBoldText>
+          
+          </StyledSection>
+
+          <StyledDeactivateButton onClick={deletePatient}>
+            Rescued
+          </StyledDeactivateButton>
 
           <StyledDate>
             {new Date(patient.timestamp).toLocaleString()}
           </StyledDate>
 
-          <StyledSection>
-            <StyledBoldText>Status: </StyledBoldText>
-            <StyledText>{patient.status}</StyledText>
-          </StyledSection>
-
-          <StyledSection>
-            <StyledBoldText>Injuries: </StyledBoldText>
-            <StyledText>{patient.injuries}</StyledText>
-          </StyledSection>
-
-          <StyledSection>
-            <StyledBoldText>Gender: </StyledBoldText>
-            <StyledText>{patient.gender}</StyledText>
-          </StyledSection>
-
-          <StyledSection>
-            <StyledBoldText>Age Group: </StyledBoldText>
-            <StyledText>{patient.agegroup}</StyledText>
-          </StyledSection>
-
-          <StyledSection>
-            <StyledBoldText>Team Member?: </StyledBoldText>
-            <StyledText> {patient.isTeamMember ? "Yes" : "No"}</StyledText>
-          </StyledSection>
-
-          <StyledDeactivateButton onClick={deletePatient}>
-            Mark as rescued
-          </StyledDeactivateButton>
         </StyledPopupContentWrapper>
       </Popup>
     </Marker>

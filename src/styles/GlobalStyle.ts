@@ -216,6 +216,14 @@ export const GlobalStyles = createGlobalStyle`
     background-color: var(--gray-200);
   }
 
+  div.leaflet-popup-content-wrapper {
+    background-color: var(--gray-200);
+  }
+
+  div.leaflet-popup-tip {
+    background-color: var(--gray-400);
+  }
+
   .leaflet-control-layers label {
     font-size: 1rem;
     font-weight: 300;
