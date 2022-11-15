@@ -9,9 +9,6 @@ import { realmFunctionNames } from "../../../../data/realm/functions";
 import useMission from "../../../../hooks/useMission";
 import { MissionSchema } from "../../../../data/realm/schema/mission";
 
-import useTheme from "../../../../hooks/useTheme";
-import { ThemeEnum } from "../../../../context/ThemeContext";
-
 import useModal from "../../../../hooks/useModal";
 
 import styled from "styled-components";
@@ -21,7 +18,6 @@ const JoinMission = () => {
   const { realm } = useRealm();
   const { setActiveMission } = useMission();
   const { setIsDrawOpen } = useNavigation();
-  const { currentTheme } = useTheme();
   const { setIsModalActive, setModalContent } = useModal();
 
   const [error, setError] = useState<string>("");
