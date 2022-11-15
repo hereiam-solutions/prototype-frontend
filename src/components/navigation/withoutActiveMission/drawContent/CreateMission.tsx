@@ -8,6 +8,7 @@ import {
   CreateMissionArgs,
   MissionSchema,
   RiskLevel,
+  SecurityLevel,
 } from "../../../../data/realm/schema/mission";
 import { disasterTypesEnum } from "../../../map/mapTypes";
 
@@ -47,12 +48,15 @@ const CreateMission = () => {
 
       const args: CreateMissionArgs = {
         identifier: identifierValue,
+        estimatedPopulation: estimatedPopulationValue,
+        start_of_mission: startingTimeISOStringValue,
+        end_of_mission: new Date().toISOString(),
+        // end_of_mission: endingTimeISOStringValue,
         geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates },
         disasterType: selectedDisasterType,
         objectives: objectivesValue,
         riskLevel: selectedRiskLevel,
-        estimatedPopulation: estimatedPopulationValue,
-        start_of_mission: startingTimeISOStringValue,
+        securityLevel: selectedSecurityLevel,
       };
 
       // call the Realm function
@@ -156,6 +160,17 @@ const CreateMission = () => {
     setSelectedRiskLevel(e.currentTarget.value);
   };
 
+  // security level
+  const [selectedSecurityLevel, setSelectedSecurityLevel] = useState<string>(
+    SecurityLevel.ZERO
+  );
+
+  const handleSecurityLevelChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setSelectedSecurityLevel(e.currentTarget.value);
+  };
+
   // estimated population
   const [populationValue, setPopulationValue] = useState<string>("0");
 
@@ -194,6 +209,18 @@ const CreateMission = () => {
             value={selectedRiskLevel}
             label={""}
             onChange={handleRiskLevelChange}
+          />
+        </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
+          <StyledHint>Set the initial security level for this mission.</StyledHint>
+
+          <SingleDropdown
+            options={securityLevelDropdownOptions}
+            value={selectedSecurityLevel}
+            label={""}
+            onChange={handleSecurityLevelChange}
           />
         </StyledSectionWrapper>
 
@@ -567,6 +594,14 @@ const riskLevelDropdownOptions = [
   { label: RiskLevel.THREE, value: RiskLevel.THREE },
   { label: RiskLevel.FOUR, value: RiskLevel.FOUR },
   { label: RiskLevel.FIVE, value: RiskLevel.FIVE },
+];
+
+const securityLevelDropdownOptions = [
+  { label: SecurityLevel.ZERO, value: SecurityLevel.ZERO },
+  { label: SecurityLevel.ONE, value: SecurityLevel.ONE },
+  { label: SecurityLevel.TWO, value: SecurityLevel.TWO },
+  { label: SecurityLevel.THREE, value: SecurityLevel.THREE },
+  { label: SecurityLevel.FOUR, value: SecurityLevel.FOUR },
 ];
 
 export default CreateMission;

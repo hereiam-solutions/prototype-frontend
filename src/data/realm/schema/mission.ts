@@ -86,7 +86,7 @@ export type CreateMissionArgs = {
   //   nuts: string;
   //   mission_leader: BSON.ObjectId;
   start_of_mission: string;
-  //  end_of_mission: string;
+  end_of_mission: string;
   //   participants: BSON.ObjectId[];
   //   operating_teams: BSON.ObjectId[];
   geoJSON: geoJSONPolygon;
@@ -98,6 +98,7 @@ export type CreateMissionArgs = {
   //   CIMICDeployed: boolean;
   //   threatsAndRisks: string[];
   riskLevel: string;
+  securityLevel: string;
   //   securityReport: [
   // { reported_from: BSON.ObjectId },
   // { situation: string },
