@@ -16,15 +16,16 @@ enum roles {
 }
 
 export type PersonSchema = {
-  _id: BSON.ObjectId;
-  userId: BSON.ObjectId;
+  // _id: BSON.ObjectId;
+  // userId: BSON.ObjectId;
   firstName: string;
   lastName: string;
-  bio: string;
-  identifier: string;
+  missionReadyStatus: boolean;
+  /// bio: string;
+  // identifier: string;
   //   managingOrganization: BSON.ObjectId;
   //   team: BSON.ObjectId;
-  //   role: roles[];
+  role: roles[];
   //   missions: BSON.ObjectId[];
   //   deployedToMission: BSON.ObjectId;
   //   allowTracking: boolean;
@@ -32,11 +33,10 @@ export type PersonSchema = {
 };
 
 export type UpdatePersonArgs = {
-  //  _id: BSON.ObjectId;
-  //  userId: BSON.ObjectId;
+  _id: BSON.ObjectId;
+  userId: BSON.ObjectId;
   firstName: string;
   lastName: string;
-  bio: string;
   identifier: string;
   managingOrganization: BSON.ObjectId;
   team: BSON.ObjectId;
