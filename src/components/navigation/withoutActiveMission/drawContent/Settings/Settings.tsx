@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import Switch from "react-switch";
 
@@ -11,11 +12,32 @@ import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
 import useTheme from "../../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../../context/ThemeContext";
 
+import useNavigation from "../../../../../hooks/useNavigation";
+import useRealm from "../../../../../hooks/useRealm";
+import { useNavigate } from "react-router-dom";
+
 const Settings = () => {
   const { setActiveTileLayer, setReRenderBoolean, reRenderBoolean } =
     useMissionMap();
 
   const { currentTheme, setCurrentTheme } = useTheme();
+
+  //Logout function
+  let navigate = useNavigate();
+  const { realm } = useRealm();
+  const { setIsDrawOpen } = useNavigation();
+
+  const handleLogOut = async () => {
+    await realm.currentUser?.logOut();
+
+    setIsDrawOpen(false);
+
+    navigate("/auth");
+  };
+
+  //read custom 
+  // @ts-ignore
+  const [userState, setUserState] = useState<any>(realm.currentUser.customData);
 
   return (
     <StyledDrawWrapper>
@@ -87,6 +109,12 @@ const Settings = () => {
             />
           </StyledThemeSwitch>
         </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>{userState.firstName} {userState.lastName}</StyledSecondaryHeading>
+
+          <StyledButton onClick={handleLogOut}>Log out</StyledButton>
+        </StyledSectionWrapper>  
       </StyledContentWrapper>
     </StyledDrawWrapper>
   );
@@ -151,6 +179,25 @@ const StyledSecondaryHeading = styled.p`
   font-weight: 500;
   font-size: 1.4rem;
   color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledButton = styled.button`
+  min-width: 30vw;
+  height: 3rem;
+
+  margin-top: 1.5rem;
+  margin-bottom: 4rem;
+
+  font-weight: 700;
+  text-align: center;
+
+  align-self: center;
+
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
 // styles for this component only
