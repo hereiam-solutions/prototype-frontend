@@ -10,6 +10,10 @@ export const realmFunctionNames = {
   //   updateHazard: "updateHazard",
   deleteHazard: "deleteHazard",
 
+  createSignal: "createSignal",
+  getAllSignalsForMission: "getAllSignalsForMission",
+  deleteSignal: "deleteSignal",
+
   createLocation: "createLocation",
   getAllLocationsForMission: "getAllLocationsForMission",
   updateLocation: "updateLocation",

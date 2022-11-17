@@ -172,7 +172,7 @@ const CreateMission = () => {
   };
 
   // estimated population
-  const [populationValue, setPopulationValue] = useState<string>("0");
+  const [populationValue, setPopulationValue] = useState<string>("");
 
   const handlePopulationChange = (
     event: React.ChangeEvent<HTMLInputElement>
