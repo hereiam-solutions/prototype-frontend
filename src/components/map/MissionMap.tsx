@@ -17,10 +17,12 @@ import { realmFunctionNames } from "../../data/realm/functions";
 import useMission from "../../hooks/useMission";
 import { HazardSchema } from "../../data/realm/schema/hazard";
 import HazardMarker from "./markers/HazardMarker";
-import { LocationSchema } from "../../data/realm/schema/location";
 import { PatientSchema } from "../../data/realm/schema/patient";
 import PatientMarker from "./markers/PatientMarker";
+import { LocationSchema } from "../../data/realm/schema/location";
 import LocationMarker from "./markers/LocationMarker";
+import { SignalSchema } from "../../data/realm/schema/signal";
+import SignalMarker from "./markers/SignalMarker";
 import useMissionMap from "../../hooks/useMissionMap";
 
 
@@ -32,6 +34,7 @@ const MissionMap = () => {
   const [patients, setPatients] = useState<PatientSchema[]>([]);
   const [hazards, setHazards] = useState<HazardSchema[]>([]);
   const [locations, setLocations] = useState<LocationSchema[]>([]);
+  const [signals, setSignals] = useState<SignalSchema[]>([]);
 
   const tileLayerRef = useRef(null);
 
@@ -55,9 +58,15 @@ const MissionMap = () => {
             { mission: activeMission?._id.toString() }
           );
 
+          const signalsResponse = await realm.currentUser.callFunction(
+            realmFunctionNames.getAllSignalsForMission,
+            { mission: activeMission?._id.toString() }
+          );
+
           setPatients(patientsResponse as PatientSchema[]);
           setLocations(locationsResponse as LocationSchema[]);
           setHazards(hazardsResponse as HazardSchema[]);
+          setSignals(signalsResponse as SignalSchema[]);
         }
 
         if (tileLayerRef.current) {
@@ -123,6 +132,14 @@ const MissionMap = () => {
                   location={location}
                   key={location._id.toString()}
                 />
+              ))}
+            </LayerGroup>
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay checked={true} name="Suspected vitims">
+            <LayerGroup>
+              {signals.map((signal: SignalSchema) => (
+                <SignalMarker signal={signal} key={signal._id.toString()} />
               ))}
             </LayerGroup>
           </LayersControl.Overlay>

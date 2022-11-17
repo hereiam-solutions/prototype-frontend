@@ -1,18 +1,13 @@
 import styled from "styled-components";
 import useActionMenu from "../../../hooks/useActionMenu";
 
-// svg imports
-import { ReactComponent as DangerIcon } from "../../../assets/Action/Aktion=Gefahr.svg";
-import { ReactComponent as TaskIcon } from "../../../assets/Action/Aktion=Task.svg";
-import { ReactComponent as CasualtyIcon } from "../../../assets/Action/Aktion=Verletzte.svg";
-import { ReactComponent as DrawIcon } from "../../../assets/Action/Aktion=Zeichnen.svg";
-import { ReactComponent as CloseIcon } from "../../../assets/Action/Close.svg";
+// logo imports
+import { RiCloseCircleFill } from "react-icons/ri"; //MID
+import { MdNotListedLocation } from "react-icons/md"; //TOP
+import { RiUserAddFill } from "react-icons/ri"; //RIGHT
+import { MdReportProblem } from "react-icons/md"; //LEFT
+import { RiFlag2Fill } from "react-icons/ri"; //BOTTOM
 
-import { RiCloseCircleFill } from "react-icons/ri";
-import { RiHealthBookFill } from "react-icons/ri";
-import { RiFlag2Fill } from "react-icons/ri";
-import { MdReportProblem } from "react-icons/md";
-import { MdNotListedLocation } from "react-icons/md";
 
 
 import { MarkerType } from "../../map/mapTypes";
@@ -66,6 +61,11 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
       setIsCreateMarkerModeEnabled(true);
       handleModal();
     }
+    else if (positionInActionMenu === Position.TOP) {
+      setMarkerType(MarkerType.SIGNAL);
+      setIsCreateMarkerModeEnabled(true);
+      handleModal();
+    }
   };
 
   if (positionInActionMenu === Position.LEFT) {
@@ -102,8 +102,8 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
         positionInActionMenu={positionInActionMenu}
         className={"item"}
       >
-        <RiHealthBookFill
-          size={35}
+        <RiUserAddFill
+          size={40}
         />
       </StyledButton>
     );

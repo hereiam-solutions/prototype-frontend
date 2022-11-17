@@ -33,6 +33,7 @@ export enum MarkerType {
   HAZARD = "hazard",
   PATIENT = "patient",
   LOCATION = "location",
+  SIGNAL = "signal",
 }
 
 export type screenCoordinatesType = {
@@ -60,6 +61,13 @@ export enum hazardTypes {
   TRAFFICACCIDENT = "traffic accident",
   TRAIN = "train",
   WATERDISRUPTION = "water disruption",
+}
+
+export enum signalTypes {
+  DOG = "dog",
+  DRONE = "drone",
+  VOST = "vost",
+  OSINT = "osint",
 }
 
 // old?
