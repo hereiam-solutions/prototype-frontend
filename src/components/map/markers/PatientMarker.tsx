@@ -33,7 +33,7 @@ type Props = {
 let iconSize = 30;
 const StyledLocationMarker = styled.button`
  background-color: var(--base-light);
- border-radius: 15px;
+ border-radius: 50px;
 `;
 const iconMarker = renderToStaticMarkup(
   <div>
