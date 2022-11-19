@@ -203,6 +203,7 @@ export const GlobalStyles = createGlobalStyle`
   .leaflet-control-container .leaflet-top, .leaflet-control-container .leaflet-bottom {
 	transform: translate3d(0px, 0px, 0px);
   }
+
   /* leaflet overides*/
   .leaflet-control-container .leaflet-top {
     margin-top: 2rem;
@@ -239,6 +240,7 @@ export const GlobalStyles = createGlobalStyle`
       "Helvetica Neue",
       sans-serif;
   }
+  /* leaflet overides*/
 
 `;
 

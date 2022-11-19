@@ -17,7 +17,7 @@ const Modal = () => {
 
 const StyledModalWrapper = styled.div`
   position: absolute;
-  top: 0;
+  top: 2rem;
   left: 0;
 
   width: 100vw;
