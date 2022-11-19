@@ -1,5 +1,4 @@
 import { Marker, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
 import {
   DeletePatientArgs,
   PatientSchema,
@@ -20,14 +19,37 @@ import {
   StyledDeactivateButton,
 } from "./styles/markerStyles";
 
-const PatientIcon = new Icon({
-  iconUrl: "/icons/assets/Action/Aktion=Verletzte.svg",
-  iconSize: [30, 30],
-});
+//divlogo for leaflet
+import { divIcon } from "leaflet";
+import { renderToStaticMarkup } from "react-dom/server";
+import styled from "styled-components";
+import { RiCreativeCommonsByFill } from "react-icons/ri";
 
 type Props = {
   patient: PatientSchema;
 };
+
+//customize logo
+let iconSize = 30;
+const StyledLocationMarker = styled.button`
+ background-color: var(--base-light);
+ border-radius: 15px;
+`;
+const iconMarker = renderToStaticMarkup(
+  <div>
+    <StyledLocationMarker>
+      <RiCreativeCommonsByFill
+        size={iconSize}
+      />
+    </StyledLocationMarker>
+  </div>
+);
+
+const PatientIcon = divIcon({
+  html: iconMarker,
+  className: 'victim',
+  iconAnchor: [0, 0],
+});
 
 const PatientMarker = ({ patient }: Props) => {
   const { realm } = useRealm();
