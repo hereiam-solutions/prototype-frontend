@@ -1,5 +1,4 @@
 import { Marker, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
 import useRealm from "../../../hooks/useRealm";
 import useMission from "../../../hooks/useMission";
 import {
