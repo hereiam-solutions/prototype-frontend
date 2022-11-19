@@ -4,9 +4,11 @@ export const realmFunctionNames = {
   createMission: "createMission",
   getCurrentMission: "getCurrentMission",
   joinMission: "joinMission",
+  getAllMissions: "getAllMissions",
 
   createHazard: "createHazard",
   getAllHazardsForMission: "getAllHazardsForMission",
+  getAllHazards: "getAllHazards",
   //   updateHazard: "updateHazard",
   deleteHazard: "deleteHazard",
 
@@ -16,6 +18,7 @@ export const realmFunctionNames = {
 
   createLocation: "createLocation",
   getAllLocationsForMission: "getAllLocationsForMission",
+  getAllLocations: "getAllLocations",
   updateLocation: "updateLocation",
   deleteLocation: "deleteLocation",
 

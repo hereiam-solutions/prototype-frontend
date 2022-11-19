@@ -49,12 +49,12 @@ const MissionMap = () => {
           );
 
           const hazardsResponse = await realm.currentUser.callFunction(
-            realmFunctionNames.getAllHazardsForMission,
+            realmFunctionNames.getAllHazards,
             { mission: activeMission?._id.toString() }
           );
 
           const locationsResponse = await realm.currentUser.callFunction(
-            realmFunctionNames.getAllLocationsForMission,
+            realmFunctionNames.getAllLocations,
             { mission: activeMission?._id.toString() }
           );
 
