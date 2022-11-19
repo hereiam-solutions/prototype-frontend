@@ -260,6 +260,7 @@ const borderConstants = {
 
 const mediaQueries = {
   mediaQueryPhone: "(max-width: 43em), screen or (orientation: portrait)",
+  mediaQueryFlip: "(min-width: 44em), screen or (orientation: landscape)",
   mediaQueryTablet: "(44em <= width <= 62em), screen",
   mediaQueryDesktop: "(63em <= width <= 87em), screen",
   mediaQueryWidescreen: "(min-width: 88em), screen",
