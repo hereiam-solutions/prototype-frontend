@@ -88,6 +88,18 @@ const StyledDrawContentWrapper = styled.div`
       height: 75vh;
     }
   }
+  @keyframes fadeInRight {
+    0% {
+      height: 0rem;
+    }
+    100% {
+      height: 75vh;
+    }
+  }
+
+  @media ${(props) => props.theme.mediaQueryFlip} {
+
+  }
 `;
 
 export default Draw;
