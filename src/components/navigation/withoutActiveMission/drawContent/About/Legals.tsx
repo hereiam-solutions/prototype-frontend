@@ -6,10 +6,71 @@ import Accordion from "../../../ui/Accordion";
 type Props = {};
 
 const Legals = (props: Props) => {
+
   return (
     <StyledLegals>
       <SectionHeadline>Legals</SectionHeadline>
 
+      <Accordion heading={"IMPRINT"}>
+
+        <h3>Imprint</h3>
+        <p>
+          hereIam solutions<br />
+          c/o Project X Consulting GmbH<br />
+          Thiemannstrasse 36, 12059 Berlin<br />
+          Germany
+        </p>
+        <br />
+        <p>
+          Phone: +49 174 1642535<br />
+          Email: mmueller@projectxconsulting.de
+        </p>
+        <br />
+        <p>
+          This App is built with React and Typescript.
+        </p>
+        <br />
+        <h4>
+          MDStV Statement
+        </h4>
+        <p><strong>Responsible in the sense of &#167; 6 (2) Mediendienstestaatsvertrag:</strong> Marcus M&uuml;ller is responsible for the app content according to the Mediendienstestaatsvertrag (MDStV).
+        </p>
+        <br />
+        <h4>Legal Disclaimer</h4>
+        <p>
+          <strong>(1) Copyright.</strong> Copyright &copy; 2022 by Project X Consulting GmbH (Project X in short). All rights reserved.
+          The content provided by this website is protected by copyright. The contents of this site may only be reproduced or electronically processed,
+          copied and &#47; ​or disseminated with the express written permission of Projext X, unless copyright explicitly states otherwise.
+        </p>
+        <br />
+        <p>
+          <strong>(2) Links to external websites.</strong> Our app contains links to external websites.
+          As these websites are beyond our control, we cannot assume any responsibility for their content and privacy policy.
+          Legal liability lies exclusively with the operators of these external sites.
+        </p>
+        <br />
+        <p>
+          <strong>(3) Liability disclaimer.</strong> This app presents interim results of a continuous working process.
+          Although the information contained therein is assembled with utmost care,
+          Project X cannot be held liable for the timeliness, correctness and completeness of the information provided.
+        </p>
+        <br />
+        <p>
+          <strong>(4) Privacy policy.</strong> If the opportunity for the input of personal or business data (email addresses, name, addresses) is given,
+          the input of these data takes place on an entirely voluntary basis. Project X uses such data about your person only for the purposes named on the website and not to pass them on to third parties.
+          For more information, please refer to our Privacy Policy.
+        </p>
+        <br />
+        <p>
+          <strong>(5) Jurisdiction.</strong> Any litigation shall be subject to the exclusive jurisdiction of the German court system.
+        </p>
+
+
+        
+      </Accordion>
+        
+      
+      
       <Accordion heading={"TERMS"}>
         <Accordion heading={"Acceptance"}>
           <p>
