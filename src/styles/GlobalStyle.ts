@@ -283,7 +283,7 @@ export const darkTheme = {
   primaryFontColor: "#DCE4EF",
   buttonColor: "#DCE4EF",
   buttonFontColor: "#212121",
-  iconColor: "#DCE4EF",
+  iconColor: "#112E51",
 
   secondaryBackgroundColor: "var(--base-text)",
   sectionHeadlineBackgroundColor: "var(--gray-500)",

@@ -7,17 +7,15 @@ import Draw from "./Draw";
 import { RiFocus2Fill } from "react-icons/ri";
 import { RiSettings4Fill } from "react-icons/ri";
 import { RiAccountPinCircleFill } from "react-icons/ri";
+import { RiGridFill } from "react-icons/ri";
 
-import LightLogo from "../../assets/Logo/light/hereIam_logo_light96x96.svg";
-
-//import { ReactComponent as DashboardButton } from "../../assets/Navigation/Dashboard_Dark.svg";
-//import { ReactComponent as SettingsButton } from "../../assets/Navigation/Settings.svg";
-//import { ReactComponent as ProfileButton } from "../../assets/Navigation/User.svg";
+import DarkLogo from "../../assets/Logo/dark/hereIam_logo_dark96x96.svg";
 import useMission from "../../hooks/useMission";
 
 let DashboardButton = RiFocus2Fill;
 let SettingsButton = RiSettings4Fill;
 let ProfileButton = RiAccountPinCircleFill;
+let AppButton = RiGridFill;
 
 const Nav = () => {
   const { isDrawOpen, setIsDrawOpen } = useNavigation();
@@ -30,7 +28,7 @@ const Nav = () => {
         {/**inject company Logo and name */}
         <StyledCompanyButton onClick={() => setIsDrawOpen(true)} to="about">
           <StyledCompanyName>hereIam</StyledCompanyName>
-          <img src={LightLogo} width="60px" alt="hereIam Logo" />
+          <img src={DarkLogo} width="60px" alt="hereIam Logo" />
         </StyledCompanyButton>
 
         <StyledMenuButton
@@ -59,7 +57,6 @@ const Nav = () => {
           
         </StyledMenuButton>
         
-        {/** Hide Profile Section - waiting CRUD and Team
         <StyledMenuButton
           onClick={() => {
             setIsDrawOpen(true);
@@ -70,9 +67,22 @@ const Nav = () => {
           <StyledProfileButton>
             <ProfileButton />
           </StyledProfileButton>
-          
+
         </StyledMenuButton>
-         */}
+
+        <StyledMenuButton
+          onClick={() => {
+            setIsDrawOpen(true);
+            setIsPolygonDrawingActive(false);
+          }}
+          to="apps"
+        >
+          <StyledAppButton>
+            <AppButton />
+          </StyledAppButton>
+
+        </StyledMenuButton>
+         
       </StyledNavigationMenu>
 
       {isDrawOpen && <Draw usedInAuthentication={false} />}
@@ -107,6 +117,12 @@ const StyledSettingsButton = styled.div`
 `;
 
 const StyledProfileButton = styled.div`
+  font-size: 3rem;
+  color: ${(props) => props.theme.iconColor};
+  filter: drop-shadow(10px 10px 20px #fffff8) invert(35%);
+`;
+
+const StyledAppButton = styled.div`
   font-size: 3rem;
   color: ${(props) => props.theme.iconColor};
   filter: drop-shadow(10px 10px 20px #fffff8) invert(35%);

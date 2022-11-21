@@ -12,32 +12,11 @@ import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
 import useTheme from "../../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../../context/ThemeContext";
 
-import useNavigation from "../../../../../hooks/useNavigation";
-import useRealm from "../../../../../hooks/useRealm";
-import { useNavigate } from "react-router-dom";
-
 const Settings = () => {
   const { setActiveTileLayer, setReRenderBoolean, reRenderBoolean } =
     useMissionMap();
 
   const { currentTheme, setCurrentTheme } = useTheme();
-
-  //Logout function
-  let navigate = useNavigate();
-  const { realm } = useRealm();
-  const { setIsDrawOpen } = useNavigation();
-
-  const handleLogOut = async () => {
-    await realm.currentUser?.logOut();
-
-    setIsDrawOpen(false);
-
-    navigate("/auth");
-  };
-
-  //read custom 
-  // @ts-ignore
-  const [userState, setUserState] = useState<any>(realm.currentUser.customData);
 
   return (
     <StyledDrawWrapper>
@@ -109,12 +88,7 @@ const Settings = () => {
             />
           </StyledThemeSwitch>
         </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>{userState.firstName} {userState.lastName}</StyledSecondaryHeading>
-
-          <StyledButton onClick={handleLogOut}>Log out</StyledButton>
-        </StyledSectionWrapper>  
+ 
       </StyledContentWrapper>
     </StyledDrawWrapper>
   );
