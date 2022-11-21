@@ -32,7 +32,7 @@ export enum extricatedLevels {
 }
 
 export enum handovers {
-  FAMILIY = "Family",
+  FAMILY = "Family",
   LOCALS = "Locals",
   AMBULANCE = "Ambulance",
   MEDICAL = "Medical Team",
@@ -52,17 +52,9 @@ export type VictimSchema = {
   gender: genders;
   status: statuses;
   myAction: string[];
-  detailsVictim: [
-    { bodymarks: string },
-    { clothing: string },
-    { face: string },
-    { hair: string }
-  ];
   extricatedLevel: extricatedLevels;
   total_extrication_from: string;
   total_extrication_to: string;
-  found_by: BSON.ObjectId;
-  found_on: BSON.ObjectId;
   positionInStructure: string;
   foundStreetAddress: string;
   handoverTo: string;
@@ -70,23 +62,15 @@ export type VictimSchema = {
   geoJSON: geoJSONPoint;
 };
 
-export type CreatePatientArgs = {
-  mission: string;
+export type CreateVictimArgs = {
+  // mission: string;
   agegroup: ageGroups;
   gender: genders;
   status: statuses;
   myAction: string[];
-  detailsVictim: [
-    { bodymarks: string },
-    { clothing: string },
-    { face: string },
-    { hair: string }
-  ];
   extricatedLevel: extricatedLevels;
   total_extrication_from: string;
   total_extrication_to: string;
-  found_by: BSON.ObjectId;
-  found_on: BSON.ObjectId;
   positionInStructure: string;
   foundStreetAddress: string;
   handoverTo: string;
@@ -94,6 +78,6 @@ export type CreatePatientArgs = {
   geoJSON: geoJSONPoint;
 };
 
-export type DeletePatientArgs = {
+export type DeleteVictimArgs = {
   _id: string;
 };

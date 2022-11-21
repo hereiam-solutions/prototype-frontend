@@ -502,7 +502,6 @@ const StyledHint = styled.div`
 margin-top: -0.4rem;
 font-size: 0.8rem;
 font-weight: 300;
-
 `;
 
 // dropdown options
