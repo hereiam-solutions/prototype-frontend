@@ -57,7 +57,7 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
       setIsCreateMarkerModeEnabled(true);
       handleModal();
     } else if (positionInActionMenu === Position.RIGHT) {
-      setMarkerType(MarkerType.PATIENT);
+      setMarkerType(MarkerType.VICTIM);
       setIsCreateMarkerModeEnabled(true);
       handleModal();
     }

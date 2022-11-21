@@ -38,6 +38,9 @@ export const StyledStatusText = styled.div`
   align-self: center;
   font-size: 1.5rem;
   font-weight: 600;
+  padding 1rem;
+  border: 1px solid ${(props) => props.theme.primaryFontColor}
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
 `;
 
 export const StyledText = styled.span``;
