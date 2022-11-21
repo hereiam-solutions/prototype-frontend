@@ -198,6 +198,8 @@ const StyledShortSign = styled.div`
   border: 1px solid ${(props) => props.theme.buttonFontColor};
   border-radius: ${(props) => props.theme.primaryBorderRadius};
 
+  opacity: 0.3;
+
 `;
 
 const StyledHint = styled.div`

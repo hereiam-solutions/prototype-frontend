@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const StyledPopupContentWrapper = styled.div`
-    
+  width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   gap: 0.3rem;
+
+  overflow-y: scroll;
 
 `;
 
