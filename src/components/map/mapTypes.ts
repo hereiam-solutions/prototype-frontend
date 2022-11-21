@@ -32,6 +32,7 @@ const poly: geoJSONPolygon = {
 export enum MarkerType {
   HAZARD = "hazard",
   PATIENT = "patient",
+  VICTIM = "victim",
   LOCATION = "location",
   SIGNAL = "signal",
 }
@@ -66,22 +67,9 @@ export enum hazardTypes {
 export enum signalTypes {
   DOG = "dog",
   DRONE = "drone",
-  VOST = "vost",
-  OSINT = "osint",
+  OCC = "occ",
+  COMMUNITY = "community",
 }
-
-// old?
-// export enum locationTypes {
-//   DIVISIONCOMMAND = 'division command',
-//   ELECTRICITYPOINT = 'electricity point',
-//   FIREBRIGADE = 'fire brigade',
-//   MEDICALFACILITY = 'medical facility',
-//   MILITARY = 'military',
-//   MUNICIPALITYAUTHORITIES = 'municipality authorities',
-//   POLICE = 'police',
-//   SHELTER = 'shelter',
-//   WATERPOINT = 'water point',
-// }
 
 export enum locationTypes {
   COMMANDPOST = "command post",
