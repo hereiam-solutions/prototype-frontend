@@ -218,8 +218,8 @@ font-weight: 300;
 const SignalDropdownOptions = [
   { label: signalTypes.DOG, value: signalTypes.DOG },
   { label: signalTypes.DRONE, value: signalTypes.DRONE },
-  { label: signalTypes.VOST, value: signalTypes.VOST },
-  { label: signalTypes.OSINT, value: signalTypes.OSINT },
+  { label: signalTypes.OCC, value: signalTypes.OCC },
+  { label: signalTypes.COMMUNITY, value: signalTypes.COMMUNITY },
 ];
 
 export default CreateSignalMarker;

@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export const StyledPopupContentWrapper = styled.div`
+  width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   gap: 0.3rem;
+
+  overflow-y: scroll;
 
 `;
 
@@ -38,6 +41,9 @@ export const StyledStatusText = styled.div`
   align-self: center;
   font-size: 1.5rem;
   font-weight: 600;
+  padding 1rem;
+  border: 1px solid ${(props) => props.theme.primaryFontColor}
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
 `;
 
 export const StyledText = styled.span``;
