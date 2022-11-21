@@ -233,29 +233,33 @@ const HazardMarker = ({ hazard }: Props) => {
     .join(" ");
 
   return (
-    <Marker
-      position={[hazard.geoJSON.coordinates[0], hazard.geoJSON.coordinates[1]]}
-      icon={Icon}
-    >
-      <Popup>
-        <StyledPopupContentWrapper>
-          <StyledPopupHeading>{hazardType}</StyledPopupHeading>
-          
+    <>
+        <Marker
+          position={[hazard.geoJSON.coordinates[0], hazard.geoJSON.coordinates[1]]}
+          icon={Icon}
+        >
+          <Popup>
+            <StyledPopupContentWrapper>
+              <StyledPopupHeading>{hazardType}</StyledPopupHeading>
 
-          <StyledSection>
-            <StyledBoldText>Details: </StyledBoldText>
-            <StyledText>{hazard.identifier}</StyledText>
-          </StyledSection>
 
-          <StyledDeactivateButton onClick={deleteHazard}>
-            Remove
-          </StyledDeactivateButton>
+              <StyledSection>
+                <StyledBoldText>Details: </StyledBoldText>
+                <StyledText>{hazard.identifier}</StyledText>
+              </StyledSection>
 
-          <StyledDate>{new Date(hazard.timestamp).toLocaleString()}</StyledDate>
-        
-        </StyledPopupContentWrapper>
-      </Popup>
-    </Marker>
+              <StyledDeactivateButton onClick={deleteHazard}>
+                Remove
+              </StyledDeactivateButton>
+
+              <StyledDate>{new Date(hazard.timestamp).toLocaleString()}</StyledDate>
+
+            </StyledPopupContentWrapper>
+          </Popup>
+        </Marker>
+      
+    </>
+    
   );
 };
 
