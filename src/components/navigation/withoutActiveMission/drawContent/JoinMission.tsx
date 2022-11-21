@@ -114,7 +114,9 @@ const JoinMission = () => {
             {error ? error : "Join"}
           </StyledButton>
           <StyledHint onClick={handleJoinCurrentMission}>
-            Droped out? Join last active mission.
+            Droped out?
+            <br />
+            Join last active mission.
           </StyledHint>
         </StyledSectionWrapper>
 
@@ -235,7 +237,7 @@ const StyledButton = styled.button`
 
 const StyledHint = styled.div`
   margin-top: 0.3rem;
-   font-size: 0.8rem;
+   font-size: 0.9rem;
    align-self: center;
 
 `;
