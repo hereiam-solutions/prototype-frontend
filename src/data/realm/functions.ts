@@ -30,5 +30,5 @@ export const realmFunctionNames = {
   createVictim: "createVictim",
   getAllVictimsForMission: "getAllVictimsForMission",
   //   updatePatient: "updatePatient",
-  deleteVictim: "deletePatient",
+  deleteVictim: "deleteVictim",
 };
