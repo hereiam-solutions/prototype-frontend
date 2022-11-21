@@ -84,14 +84,15 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
 
   if (positionInActionMenu === Position.TOP) {
     return (
-      <StyledOpacityButton
+      <StyledButton
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
+        className={"item"}
       >
         <MdNotListedLocation
-          size={55}
+          size={35}
         />
-      </StyledOpacityButton>
+      </StyledButton>
     );
   }
 
@@ -103,7 +104,7 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
         className={"item"}
       >
         <RiUserAddFill
-          size={40}
+          size={35}
         />
       </StyledButton>
     );
@@ -124,7 +125,12 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
   }
 
   return (
-    <StyledX onClick={handleClick} positionInActionMenu={positionInActionMenu}>
+    <StyledX
+      onClick={handleClick}
+      positionInActionMenu={positionInActionMenu}
+      className={"item"}
+    >
+      
       <RiCloseCircleFill
         size={35}
       />
@@ -148,24 +154,9 @@ const StyledButton = styled.div`
   z-index: 11;
 `;
 
-const StyledOpacityButton = styled.div`
-  grid-area: ${(props: StyledComponentProps) => props.positionInActionMenu};
-  border-radius: 50%;
-
-  height: 50px;
-  width: 50px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  z-index: 11;
-
-  opacity: 0.5;
-`;
-
 const StyledX = styled.div`
   grid-area: ${(props: StyledComponentProps) => props.positionInActionMenu};
+  border-radius: 50%;
 
   width: 50px;
   height: 50px;
@@ -177,6 +168,8 @@ const StyledX = styled.div`
   color: var(--gray-200);
 
   z-index: 11;
+
+  opacity: 0.5;
 `;
 
 export default ActionMenuButton;
