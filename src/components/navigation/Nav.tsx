@@ -75,7 +75,7 @@ const Nav = () => {
             setIsDrawOpen(true);
             setIsPolygonDrawingActive(false);
           }}
-          to="apps"
+          to="#"
         >
           <StyledAppButton>
             <AppButton />
