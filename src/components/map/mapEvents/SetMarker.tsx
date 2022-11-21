@@ -40,6 +40,9 @@ function SetMarker() {
         if (markerType === MarkerType.PATIENT) {
           navigate(`create-${MarkerType.PATIENT}`);
         }
+        if (markerType === MarkerType.VICTIM) {
+          navigate(`create-${MarkerType.VICTIM}`);
+        }
         if (markerType === MarkerType.LOCATION) {
           navigate(`create-${MarkerType.LOCATION}`);
         }
