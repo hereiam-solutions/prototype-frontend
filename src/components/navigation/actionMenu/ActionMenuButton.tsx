@@ -36,7 +36,7 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
     useActionMenu();
 
   const handleModal = () => {
-    setModalContent("Tap once at the location you want to set the marker");
+    setModalContent("Tap once on the map at the location you want to set the marker");
 
     // setTimeout(() => {
     //   setIsModalActive(false);
