@@ -71,7 +71,7 @@ const CreateVictimMarker = () => {
     } catch (e) {
       console.log(
         "There has been an error while calling the Realm custom function called:",
-        realmFunctionNames.createPatient,
+        realmFunctionNames.createVictim,
         "Error:",
         e
       );

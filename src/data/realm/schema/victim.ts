@@ -47,6 +47,8 @@ export enum handovers {
 export type VictimSchema = {
   _id: BSON.ObjectId;
   timestamp: string;
+  found_by: BSON.ObjectId;
+  found_on: BSON.ObjectId;
   identifier: string;
   active: boolean;
   agegroup: ageGroups;
