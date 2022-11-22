@@ -2,11 +2,12 @@ import { BSON } from "realm-web";
 import { geoJSONPoint } from "../../../components/map/mapTypes";
 
 export enum ageGroups {
-  ZERO = "0-1",
-  ONE = "2-5",
-  TWO = "6-11",
-  THREE = "12-64",
-  FOUR = "65+",
+  BABY = "0-1",
+  PRESCHOOLER = "2-5",
+  CHILD = "6-11",
+  ADOLESCENT = "12-24",
+  ADULT = "25-64",
+  ELDERLY = "65+",
 }
 
 export enum genders {
@@ -63,7 +64,7 @@ export type VictimSchema = {
 };
 
 export type CreateVictimArgs = {
-  // mission: string;
+  mission: string;
   agegroup: ageGroups;
   gender: genders;
   status: statuses;

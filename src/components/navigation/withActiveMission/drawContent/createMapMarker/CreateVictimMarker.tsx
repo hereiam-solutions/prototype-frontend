@@ -34,6 +34,7 @@ const CreateVictimMarker = () => {
     try {
       if (activeMission) {
         const args: CreateVictimArgs = {
+          mission: activeMission._id.toString(),
           
           agegroup: selectedAgeGroup as ageGroups,
           gender: selectedGender as genders,
@@ -79,7 +80,7 @@ const CreateVictimMarker = () => {
 
   // ageGroup
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<string>(
-    ageGroups.ZERO
+    ageGroups.ADULT
   );
 
   const handleAgeGroupChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -539,11 +540,12 @@ font-weight: 300;
 
 // dropdown options
 const ageGroupDropwdownOptions = [
-  { label: ageGroups.ZERO, value: ageGroups.ZERO },
-  { label: ageGroups.ONE, value: ageGroups.ONE },
-  { label: ageGroups.TWO, value: ageGroups.TWO },
-  { label: ageGroups.THREE, value: ageGroups.THREE },
-  { label: ageGroups.FOUR, value: ageGroups.FOUR },
+  { label: ageGroups.BABY, value: ageGroups.BABY },
+  { label: ageGroups.PRESCHOOLER, value: ageGroups.PRESCHOOLER },
+  { label: ageGroups.CHILD, value: ageGroups.CHILD },
+  { label: ageGroups.ADOLESCENT, value: ageGroups.ADOLESCENT },
+  { label: ageGroups.ADULT, value: ageGroups.ADULT },
+  { label: ageGroups.ELDERLY, value: ageGroups.ELDERLY },
 ];
 
 const genderDropwdownOptions = [
