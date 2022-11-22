@@ -49,7 +49,6 @@ export type VictimSchema = {
   timestamp: string;
   placed_by: BSON.ObjectId;
   identifier: string;
-  active: boolean;
   agegroup: ageGroups;
   gender: genders;
   status: statuses;
@@ -65,6 +64,7 @@ export type VictimSchema = {
 };
 
 export type CreateVictimArgs = {
+  identifier: string;
   mission: string;
   agegroup: ageGroups;
   gender: genders;
