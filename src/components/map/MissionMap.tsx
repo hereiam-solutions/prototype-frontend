@@ -19,8 +19,8 @@ import { HazardSchema } from "../../data/realm/schema/hazard";
 import HazardMarker from "./markers/HazardMarker";
 import { PatientSchema } from "../../data/realm/schema/patient";
 import PatientMarker from "./markers/PatientMarker";
-import { VictimSchema } from "../../data/realm/schema/victim";
-import VictimMarker from "./markers/VictimMarker";
+// import { VictimSchema } from "../../data/realm/schema/victim";
+// import VictimMarker from "./markers/VictimMarker";
 import { LocationSchema } from "../../data/realm/schema/location";
 import LocationMarker from "./markers/LocationMarker";
 import { SignalSchema } from "../../data/realm/schema/signal";
@@ -34,7 +34,7 @@ const MissionMap = () => {
   const { activeTileLayer, reRenderBoolean } = useMissionMap();
 
   const [patients, setPatients] = useState<PatientSchema[]>([]);
-  const [victims, setVictims] = useState<VictimSchema[]>([]);
+  // const [victims, setVictims] = useState<VictimSchema[]>([]);
   const [hazards, setHazards] = useState<HazardSchema[]>([]);
   const [locations, setLocations] = useState<LocationSchema[]>([]);
   const [signals, setSignals] = useState<SignalSchema[]>([]);
@@ -50,11 +50,12 @@ const MissionMap = () => {
             realmFunctionNames.getAllPatientsForMission,
             { mission: activeMission?._id.toString() }
           );
-
-          const victimsResponse = await realm.currentUser.callFunction(
-            realmFunctionNames.getAllVictimsForMission,
-            { mission: activeMission?._id.toString() }
-          );
+          
+          // const victimsResponse = await realm.currentUser.callFunction(
+          //  realmFunctionNames.getAllVictimsForMission,
+          //  { mission: activeMission?._id.toString() }
+          //);
+          
 
           const hazardsResponse = await realm.currentUser.callFunction(
             realmFunctionNames.getAllHazards,
@@ -72,7 +73,7 @@ const MissionMap = () => {
           );
 
           setPatients(patientsResponse as PatientSchema[]);
-          setVictims(victimsResponse as VictimSchema[]);
+          // setVictims(victimsResponse as VictimSchema[]);
           setLocations(locationsResponse as LocationSchema[]);
           setHazards(hazardsResponse as HazardSchema[]);
           setSignals(signalsResponse as SignalSchema[]);
@@ -160,7 +161,8 @@ const MissionMap = () => {
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
-
+          
+          {/** 
           <LayersControl.Overlay checked={true} name="Victims">
             <LayerGroup>
               {victims.map((victim: VictimSchema) => (
@@ -168,6 +170,7 @@ const MissionMap = () => {
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
+          */}
 
         </LayersControl>
 
