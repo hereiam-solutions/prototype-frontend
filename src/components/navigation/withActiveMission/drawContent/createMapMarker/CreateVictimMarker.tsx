@@ -52,6 +52,8 @@ const CreateVictimMarker = () => {
           handover: selectedHandover as handovers,
 
           geoJSON: { type: "Point", coordinates: location },
+
+          identifier: identifierValue,
         };
 
         setLoading(true);
@@ -185,6 +187,15 @@ const CreateVictimMarker = () => {
     setPositionValue(event.currentTarget.value);
   };
 
+  // Identifier
+  const [identifierValue, setIdentifierValue] = useState<string>("");
+
+  const handleIdentifierChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setIdentifierValue(event.currentTarget.value);
+  };
+
   // foundStreetAddress
   const [foundValue, setFoundValue] = useState<string>("");
 
@@ -220,6 +231,16 @@ const CreateVictimMarker = () => {
       </StyledDrawHeader>
 
       <StyledContentWrapper>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Identifier</StyledSecondaryHeading>
+          <StyledInput
+            value={identifierValue}
+            onChange={handleIdentifierChange}
+            placeholder="Give a short description."
+          />
+        </StyledSectionWrapper>
+
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Age Group:</StyledSecondaryHeading>
 
