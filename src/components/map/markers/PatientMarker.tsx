@@ -126,9 +126,9 @@ const PatientMarker = ({ patient }: Props) => {
               {toggleExtrication && (
                 <>
                   <br />
-                  <StyledBoldText>Level: {patient.extricatedLevel}</StyledBoldText>
-                  <StyledBoldText>Address: {patient.foundStreetAddress}</StyledBoldText>
+                  <StyledBoldText>Level: {patient.extricatedLevel}</StyledBoldText> 
                   <StyledBoldText>Position: {patient.positionInStructure}</StyledBoldText>
+                  <StyledBoldText>Address: {patient.foundStreetAddress}</StyledBoldText>
                 </>
               )}
             </StyledExtricationSection>
