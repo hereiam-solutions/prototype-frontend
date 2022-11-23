@@ -25,8 +25,6 @@ import { ThemeEnum } from "../../../../context/ThemeContext";
 
 import useModal from "../../../../hooks/useModal";
 
-import Accordion from "../../../navigation/ui/Accordion";
-
 const CreateMission = () => {
   // contexts
   const navigate = useNavigate();
@@ -196,49 +194,6 @@ const CreateMission = () => {
     setStartingTimeISOStringValue(isoStart);
   };
 
-  const CreateMissionMore = () => {
-    return (
-      <>
-        {/* Risk Level */}
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-          <StyledHint>Set the initial risk level for this mission.</StyledHint>
-
-          <SingleDropdown
-            options={riskLevelDropdownOptions}
-            value={selectedRiskLevel}
-            label={""}
-            onChange={handleRiskLevelChange}
-          />
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
-          <StyledHint>Set the initial security level for this mission.</StyledHint>
-
-          <SingleDropdown
-            options={securityLevelDropdownOptions}
-            value={selectedSecurityLevel}
-            label={""}
-            onChange={handleSecurityLevelChange}
-          />
-        </StyledSectionWrapper>
-
-        {/* Estimated Population */}
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
-          <StyledHint>How many people may be infected by this disaster?</StyledHint>
-
-          <StyledInput
-            type="number"
-            value={populationValue}
-            onChange={handlePopulationChange}
-          />
-        </StyledSectionWrapper>
-      </>
-    );
-  };
-
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
@@ -304,11 +259,72 @@ const CreateMission = () => {
 
         </StyledSectionWrapper>
         
-        {/* More Mission Details */}
-        <Accordion heading={"More..."}>
-          <CreateMissionMore />
-        </Accordion>
+        <br />
+        {/* horizontal line with text */}
+        <div
+          style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+        >
+          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
 
+          <div>
+            <p style={{ width: '70px', textAlign: 'center' }}> MISSION RISKS</p>
+          </div>
+
+          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
+        </div>
+
+        {/* Risk Level */}
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+          <StyledHint>Set the initial risk level for this mission.</StyledHint>
+
+          <SingleDropdown
+            options={riskLevelDropdownOptions}
+            value={selectedRiskLevel}
+            label={""}
+            onChange={handleRiskLevelChange}
+          />
+        </StyledSectionWrapper>
+
+        {/* Estimated Population */}
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
+          <StyledHint>How many people may be infected by this disaster?</StyledHint>
+
+          <StyledInput
+            type="number"
+            value={populationValue}
+            onChange={handlePopulationChange}
+          />
+        </StyledSectionWrapper>
+
+        <br />
+        {/* horizontal line with text */}
+        <div
+          style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+        >
+          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
+
+          <div>
+            <p style={{ width: '70px', textAlign: 'center' }}> MISSION SECURITY</p>
+          </div>
+
+          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
+        </div>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
+          <StyledHint>Set the initial security level for this mission.</StyledHint>
+
+          <SingleDropdown
+            options={securityLevelDropdownOptions}
+            value={selectedSecurityLevel}
+            label={""}
+            onChange={handleSecurityLevelChange}
+          />
+        </StyledSectionWrapper>
+
+        
         {/* Mission starts */}
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Mission starts</StyledSecondaryHeading>
@@ -319,6 +335,7 @@ const CreateMission = () => {
             onChange={handleStartingTimeChange}
           />
         </StyledSectionWrapper>
+        
 
         <StyledButton onClick={handleMissionSubmit}>
           {startingTimeISOStringValue ? "Submit" : "Starting time required"}

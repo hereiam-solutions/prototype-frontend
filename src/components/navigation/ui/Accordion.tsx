@@ -46,7 +46,7 @@ const StyledAccordionHeader = styled.div`
 
 const StyledWrapper = styled.div`
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
 
   padding: 0.5rem;
 
@@ -54,7 +54,7 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.7rem;
 
   font-size: 1rem;
 `;
