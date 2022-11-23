@@ -56,8 +56,6 @@ export type PatientSchema = {
   gender: genders;
   status: statuses;
   extricatedLevel: extricatedLevels;
-  total_extrication_from: string;
-  total_extrication_to: string;
   positionInStructure: string;
   foundStreetAddress: string;
   handoverTo: string;
@@ -75,8 +73,6 @@ export type CreatePatientArgs = {
   gender: genders;
   status: statuses;
   extricatedLevel: extricatedLevels;
-  total_extrication_from: string;
-  total_extrication_to: string;
   positionInStructure: string;
   foundStreetAddress: string;
   handoverTo: string;
