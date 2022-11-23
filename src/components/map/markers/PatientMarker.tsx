@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Marker, Popup } from "react-leaflet";
 import {
   DeletePatientArgs,
@@ -13,9 +14,8 @@ import {
   StyledPopupContentWrapper,
   StyledPopupHeading,
   StyledDate,
-  StyledSection,
   StyledBoldText,
-  StyledStatusText,
+  StyledSection,
   StyledDeactivateButton,
 } from "./styles/markerStyles";
 
@@ -25,6 +25,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import styled from "styled-components";
 import { RiCreativeCommonsByFill } from "react-icons/ri";
 
+
 type Props = {
   patient: PatientSchema;
 };
@@ -32,7 +33,7 @@ type Props = {
 //customize logo
 let iconSize = 30;
 const StyledLocationMarker = styled.button`
- background-color: var(--base-light);
+ background-color: ${(props) => props.theme.alertColor};
  border-radius: 50px;
 `;
 const iconMarker = renderToStaticMarkup(
@@ -74,6 +75,10 @@ const PatientMarker = ({ patient }: Props) => {
     }
   };
 
+  const [toggleExtrication, setToggleExtrication] = useState(false)
+  const [toggleHandover, setToggleHandover] = useState(false)
+  const [toggleForensics, setToggleForensics] = useState(false)
+
   return (
     <Marker
       position={[
@@ -87,24 +92,94 @@ const PatientMarker = ({ patient }: Props) => {
           
           <StyledPopupHeading>Victim</StyledPopupHeading>
 
-          <StyledStatusText>{patient.status}</StyledStatusText>
-
+          {/* include Identifier */}
+          <StyledSection>
+            <StyledShortSign>
+              <StyledVictimID>
+                {patient.identifier}
+              </StyledVictimID>
+              <StyledHint>
+                Write this ID clearly <br />
+                readable on the victim.
+              </StyledHint>
+            </StyledShortSign>
+          </StyledSection>
 
           <StyledSection>
-            
+            <StyledStatus>{patient.status}</StyledStatus>
+          </StyledSection>
+
+          <StyledSection>     
             <StyledBoldText>{patient.agegroup} years</StyledBoldText>
             <StyledBoldText>{patient.gender}</StyledBoldText>
-
           </StyledSection>
 
+          {/* EXTRICATION */}
           <StyledSection>
-      
-            <StyledBoldText>{patient.injuries} Injuries</StyledBoldText>
-          
+            <StyledExtricationSection> 
+              <button
+                onClick={() => setToggleExtrication(!toggleExtrication)}
+                className="toggleButton"
+              >
+              EXTRICATION
+              </button>
+              {toggleExtrication && (
+                <>
+                  <br />
+                  <StyledBoldText>from {new Date(patient.total_extrication_from).toLocaleString()}</StyledBoldText>
+                  <StyledBoldText>to {new Date(patient.total_extrication_to).toLocaleString()}</StyledBoldText>
+                  <br />
+                  <StyledBoldText>Level: {patient.extricatedLevel}</StyledBoldText>
+                  <StyledBoldText>Address: {patient.foundStreetAddress}</StyledBoldText>
+                  <StyledBoldText>Position: {patient.positionInStructure}</StyledBoldText>
+                </>
+              )}
+            </StyledExtricationSection>
           </StyledSection>
 
+          {/* HANDOVER */}
+          <StyledSection>
+            <StyledHandoverSection>
+              <button
+                onClick={() => setToggleHandover(!toggleHandover)}
+                className="toggleButton"
+              >
+                HANDOVER
+              </button>
+              {toggleHandover && (
+                <>
+                  <br />
+                  <StyledBoldText>To: {patient.handover}</StyledBoldText>
+                  <StyledBoldText>Contact: {patient.handoverTo}</StyledBoldText>
+                </>
+              )}
+            </StyledHandoverSection>
+          </StyledSection>
+
+          {/* FORENSICS */}
+          <StyledSection>
+            <StyledForensicsSection>
+              <button
+                onClick={() => setToggleForensics(!toggleForensics)}
+                className="toggleButton"
+              >
+                FORENSICS
+              </button>
+              {toggleForensics && (
+                <>
+                  <br />
+                  <StyledBoldText>Hair: {patient.hair}</StyledBoldText>
+                  <StyledBoldText>Face: {patient.face}</StyledBoldText>
+                  <StyledBoldText>Clothing: {patient.clothing}</StyledBoldText>
+                  <StyledBoldText>Bodymarks: {patient.bodymarks}</StyledBoldText>
+                </>
+              )}
+            </StyledForensicsSection>
+          </StyledSection>
+
+          <br />
           <StyledDeactivateButton onClick={deletePatient}>
-            Rescued
+            CLOSE CASE
           </StyledDeactivateButton>
 
           <StyledDate>
@@ -116,5 +191,81 @@ const PatientMarker = ({ patient }: Props) => {
     </Marker>
   );
 };
+
+const StyledStatus = styled.div`
+
+  width: 100%;
+  self-align: center;
+  padding: 0.5rem;
+
+  color: ${(props) => props.theme.buttonFontColor};
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: center;
+
+  border: 1px solid ${(props) => props.theme.buttonFontColor};
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
+
+`;
+
+const StyledShortSign = styled.div`
+
+  width: 100%;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid ${(props) => props.theme.buttonFontColor};
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
+
+  opacity: 0.3;
+
+`;
+
+const StyledHint = styled.div`
+  margin-top: 0.3rem;
+
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-align: center;
+`;
+
+const StyledVictimID = styled.div`
+  font-size: 1.3rem;
+  font-weight: 500;
+`;
+
+const StyledExtricationSection = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledHandoverSection = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledForensicsSection = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default PatientMarker;
