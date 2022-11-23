@@ -126,12 +126,9 @@ const PatientMarker = ({ patient }: Props) => {
               {toggleExtrication && (
                 <>
                   <br />
-                  <StyledBoldText>from {new Date(patient.total_extrication_from).toLocaleString()}</StyledBoldText>
-                  <StyledBoldText>to {new Date(patient.total_extrication_to).toLocaleString()}</StyledBoldText>
-                  <br />
-                  <StyledBoldText>Level: {patient.extricatedLevel}</StyledBoldText>
-                  <StyledBoldText>Address: {patient.foundStreetAddress}</StyledBoldText>
+                  <StyledBoldText>Level: {patient.extricatedLevel}</StyledBoldText> 
                   <StyledBoldText>Position: {patient.positionInStructure}</StyledBoldText>
+                  <StyledBoldText>Address: {patient.foundStreetAddress}</StyledBoldText>
                 </>
               )}
             </StyledExtricationSection>

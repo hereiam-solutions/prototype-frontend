@@ -32,28 +32,22 @@ const CreatePatientMarker = () => {
 
   const handleSubmit = async () => {
     try {
+
       if (activeMission) {
         const args: CreatePatientArgs = {
           mission: activeMission._id.toString(),
-
           agegroup: selectedAgeGroup as ageGroups,
           gender: selectedGender as genders,
           status: selectedStatus as statuses,
-
-          extricatedLevel: selectedExLevel as extricatedLevels,
-          total_extrication_from: exstartingTimeISOStringValue,
-          total_extrication_to: exendTimeISOStringValue,
+          extricatedLevel: selectedLevel as extricatedLevels,
           positionInStructure: positionValue,
           foundStreetAddress: foundValue,
-
           handoverTo: handoverToValue,
           handover: selectedHandover as handovers,
-
           hair: hairValue,
           face: faceValue,
           clothing: clothingValue,
           bodymarks: bodymarksValue,
-          
           geoJSON: { type: "Point", coordinates: location },
         };
 
@@ -107,44 +101,12 @@ const CreatePatientMarker = () => {
   };
 
   // extricatedLevel
-  const [selectedExLevel, setSelectedExLevel] = useState<string>(
+  const [selectedLevel, setSelectedLevel] = useState<string>(
     extricatedLevels.ASR3
   );
 
-  const handleExLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedExLevel(e.currentTarget.value);
-  };
-
-  // Extriction starting time - total_extriction_from
-  const [exstartingTimeValue, setExstartingTimeValue] = useState<string>("");
-  const [exstartingTimeISOStringValue, setExStartingTimeISOStringValue] =
-    useState<string>("");
-
-  const handleExStartingTimeChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    let start = event.currentTarget.value;
-    const date = new Date(start);
-    const isoStart = date.toISOString();
-
-    setExstartingTimeValue(start);
-    setExStartingTimeISOStringValue(isoStart);
-  };
-
-  // Extriction end time - total_extriction_to
-  const [exendTimeValue, setExEndTimeValue] = useState<string>("");
-  const [exendTimeISOStringValue, setExEndTimeISOStringValue] =
-    useState<string>("");
-
-  const handleExEndTimeChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    let start = event.currentTarget.value;
-    const date = new Date(start);
-    const isoStart = date.toISOString();
-
-    setExEndTimeValue(start);
-    setExEndTimeISOStringValue(isoStart);
+  const handleLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedLevel(e.currentTarget.value);
   };
 
   // positionInStructure
@@ -280,29 +242,9 @@ const CreatePatientMarker = () => {
               <StyledSecondaryHeading>Extricated on mission level:</StyledSecondaryHeading>
               <SingleDropdown
                 options={extricatedLevelDropwdownOptions}
-                value={selectedExLevel}
+                value={selectedLevel}
                 label={""}
-                onChange={handleExLevelChange}
-              />
-            </StyledSectionWrapper>
-
-            <StyledSectionWrapper>
-              <StyledSecondaryHeading>Extrication starts</StyledSecondaryHeading>
-              <StyledHint>Set date and time, the extrication starts.</StyledHint>
-              <StyledTimeInput
-                type="datetime-local"
-                value={exstartingTimeValue}
-                onChange={handleExStartingTimeChange}
-              />
-            </StyledSectionWrapper>
-
-            <StyledSectionWrapper>
-              <StyledSecondaryHeading>Extrication ends</StyledSecondaryHeading>
-              <StyledHint>Set date and time, the extrication ends.</StyledHint>
-              <StyledTimeInput
-                type="datetime-local"
-                value={exendTimeValue}
-                onChange={handleExEndTimeChange}
+                onChange={handleLevelChange}
               />
             </StyledSectionWrapper>
 
@@ -374,7 +316,7 @@ const CreatePatientMarker = () => {
               <StyledSecondaryHeading>Hair</StyledSecondaryHeading>
               <StyledHint>Describe the hair for later search and forensics.</StyledHint>
               <StyledInput
-                type="textarea"
+                type="text"
                 value={hairValue}
                 onChange={handleHairChange}
               />
@@ -514,23 +456,6 @@ const StyledInput = styled.input`
   width: 100%;
   /* margin-top: 0.6rem; */
   padding: 0.75rem;
-`;
-
-const StyledTimeInput = styled.input`
-  background-color: ${(props) => props.theme.primaryBackgroundColor};
-  border: 1px solid ${(props) => props.theme.formFieldColor};
-  border-radius: ${(props) => props.theme.inputBorderRadius};
-  color: ${(props) => props.theme.formFieldColor};
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
-  width: 100%;
-
-  padding: 0.75rem;
-
-  color-scheme: ${(props) =>
-    props.theme.primaryFontColor === "#FFFFFF" ? "dark" : "light"};
 `;
 
 const StyledHint = styled.div`
