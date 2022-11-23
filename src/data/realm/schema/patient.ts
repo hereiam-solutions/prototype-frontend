@@ -51,6 +51,7 @@ export type PatientSchema = {
   found_on: BSON.ObjectId;
   identifier: string;
   active: boolean;
+  mission: BSON.ObjectId;
   agegroup: ageGroups;
   gender: genders;
   status: statuses;
