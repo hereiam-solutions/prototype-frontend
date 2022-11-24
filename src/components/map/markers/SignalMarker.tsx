@@ -13,9 +13,7 @@ import {
   StyledPopupContentWrapper,
   StyledPopupHeading,
   StyledDate,
-  StyledSection,
   StyledBoldText,
-  StyledText,
   StyledDeactivateButton,
 } from "./styles/markerStyles";
 
@@ -154,7 +152,4 @@ const StyledCoordinates = styled.div`
 `;
 
 export default SignalMarker;
-function truncate(arg0: { signal: SignalSchema; "": any; }, arg1: number) {
-  throw new Error("Function not implemented.");
-}
 
