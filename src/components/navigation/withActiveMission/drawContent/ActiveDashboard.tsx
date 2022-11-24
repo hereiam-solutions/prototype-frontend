@@ -193,14 +193,6 @@ const StyledText = styled.p`
 
 // styles for this component only
 
-const StyledMissionIDWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  height: 3rem;
-`;
-
 const StyledList = styled.ul`
   margin: 0;
   color: ${(props) => props.theme.primaryFontColor};
