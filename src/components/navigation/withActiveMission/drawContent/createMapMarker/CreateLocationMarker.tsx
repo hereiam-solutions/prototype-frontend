@@ -46,7 +46,7 @@ const CreateLocationMarker = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const [selectedType, setSelectedType] = useState<locationTypes>(
-    locationTypes.APPAREL
+    locationTypes.ASSEMBLYPOINT
   );
 
   const [upperCaseSelectedType, setUpperCaseSelectedType] =
@@ -176,7 +176,6 @@ const CreateLocationMarker = () => {
               }}
             />
 
-
             <PublicIcon
               className={`icon ${
                 selectedType === locationTypes.PUBLICINFORMATION
@@ -187,8 +186,6 @@ const CreateLocationMarker = () => {
                 setSelectedType(locationTypes.PUBLICINFORMATION);
               }}
             />
-
-            
 
             <SafetyIcon
               className={`icon ${

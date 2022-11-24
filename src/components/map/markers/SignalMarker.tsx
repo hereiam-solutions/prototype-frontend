@@ -82,15 +82,26 @@ const SignalMarker = ({ signal }: Props) => {
       <Popup>
         <StyledPopupContentWrapper>
           <StyledPopupHeading>Suspected victim</StyledPopupHeading>
+          <StyledBy>
+            by<br />
+            {signal.signal_type}
+          </StyledBy>
+
+          {/* truncate to 5 */}
+          <StyledCoordinates>
+            {signal.geoJSON.coordinates[0]}
+            <br />
+            {signal.geoJSON.coordinates[1]}
+          </StyledCoordinates>
           
 
-          <StyledSection>
+          <StyledSignalSection>
             <StyledBoldText>Details: </StyledBoldText>
-            <StyledText>{signal.identifier}</StyledText>
-          </StyledSection>
+            <StyledBoldText>{signal.identifier}</StyledBoldText>
+          </StyledSignalSection>
 
           <StyledDeactivateButton onClick={deleteSignal}>
-            Remove
+            CLEAR
           </StyledDeactivateButton>
 
           <StyledDate>{new Date(signal.timestamp).toLocaleString()}</StyledDate>
@@ -101,4 +112,49 @@ const SignalMarker = ({ signal }: Props) => {
   );
 };
 
+const StyledBy = styled.div`
+
+  width: 100%;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+
+  border: 1px solid ${(props) => props.theme.buttonFontColor};
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
+
+`;
+
+const StyledSignalSection = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledCoordinates = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.7rem;
+  font-weight: 300;
+
+`;
+
 export default SignalMarker;
+function truncate(arg0: { signal: SignalSchema; "": any; }, arg1: number) {
+  throw new Error("Function not implemented.");
+}
+

@@ -44,7 +44,7 @@ const CreateHazardMarker = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const [selectedType, setSelectedType] = useState<hazardTypes>(
-    hazardTypes.AVALANCHE
+    hazardTypes.EARTHQUAKE
   );
 
   const [upperCaseSelectedType, setUpperCaseSelectedType] =
@@ -115,22 +115,59 @@ const CreateHazardMarker = () => {
 
           <StyledSelectedType>{upperCaseSelectedType}</StyledSelectedType>
           <StyledIconRow>
-            <AvalancheIcon
-              className={`icon ${
-                selectedType === hazardTypes.AVALANCHE ? "selected" : ""
-              }`}
-              onClick={() => {
-                setSelectedType(hazardTypes.AVALANCHE);
-              }}
+
+            <EarthquakeIcon
+              className={`icon ${selectedType === hazardTypes.EARTHQUAKE ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.EARTHQUAKE)}
             />
 
-            <BioIncidentIcon
-              className={`icon ${
-                selectedType === hazardTypes.BIOLOGICALINCIDENT
-                  ? "selected"
-                  : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.BIOLOGICALINCIDENT)}
+            <ExplosionIcon
+              className={`icon ${selectedType === hazardTypes.EXPLOSION ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.EXPLOSION)}
+            />
+
+            <FireIcon
+              className={`icon ${selectedType === hazardTypes.FIRE ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.FIRE)}
+            />
+
+            <FloodIcon
+              className={`icon ${selectedType === hazardTypes.FLOOD ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.FLOOD)}
+            />
+
+            <PlaneIcon
+              className={`icon ${selectedType === hazardTypes.PLANECRASH ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.PLANECRASH)}
+            />
+
+            <TrafficIcon
+              className={`icon ${selectedType === hazardTypes.TRAFFICACCIDENT ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.TRAFFICACCIDENT)}
+            />
+
+            <TrainIcon
+              className={`icon ${selectedType === hazardTypes.TRAIN ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.TRAIN)}
+            />
+
+            <PowerIcon
+              className={`icon ${selectedType === hazardTypes.POWEROUTAGE ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.POWEROUTAGE)}
+            />
+
+            <WaterIcon
+              className={`icon ${selectedType === hazardTypes.WATERDISRUPTION ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.WATERDISRUPTION)}
             />
 
             <BombIcon
@@ -140,6 +177,12 @@ const CreateHazardMarker = () => {
               onClick={() => setSelectedType(hazardTypes.BOMB)}
             />
 
+            <RiotIcon
+              className={`icon ${selectedType === hazardTypes.RIOT ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.RIOT)}
+            />
+
             <ChemicalIcon
               className={`icon ${
                 selectedType === hazardTypes.CHEMICALINCIDENT ? "selected" : ""
@@ -147,39 +190,25 @@ const CreateHazardMarker = () => {
               onClick={() => setSelectedType(hazardTypes.CHEMICALINCIDENT)}
             />
 
+            <BioIncidentIcon
+              className={`icon ${selectedType === hazardTypes.BIOLOGICALINCIDENT
+                  ? "selected"
+                  : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.BIOLOGICALINCIDENT)}
+            />
+
+            <NuclearIcon
+              className={`icon ${selectedType === hazardTypes.NUCLEAR ? "selected" : ""
+                }`}
+              onClick={() => setSelectedType(hazardTypes.NUCLEAR)}
+            />
+
             <ContagiousIcon
               className={`icon ${
                 selectedType === hazardTypes.CONTAGIOUSILLNESS ? "selected" : ""
               }`}
               onClick={() => setSelectedType(hazardTypes.CONTAGIOUSILLNESS)}
-            />
-
-            <EarthquakeIcon
-              className={`icon ${
-                selectedType === hazardTypes.EARTHQUAKE ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.EARTHQUAKE)}
-            />
-
-            <ExplosionIcon
-              className={`icon ${
-                selectedType === hazardTypes.EXPLOSION ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.EXPLOSION)}
-            />
-
-            <FireIcon
-              className={`icon ${
-                selectedType === hazardTypes.FIRE ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.FIRE)}
-            />
-
-            <FloodIcon
-              className={`icon ${
-                selectedType === hazardTypes.FLOOD ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.FLOOD)}
             />
 
             <HurricaneIcon
@@ -196,34 +225,6 @@ const CreateHazardMarker = () => {
               onClick={() => setSelectedType(hazardTypes.MARITIME)}
             />
 
-            <NuclearIcon
-              className={`icon ${
-                selectedType === hazardTypes.NUCLEAR ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.NUCLEAR)}
-            />
-
-            <PlaneIcon
-              className={`icon ${
-                selectedType === hazardTypes.PLANECRASH ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.PLANECRASH)}
-            />
-
-            <PowerIcon
-              className={`icon ${
-                selectedType === hazardTypes.POWEROUTAGE ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.POWEROUTAGE)}
-            />
-
-            <RiotIcon
-              className={`icon ${
-                selectedType === hazardTypes.RIOT ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.RIOT)}
-            />
-
             <RockSlideIcon
               className={`icon ${
                 selectedType === hazardTypes.ROCKSLIDE ? "selected" : ""
@@ -231,26 +232,16 @@ const CreateHazardMarker = () => {
               onClick={() => setSelectedType(hazardTypes.ROCKSLIDE)}
             />
 
-            <TrafficIcon
-              className={`icon ${
-                selectedType === hazardTypes.TRAFFICACCIDENT ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.TRAFFICACCIDENT)}
+            <AvalancheIcon
+              className={`icon ${selectedType === hazardTypes.AVALANCHE ? "selected" : ""
+                }`}
+              onClick={() => {
+                setSelectedType(hazardTypes.AVALANCHE);
+              }}
             />
+            
 
-            <TrainIcon
-              className={`icon ${
-                selectedType === hazardTypes.TRAIN ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.TRAIN)}
-            />
-
-            <WaterIcon
-              className={`icon ${
-                selectedType === hazardTypes.WATERDISRUPTION ? "selected" : ""
-              }`}
-              onClick={() => setSelectedType(hazardTypes.WATERDISRUPTION)}
-            />
+            
           </StyledIconRow>
         </StyledSectionWrapper>
 
