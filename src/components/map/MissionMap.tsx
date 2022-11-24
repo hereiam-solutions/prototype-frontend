@@ -19,8 +19,6 @@ import { HazardSchema } from "../../data/realm/schema/hazard";
 import HazardMarker from "./markers/HazardMarker";
 import { PatientSchema } from "../../data/realm/schema/patient";
 import PatientMarker from "./markers/PatientMarker";
-// import { VictimSchema } from "../../data/realm/schema/victim";
-// import VictimMarker from "./markers/VictimMarker";
 import { LocationSchema } from "../../data/realm/schema/location";
 import LocationMarker from "./markers/LocationMarker";
 import { SignalSchema } from "../../data/realm/schema/signal";
