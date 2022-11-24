@@ -97,7 +97,6 @@ root.render(
             <Route path="create-patient" element={<CreatePatientMarker />} />
             <Route path="create-location" element={<CreateLocationMarker />} />
             <Route path="create-signal" element={<CreateSignalMarker />} />
-            <Route path="create-victim" element={<CreateVictimMarker />} />
           </Route>
         </Route>
       </Routes>
