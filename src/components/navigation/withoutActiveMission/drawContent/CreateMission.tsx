@@ -194,6 +194,11 @@ const CreateMission = () => {
     setStartingTimeISOStringValue(isoStart);
   };
 
+  const [togglePlaning, setTogglePlaning] = useState(false)
+  const [toggleSecurity, setToggleSecurity] = useState(false)
+  const [toggleDeployed, setToggleDeployed] = useState(false)
+  const [toggle360, setToggle360] = useState(false)
+
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
@@ -224,105 +229,130 @@ const CreateMission = () => {
           />
         </StyledSectionWrapper>
 
-        {/* Objectives */}
-        <StyledSectionWrapper>
+        <br />
+        {/* MISSION PLANING */}
 
-          <StyledSecondaryHeading>Mission objectives</StyledSecondaryHeading>
-          <StyledHint>Define the main objectives for this mission based on strategy.</StyledHint>
+        <button
+          onClick={() => setTogglePlaning(!togglePlaning)}
+          className="toggleButton"
+        >
+          MISSION PLANING
+        </button>
+        {togglePlaning && (
+          <>
+            {/* Objectives */}
+            <StyledSectionWrapper>
 
-          <StyledList>
-            {objectivesValue.map((objective: string, index: number) => {
-              return (
-                <StyledListEntry key={index}>
-                  {objective}
-                  <StyledObjectiveButton
-                    onClick={() => handleRemoveObject(objective)}
-                  >
-                    X
-                  </StyledObjectiveButton>
-                </StyledListEntry>
-              );
-            })}
-          </StyledList>
+              <StyledSecondaryHeading>Mission objectives</StyledSecondaryHeading>
+              <StyledHint>Define the main objectives for this mission based on strategy.</StyledHint>
 
-          <StyledForm onSubmit={handleObjectivesChange}>
+              <StyledList>
+                {objectivesValue.map((objective: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {objective}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveObject(objective)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
 
-            <StyledFormContentWrapper>
-              <StyledInput
-                value={objectiveValue}
-                onChange={handleObjectiveChange}
+              <StyledForm onSubmit={handleObjectivesChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={objectiveValue}
+                    onChange={handleObjectiveChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
+
+            {/* Risk Level */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+              <StyledHint>Set the initial risk level for this mission.</StyledHint>
+
+              <SingleDropdown
+                options={riskLevelDropdownOptions}
+                value={selectedRiskLevel}
+                label={""}
+                onChange={handleRiskLevelChange}
               />
-              <StyledFormButton type="submit">+</StyledFormButton>
-            </StyledFormContentWrapper>
+            </StyledSectionWrapper>
 
-          </StyledForm>
+            {/* Estimated Population */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
+              <StyledHint>How many people may be infected by this disaster?</StyledHint>
 
-        </StyledSectionWrapper>
-        
-        <br />
-        {/* horizontal line with text */}
-        <div
-          style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+              <StyledInput
+                type="number"
+                value={populationValue}
+                onChange={handlePopulationChange}
+              />
+            </StyledSectionWrapper>
+          </>
+        )}
+
+        {/* MISSION SECURITY */}
+
+        <button
+          onClick={() => setToggleSecurity(!toggleSecurity)}
+          className="toggleButton"
         >
-          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
+          MISSION SECURITY
+        </button>
+        {toggleSecurity && (
+          <>
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
+              <StyledHint>Set the initial security level for this mission.</StyledHint>
 
-          <div>
-            <p style={{ width: '70px', textAlign: 'center' }}> MISSION RISKS</p>
-          </div>
+              <SingleDropdown
+                options={securityLevelDropdownOptions}
+                value={selectedSecurityLevel}
+                label={""}
+                onChange={handleSecurityLevelChange}
+              />
+            </StyledSectionWrapper>
+          </>
+        )}
 
-          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
-        </div>
+        {/* DEPLOYED */}
 
-        {/* Risk Level */}
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-          <StyledHint>Set the initial risk level for this mission.</StyledHint>
-
-          <SingleDropdown
-            options={riskLevelDropdownOptions}
-            value={selectedRiskLevel}
-            label={""}
-            onChange={handleRiskLevelChange}
-          />
-        </StyledSectionWrapper>
-
-        {/* Estimated Population */}
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
-          <StyledHint>How many people may be infected by this disaster?</StyledHint>
-
-          <StyledInput
-            type="number"
-            value={populationValue}
-            onChange={handlePopulationChange}
-          />
-        </StyledSectionWrapper>
-
-        <br />
-        {/* horizontal line with text */}
-        <div
-          style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+        <button
+          onClick={() => setToggleDeployed(!toggleDeployed)}
+          className="toggleButton"
         >
-          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
+          ALSO DEPLOYED
+        </button>
+        {toggleDeployed && (
+          <>
+            Coming soon
+          </>
+        )}
 
-          <div>
-            <p style={{ width: '70px', textAlign: 'center' }}> MISSION SECURITY</p>
-          </div>
+        {/* 360 */}
 
-          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
-        </div>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
-          <StyledHint>Set the initial security level for this mission.</StyledHint>
-
-          <SingleDropdown
-            options={securityLevelDropdownOptions}
-            value={selectedSecurityLevel}
-            label={""}
-            onChange={handleSecurityLevelChange}
-          />
-        </StyledSectionWrapper>
+        <button
+          onClick={() => setToggle360(!toggle360)}
+          className="toggleButton"
+        >
+          360
+        </button>
+        {toggle360 && (
+          <>
+            Coming soon
+          </>
+        )}
 
         
         {/* Mission starts */}
