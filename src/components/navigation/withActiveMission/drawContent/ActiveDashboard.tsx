@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import useNavigation from "../../../../hooks/useNavigation";
 import useMission from "../../../../hooks/useMission";
 
-import Accordion from "../../../navigation/ui/Accordion";
-
 const ActiveDashboard = () => {
   const { setIsDrawOpen } = useNavigation();
   const { activeMission, setActiveMission } = useMission();
@@ -12,22 +10,6 @@ const ActiveDashboard = () => {
   const handleLeave = () => {
     setActiveMission(null);
     setIsDrawOpen(false);
-  };
-
-  const MissionMore = () => {
-    return (
-      <>
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-          <StyledText>{activeMission?.riskLevel}</StyledText>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
-          <StyledText>{activeMission?.estimatedPopulation}</StyledText>
-        </StyledSectionWrapper>
-      </>
-    );
   };
 
   return activeMission ? (
@@ -74,9 +56,15 @@ const ActiveDashboard = () => {
           </StyledList>
         </StyledSectionWrapper>
 
-        <Accordion heading={"More..."}>
-          <MissionMore />
-        </Accordion>
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+          <StyledText>{activeMission?.riskLevel}</StyledText>
+        </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
+          <StyledText>{activeMission?.estimatedPopulation}</StyledText>
+        </StyledSectionWrapper>
 
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Starting time</StyledSecondaryHeading>
