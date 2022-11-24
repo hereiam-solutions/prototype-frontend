@@ -216,7 +216,7 @@ const CreateMission = () => {
       (risk: string) => risk !== riskToBeRemoved
     );
 
-    setRolesValue(reducedRisks);
+    setRisksValue(reducedRisks);
   };
 
   // risk level
