@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import useNavigation from "../../../../hooks/useNavigation";
 import useMission from "../../../../hooks/useMission";
-
-import Accordion from "../../../navigation/ui/Accordion";
+import { useState } from "react";
 
 const ActiveDashboard = () => {
   const { setIsDrawOpen } = useNavigation();
@@ -14,69 +13,159 @@ const ActiveDashboard = () => {
     setIsDrawOpen(false);
   };
 
-  const MissionMore = () => {
-    return (
-      <>
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-          <StyledText>{activeMission?.riskLevel}</StyledText>
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
-          <StyledText>{activeMission?.estimatedPopulation}</StyledText>
-        </StyledSectionWrapper>
-      </>
-    );
-  };
+  const [togglePlaning, setTogglePlaning] = useState(false)
+  const [toggleSecurity, setToggleSecurity] = useState(false)
+  const [toggleDeployed, setToggleDeployed] = useState(false)
+  const [toggle360, setToggle360] = useState(false)
 
   return activeMission ? (
     <StyledDrawWrapper>
 
       <StyledDrawHeader>
-        <StyledHeading>Mission briefing</StyledHeading>
+        <StyledHeading>{activeMission.identifier}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
 
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Mission ID</StyledSecondaryHeading>
+        <StyledText id="missionID">
+          Mission ID
+          <br />
+          {activeMission._id.toString()}
+          <br />
+          {activeMission.disasterType}
+        </StyledText>
 
-          {/* Mission ID */}
-          <StyledMissionIDWrapper>
+        <br />
+        {/* MISSION PLANING */}
 
-            <StyledText id="missionID">{activeMission._id.toString()}</StyledText>
+        <button
+          onClick={() => setTogglePlaning(!togglePlaning)}
+          className="toggleButton"
+        >
+          MISSION PLANING
+        </button>
+        {togglePlaning && (
+          <>
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Objectives</StyledSecondaryHeading>
+              <StyledList>
+                {activeMission.objectives.map(
+                  (objective: string, index: number) => {
+                    return (
+                      <StyledListEntry key={index}>{objective}</StyledListEntry>
+                    );
+                  }
+                )}
+              </StyledList>
+            </StyledSectionWrapper>
 
-          </StyledMissionIDWrapper>
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Role and Mandates</StyledSecondaryHeading>
+              <StyledList>
+                {activeMission.roleAndMandates.map(
+                  (role: string, index: number) => {
+                    return (
+                      <StyledListEntry key={index}>{role}</StyledListEntry>
+                    );
+                  }
+                )}
+              </StyledList>
+            </StyledSectionWrapper>
 
-        </StyledSectionWrapper>
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Threats and Risks</StyledSecondaryHeading>
+              <StyledList>
+                {activeMission.threatsAndRisks.map(
+                  (risk: string, index: number) => {
+                    return (
+                      <StyledListEntry key={index}>{risk}</StyledListEntry>
+                    );
+                  }
+                )}
+              </StyledList>
+            </StyledSectionWrapper>
 
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Mission name</StyledSecondaryHeading>
-          <StyledText>{activeMission.identifier}</StyledText>
-        </StyledSectionWrapper>
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+              <StyledText>{activeMission?.riskLevel}</StyledText>
+            </StyledSectionWrapper>
 
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Disaster type</StyledSecondaryHeading>
-          <StyledText>{activeMission.disasterType}</StyledText>
-        </StyledSectionWrapper>
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
+              <StyledText>{activeMission?.estimatedPopulation}</StyledText>
+            </StyledSectionWrapper>
+          </>
+        )}
 
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Objectives</StyledSecondaryHeading>
-          <StyledList>
-            {activeMission.objectives.map(
-              (objective: string, index: number) => {
-                return (
-                  <StyledListEntry key={index}>{objective}</StyledListEntry>
-                );
-              }
-            )}
-          </StyledList>
-        </StyledSectionWrapper>
+        {/* MISSION SECURITY */}
+        
+        <button
+          onClick={() => setToggleSecurity(!toggleSecurity)}
+          className="toggleButton"
+        >
+          MISSION SECURITY
+        </button>
+        {toggleSecurity && (
+          <>
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
+              <StyledText>{activeMission?.securityLevel}</StyledText>
+            </StyledSectionWrapper>
 
-        <Accordion heading={"More..."}>
-          <MissionMore />
-        </Accordion>
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Evacuation Route</StyledSecondaryHeading>
+              <StyledText>{activeMission?.evacuationRoute}</StyledText>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Evacuation Signal</StyledSecondaryHeading>
+              <StyledText>{activeMission?.additionalEvacuationSignal}</StyledText>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Safe Haven</StyledSecondaryHeading>
+              <StyledText>{activeMission?.safeHaven}</StyledText>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Next Hospital</StyledSecondaryHeading>
+              <StyledText>{activeMission?.nextHospital}</StyledText>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Next Veterinary</StyledSecondaryHeading>
+              <StyledText>{activeMission?.nextVeterinary}</StyledText>
+            </StyledSectionWrapper>
+          </>
+        )}
+
+        {/* DEPLOYED */}
+        
+        <button
+          onClick={() => setToggleDeployed(!toggleDeployed)}
+          className="toggleButton"
+        >
+          ALSO DEPLOYED
+        </button>
+        {toggleDeployed && (
+          <>
+            Coming soon
+          </>
+        )}
+
+        {/* 360 */}
+        
+        <button
+          onClick={() => setToggle360(!toggle360)}
+          className="toggleButton"
+        >
+          360
+        </button>
+        {toggle360 && (
+          <>
+            Coming soon
+          </>
+        )}
 
         <StyledSectionWrapper>
           <StyledSecondaryHeading>Starting time</StyledSecondaryHeading>
@@ -132,7 +221,7 @@ const StyledContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 1.5rem;
 
   overflow-y: scroll;
 `;
@@ -157,14 +246,6 @@ const StyledText = styled.p`
 `;
 
 // styles for this component only
-
-const StyledMissionIDWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  height: 3rem;
-`;
 
 const StyledList = styled.ul`
   margin: 0;

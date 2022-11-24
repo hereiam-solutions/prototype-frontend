@@ -46,15 +46,21 @@ const CreateMission = () => {
 
       const args: CreateMissionArgs = {
         identifier: identifierValue,
-        estimatedPopulation: estimatedPopulationValue,
-        start_of_mission: startingTimeISOStringValue,
-        end_of_mission: new Date().toISOString(),
-        // end_of_mission: endingTimeISOStringValue,
-        geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates },
         disasterType: selectedDisasterType,
         objectives: objectivesValue,
+        roleAndMandates: rolesValue,
+        threatsAndRisks: risksValue,
         riskLevel: selectedRiskLevel,
+        estimatedPopulation: estimatedPopulationValue,
         securityLevel: selectedSecurityLevel,
+        evacuationRoute: routeValue,
+        additionalEvacuationSignal: signalValue,
+        safeHaven: havenValue,
+        nextHospital: hospitalValue,
+        nextVeterinary: veterinaryValue,      
+        start_of_mission: startingTimeISOStringValue,
+        end_of_mission: new Date().toISOString(),
+        geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates }, 
       };
 
       // call the Realm function
@@ -97,7 +103,7 @@ const CreateMission = () => {
     }
   };
 
-  // name
+  // identifier
   const [identifierValue, setIdentifierValue] = useState<string>("");
 
   const handleIdentifierChange = (
@@ -149,6 +155,70 @@ const CreateMission = () => {
     setObjectivesValue(reducedObjectives);
   };
 
+  // Role and Mandates
+  const [roleValue, setRoleValue] = useState<string>("");
+  const [rolesValue, setRolesValue] = useState<string[]>([]);
+
+  const handleRoleChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRoleValue(event.currentTarget.value);
+  };
+
+  const handleRolesChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (roleValue) {
+      const roles: string[] = rolesValue;
+      roles.push(roleValue);
+
+      setRolesValue(roles);
+      setRoleValue("");
+    }
+  };
+
+  const handleRemoveRole = (roleToBeRemoved: string) => {
+    const roles: string[] = rolesValue;
+
+    const reducedRoles = roles.filter(
+      (role: string) => role !== roleToBeRemoved
+    );
+
+    setRolesValue(reducedRoles);
+  };
+
+  // Threats and Risks
+  const [riskValue, setRiskValue] = useState<string>("");
+  const [risksValue, setRisksValue] = useState<string[]>([]);
+
+  const handleRiskChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRiskValue(event.currentTarget.value);
+  };
+
+  const handleRisksChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (riskValue) {
+      const risks: string[] = risksValue;
+      risks.push(riskValue);
+
+      setRisksValue(risks);
+      setRiskValue("");
+    }
+  };
+
+  const handleRemoveRisk = (riskToBeRemoved: string) => {
+    const risks: string[] = risksValue;
+
+    const reducedRisks = risks.filter(
+      (risk: string) => risk !== riskToBeRemoved
+    );
+
+    setRisksValue(reducedRisks);
+  };
+
   // risk level
   const [selectedRiskLevel, setSelectedRiskLevel] = useState<string>(
     RiskLevel.ONE
@@ -156,6 +226,15 @@ const CreateMission = () => {
 
   const handleRiskLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRiskLevel(e.currentTarget.value);
+  };
+
+  // estimated population
+  const [populationValue, setPopulationValue] = useState<string>("");
+
+  const handlePopulationChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPopulationValue(event.currentTarget.value);
   };
 
   // security level
@@ -169,13 +248,49 @@ const CreateMission = () => {
     setSelectedSecurityLevel(e.currentTarget.value);
   };
 
-  // estimated population
-  const [populationValue, setPopulationValue] = useState<string>("");
+  // evacuationRoute
+  const [routeValue, setRouteValue] = useState<string>("");
 
-  const handlePopulationChange = (
+  const handleRouteChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setPopulationValue(event.currentTarget.value);
+    setRouteValue(event.currentTarget.value);
+  };
+
+  // additionalEvacuationSignal
+  const [signalValue, setSignalValue] = useState<string>("");
+
+  const handleSignalChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSignalValue(event.currentTarget.value);
+  };
+
+  // safeHaven
+  const [havenValue, setHavenValue] = useState<string>("");
+
+  const handleHavenChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setHavenValue(event.currentTarget.value);
+  };
+
+  // nextHospital
+  const [hospitalValue, setHospitalValue] = useState<string>("");
+
+  const handleHospitalChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setHospitalValue(event.currentTarget.value);
+  };
+
+  // nextVeterinary
+  const [veterinaryValue, setVeterinaryValue] = useState<string>("");
+
+  const handleVeterinaryChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setVeterinaryValue(event.currentTarget.value);
   };
 
   // starting time
@@ -193,6 +308,11 @@ const CreateMission = () => {
     setStartingTimeValue(start);
     setStartingTimeISOStringValue(isoStart);
   };
+
+  const [togglePlaning, setTogglePlaning] = useState(false)
+  const [toggleSecurity, setToggleSecurity] = useState(false)
+  const [toggleDeployed, setToggleDeployed] = useState(false)
+  const [toggle360, setToggle360] = useState(false)
 
   return (
     <StyledDrawWrapper>
@@ -224,105 +344,255 @@ const CreateMission = () => {
           />
         </StyledSectionWrapper>
 
-        {/* Objectives */}
-        <StyledSectionWrapper>
+        <br />
+        {/* MISSION PLANING */}
 
-          <StyledSecondaryHeading>Mission objectives</StyledSecondaryHeading>
-          <StyledHint>Define the main objectives for this mission based on strategy.</StyledHint>
+        <button
+          onClick={() => setTogglePlaning(!togglePlaning)}
+          className="toggleButton"
+        >
+          MISSION PLANING
+        </button>
+        {togglePlaning && (
+          <>
+            {/* Objectives */}
+            <StyledSectionWrapper>
 
-          <StyledList>
-            {objectivesValue.map((objective: string, index: number) => {
-              return (
-                <StyledListEntry key={index}>
-                  {objective}
-                  <StyledObjectiveButton
-                    onClick={() => handleRemoveObject(objective)}
-                  >
-                    X
-                  </StyledObjectiveButton>
-                </StyledListEntry>
-              );
-            })}
-          </StyledList>
+              <StyledSecondaryHeading>Mission objectives</StyledSecondaryHeading>
+              <StyledHint>Define the main objectives for this mission based on strategy.</StyledHint>
 
-          <StyledForm onSubmit={handleObjectivesChange}>
+              <StyledList>
+                {objectivesValue.map((objective: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {objective}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveObject(objective)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
 
-            <StyledFormContentWrapper>
-              <StyledInput
-                value={objectiveValue}
-                onChange={handleObjectiveChange}
+              <StyledForm onSubmit={handleObjectivesChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={objectiveValue}
+                    onChange={handleObjectiveChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
+
+            {/* Roles and mandates */}
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>Role and Mandates</StyledSecondaryHeading>
+              <StyledHint>Define the main role and mandates for this mission based on lema contract.</StyledHint>
+
+              <StyledList>
+                {rolesValue.map((role: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {role}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveObject(role)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
+
+              <StyledForm onSubmit={handleRolesChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={roleValue}
+                    onChange={handleRoleChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
+
+            {/* Threats and Risks */}
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>Threats and risks</StyledSecondaryHeading>
+              <StyledHint>Define the main threats and risks for this mission.</StyledHint>
+
+              <StyledList>
+                {risksValue.map((risk: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {risk}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveRisk(risk)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
+
+              <StyledForm onSubmit={handleRisksChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={riskValue}
+                    onChange={handleRiskChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
+
+            {/* Risk Level */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+              <StyledHint>Set the initial risk level for this mission.</StyledHint>
+
+              <SingleDropdown
+                options={riskLevelDropdownOptions}
+                value={selectedRiskLevel}
+                label={""}
+                onChange={handleRiskLevelChange}
               />
-              <StyledFormButton type="submit">+</StyledFormButton>
-            </StyledFormContentWrapper>
+            </StyledSectionWrapper>
 
-          </StyledForm>
+            {/* Estimated Population */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
+              <StyledHint>How many people may be infected by this disaster?</StyledHint>
 
-        </StyledSectionWrapper>
-        
-        <br />
-        {/* horizontal line with text */}
-        <div
-          style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+              <StyledInput
+                type="number"
+                value={populationValue}
+                onChange={handlePopulationChange}
+              />
+            </StyledSectionWrapper>
+          </>
+        )}
+
+        {/* MISSION SECURITY */}
+
+        <button
+          onClick={() => setToggleSecurity(!toggleSecurity)}
+          className="toggleButton"
         >
-          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
+          MISSION SECURITY
+        </button>
+        {toggleSecurity && (
+          <>
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
+              <StyledHint>Set the initial security level for this mission.</StyledHint>
 
-          <div>
-            <p style={{ width: '70px', textAlign: 'center' }}> MISSION RISKS</p>
-          </div>
+              <SingleDropdown
+                options={securityLevelDropdownOptions}
+                value={selectedSecurityLevel}
+                label={""}
+                onChange={handleSecurityLevelChange}
+              />
+            </StyledSectionWrapper>
 
-          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
-        </div>
+            {/* evacuationRoute */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Evacuation Route</StyledSecondaryHeading>
+              <StyledHint>Describe the planned evacuation route.</StyledHint>
+              <StyledInput
+                value={routeValue}
+                onChange={handleRouteChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
 
-        {/* Risk Level */}
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-          <StyledHint>Set the initial risk level for this mission.</StyledHint>
+            {/* additionalEvacuationSignal */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Evacuation Signal</StyledSecondaryHeading>
+              <StyledHint>Make the evacuation signal public.</StyledHint>
+              <StyledInput
+                value={signalValue}
+                onChange={handleSignalChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
 
-          <SingleDropdown
-            options={riskLevelDropdownOptions}
-            value={selectedRiskLevel}
-            label={""}
-            onChange={handleRiskLevelChange}
-          />
-        </StyledSectionWrapper>
+            {/* additionalEvacuationSignal */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Safe haven</StyledSecondaryHeading>
+              <StyledHint>Set a safe haven place like BoO.</StyledHint>
+              <StyledInput
+                value={havenValue}
+                onChange={handleHavenChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
 
-        {/* Estimated Population */}
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
-          <StyledHint>How many people may be infected by this disaster?</StyledHint>
+            {/* nextHospital */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Next Hospital</StyledSecondaryHeading>
+              <StyledHint>Where is the next Hospital?</StyledHint>
+              <StyledInput
+                value={hospitalValue}
+                onChange={handleHospitalChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
 
-          <StyledInput
-            type="number"
-            value={populationValue}
-            onChange={handlePopulationChange}
-          />
-        </StyledSectionWrapper>
+            {/* nextVeterinary */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Next Veterinary</StyledSecondaryHeading>
+              <StyledHint>Where is the next Veterinary?</StyledHint>
+              <StyledInput
+                value={veterinaryValue}
+                onChange={handleVeterinaryChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
+          </>
+        )}
 
-        <br />
-        {/* horizontal line with text */}
-        <div
-          style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+        {/* DEPLOYED */}
+
+        <button
+          onClick={() => setToggleDeployed(!toggleDeployed)}
+          className="toggleButton"
         >
-          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
+          ALSO DEPLOYED
+        </button>
+        {toggleDeployed && (
+          <>
+            Coming soon
+          </>
+        )}
 
-          <div>
-            <p style={{ width: '70px', textAlign: 'center' }}> MISSION SECURITY</p>
-          </div>
+        {/* 360 */}
 
-          <div style={{ flex: 1, height: '1px', backgroundColor: '#DCE4EF' }} />
-        </div>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
-          <StyledHint>Set the initial security level for this mission.</StyledHint>
-
-          <SingleDropdown
-            options={securityLevelDropdownOptions}
-            value={selectedSecurityLevel}
-            label={""}
-            onChange={handleSecurityLevelChange}
-          />
-        </StyledSectionWrapper>
+        <button
+          onClick={() => setToggle360(!toggle360)}
+          className="toggleButton"
+        >
+          360
+        </button>
+        {toggle360 && (
+          <>
+            Coming soon
+          </>
+        )}
 
         
         {/* Mission starts */}
