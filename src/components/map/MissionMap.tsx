@@ -32,7 +32,6 @@ const MissionMap = () => {
   const { activeTileLayer, reRenderBoolean } = useMissionMap();
 
   const [patients, setPatients] = useState<PatientSchema[]>([]);
-  // const [victims, setVictims] = useState<VictimSchema[]>([]);
   const [hazards, setHazards] = useState<HazardSchema[]>([]);
   const [locations, setLocations] = useState<LocationSchema[]>([]);
   const [signals, setSignals] = useState<SignalSchema[]>([]);
@@ -48,12 +47,6 @@ const MissionMap = () => {
             realmFunctionNames.getAllPatientsForMission,
             { mission: activeMission?._id.toString() }
           );
-          
-          // const victimsResponse = await realm.currentUser.callFunction(
-          //  realmFunctionNames.getAllVictimsForMission,
-          //  { mission: activeMission?._id.toString() }
-          //);
-          
 
           const hazardsResponse = await realm.currentUser.callFunction(
             realmFunctionNames.getAllHazards,
