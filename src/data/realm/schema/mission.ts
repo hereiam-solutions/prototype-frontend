@@ -41,24 +41,34 @@ export enum ConditionsCategory {
 export type MissionSchema = {
   _id: BSON.ObjectId;
   timestamp: string;
-  identifier: string;
-  estimatedPopulation: number;
-  nuts: string;
+  
   mission_leader: BSON.ObjectId;
-  start_of_mission: string;
-  end_of_mission: string;
   participants: BSON.ObjectId[];
   operating_teams: BSON.ObjectId[];
-  geoJSON: geoJSONPolygon;
+  
+  nuts: string;
+  
+  identifier: string;
   disasterType: disasterTypesEnum;
-  roleAndMandates: string[];
   objectives: string[];
+  roleAndMandates: string[];
+  estimatedPopulation: number;
+  riskLevel: RiskLevel;
+  securityLevel: SecurityLevel;
+
+  start_of_mission: string;
+  end_of_mission: string;
+  
+  
+  
+  
+  
   nationalAssetsDeployed: boolean;
   internationalAssetsDeployed: boolean;
   CIMICDeployed: boolean;
   threatsAndRisks: string[];
-  riskLevel: RiskLevel;
-  securityLevel: SecurityLevel;
+  
+  
   securityReport: [
     { reported_from: BSON.ObjectId },
     { situation: string },
@@ -76,6 +86,8 @@ export type MissionSchema = {
   safeHaven: string;
   nextHospital: string;
   nextVeterinary: string;
+
+  geoJSON: geoJSONPolygon;
 };
 
 export type CreateMissionArgs = {

@@ -60,6 +60,19 @@ const ActiveDashboard = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
+              <StyledSecondaryHeading>Role and Mandates</StyledSecondaryHeading>
+              <StyledList>
+                {activeMission.roleAndMandates.map(
+                  (role: string, index: number) => {
+                    return (
+                      <StyledListEntry key={index}>{role}</StyledListEntry>
+                    );
+                  }
+                )}
+              </StyledList>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
               <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
               <StyledText>{activeMission?.riskLevel}</StyledText>
             </StyledSectionWrapper>
