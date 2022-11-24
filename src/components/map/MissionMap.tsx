@@ -64,7 +64,6 @@ const MissionMap = () => {
           );
 
           setPatients(patientsResponse as PatientSchema[]);
-          // setVictims(victimsResponse as VictimSchema[]);
           setLocations(locationsResponse as LocationSchema[]);
           setHazards(hazardsResponse as HazardSchema[]);
           setSignals(signalsResponse as SignalSchema[]);
@@ -152,17 +151,7 @@ const MissionMap = () => {
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
-          
-          {/** 
-          <LayersControl.Overlay checked={true} name="Victims">
-            <LayerGroup>
-              {victims.map((victim: VictimSchema) => (
-                <VictimMarker victim={victim} key={victim._id.toString()} />
-              ))}
-            </LayerGroup>
-          </LayersControl.Overlay>
-          */}
-
+        
         </LayersControl>
 
         <GetCurrentLocation />
