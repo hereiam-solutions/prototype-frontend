@@ -81,7 +81,10 @@ const ActiveDashboard = () => {
         </button>
         {toggleSecurity && (
           <>
-            Coming soon
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
+              <StyledText>{activeMission?.securityLevel}</StyledText>
+            </StyledSectionWrapper>
           </>
         )}
 
