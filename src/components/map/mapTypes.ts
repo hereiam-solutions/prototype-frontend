@@ -66,8 +66,10 @@ export enum hazardTypes {
 export enum signalTypes {
   DOG = "dog",
   DRONE = "drone",
-  OCC = "occ",
-  COMMUNITY = "community",
+  SENSOR = "sensor",
+  VOST = "vost",
+  LOCALS = "locals",
+  LEMA = "lema",
 }
 
 export enum locationTypes {
