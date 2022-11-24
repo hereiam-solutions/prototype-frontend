@@ -46,15 +46,21 @@ const CreateMission = () => {
 
       const args: CreateMissionArgs = {
         identifier: identifierValue,
-        estimatedPopulation: estimatedPopulationValue,
-        start_of_mission: startingTimeISOStringValue,
-        end_of_mission: new Date().toISOString(),
-        // end_of_mission: endingTimeISOStringValue,
-        geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates },
         disasterType: selectedDisasterType,
         objectives: objectivesValue,
+        roleAndMandates: rolesValue,
+        threatsAndRisks: risksValue,
         riskLevel: selectedRiskLevel,
+        estimatedPopulation: estimatedPopulationValue,
         securityLevel: selectedSecurityLevel,
+        evacuationRoute: routeValue,
+        additionalEvacuationSignal: signalValue,
+        safeHaven: havenValue,
+        nextHospital: hospitalValue,
+        nextVeterinary: veterinaryValue,      
+        start_of_mission: startingTimeISOStringValue,
+        end_of_mission: new Date().toISOString(),
+        geoJSON: { type: "Polygon", coordinates: polygonDrawingCoordinates }, 
       };
 
       // call the Realm function
@@ -97,7 +103,7 @@ const CreateMission = () => {
     }
   };
 
-  // name
+  // identifier
   const [identifierValue, setIdentifierValue] = useState<string>("");
 
   const handleIdentifierChange = (
@@ -149,6 +155,70 @@ const CreateMission = () => {
     setObjectivesValue(reducedObjectives);
   };
 
+  // Role and Mandates
+  const [roleValue, setRoleValue] = useState<string>("");
+  const [rolesValue, setRolesValue] = useState<string[]>([]);
+
+  const handleRoleChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRoleValue(event.currentTarget.value);
+  };
+
+  const handleRolesChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (roleValue) {
+      const roles: string[] = rolesValue;
+      roles.push(roleValue);
+
+      setRolesValue(roles);
+      setRoleValue("");
+    }
+  };
+
+  const handleRemoveRole = (roleToBeRemoved: string) => {
+    const roles: string[] = rolesValue;
+
+    const reducedRoles = roles.filter(
+      (role: string) => role !== roleToBeRemoved
+    );
+
+    setRolesValue(reducedRoles);
+  };
+
+  // Threats and Risks
+  const [riskValue, setRiskValue] = useState<string>("");
+  const [risksValue, setRisksValue] = useState<string[]>([]);
+
+  const handleRiskChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRiskValue(event.currentTarget.value);
+  };
+
+  const handleRisksChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (riskValue) {
+      const risks: string[] = risksValue;
+      risks.push(riskValue);
+
+      setRisksValue(risks);
+      setRiskValue("");
+    }
+  };
+
+  const handleRemoveRisk = (riskToBeRemoved: string) => {
+    const risks: string[] = risksValue;
+
+    const reducedRisks = risks.filter(
+      (risk: string) => risk !== riskToBeRemoved
+    );
+
+    setRolesValue(reducedRisks);
+  };
+
   // risk level
   const [selectedRiskLevel, setSelectedRiskLevel] = useState<string>(
     RiskLevel.ONE
@@ -156,6 +226,15 @@ const CreateMission = () => {
 
   const handleRiskLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRiskLevel(e.currentTarget.value);
+  };
+
+  // estimated population
+  const [populationValue, setPopulationValue] = useState<string>("");
+
+  const handlePopulationChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPopulationValue(event.currentTarget.value);
   };
 
   // security level
@@ -169,13 +248,49 @@ const CreateMission = () => {
     setSelectedSecurityLevel(e.currentTarget.value);
   };
 
-  // estimated population
-  const [populationValue, setPopulationValue] = useState<string>("");
+  // evacuationRoute
+  const [routeValue, setRouteValue] = useState<string>("");
 
-  const handlePopulationChange = (
+  const handleRouteChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setPopulationValue(event.currentTarget.value);
+    setRouteValue(event.currentTarget.value);
+  };
+
+  // additionalEvacuationSignal
+  const [signalValue, setSignalValue] = useState<string>("");
+
+  const handleSignalChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSignalValue(event.currentTarget.value);
+  };
+
+  // safeHaven
+  const [havenValue, setHavenValue] = useState<string>("");
+
+  const handleHavenChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setHavenValue(event.currentTarget.value);
+  };
+
+  // nextHospital
+  const [hospitalValue, setHospitalValue] = useState<string>("");
+
+  const handleHospitalChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setHospitalValue(event.currentTarget.value);
+  };
+
+  // nextVeterinary
+  const [veterinaryValue, setVeterinaryValue] = useState<string>("");
+
+  const handleVeterinaryChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setVeterinaryValue(event.currentTarget.value);
   };
 
   // starting time
@@ -275,6 +390,76 @@ const CreateMission = () => {
 
             </StyledSectionWrapper>
 
+            {/* Roles and mandates */}
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>Role and Mandates</StyledSecondaryHeading>
+              <StyledHint>Define the main role and mandates for this mission based on lema contract.</StyledHint>
+
+              <StyledList>
+                {rolesValue.map((role: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {role}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveObject(role)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
+
+              <StyledForm onSubmit={handleRolesChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={roleValue}
+                    onChange={handleRoleChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
+
+            {/* Threats and Risks */}
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>Threats and risks</StyledSecondaryHeading>
+              <StyledHint>Define the main threats and risks for this mission.</StyledHint>
+
+              <StyledList>
+                {risksValue.map((risk: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {risk}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveRisk(risk)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
+
+              <StyledForm onSubmit={handleRisksChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={riskValue}
+                    onChange={handleRiskChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
+
             {/* Risk Level */}
             <StyledSectionWrapper>
               <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
@@ -323,6 +508,62 @@ const CreateMission = () => {
                 onChange={handleSecurityLevelChange}
               />
             </StyledSectionWrapper>
+
+            {/* evacuationRoute */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Evacuation Route</StyledSecondaryHeading>
+              <StyledHint>Describe the planned evacuation route.</StyledHint>
+              <StyledInput
+                value={routeValue}
+                onChange={handleRouteChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
+
+            {/* additionalEvacuationSignal */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Evacuation Signal</StyledSecondaryHeading>
+              <StyledHint>Make the evacuation signal public.</StyledHint>
+              <StyledInput
+                value={signalValue}
+                onChange={handleSignalChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
+
+            {/* additionalEvacuationSignal */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Safe haven</StyledSecondaryHeading>
+              <StyledHint>Set a safe haven place like BoO.</StyledHint>
+              <StyledInput
+                value={havenValue}
+                onChange={handleHavenChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
+
+            {/* nextHospital */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Next Hospital</StyledSecondaryHeading>
+              <StyledHint>Where is the next Hospital?</StyledHint>
+              <StyledInput
+                value={hospitalValue}
+                onChange={handleHospitalChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
+
+            {/* nextVeterinary */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Next Veterinary</StyledSecondaryHeading>
+              <StyledHint>Where is the next Veterinary?</StyledHint>
+              <StyledInput
+                value={veterinaryValue}
+                onChange={handleVeterinaryChange}
+                placeholder="..."
+              />
+            </StyledSectionWrapper>
+
           </>
         )}
 

@@ -73,6 +73,19 @@ const ActiveDashboard = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
+              <StyledSecondaryHeading>Threats and Risks</StyledSecondaryHeading>
+              <StyledList>
+                {activeMission.threatsAndRisks.map(
+                  (risk: string, index: number) => {
+                    return (
+                      <StyledListEntry key={index}>{risk}</StyledListEntry>
+                    );
+                  }
+                )}
+              </StyledList>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
               <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
               <StyledText>{activeMission?.riskLevel}</StyledText>
             </StyledSectionWrapper>
@@ -97,6 +110,31 @@ const ActiveDashboard = () => {
             <StyledSectionWrapper>
               <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
               <StyledText>{activeMission?.securityLevel}</StyledText>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Evacuation Route</StyledSecondaryHeading>
+              <StyledText>{activeMission?.evacuationRoute}</StyledText>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Evacuation Signal</StyledSecondaryHeading>
+              <StyledText>{activeMission?.additionalEvacuationSignal}</StyledText>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Safe Haven</StyledSecondaryHeading>
+              <StyledText>{activeMission?.safeHaven}</StyledText>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Next Hospital</StyledSecondaryHeading>
+              <StyledText>{activeMission?.nextHospital}</StyledText>
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>Next Veterinary</StyledSecondaryHeading>
+              <StyledText>{activeMission?.nextVeterinary}</StyledText>
             </StyledSectionWrapper>
           </>
         )}
