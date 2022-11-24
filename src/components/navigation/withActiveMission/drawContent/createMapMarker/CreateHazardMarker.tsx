@@ -44,7 +44,7 @@ const CreateHazardMarker = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const [selectedType, setSelectedType] = useState<hazardTypes>(
-    hazardTypes.AVALANCHE
+    hazardTypes.EARTHQUAKE
   );
 
   const [upperCaseSelectedType, setUpperCaseSelectedType] =
