@@ -41,91 +41,55 @@ export enum ConditionsCategory {
 export type MissionSchema = {
   _id: BSON.ObjectId;
   timestamp: string;
-  
   mission_leader: BSON.ObjectId;
-  participants: BSON.ObjectId[];
   operating_teams: BSON.ObjectId[];
-  
-  nuts: string;
-  
+  participants: BSON.ObjectId[];
   identifier: string;
   disasterType: disasterTypesEnum;
   objectives: string[];
   roleAndMandates: string[];
-  estimatedPopulation: number;
-  riskLevel: RiskLevel;
-  securityLevel: SecurityLevel;
-
-  start_of_mission: string;
-  end_of_mission: string;
-  
-  
-  
-  
-  
-  nationalAssetsDeployed: boolean;
-  internationalAssetsDeployed: boolean;
-  CIMICDeployed: boolean;
   threatsAndRisks: string[];
-  
-  
-  securityReport: [
-    { reported_from: BSON.ObjectId },
-    { situation: string },
-    { securityCategory: SecurityCategory },
-    { timestamp: string }
-  ];
-  weatherReport: [
-    { reported_from: BSON.ObjectId },
-    { conditions: string },
-    { conditionsCategory: ConditionsCategory },
-    { timestamp: string }
-  ];
+  riskLevel: RiskLevel;
+  estimatedPopulation: number;
+  securityLevel: SecurityLevel;
   evacuationRoute: string;
   additionalEvacuationSignal: string;
   safeHaven: string;
   nextHospital: string;
   nextVeterinary: string;
-
+  nationalAssetsDeployed: boolean;
+  internationalAssetsDeployed: boolean;
+  CIMICDeployed: boolean;
+  start_of_mission: string;
+  end_of_mission: string;
+  nuts: string;
   geoJSON: geoJSONPolygon;
 };
 
 export type CreateMissionArgs = {
   //   _id: BSON.ObjectId;
   //   timestamp: string;
-  identifier: string;
-  estimatedPopulation: number;
-  //   nuts: string;
   //   mission_leader: BSON.ObjectId;
-  start_of_mission: string;
-  end_of_mission: string;
-  //   participants: BSON.ObjectId[];
   //   operating_teams: BSON.ObjectId[];
-  geoJSON: geoJSONPolygon;
+  //   participants: BSON.ObjectId[];
+  identifier: string;
   disasterType: string;
-  //   roleAndMandates: string[];
   objectives: string[];
+  roleAndMandates: string[];
+  threatsAndRisks: string[];
+  riskLevel: string;
+  estimatedPopulation: number;
+  securityLevel: string;
+  evacuationRoute: string;
+  additionalEvacuationSignal: string;
+  safeHaven: string;
+  nextHospital: string;
+  nextVeterinary: string;
   //   nationalAssetsDeployed: boolean;
   //   internationalAssetsDeployed: boolean;
   //   CIMICDeployed: boolean;
-  //   threatsAndRisks: string[];
-  riskLevel: string;
-  securityLevel: string;
-  //   securityReport: [
-  // { reported_from: BSON.ObjectId },
-  // { situation: string },
-  // { securityCategory: SecurityCategory },
-  // { timestamp: string }
-  //   ];
-  //   weatherReport: [
-  //     { reported_from: BSON.ObjectId },
-  //     { conditions: string },
-  //     { conditionsCategory: ConditionsCategory },
-  //     { timestamp: string }
-  //   ];
-  //   evacuationRoute: string;
-  //   additionalEvacuationSignal: string;
-  //   safeHaven: string;
-  //   nextHospital: string;
-  //   nextVeterinary: string;
+  start_of_mission: string;
+  end_of_mission: string;
+  //   nuts: string;
+  geoJSON: geoJSONPolygon; 
 };
