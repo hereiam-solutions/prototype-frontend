@@ -26,7 +26,6 @@ import MissionCreationLayout from "./components/navigation/withoutActiveMission/
 import CreateLocationMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateLocationMarker";
 import CreatePatientMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreatePatientMarker";
 import CreateSignalMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateSignalMarker";
-import CreateVictimMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateVictimMarker";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
