@@ -563,7 +563,6 @@ const CreateMission = () => {
                 placeholder="..."
               />
             </StyledSectionWrapper>
-
           </>
         )}
 
