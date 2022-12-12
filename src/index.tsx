@@ -27,6 +27,9 @@ import CreateLocationMarker from "./components/navigation/withActiveMission/draw
 import CreatePatientMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreatePatientMarker";
 import CreateSignalMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateSignalMarker";
 
+// import i18n Translation
+import './i18n';
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
