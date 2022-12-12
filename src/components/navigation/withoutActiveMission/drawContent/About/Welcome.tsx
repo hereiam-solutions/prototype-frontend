@@ -1,20 +1,23 @@
 import React from "react";
+
 import styled from "styled-components";
+
+import { useTranslation } from 'react-i18next';
 
 type Props = {};
 
 const Welcome = (props: Props) => {
+
+  const { t } = useTranslation();
+
   return (
     <StyledAboutWelcome>
       <p>
-        Welcome and thank you for choosing to use hereIam. Join like many other
-        users worldwide, and save more lives by making better decisions.
+        {t("Welcome.welcome")}
       </p>
       <p>&nbsp;</p>
       <p>
-        hereIam is a project of Project X Consulting GmbH, a German based
-        company - supported by professionals and experts in Urban Search &
-        Rescue and disaster management from all over Europe. Thank you for your inputs.
+        {t("Welcome.hereiam")}
       </p>
     </StyledAboutWelcome>
   );

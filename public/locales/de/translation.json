@@ -24,6 +24,10 @@
     "About": {
         "about": "Über"
     },
+    "Welcome": {
+        "welcome": "Willkommen und danke, dass Sie sich für hereIam entschieden haben. Schließen Sie sich wie viele andere Nutzer weltweit an, und retten Sie mehr Leben, indem Sie bessere Entscheidungen treffen.",
+        "hereiam": "hereIam ist ein Projekt von Project X Consulting GmbH, einem in Deutschland ansässigen Unternehmen - unterstützt von Fachleuten und Experten für Urban Search & Rescue und Katastrophenmanagement aus ganz Europa. Denen danken wir für den wertvollen Input."
+    },
     "Faq": {
         "headline": "Erste Antworten",
         "why": "Warum hereIam?",
