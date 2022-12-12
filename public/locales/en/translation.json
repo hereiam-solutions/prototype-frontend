@@ -28,6 +28,10 @@
         "welcome": "Welcome and thank you for choosing to use hereIam. Join like many other users worldwide, and save more lives by making better decisions.",
         "hereiam": "hereIam is a project of Project X Consulting GmbH, a German based company - supported by professionals and experts in Urban Search & Rescue and disaster management from all over Europe. Thank you for your inputs."
     },
+    "Version": {
+        "rights": "All rights reserved.",
+        "updates": "No Update available."
+    },
     "Faq": {
         "headline": "First Answers",
         "why": "Why hereIam?",
