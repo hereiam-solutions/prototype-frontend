@@ -8,5 +8,8 @@
         "apperance": "Nutzung",
         "darkmode": "Dark Mode",
         "language": "Sprache"
+    },
+    "Profile": {
+        "logout": "Log Out"
     }
 }
