@@ -11,5 +11,14 @@
     },
     "Profile": {
         "logout": "Log Out"
+    },
+    "Login": {
+        "hint": "By using the platform, you agree to our Terms and Privacy Policy.",
+        "noaccount": "No account?",
+        "signup": "Sign up here.",
+        "prefer": "Prefer social login?",
+        "soon": "Coming soon.",
+        "about": "About hereIam.",
+        "have": "Already have an account? Log In."
     }
 }

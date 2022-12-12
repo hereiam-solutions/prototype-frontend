@@ -4,12 +4,21 @@
         "map": "Karte",
         "default": "Open Street Map",
         "humanitarian": "Humanitarian Map",
-        "sattelite": "Sattelite",
+        "sattelite": "Sattelit",
         "apperance": "Nutzung",
         "darkmode": "Dark Mode",
         "language": "Sprache"
     },
     "Profile": {
         "logout": "Log Out"
+    },
+    "Login": {
+        "hint": "Durch die Nutzung der Plattform erklärst du dich mit unseren Nutzungsbedingungen und der Datenschutzerklärung einverstanden.",
+        "noaccount": "Kein Nutzer?",
+        "signup": "hier registrieren.",
+        "prefer": "Anmelden mit Social Login?",
+        "soon": "Coming soon.",
+        "about": "Über hereIam.",
+        "have": "Bereits Nutzer? Hier einloggen."
     }
 }

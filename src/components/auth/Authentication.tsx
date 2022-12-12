@@ -1,19 +1,26 @@
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
+
 import useRealm from "../../hooks/useRealm";
-import styled from "styled-components";
 import * as Realm from "realm-web";
 import { Link, useNavigate } from "react-router-dom";
 import { realmFunctionNames } from "../../data/realm/functions";
+
 import useTheme from "../../hooks/useTheme";
 import { ThemeEnum } from "../../context/ThemeContext";
 
 import DarkLogo from "../../assets/Logo/dark/hereIam_logo_dark256x256.svg";
 import LightLogo from "../../assets/Logo/light/hereIam_logo_light256x256.svg";
+
 import useMission from "../../hooks/useMission";
 import { MissionSchema } from "../../data/realm/schema/mission";
 import useNavigation from "../../hooks/useNavigation";
+
+import styled from "styled-components";
+
+import { useTranslation } from "react-i18next";
+
 // define the schema / rules for the register form validation
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -143,13 +150,15 @@ const Authentication = () => {
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <StyledDrawWrapper>
       <StyledLogoWrapper>
         <StyledLogo
           src={currentTheme === ThemeEnum.LIGHT ? DarkLogo : LightLogo}
         />
-        <StyledCompanyName>HEREIAM</StyledCompanyName>
+        <StyledCompanyName>hereIam</StyledCompanyName>
       </StyledLogoWrapper>
 
       {isLogin ? (
@@ -186,11 +195,28 @@ const Authentication = () => {
               <StyledButton type="submit">
                 {loading ? "loading..." : error ? "Invalid login" : "Log In"}
               </StyledButton>
-              <StyledSwitchButton onClick={() => setIsLogin(false)}>
-                No account? Register.
-              </StyledSwitchButton>
+              
+              {/*notice terms and privacy policy */}
+              <StyledHint>{t("Login.hint")}</StyledHint>
 
-              <StyledLink to="/auth-about">About hereIam.</StyledLink>
+              {/* add passwort reset function */}
+
+              <StyledAlternatives>
+
+                <StyledSwitchButton onClick={() => setIsLogin(false)}>
+                  {t("Login.noaccount")}<br />
+                  {t("Login.signup")}
+                </StyledSwitchButton>
+
+                <StyledSocialLogin>
+                  {t("Login.prefer")}<br />
+                  {t("Login.soon")}
+                </StyledSocialLogin>
+
+              </StyledAlternatives>
+
+              <StyledLink to="/auth-about">{t("Login.about")}</StyledLink>
+            
             </StyledForm>
           )}
         </Formik>
@@ -244,10 +270,10 @@ const Authentication = () => {
               </StyledButton>
 
               <StyledSwitchButton onClick={() => setIsLogin(true)}>
-                Already have an account? Log In.
+                {t("Login.have")}
               </StyledSwitchButton>
 
-              <StyledLink to="/auth-about">About hereIam.</StyledLink>
+              <StyledLink to="/auth-about">{t("Login.about")}</StyledLink>
             </StyledForm>
           )}
         </Formik>
@@ -338,12 +364,42 @@ const StyledBottomSpacer = styled.div`
 
 const StyledSwitchButton = styled.button`
   margin-top: 1rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+`;
+
+const StyledSocialLogin = styled.div`
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  font-weight: 500;
 `;
 
 const StyledLink = styled(Link)`
   color: ${(props) => props.theme.primaryFontColor};
   text-decoration: none;
   margin-top: 1rem;
+`;
+
+const StyledHint = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.7rem;
+
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+`;
+
+const StyledAlternatives = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+  padding-top: 0.5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: solid 1px ${(props) => props.theme.primaryFontColor};
 `;
 
 export default Authentication;
