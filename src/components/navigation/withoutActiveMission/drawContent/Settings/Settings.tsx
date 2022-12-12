@@ -12,16 +12,23 @@ import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
 import useTheme from "../../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../../context/ThemeContext";
 
+import { useTranslation } from "react-i18next";
+
 const Settings = () => {
   const { setActiveTileLayer, setReRenderBoolean, reRenderBoolean } =
     useMissionMap();
 
   const { currentTheme, setCurrentTheme } = useTheme();
 
+  const { t, i18n } = useTranslation();
+  function TranslateClick(lang: string | undefined) {
+    i18n.changeLanguage(lang);
+  }
+
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Settings</StyledHeading>
+        <StyledHeading>{t("Settings.headline")}Settings</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
@@ -87,6 +94,23 @@ const Settings = () => {
               offColor="#D1D1D6"
             />
           </StyledThemeSwitch>
+
+          {/* choose language container*/}
+          <StyledTranslateSwitch>
+            <StyledLanguageButton
+              aria-label="in deutsch"
+              onClick={() => TranslateClick("de-DE")}
+            >
+              de
+            </StyledLanguageButton>
+            <StyledLanguageButton
+              aria-label="in english"
+              onClick={() => TranslateClick("en-US")}
+            >
+              en
+            </StyledLanguageButton>
+          </StyledTranslateSwitch>
+
         </StyledSectionWrapper>
  
       </StyledContentWrapper>
@@ -155,7 +179,7 @@ const StyledSecondaryHeading = styled.p`
   color: ${(props) => props.theme.primaryFontColor};
 `;
 
-const StyledButton = styled.button`
+const StyledLanguageButton = styled.button`
   min-width: 30vw;
   height: 3rem;
 
@@ -172,6 +196,23 @@ const StyledButton = styled.button`
 
   border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
   border-radius: ${(props) => props.theme.inputBorderRadius};
+`;
+
+const StyledTranslateSwitch = styled.div`
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--base-text);
+
+  button {
+  padding: 0.2rem;
+  }
 `;
 
 // styles for this component only
