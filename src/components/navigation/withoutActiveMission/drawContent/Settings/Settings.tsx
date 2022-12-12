@@ -28,12 +28,12 @@ const Settings = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>{t("Settings.headline")}Settings</StyledHeading>
+        <StyledHeading>{t("Settings.headline")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Map</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Settings.map")}</StyledSecondaryHeading>
 
           <StyledMapTypesWrapper>
             <StyledMapTypeSwitchWrapper
@@ -44,7 +44,9 @@ const Settings = () => {
             >
               <StyledDefaultWrapper>
               </StyledDefaultWrapper>
-              <StyledMapTypeText>Default</StyledMapTypeText>
+              <StyledMapTypeText>
+                {t("Settings.default")}
+              </StyledMapTypeText>
             </StyledMapTypeSwitchWrapper>
 
             <StyledMapTypeSwitchWrapper>
@@ -55,7 +57,9 @@ const Settings = () => {
                 }}
               >
               </StyledHumanitarianWrapper>
-              <p>Humanitarian</p>
+              <StyledMapTypeText>
+                {t("Settings.humanitarian")}
+              </StyledMapTypeText>
             </StyledMapTypeSwitchWrapper>
 
             <StyledMapTypeSwitchWrapper>
@@ -66,13 +70,15 @@ const Settings = () => {
                 }}
               >
               </StyledSatteliteWrapper>
-              <StyledMapTypeText>Sattelite</StyledMapTypeText>
+              <StyledMapTypeText>
+                {t("Settings.sattelite")}
+              </StyledMapTypeText>
             </StyledMapTypeSwitchWrapper>
           </StyledMapTypesWrapper>
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Appearance</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Settings.apperance")}</StyledSecondaryHeading>
 
           <StyledThemeSwitch
             onClick={() => {
@@ -81,7 +87,7 @@ const Settings = () => {
                 : setCurrentTheme(ThemeEnum.LIGHT);
             }}
           >
-            <StyledMapTypeText>Dark Mode</StyledMapTypeText>
+            <StyledMapTypeText>{t("Settings.darkmode")}</StyledMapTypeText>
 
             <Switch
               onChange={() => {
@@ -97,18 +103,23 @@ const Settings = () => {
 
           {/* choose language container*/}
           <StyledTranslateSwitch>
-            <StyledLanguageButton
-              aria-label="in deutsch"
-              onClick={() => TranslateClick("de-DE")}
-            >
-              de
-            </StyledLanguageButton>
-            <StyledLanguageButton
-              aria-label="in english"
-              onClick={() => TranslateClick("en-US")}
-            >
-              en
-            </StyledLanguageButton>
+            <StyledMapTypeText>{t("Settings.language")}</StyledMapTypeText>
+
+            <StyledButtonContainer>
+              <StyledLanguageButton
+                aria-label="in deutsch"
+                onClick={() => TranslateClick("de-DE")}
+              >
+                de
+              </StyledLanguageButton>
+              <StyledLanguageButton
+                aria-label="in english"
+                onClick={() => TranslateClick("en-US")}
+              >
+                en
+              </StyledLanguageButton>
+            </StyledButtonContainer>
+            
           </StyledTranslateSwitch>
 
         </StyledSectionWrapper>
@@ -180,39 +191,36 @@ const StyledSecondaryHeading = styled.p`
 `;
 
 const StyledLanguageButton = styled.button`
-  min-width: 30vw;
-  height: 3rem;
-
-  margin-top: 1.5rem;
-  margin-bottom: 4rem;
+  padding: 0.4rem;
 
   font-weight: 700;
   text-align: center;
 
   align-self: center;
 
-  color: ${(props) => props.theme.buttonFontColor};
-  background-color: ${(props) => props.theme.buttonColor};
+  color: ${(props) => props.theme.buttonColor};
 
-  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border: 1px solid ${(props) => props.theme.buttonColor};
   border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
-const StyledTranslateSwitch = styled.div`
-  margin-top: 2rem;
-
+const StyledButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: raw;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+`;
 
-  font-size: 0.8rem;
-  font-weight: 600;
+const StyledTranslateSwitch = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   color: var(--base-text);
-
-  button {
-  padding: 0.2rem;
-  }
 `;
 
 // styles for this component only

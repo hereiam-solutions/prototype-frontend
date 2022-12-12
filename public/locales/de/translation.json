@@ -1,5 +1,12 @@
 {
     "Settings": {
-        "headline": "Einstellungen"
+        "headline": "Einstellungen",
+        "map": "Karte",
+        "default": "Open Street Map",
+        "humanitarian": "Humanitarian Map",
+        "sattelite": "Sattelite",
+        "apperance": "Nutzung",
+        "darkmode": "Dark Mode",
+        "language": "Sprache"
     }
 }
