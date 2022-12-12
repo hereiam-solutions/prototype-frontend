@@ -20,5 +20,36 @@
         "soon": "Coming soon.",
         "about": "Über hereIam.",
         "have": "Bereits Nutzer? Hier einloggen."
+    },
+    "About": {
+        "about": "Über"
+    },
+    "Faq": {
+        "headline": "Erste Antworten",
+        "why": "Warum hereIam?",
+        "how": "Wie installiere ich die App?",
+        "slow": "Warum lädt die App so langsam?",
+        "battery": "Wird GPS meine Batterieladung beeinflussen?",
+        "accuracy": "Was tue ich, wenn ich unkorrekte Kartendaten habe?",
+        "why1": "Wenn fehlende Informationen auf fehlende Erfahrungen treffen, sind Menschenleben in Gefahr.",
+        "why2": "Mit hereIam ermöglichen wir bessere Entscheidungen, indem wir Informationslücken schließen und bewährte Praktiken bereitstellen.",
+        "why3": "Diese App verbindet alle Teams vor Ort und auf höherer Ebene, um sie effektiver zu machen.",
+        "why4": "Ist so einfach wie Stift und Papier - unsere einheitliche Lösung für den Informationsaustausch und die Entscheidungsfindung in Krisen und Katastrophen.",
+        "how1": "Es ist nicht notwendig, die App zu installieren. Sie können die App in jedem modernen Browser über die bekannte URL aufrufen und nutzen.",
+        "how2": "Die App ist als PWA konzipiert. Daher bietet Ihnen Ihr Browser zusätzlich die lokale Installation an. Sie können die App dann lokal von Ihrem Startbildschirm aus starten.",
+        "slow1": "Bitte beachten Sie, dass es sich um ein Projekt in einem frühen Entwicklungsstadium handelt. Daher kann es zu häufigen Updates und Ausfallzeiten kommen.",
+        "slow2": "Stellen Sie zunächst sicher, dass Sie eine stabile Internetverbindung haben.",
+        "slow3": "Wenn Sie das getan haben, aber immer noch Probleme mit der Geschwindigkeit der App haben, empfehlen wir Ihnen, die folgenden Punkte in den Einstellungen des Telefons zu überprüfen:",
+        "slow4": "Prüfen Sie, ob die Berechtigungen für den Zugriff auf den Standort aktiviert sind, während Sie die Anwendung verwenden (im Browser und im Betriebssystem)",
+        "slow5": "die automatische Zeitzone des Mobiltelefons verwenden",
+        "slow6": "Stellen Sie sicher, dass sich das Telefon nicht im Energiesparmodus befindet. Deaktivieren Sie ggf. die Akkuoptimierung und verwenden Sie die App nicht, wenn das Telefon im leeren Zustand geladen wird.",
+        "short1": "Da hereIam Zugriff auf GPS benötigt, verbraucht Ihr Telefon möglicherweise mehr Akkulaufzeit, während Sie die Karte und die Funktionen aktiv nutzen.",
+        "short2": "Das passiert oft bei Apps, die von diesen Telefoneinstellungen abhängen. Wenn Sie der Meinung sind, dass unsere App zu viel Akkulaufzeit verbraucht, empfehlen wir Ihnen, die Akkueinstellungen des Telefons zu überprüfen und sie an die Nutzung mit der App anzupassen.",
+        "short3": "Wir versuchen, unsere App so ressourcenschonend wie möglich zu gestalten.",
+        "acc1": "Wir verwenden Karten- und Geodatenmaterial von Drittanbietern, die ihr Angebot so aktuell wie möglich halten.",
+        "acc2": "Da sich aber die Daten auf der ganzen Welt ständig ändern, kann es bei einigen von ihnen etwas länger dauern, bis die geänderten Daten auf der Karte erscheinen.",
+        "acc3": "Wir versuchen, unsere App so aktuell wie möglich zu gestalten.",
+        "supp1": "Wenn das Problem weiterhin besteht, wenden Sie sich bitte an das Support-Team und teilen Sie uns die Einzelheiten mit, damit wir Ihnen besser helfen können.",
+        "supp2": "Bitte beachten Sie, dass es sich um ein Projekt in einem frühen Entwicklungsstadium handelt. Daher kann es zu häufigen Updates und Ausfallzeiten kommen."
     }
 }

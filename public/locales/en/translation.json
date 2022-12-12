@@ -20,5 +20,36 @@
         "soon": "Coming soon.",
         "about": "About hereIam.",
         "have": "Already have an account? Log In."
+    },
+    "About": {
+        "about": "About"
+    },
+    "Faq": {
+        "headline": "First Answers",
+        "why": "Why hereIam?",
+        "how": "How to install?",
+        "slow": "Why does the app load so slowly?",
+        "battery": "Does the use of GPS shorten the battery life of my cell phone?",
+        "accuracy": "What should i do when i notice inaccurate data on the map?",
+        "why1": "When missing information meets missing experience, lives are in danger.",
+        "why2": "With hereIam we enable better decisions by closing information gaps and providing best practise.",
+        "why3": "This app connects all teams in the field and the higher level to make them more effective.",
+        "why4": "Is as easy as pen and paper - our homogeneous solution for information sharing and decision making in crisis and disasters.",
+        "how1": "It is not necessary to install the app. You can access and use the app in any modern browser using the familiar URL.",
+        "how2": "It is designed as a PWA. Therefore, your browser offers you the local installation additionally. You can then launch the app locally from your screen.",
+        "slow1": "Please note that this is a project in an early stage of development. Therefore, there may be frequent updates and downtimes.",
+        "slow2": "First, make sure you have a stable internet connection.",
+        "slow3": "If you have done that, but still have problems with the app's speed, we recommend you to check the following items in the phone's settings:",
+        "slow4": "check if the permissions to access the location are enabled while you are using the app (in the browser and in the operating system)",
+        "slow5": "use the automatic time zone for the cell phone",
+        "slow6": "make sure that the phone is not in power saving mode. If necessary, deselect battery optimization and do not use the app when the phone is charging from an empty state.",
+        "short1": "Since hereIam needs access to GPS, your phone may consume more battery life while you are actively using the map and features.",
+        "short2": "This often happens with apps that depend on these phone settings. If you think that our app consumes too much battery life, we recommend you to check the phone's battery settings and adjust them to the usage with the app.",
+        "short3": "We try to make our app as resource efficient as possible.",
+        "acc1": "We use maps and geodata material from third-party providers who keep their offer as up-to-date as possible.",
+        "acc2": "But since data is constantly changing around the world, some of them may take a little longer to reflect changed data in the map.",
+        "acc3": "We try to make our app as actually as possible.",
+        "supp1": "If the problem persists, please contact the support team and let us know the details so that we can help you better.",
+        "supp2": "Please note that this is a project in an early stage of development. Therefore, there may be frequent updates and downtimes."
     }
 }
