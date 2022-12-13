@@ -100,6 +100,9 @@
         "desc": "Beschreibung",
         "deschint": "Beschreibe die Information weiter."
     },
+    "Actionmenu": {
+        "modal1": "Tippen Sie einmal auf der Karte auf die Stelle, an der Sie die Markierung setzen möchten."
+    },
     "Settings": {
         "headline": "Einstellungen",
         "map": "Karte",

@@ -102,6 +102,10 @@
         "deschint": "Provide more information for that Signal."
 
     },
+    "Actionmenu": {
+        "modal1": "Tap once on the map at the location you want to set the marker."
+
+    },
     "Settings": {
         "headline": "Settings",
         "map": "Map",
