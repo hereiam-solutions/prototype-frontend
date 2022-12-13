@@ -6,6 +6,7 @@
     "Submit Hazard": "Sende Gefahr",
     "Submit Location": "Sende einsatzrelevanten Ort",
     "Submit Victim": "Sende Betroffenen",
+    "Submit Signal": "Submit Signal",
     "Mission": {
         "headline": "Einsatz",
         "joinin": "Join in diesen Einsatz",
@@ -91,6 +92,13 @@
         "clothinghint": "Beschreibe sichtbare Kleidung, wie Jacke, Hose, Schuhe für eine spätere Suche oder Ermittlung.",
         "bodymarks": "Körpermerkmale",
         "bodymarkshint": "Beschreibe sichtbare Körpermerkmale, wie Narben, Male oder Prothesen für eine spätere Suche oder Ermittlung."
+    },
+    "Signal": {
+        "headline": "Markiere vermutete Betroffene",
+        "type": "Informationsquelle",
+        "typehint": "Von welcher Informationsquelle kam das Signal?",
+        "desc": "Beschreibung",
+        "deschint": "Beschreibe die Information weiter."
     },
     "Settings": {
         "headline": "Einstellungen",

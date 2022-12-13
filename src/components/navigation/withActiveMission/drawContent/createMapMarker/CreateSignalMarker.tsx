@@ -1,6 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
-import useNavigation from "../../../../../hooks/useNavigation";
 
 // type imports
 import { signalTypes } from "../../../../map/mapTypes";
@@ -8,12 +6,17 @@ import { realmFunctionNames } from "../../../../../data/realm/functions";
 import { CreateSignalArgs } from "../../../../../data/realm/schema/signal";
 
 // hook imports
+import useNavigation from "../../../../../hooks/useNavigation";
 import useCreateMarker from "../../../../../hooks/useCreateMarker";
 import useMission from "../../../../../hooks/useMission";
 import useRealm from "../../../../../hooks/useRealm";
 import useMissionMap from "../../../../../hooks/useMissionMap";
 
 import SingleDropdown from "../../../ui/SingleDropdown";
+
+import { useTranslation } from 'react-i18next';
+
+import styled from "styled-components";
 
 const CreateSignalMarker = () => {
   const { realm } = useRealm();
@@ -76,17 +79,18 @@ const CreateSignalMarker = () => {
     setIdentifierValue(event.currentTarget.value);
   };
 
-  
+  const { t } = useTranslation();
+
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Mark Signal</StyledHeading>
+        <StyledHeading>{t("Signal.headline")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Signal type</StyledSecondaryHeading>
-
+          <StyledSecondaryHeading>{t("Signal.type")}</StyledSecondaryHeading>
+          <StyledHint>{t("Signal.typehint")}</StyledHint>
           <SingleDropdown
             options={SignalDropdownOptions}
             value={selectedSignalType}
@@ -97,8 +101,8 @@ const CreateSignalMarker = () => {
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Description</StyledSecondaryHeading>
-          <StyledHint>Provide a short description for that Signal.</StyledHint>
+          <StyledSecondaryHeading>{t("Signal.desc")}</StyledSecondaryHeading>
+          <StyledHint>{t("Signal.deschint")}</StyledHint>
           <StyledInput
             placeholder="..."
             onChange={handleInputChange}
@@ -108,7 +112,7 @@ const CreateSignalMarker = () => {
         </StyledSectionWrapper>
 
         <StyledButton onClick={handleSubmit}>
-          {loading ? "loading..." : "Submit Signal"}
+          {t(loading ? "loading..." : "Submit Signal")}
         </StyledButton>
       </StyledContentWrapper>
     </StyledDrawWrapper>

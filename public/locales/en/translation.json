@@ -6,6 +6,7 @@
     "Submit Hazard": "Submit Hazard",
     "Submit Location": "Submit Location",
     "Submit Victim": "Submit Victim",
+    "Submit Signal": "Submit Signal",
     "Mission": {
         "headline": "Mission",
         "joinin": "Join this Mission",
@@ -92,6 +93,14 @@
         "clothinghint": "Describe visible clothing, such as jacket, pants, shoes for later search or investigation.",
         "bodymarks": "Bodymarks",
         "bodymarkshint": "Describe visible bodymarks, such as scars, marks, or prosthetics for later search or investigation."
+    },
+    "Signal": {
+        "headline": "Mark suspected victims",
+        "type": "Signal type",
+        "typehint": "From which signal source did the information come?",
+        "desc": "Description",
+        "deschint": "Provide more information for that Signal."
+
     },
     "Settings": {
         "headline": "Settings",
