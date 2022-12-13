@@ -17,7 +17,7 @@
         "type": "Disaster Kategorie",
         "typehint": "Wähle die zutreffende Disaster Kategorie aus.",
         "planing": "EINSATZPLANUNG",
-        "objectives": "Mission objectives",
+        "objectives": "Einsatzziele",
         "objectiveshint": "Definieren Sie die Hauptziele für diesen Einsatz auf der Grundlage der Strategie.",
         "roles": "Rolle und Mandat",
         "roleshiint": "Definieren Sie die Rolle des Teams und der Mandate für diesen Einsatz (Aufgaben) auf der Grundlage der Vereinbarung mit lokalen Behörden.",
