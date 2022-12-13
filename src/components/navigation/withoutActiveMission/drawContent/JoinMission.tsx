@@ -115,7 +115,7 @@ const JoinMission = () => {
           />
 
           <StyledButton onClick={handleJoin}>
-            {error ? error : "Join"}
+            {t(error ? error : "Join")}
           </StyledButton>
 
           <StyledRejoinButton onClick={handleJoinCurrentMission}>
@@ -138,7 +138,7 @@ const JoinMission = () => {
               initiateMissionCreation();
 
               setModalContent(
-                "Start drawing the mission border with the help of the polygon tool on the right"
+                t("Mission.modal1")
               );
 
               setTimeout(() => {

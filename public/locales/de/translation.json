@@ -1,6 +1,7 @@
 {
     "Submit": "Senden",
     "Starting time required": "Erfordert Startzeit",
+    "Join": "Laden",
     "Mission": {
         "headline": "Einsatz",
         "joinin": "Join in diesen Einsatz",
@@ -42,7 +43,8 @@
         "360": "360",
         "360soon": "Demnächst verfügbar",
         "start": "Einsatzbeginn",
-        "starthint": "Legen Sie Datum und Uhrzeit fest, zu der dieser Einsatz startet."
+        "starthint": "Legen Sie Datum und Uhrzeit fest, zu der dieser Einsatz startet.",
+        "modal1": "Beginnen Sie mit dem Zeichnen der Missionsgrenze mit Hilfe des Polygonwerkzeugs auf der rechten Seite"
     },
     "Settings": {
         "headline": "Einstellungen",

@@ -1,6 +1,7 @@
 {
     "Submit": "Submit",
     "Starting time required": "Starting time required",
+    "Join": "Join",
     "Mission": {
         "headline": "Mission",
         "joinin": "Join this Mission",
@@ -43,7 +44,8 @@
         "360": "360",
         "360soon": "Coming soon",
         "start": "Mission starts",
-        "starthint": "Set date and time, this mission will start."
+        "starthint": "Set date and time, this mission will start.",
+        "modal1": "Start drawing the mission border with the help of the polygon tool on the right"
 
     },
     "Settings": {
