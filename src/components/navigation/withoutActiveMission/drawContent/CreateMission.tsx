@@ -1,7 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
-import styled from "styled-components";
-import SingleDropdown from "../../ui/SingleDropdown";
+import { useNavigate } from "react-router-dom";
+import useNavigation from "../../../../hooks/useNavigation";
+
+import useRealm from "../../../../hooks/useRealm";
+import { realmFunctionNames } from "../../../../data/realm/functions";
+
+import useTheme from "../../../../hooks/useTheme";
+import { ThemeEnum } from "../../../../context/ThemeContext";
+
+import useMission from "../../../../hooks/useMission";
+import useModal from "../../../../hooks/useModal";
 
 // type / enum imports
 import {
@@ -12,18 +21,11 @@ import {
 } from "../../../../data/realm/schema/mission";
 import { disasterTypesEnum } from "../../../map/mapTypes";
 
-import useMission from "../../../../hooks/useMission";
+import SingleDropdown from "../../ui/SingleDropdown";
 
-import useRealm from "../../../../hooks/useRealm";
-import { realmFunctionNames } from "../../../../data/realm/functions";
+import { useTranslation } from 'react-i18next';
 
-import { useNavigate } from "react-router-dom";
-import useNavigation from "../../../../hooks/useNavigation";
-
-import useTheme from "../../../../hooks/useTheme";
-import { ThemeEnum } from "../../../../context/ThemeContext";
-
-import useModal from "../../../../hooks/useModal";
+import styled from "styled-components";
 
 const CreateMission = () => {
   // contexts
@@ -84,7 +86,7 @@ const CreateMission = () => {
 
         setTimeout(() => {
           setIsModalActive(false);
-        }, 5000);
+        }, 3000);
 
         setIsModalActive(true);
       }
@@ -314,28 +316,31 @@ const CreateMission = () => {
   const [toggleDeployed, setToggleDeployed] = useState(false)
   const [toggle360, setToggle360] = useState(false)
 
+  const { t } = useTranslation();
+
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Define Mission</StyledHeading>
+        <StyledHeading>{t("Mission.define")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
 
         {/* Identifier */}
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Mission name</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Mission.name")}</StyledSecondaryHeading>
+          <StyledHint>{t("Mission.namehint")}</StyledHint>
           <StyledInput
             value={identifierValue}
             onChange={handleIdentifierChange}
-            placeholder="Give this mission a meaningfull name..."
+            placeholder="..."
           />
         </StyledSectionWrapper>
 
         {/* Disaster Type */}
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Disaster type</StyledSecondaryHeading>
-          <StyledHint>Select the main disaster type for this mission.</StyledHint>
+          <StyledSecondaryHeading>{t("Mission.type")}</StyledSecondaryHeading>
+          <StyledHint>{t("Mission.typehint")}</StyledHint>
           <SingleDropdown
             options={disasterDropdownOptions}
             value={selectedDisasterType}
@@ -351,15 +356,15 @@ const CreateMission = () => {
           onClick={() => setTogglePlaning(!togglePlaning)}
           className="toggleButton"
         >
-          MISSION PLANING
+          {t("Mission.planing")}
         </button>
         {togglePlaning && (
           <>
             {/* Objectives */}
             <StyledSectionWrapper>
 
-              <StyledSecondaryHeading>Mission objectives</StyledSecondaryHeading>
-              <StyledHint>Define the main objectives for this mission based on strategy.</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.objectives")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.objectiveshint")}</StyledHint>
 
               <StyledList>
                 {objectivesValue.map((objective: string, index: number) => {
@@ -393,8 +398,8 @@ const CreateMission = () => {
             {/* Roles and mandates */}
             <StyledSectionWrapper>
 
-              <StyledSecondaryHeading>Role and Mandates</StyledSecondaryHeading>
-              <StyledHint>Define the main role and mandates for this mission based on lema contract.</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.roles")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.roleshint")}</StyledHint>
 
               <StyledList>
                 {rolesValue.map((role: string, index: number) => {
@@ -428,8 +433,8 @@ const CreateMission = () => {
             {/* Threats and Risks */}
             <StyledSectionWrapper>
 
-              <StyledSecondaryHeading>Threats and risks</StyledSecondaryHeading>
-              <StyledHint>Define the main threats and risks for this mission.</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.risks")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.riskshint")}</StyledHint>
 
               <StyledList>
                 {risksValue.map((risk: string, index: number) => {
@@ -462,8 +467,8 @@ const CreateMission = () => {
 
             {/* Risk Level */}
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
-              <StyledHint>Set the initial risk level for this mission.</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.risklevel")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.risklevelhint")}</StyledHint>
 
               <SingleDropdown
                 options={riskLevelDropdownOptions}
@@ -475,8 +480,8 @@ const CreateMission = () => {
 
             {/* Estimated Population */}
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Estimated affected population</StyledSecondaryHeading>
-              <StyledHint>How many people may be infected by this disaster?</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.population")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.populationhint")}</StyledHint>
 
               <StyledInput
                 type="number"
@@ -493,13 +498,13 @@ const CreateMission = () => {
           onClick={() => setToggleSecurity(!toggleSecurity)}
           className="toggleButton"
         >
-          MISSION SECURITY
+          {t("Mission.security")}
         </button>
         {toggleSecurity && (
           <>
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
-              <StyledHint>Set the initial security level for this mission.</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.seclevel")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.seclevelhint")}</StyledHint>
 
               <SingleDropdown
                 options={securityLevelDropdownOptions}
@@ -511,8 +516,8 @@ const CreateMission = () => {
 
             {/* evacuationRoute */}
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Evacuation Route</StyledSecondaryHeading>
-              <StyledHint>Describe the planned evacuation route.</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.evac")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.evachint")}</StyledHint>
               <StyledInput
                 value={routeValue}
                 onChange={handleRouteChange}
@@ -522,8 +527,8 @@ const CreateMission = () => {
 
             {/* additionalEvacuationSignal */}
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Evacuation Signal</StyledSecondaryHeading>
-              <StyledHint>Make the evacuation signal public.</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.evacsignal")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.evacsignalhint")}</StyledHint>
               <StyledInput
                 value={signalValue}
                 onChange={handleSignalChange}
@@ -533,8 +538,8 @@ const CreateMission = () => {
 
             {/* additionalEvacuationSignal */}
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Safe haven</StyledSecondaryHeading>
-              <StyledHint>Set a safe haven place like BoO.</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.safehaven")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.safehavenhint")}</StyledHint>
               <StyledInput
                 value={havenValue}
                 onChange={handleHavenChange}
@@ -544,8 +549,8 @@ const CreateMission = () => {
 
             {/* nextHospital */}
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Next Hospital</StyledSecondaryHeading>
-              <StyledHint>Where is the next Hospital?</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.hospital")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.hospitalhint")}</StyledHint>
               <StyledInput
                 value={hospitalValue}
                 onChange={handleHospitalChange}
@@ -555,8 +560,8 @@ const CreateMission = () => {
 
             {/* nextVeterinary */}
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Next Veterinary</StyledSecondaryHeading>
-              <StyledHint>Where is the next Veterinary?</StyledHint>
+              <StyledSecondaryHeading>{t("Mission.vet")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.vethint")}</StyledHint>
               <StyledInput
                 value={veterinaryValue}
                 onChange={handleVeterinaryChange}
@@ -572,11 +577,11 @@ const CreateMission = () => {
           onClick={() => setToggleDeployed(!toggleDeployed)}
           className="toggleButton"
         >
-          ALSO DEPLOYED
+          {t("Mission.also1")}
         </button>
         {toggleDeployed && (
           <>
-            Coming soon
+            {t("Mission.also2")}
           </>
         )}
 
@@ -586,19 +591,19 @@ const CreateMission = () => {
           onClick={() => setToggle360(!toggle360)}
           className="toggleButton"
         >
-          360
+          {t("Mission.360")}
         </button>
         {toggle360 && (
           <>
-            Coming soon
+            {t("Mission.360soon")}
           </>
         )}
 
         
         {/* Mission starts */}
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Mission starts</StyledSecondaryHeading>
-          <StyledHint>Set date and time, this mission will start.</StyledHint>
+          <StyledSecondaryHeading>{t("Mission.start")}</StyledSecondaryHeading>
+          <StyledHint>{t("Mission.starthint")}</StyledHint>
           <StyledTimeInput
             type="datetime-local"
             value={startingTimeValue}
@@ -608,7 +613,7 @@ const CreateMission = () => {
         
 
         <StyledButton onClick={handleMissionSubmit}>
-          {startingTimeISOStringValue ? "Submit" : "Starting time required"}
+          {t(startingTimeISOStringValue ? "Submit" : "Starting time required")}
         </StyledButton>
       </StyledContentWrapper>
 
