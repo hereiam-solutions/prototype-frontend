@@ -1,5 +1,9 @@
 import React from "react";
+
 import styled from "styled-components";
+
+import { useTranslation } from 'react-i18next';
+
 import Version from "./Version";
 import Welcome from "./Welcome";
 import Faq from "./FAQ";
@@ -7,10 +11,13 @@ import Legals from "./Legals";
 
 
 const About = () => {
+
+  const { t } = useTranslation();
+
   return (
     <StyledAboutWrapper>
       <StyledDrawHeader>
-        <StyledHeading>About</StyledHeading>
+        <StyledHeading>{t("About.about")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledAboutContent>

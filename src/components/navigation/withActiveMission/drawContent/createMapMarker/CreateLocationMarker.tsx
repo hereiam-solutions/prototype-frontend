@@ -1,7 +1,5 @@
 /* eslint-disable no-lone-blocks */
 import { useEffect, useState } from "react";
-import styled from "styled-components";
-import useNavigation from "../../../../../hooks/useNavigation";
 
 // type imports
 import { locationTypes } from "../../../../map/mapTypes";
@@ -9,9 +7,15 @@ import { realmFunctionNames } from "../../../../../data/realm/functions";
 import { CreateLocationArgs } from "../../../../../data/realm/schema/location";
 
 // hook imports
+import useNavigation from "../../../../../hooks/useNavigation";
 import useCreateMarker from "../../../../../hooks/useCreateMarker";
 import useMission from "../../../../../hooks/useMission";
 import useRealm from "../../../../../hooks/useRealm";
+import useMissionMap from "../../../../../hooks/useMissionMap";
+
+import { useTranslation } from 'react-i18next';
+
+import styled from "styled-components";
 
 // svg imports
 import { ReactComponent as ApparrelIcon } from "../../../../../assets/Locations/Color/Active=apparel.svg";
@@ -25,16 +29,7 @@ import { ReactComponent as RegistrationIcon } from "../../../../../assets/Locati
 import { ReactComponent as SafetyIcon } from "../../../../../assets/Locations/Color/Active=safety.svg";
 import { ReactComponent as TransportIcon } from "../../../../../assets/Locations/Color/Active=transport.svg";
 
-import useMissionMap from "../../../../../hooks/useMissionMap";
 
-{/* 
-import { ReactComponent as BooIcon } from "../../../../../assets/Locations/Color/Active=boo.svg";
-import { ReactComponent as EmtccIcon } from "../../../../../assets/Locations/Color/Active=emtcc.svg";
-import { ReactComponent as OsoccIcon } from "../../../../../assets/Locations/Color/Active=osocc.svg";
-import { ReactComponent as RdcIcon } from "../../../../../assets/Locations/Color/Active=rdc.svg";
-import { ReactComponent as UccIcon } from "../../../../../assets/Locations/Color/Active=ucc.svg";
-import { ReactComponent as UndacIcon } from "../../../../../assets/Locations/Color/Active=undac.svg";
-*/};
 
 const CreateLocationMarker = () => {
   const { realm } = useRealm();
@@ -93,6 +88,8 @@ const CreateLocationMarker = () => {
     }
   };
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     const locationTypeArray = selectedType.split(" ");
 
@@ -108,12 +105,12 @@ const CreateLocationMarker = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Set Location</StyledHeading>
+        <StyledHeading>{ t("Location.headline")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Location type</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Location.type")}</StyledSecondaryHeading>
 
           <StyledSelectedType>{upperCaseSelectedType}</StyledSelectedType>
           <StyledIconRow>
@@ -209,10 +206,10 @@ const CreateLocationMarker = () => {
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Description</StyledSecondaryHeading>
-          <StyledHint>Provide a short description for that Location, like contact information, callsign with channel.</StyledHint>
+          <StyledSecondaryHeading>{t("Location.desc")}</StyledSecondaryHeading>
+          <StyledHint>{t("Location.deschint")}</StyledHint>
           <StyledInput
-            placeholder="Set the location's description..."
+            placeholder="..."
             onChange={handleNameChange}
             type="text"
             value={nameValue}
@@ -220,7 +217,7 @@ const CreateLocationMarker = () => {
         </StyledSectionWrapper>
 
         <StyledButton onClick={handleSubmit}>
-          {loading ? "loading..." : "Submit Location"}
+          {t(loading ? "loading..." : "Submit Location")}
         </StyledButton>
       </StyledContentWrapper>
     </StyledDrawWrapper>

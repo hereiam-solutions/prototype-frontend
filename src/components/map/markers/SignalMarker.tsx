@@ -1,12 +1,15 @@
 import { Marker, Popup } from "react-leaflet";
+
 import useRealm from "../../../hooks/useRealm";
+import { realmFunctionNames } from "../../../data/realm/functions";
+
 import useMission from "../../../hooks/useMission";
+import useMissionMap from "../../../hooks/useMissionMap";
+
 import {
   DeleteSignalArgs,
   SignalSchema,
 } from "../../../data/realm/schema/signal";
-import useMissionMap from "../../../hooks/useMissionMap";
-import { realmFunctionNames } from "../../../data/realm/functions";
 
 // styling imports
 import {
@@ -16,6 +19,8 @@ import {
   StyledBoldText,
   StyledDeactivateButton,
 } from "./styles/markerStyles";
+
+import { useTranslation } from 'react-i18next';
 
 //divlogo for leaflet
 import { divIcon } from "leaflet";
@@ -72,6 +77,8 @@ const SignalMarker = ({ signal }: Props) => {
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <Marker
       position={[signal.geoJSON.coordinates[0], signal.geoJSON.coordinates[1]]}
@@ -79,9 +86,9 @@ const SignalMarker = ({ signal }: Props) => {
     >
       <Popup>
         <StyledPopupContentWrapper>
-          <StyledPopupHeading>Suspected victim</StyledPopupHeading>
+          <StyledPopupHeading>{t("Signal.susp")}</StyledPopupHeading>
           <StyledBy>
-            by<br />
+            {t("Signal.by")}<br />
             {signal.signal_type}
           </StyledBy>
 
@@ -99,7 +106,7 @@ const SignalMarker = ({ signal }: Props) => {
           </StyledSignalSection>
 
           <StyledDeactivateButton onClick={deleteSignal}>
-            CLEAR
+            {t("Signal.clear")}
           </StyledDeactivateButton>
 
           <StyledDate>{new Date(signal.timestamp).toLocaleString()}</StyledDate>

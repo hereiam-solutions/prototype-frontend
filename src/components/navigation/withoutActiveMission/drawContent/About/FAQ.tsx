@@ -1,39 +1,40 @@
 import React from "react";
+
 import styled from "styled-components";
+
+import { useTranslation } from 'react-i18next';
+
 import Accordion from "../../../ui/Accordion";
 import { RiCustomerService2Fill } from "react-icons/ri";
 
 type Props = {};
 
 const Faq = (props: Props) => {
+
+  const { t } = useTranslation();
+
   return (
     <StyledFaq>
-      <SectionHeadline>First Answers</SectionHeadline>
+      <SectionHeadline>{t("Faq.headline")}</SectionHeadline>
 
-      <Accordion heading={"Why hereIam?"}>
+      <Accordion heading={t("Faq.why")}>
         <WhyHereiam />
       </Accordion>
 
-      <Accordion heading={"How to install?"}>
+      <Accordion heading={t("Faq.how")}>
         <HowToInstall />
       </Accordion>
 
-      <Accordion heading={"Why does the app load so slowly?"}>
+      <Accordion heading={t("Faq.slow")}>
         <WhyLoadSlowly />
         <Support />
       </Accordion>
 
-      <Accordion
-        heading={
-          "Does the use of GPS shorten the battery life of my cell phone?"
-        }
-      >
+      <Accordion heading={t("Faq.battery")}>
         <GpsShortenBattery />
       </Accordion>
 
-      <Accordion
-        heading={"What should i do when i notice inaccurate data on the map?"}
-      >
+      <Accordion heading={t("Faq.accuracy")}>
         <InaccurateData />
         <Support />
       </Accordion>
@@ -42,110 +43,116 @@ const Faq = (props: Props) => {
 };
 
 const WhyHereiam = () => {
+
+  const { t } = useTranslation();
+
   return (
     <div>
       <p>
-        When missing information meets missing experience, lives are in danger.
+        {t("Faq.why1")}
       </p>
       <br />
       <p>
-        With hereIam we enable better decisions by closing information gaps and
-        providing best practise.
+        {t("Faq.why2")}
       </p>
       <br />
       <p>
-        This app connects all teams in the field and the higher level to make
-        them more effective.
+        {t("Faq.why3")}
       </p>
       <br />
       <h4>
-        Is as easy as pen and paper - our homogeneous solution for information
-        sharing and decision making in crisis and disasters.
+        {t("Faq.why4")}
       </h4>
     </div>
   );
 };
 
-const InaccurateData = () => {
-  return (
-    <div>
-      <p>
-        We use maps and geodata material from third-party providers who keep
-        their offer as up-to-date as possible.
-      </p>
-      <br />
-      <p>
-        But since data is constantly changing around the world, some of them may
-        take a little longer to reflect changed data in the map.
-      </p>
-      <br />
-      <p>We try to make our app as actually as possible.</p>
-    </div>
-  );
-};
-
-const GpsShortenBattery = () => {
-  return (
-    <div>
-      <p>
-        Since hereIam needs access to GPS, your phone may consume more battery
-        life while you are actively using the map and features.
-      </p>
-      <br />
-      <p>
-        This often happens with apps that depend on these phone settings. If you
-        think that our app consumes too much battery life, we recommend you to
-        check the phone's battery settings and adjust them to the usage with the
-        app.
-      </p>
-      <br />
-      <p>We try to make our app as resource efficient as possible.</p>
-    </div>
-  );
-};
-
 const HowToInstall = () => {
+
+  const { t } = useTranslation();
+
   return (
     <div>
       <p>
-        It is not necessary to install the app. You can access and use the app
-        in any modern browser using the familiar URL.
+        {t("Faq.how1")}
       </p>
       <br />
       <p>
-        It is designed as a PWA. Therefore, your browser offers you the local
-        installation additionally. You can then launch the app locally from your
-        screen.
+        {t("Faq.how2")}
       </p>
     </div>
   );
 };
 
 const WhyLoadSlowly = () => {
+
+  const { t } = useTranslation();
+
   return (
     <div>
       <p>
-        Please note that this is a project in an early stage of development.
-        Therefore, there may be frequent updates and downtimes.
+        {t("Faq.slow1")}
       </p>
-      <p>First, make sure you have a stable internet connection.</p>
+      <p>
+        {t("Faq.slow2")}
+      </p>
       <br />
       <p>
-        If you have done that, but still have problems with the app's speed, we
-        recommend you to check the following items in the phone's settings:
+        {t("Faq.slow3")}
       </p>
       <ul>
         <li>
-          check if the permissions to access the location are enabled while you
-          are using the app (in the browser and in the operating system)
+          {t("Faq.slow4")}
         </li>
-        <li>use the automatic time zone for the cell phone</li>
         <li>
-          make sure that the phone is not in power saving mode. If necessary,
-          deselect battery optimization and do not use the app when the phone is
-          charging from an empty state.
+          {t("Faq.slow5")}
+        </li>
+        <li>
+          {t("Faq.slow6")}
         </li>
       </ul>
+    </div>
+  );
+};
+
+const GpsShortenBattery = () => {
+
+  const { t } = useTranslation();
+
+  return (
+    <div>
+      <p>
+        {t("Faq.short1")}
+      </p>
+      <br />
+      <p>
+        {t("Faq.short2")}
+      </p>
+      <br />
+      <p>
+        {t("Faq.short3")}
+      </p>
+    </div>
+  );
+};
+
+const InaccurateData = () => {
+
+  const { t } = useTranslation();
+
+  return (
+    <div>
+      <p>
+        {t("Faq.acc1")}
+      </p>
+      <br />
+      <p>
+        {t("Faq.acc2")}
+      </p>
+      <br />
+      <p>
+        {t("Faq.acc3")}
+      </p>
     </div>
   );
 };
@@ -153,16 +160,17 @@ const WhyLoadSlowly = () => {
 const Icon = RiCustomerService2Fill;
 
 const Support = () => {
+
+  const { t } = useTranslation();
+
   return (
     <StyledSupport>
       <Icon size={65} />
       <p>
-        If the problem persists, please contact the support team and let us know
-        the details so that we can help you better.
+        {t("Faq.supp1")}
       </p>
       <p>
-        Please note that this is a project in an early stage of development.
-        Therefore, there may be frequent updates and downtimes.
+        {t("Faq.supp2")}
       </p>
     </StyledSupport>
   );

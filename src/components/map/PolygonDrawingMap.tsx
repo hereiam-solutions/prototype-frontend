@@ -1,12 +1,14 @@
 import { useEffect, useRef } from "react";
-import styled from "styled-components";
+
 import { MapContainer, TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import "leaflet-draw/dist/leaflet.draw.css";
+
 import useMissionMap from "../../hooks/useMissionMap";
 import GetCurrentLocation from "./mapEvents/CurrentLocationMarker";
 import DrawPolygon from "./DrawPolygon";
 
-import "leaflet/dist/leaflet.css";
-import "leaflet-draw/dist/leaflet.draw.css";
+import styled from "styled-components";
 
 const PolygonDrawingMap = () => {
   const { activeTileLayer, reRenderBoolean } = useMissionMap();

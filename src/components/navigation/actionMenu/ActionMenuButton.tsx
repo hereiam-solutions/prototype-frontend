@@ -8,10 +8,10 @@ import { RiUserAddFill } from "react-icons/ri"; //RIGHT
 import { MdReportProblem } from "react-icons/md"; //LEFT
 import { RiFlag2Fill } from "react-icons/ri"; //BOTTOM
 
-
-
 import { MarkerType } from "../../map/mapTypes";
 import useModal from "../../../hooks/useModal";
+
+import { useTranslation } from 'react-i18next';
 
 export enum Position {
   TOP = "TOP",
@@ -34,13 +34,13 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
 
   const { setIsActionMenuOpen, setIsCreateMarkerModeEnabled, setMarkerType } =
     useActionMenu();
+  
+  const { t } = useTranslation();
 
   const handleModal = () => {
-    setModalContent("Tap once on the map at the location you want to set the marker");
-
-    // setTimeout(() => {
-    //   setIsModalActive(false);
-    // }, 6000);
+    setModalContent(
+      t("Actionmenu.modal1")
+    );
 
     setIsModalActive(true);
   };

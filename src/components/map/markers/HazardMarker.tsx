@@ -1,16 +1,15 @@
+import { useEffect, useState } from "react";
+
 import { Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
-import { hazardTypes } from "../mapTypes";
-import { useEffect, useState } from "react";
+
 import useRealm from "../../../hooks/useRealm";
-import useMission from "../../../hooks/useMission";
-import {
-  DeleteHazardArgs,
-  HazardSchema,
-} from "../../../data/realm/schema/hazard";
-import useMissionMap from "../../../hooks/useMissionMap";
 import { realmFunctionNames } from "../../../data/realm/functions";
 
+import useMission from "../../../hooks/useMission";
+import useMissionMap from "../../../hooks/useMissionMap";
+
+import { hazardTypes } from "../mapTypes";
 // styling imports
 import {
   StyledPopupContentWrapper,
@@ -21,6 +20,12 @@ import {
   StyledText,
   StyledDeactivateButton,
 } from "./styles/markerStyles";
+import {
+  DeleteHazardArgs,
+  HazardSchema,
+} from "../../../data/realm/schema/hazard";
+
+import { useTranslation } from 'react-i18next';
 
 const AvalanceIcon = new Icon({
   iconUrl: "/icons/assets/Hazards/Alert=Avalanche.svg",
@@ -231,6 +236,8 @@ const HazardMarker = ({ hazard }: Props) => {
       return word[0].toUpperCase() + word.substring(1);
     })
     .join(" ");
+  
+  const { t } = useTranslation();
 
   return (
     <>
@@ -249,7 +256,7 @@ const HazardMarker = ({ hazard }: Props) => {
               </StyledSection>
 
               <StyledDeactivateButton onClick={deleteHazard}>
-                Remove
+              {t("Hazard.remove")}
               </StyledDeactivateButton>
 
               <StyledDate>{new Date(hazard.timestamp).toLocaleString()}</StyledDate>

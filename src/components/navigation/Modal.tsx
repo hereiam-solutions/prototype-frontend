@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import useModal from "../../hooks/useModal";
-import { RiArrowUpCircleFill } from "react-icons/ri";
 
 const Modal = () => {
   const { modalContent, setIsModalActive } = useModal();
@@ -11,11 +10,7 @@ const Modal = () => {
         onClick={() => setIsModalActive(false)}
       >
         {modalContent}
-        <StyledArrow>
-          <RiArrowUpCircleFill
-          size={30}  
-          />
-        </StyledArrow>
+
       </StyledModal>
     </StyledModalWrapper>
   );
@@ -74,16 +69,6 @@ const StyledModal = styled.div`
       /* margin-top: 1rem; */
     }
   }
-`;
-
-const StyledArrow = styled.div`
-  margin-top: 0.7rem;
-  display: flex;
-  justify-content: center;
-
-  pointer-events: none;
-
-  transform: rotate(180deg);
 `;
 
 export default Modal;

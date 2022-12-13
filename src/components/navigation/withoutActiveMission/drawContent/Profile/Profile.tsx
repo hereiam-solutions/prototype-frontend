@@ -6,6 +6,8 @@ import useNavigation from "../../../../../hooks/useNavigation";
 
 import useRealm from "../../../../../hooks/useRealm";
 
+import { useTranslation } from "react-i18next";
+
 // type / enum imports
 import {
   UpdatePersonArgs,
@@ -29,6 +31,8 @@ const Profile = () => {
   // @ts-ignore
   const [userState, setUserState] = useState<any>(realm.currentUser.customData);
 
+  const { t } = useTranslation();
+
   return (
     <StyledProfileWrapper>
       <StyledDrawHeader>
@@ -42,7 +46,7 @@ const Profile = () => {
       <StyledProfileContent>
         
 
-        <StyledButton onClick={handleLogOut}>Log out</StyledButton>
+        <StyledButton onClick={handleLogOut}>{t("Profile.logout")}</StyledButton>
       </StyledProfileContent>
     </StyledProfileWrapper>
   );

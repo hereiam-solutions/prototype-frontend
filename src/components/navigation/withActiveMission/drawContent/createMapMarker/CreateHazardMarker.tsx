@@ -13,6 +13,9 @@ import useMission from "../../../../../hooks/useMission";
 import useRealm from "../../../../../hooks/useRealm";
 import useMissionMap from "../../../../../hooks/useMissionMap";
 
+//translation
+import { useTranslation } from 'react-i18next';
+
 // svg imports
 import { ReactComponent as AvalancheIcon } from "../../../../../assets/Hazards/Alert=Avalanche.svg";
 import { ReactComponent as BioIncidentIcon } from "../../../../../assets/Hazards/Alert=Biological Incident.svg";
@@ -91,6 +94,8 @@ const CreateHazardMarker = () => {
     }
   };
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     const hazardTypeArray = selectedType.split(" ");
 
@@ -106,12 +111,12 @@ const CreateHazardMarker = () => {
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Mark Hazard</StyledHeading>
+        <StyledHeading>{t("Hazard.headline")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Hazard type</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Hazard.type")}</StyledSecondaryHeading>
 
           <StyledSelectedType>{upperCaseSelectedType}</StyledSelectedType>
           <StyledIconRow>
@@ -246,8 +251,8 @@ const CreateHazardMarker = () => {
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Description</StyledSecondaryHeading>
-          <StyledHint>Provide a short description for that Hazard or Obstacle.</StyledHint>
+          <StyledSecondaryHeading>{t("Hazard.desc")}</StyledSecondaryHeading>
+          <StyledHint>{t("Hazard.deschint")}</StyledHint>
           <StyledInput
             placeholder="..."
             onChange={handleInputChange}
@@ -257,7 +262,7 @@ const CreateHazardMarker = () => {
         </StyledSectionWrapper>
 
         <StyledButton onClick={handleSubmit}>
-          {loading ? "loading..." : "Submit Hazard"}
+          {t(loading ? "loading..." : "Submit Hazard")}
         </StyledButton>
       </StyledContentWrapper>
     </StyledDrawWrapper>

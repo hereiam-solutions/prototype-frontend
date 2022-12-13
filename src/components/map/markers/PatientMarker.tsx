@@ -4,10 +4,12 @@ import {
   DeletePatientArgs,
   PatientSchema,
 } from "../../../data/realm/schema/patient";
+
 import useRealm from "../../../hooks/useRealm";
+import { realmFunctionNames } from "../../../data/realm/functions";
+
 import useMission from "../../../hooks/useMission";
 import useMissionMap from "../../../hooks/useMissionMap";
-import { realmFunctionNames } from "../../../data/realm/functions";
 
 // styling imports
 import {
@@ -25,6 +27,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import styled from "styled-components";
 import { RiCreativeCommonsByFill } from "react-icons/ri";
 
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   patient: PatientSchema;
@@ -79,6 +82,8 @@ const PatientMarker = ({ patient }: Props) => {
   const [toggleHandover, setToggleHandover] = useState(false)
   const [toggleForensics, setToggleForensics] = useState(false)
 
+  const { t } = useTranslation();
+
   return (
     <Marker
       position={[
@@ -99,8 +104,7 @@ const PatientMarker = ({ patient }: Props) => {
                 {patient.identifier}
               </StyledVictimID>
               <StyledHint>
-                Write this ID clearly <br />
-                readable on the victim.
+                {t("Patient.idhint")}
               </StyledHint>
             </StyledShortSign>
           </StyledSection>
@@ -110,7 +114,7 @@ const PatientMarker = ({ patient }: Props) => {
           </StyledSection>
 
           <StyledSection>     
-            <StyledBoldText>{patient.agegroup} years</StyledBoldText>
+            <StyledBoldText>{patient.agegroup} {t("Patient.years")}</StyledBoldText>
             <StyledBoldText>{patient.gender}</StyledBoldText>
           </StyledSection>
 
@@ -121,14 +125,14 @@ const PatientMarker = ({ patient }: Props) => {
                 onClick={() => setToggleExtrication(!toggleExtrication)}
                 className="toggleButton"
               >
-              EXTRICATION
+                {t("Patient.extriction")}
               </button>
               {toggleExtrication && (
                 <>
                   <br />
-                  <StyledBoldText>Level: {patient.extricatedLevel}</StyledBoldText> 
-                  <StyledBoldText>Position: {patient.positionInStructure}</StyledBoldText>
-                  <StyledBoldText>Address: {patient.foundStreetAddress}</StyledBoldText>
+                  <StyledBoldText>{t("Patient.level")} {patient.extricatedLevel}</StyledBoldText> 
+                  <StyledBoldText>{t("Patient.pos")} {patient.positionInStructure}</StyledBoldText>
+                  <StyledBoldText>{t("Patient.adr")} {patient.foundStreetAddress}</StyledBoldText>
                 </>
               )}
             </StyledExtricationSection>
@@ -141,13 +145,13 @@ const PatientMarker = ({ patient }: Props) => {
                 onClick={() => setToggleHandover(!toggleHandover)}
                 className="toggleButton"
               >
-                HANDOVER
+                {t("Patient.handover")} 
               </button>
               {toggleHandover && (
                 <>
                   <br />
-                  <StyledBoldText>To: {patient.handover}</StyledBoldText>
-                  <StyledBoldText>Contact: {patient.handoverTo}</StyledBoldText>
+                  <StyledBoldText>{t("Patient.to")} {patient.handover}</StyledBoldText>
+                  <StyledBoldText>{t("Patient.cont")} {patient.handoverTo}</StyledBoldText>
                 </>
               )}
             </StyledHandoverSection>
@@ -160,15 +164,15 @@ const PatientMarker = ({ patient }: Props) => {
                 onClick={() => setToggleForensics(!toggleForensics)}
                 className="toggleButton"
               >
-                FORENSICS
+                {t("Patient.forensics")}
               </button>
               {toggleForensics && (
                 <>
                   <br />
-                  <StyledBoldText>Hair: {patient.hair}</StyledBoldText>
-                  <StyledBoldText>Face: {patient.face}</StyledBoldText>
-                  <StyledBoldText>Clothing: {patient.clothing}</StyledBoldText>
-                  <StyledBoldText>Bodymarks: {patient.bodymarks}</StyledBoldText>
+                  <StyledBoldText>{t("Patient.hair")}: {patient.hair}</StyledBoldText>
+                  <StyledBoldText>{t("Patient.face")}: {patient.face}</StyledBoldText>
+                  <StyledBoldText>{t("Patient.clothing")}: {patient.clothing}</StyledBoldText>
+                  <StyledBoldText>{t("Patient.bodymarks")}: {patient.bodymarks}</StyledBoldText>
                 </>
               )}
             </StyledForensicsSection>
@@ -176,7 +180,7 @@ const PatientMarker = ({ patient }: Props) => {
 
           <br />
           <StyledDeactivateButton onClick={deletePatient}>
-            CLOSE CASE
+            {t("Patient.close")}
           </StyledDeactivateButton>
 
           <StyledDate>

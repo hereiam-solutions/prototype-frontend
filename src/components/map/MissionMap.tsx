@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+
+import useRealm from "../../hooks/useRealm";
+import { realmFunctionNames } from "../../data/realm/functions";
+
 import {
   MapContainer,
   TileLayer,
@@ -9,12 +12,14 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+
 import GetCurrentLocation from "./mapEvents/CurrentLocationMarker";
 import SetMarker from "./mapEvents/SetMarker";
 import ActivateActionMenu from "./mapEvents/ActivateActionMenu";
-import useRealm from "../../hooks/useRealm";
-import { realmFunctionNames } from "../../data/realm/functions";
+
 import useMission from "../../hooks/useMission";
+import useMissionMap from "../../hooks/useMissionMap";
+
 import { HazardSchema } from "../../data/realm/schema/hazard";
 import HazardMarker from "./markers/HazardMarker";
 import { PatientSchema } from "../../data/realm/schema/patient";
@@ -23,8 +28,10 @@ import { LocationSchema } from "../../data/realm/schema/location";
 import LocationMarker from "./markers/LocationMarker";
 import { SignalSchema } from "../../data/realm/schema/signal";
 import SignalMarker from "./markers/SignalMarker";
-import useMissionMap from "../../hooks/useMissionMap";
 
+import { useTranslation } from 'react-i18next';
+
+import styled from "styled-components";
 
 const MissionMap = () => {
   const { realm } = useRealm();
@@ -89,6 +96,8 @@ const MissionMap = () => {
     fillOpacity: 0.05,
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <StyledMapContainer
@@ -106,7 +115,7 @@ const MissionMap = () => {
           hideSingleBase={true}
           position="topright"
         >
-          <LayersControl.Overlay checked={true} name="Mission Border">
+          <LayersControl.Overlay checked={true} name={t("Mission Border")}>
             <LayerGroup>
               <Polygon
                 pathOptions={polygonOptions}
@@ -117,7 +126,7 @@ const MissionMap = () => {
             </LayerGroup>
           </LayersControl.Overlay>
 
-          <LayersControl.Overlay checked={true} name="Hazards">
+          <LayersControl.Overlay checked={true} name={t("Hazards")}>
             <LayerGroup>
               {hazards.map((hazard: HazardSchema) => (
                 <HazardMarker hazard={hazard} key={hazard._id.toString()} />
@@ -125,7 +134,7 @@ const MissionMap = () => {
             </LayerGroup>
           </LayersControl.Overlay>
 
-          <LayersControl.Overlay checked={true} name="Locations">
+          <LayersControl.Overlay checked={true} name={t("Locations")}>
             <LayerGroup>
               {locations.map((location: LocationSchema) => (
                 <LocationMarker
@@ -136,7 +145,7 @@ const MissionMap = () => {
             </LayerGroup>
           </LayersControl.Overlay>
 
-          <LayersControl.Overlay checked={true} name="Suspected vitims">
+          <LayersControl.Overlay checked={true} name={t("Suspected")}>
             <LayerGroup>
               {signals.map((signal: SignalSchema) => (
                 <SignalMarker signal={signal} key={signal._id.toString()} />
@@ -144,7 +153,7 @@ const MissionMap = () => {
             </LayerGroup>
           </LayersControl.Overlay>
 
-          <LayersControl.Overlay checked={true} name="Patients">
+          <LayersControl.Overlay checked={true} name={t("Victims")}>
             <LayerGroup>
               {patients.map((patient: PatientSchema) => (
                 <PatientMarker patient={patient} key={patient._id.toString()} />

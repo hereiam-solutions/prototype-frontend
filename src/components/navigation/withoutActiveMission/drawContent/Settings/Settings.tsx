@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Switch from "react-switch";
 
@@ -12,21 +12,28 @@ import { ActiveTileLayerEnum } from "../../../../../context/MissionMapContext";
 import useTheme from "../../../../../hooks/useTheme";
 import { ThemeEnum } from "../../../../../context/ThemeContext";
 
+import { useTranslation } from "react-i18next";
+
 const Settings = () => {
   const { setActiveTileLayer, setReRenderBoolean, reRenderBoolean } =
     useMissionMap();
 
   const { currentTheme, setCurrentTheme } = useTheme();
 
+  const { t, i18n } = useTranslation();
+  function TranslateClick(lang: string | undefined) {
+    i18n.changeLanguage(lang);
+  }
+
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Settings</StyledHeading>
+        <StyledHeading>{t("Settings.headline")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Map</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Settings.map")}</StyledSecondaryHeading>
 
           <StyledMapTypesWrapper>
             <StyledMapTypeSwitchWrapper
@@ -37,7 +44,9 @@ const Settings = () => {
             >
               <StyledDefaultWrapper>
               </StyledDefaultWrapper>
-              <StyledMapTypeText>Default</StyledMapTypeText>
+              <StyledMapTypeText>
+                {t("Settings.default")}
+              </StyledMapTypeText>
             </StyledMapTypeSwitchWrapper>
 
             <StyledMapTypeSwitchWrapper>
@@ -48,7 +57,9 @@ const Settings = () => {
                 }}
               >
               </StyledHumanitarianWrapper>
-              <p>Humanitarian</p>
+              <StyledMapTypeText>
+                {t("Settings.humanitarian")}
+              </StyledMapTypeText>
             </StyledMapTypeSwitchWrapper>
 
             <StyledMapTypeSwitchWrapper>
@@ -59,13 +70,15 @@ const Settings = () => {
                 }}
               >
               </StyledSatteliteWrapper>
-              <StyledMapTypeText>Sattelite</StyledMapTypeText>
+              <StyledMapTypeText>
+                {t("Settings.sattelite")}
+              </StyledMapTypeText>
             </StyledMapTypeSwitchWrapper>
           </StyledMapTypesWrapper>
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Appearance</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Settings.apperance")}</StyledSecondaryHeading>
 
           <StyledThemeSwitch
             onClick={() => {
@@ -74,7 +87,7 @@ const Settings = () => {
                 : setCurrentTheme(ThemeEnum.LIGHT);
             }}
           >
-            <StyledMapTypeText>Dark Mode</StyledMapTypeText>
+            <StyledMapTypeText>{t("Settings.darkmode")}</StyledMapTypeText>
 
             <Switch
               onChange={() => {
@@ -87,6 +100,28 @@ const Settings = () => {
               offColor="#D1D1D6"
             />
           </StyledThemeSwitch>
+
+          {/* choose language container*/}
+          <StyledTranslateSwitch>
+            <StyledMapTypeText>{t("Settings.language")}</StyledMapTypeText>
+
+            <StyledButtonContainer>
+              <StyledLanguageButton
+                aria-label="in deutsch"
+                onClick={() => TranslateClick("de-DE")}
+              >
+                de
+              </StyledLanguageButton>
+              <StyledLanguageButton
+                aria-label="in english"
+                onClick={() => TranslateClick("en-US")}
+              >
+                en
+              </StyledLanguageButton>
+            </StyledButtonContainer>
+            
+          </StyledTranslateSwitch>
+
         </StyledSectionWrapper>
  
       </StyledContentWrapper>
@@ -155,23 +190,37 @@ const StyledSecondaryHeading = styled.p`
   color: ${(props) => props.theme.primaryFontColor};
 `;
 
-const StyledButton = styled.button`
-  min-width: 30vw;
-  height: 3rem;
-
-  margin-top: 1.5rem;
-  margin-bottom: 4rem;
+const StyledLanguageButton = styled.button`
+  padding: 0.4rem;
 
   font-weight: 700;
   text-align: center;
 
   align-self: center;
 
-  color: ${(props) => props.theme.buttonFontColor};
-  background-color: ${(props) => props.theme.buttonColor};
+  color: ${(props) => props.theme.buttonColor};
 
-  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border: 1px solid ${(props) => props.theme.buttonColor};
   border-radius: ${(props) => props.theme.inputBorderRadius};
+`;
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  flex-direction: raw;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const StyledTranslateSwitch = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: var(--base-text);
 `;
 
 // styles for this component only

@@ -1,10 +1,17 @@
 import React from 'react';
+
 import styled from 'styled-components';
+
+import { useTranslation } from 'react-i18next';
+
 import LogoHereiam from '../../../../../assets/Logo/light/hereIam_logo_light64x64.svg';
 
 type Props = {};
 
 const Version = (props: Props) => {
+
+  const { t } = useTranslation();
+
   return (
     <StyledVersion>
       <img src={LogoHereiam} width="65px" alt="hereIam Logo" />
@@ -12,12 +19,16 @@ const Version = (props: Props) => {
         
       <p>hereIam Prototype</p>
       <strong>&copy; 2022 hereIam solutions</strong>
-      <p>All rights reserved.</p>
+      <p>
+        {t("Version.rights")}
+      </p>
         
       <UpdateButton>
             Update
       </UpdateButton>
-      <small>No Update available.</small>
+      <small>
+        {t("Version.updates")}
+      </small>
         
             
     </StyledVersion>

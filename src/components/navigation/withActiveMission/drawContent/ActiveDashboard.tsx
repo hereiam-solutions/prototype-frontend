@@ -1,8 +1,12 @@
-import styled from "styled-components";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import useNavigation from "../../../../hooks/useNavigation";
 import useMission from "../../../../hooks/useMission";
-import { useState } from "react";
+
+import { useTranslation } from 'react-i18next';
+
+import styled from "styled-components";
 
 const ActiveDashboard = () => {
   const { setIsDrawOpen } = useNavigation();
@@ -18,6 +22,8 @@ const ActiveDashboard = () => {
   const [toggleDeployed, setToggleDeployed] = useState(false)
   const [toggle360, setToggle360] = useState(false)
 
+  const { t } = useTranslation();
+
   return activeMission ? (
     <StyledDrawWrapper>
 
@@ -28,7 +34,7 @@ const ActiveDashboard = () => {
       <StyledContentWrapper>
 
         <StyledText id="missionID">
-          Mission ID
+          {t("Mission.id")}
           <br />
           {activeMission._id.toString()}
           <br />
@@ -42,12 +48,12 @@ const ActiveDashboard = () => {
           onClick={() => setTogglePlaning(!togglePlaning)}
           className="toggleButton"
         >
-          MISSION PLANING
+          {t("Mission.planing")}
         </button>
         {togglePlaning && (
           <>
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Objectives</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.objectives")}</StyledSecondaryHeading>
               <StyledList>
                 {activeMission.objectives.map(
                   (objective: string, index: number) => {
@@ -60,7 +66,7 @@ const ActiveDashboard = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Role and Mandates</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.roles")}</StyledSecondaryHeading>
               <StyledList>
                 {activeMission.roleAndMandates.map(
                   (role: string, index: number) => {
@@ -73,7 +79,7 @@ const ActiveDashboard = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Threats and Risks</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.risks")}</StyledSecondaryHeading>
               <StyledList>
                 {activeMission.threatsAndRisks.map(
                   (risk: string, index: number) => {
@@ -86,12 +92,12 @@ const ActiveDashboard = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Risk level</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.risklevel")}</StyledSecondaryHeading>
               <StyledText>{activeMission?.riskLevel}</StyledText>
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Estimated population</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.population")}</StyledSecondaryHeading>
               <StyledText>{activeMission?.estimatedPopulation}</StyledText>
             </StyledSectionWrapper>
           </>
@@ -103,37 +109,37 @@ const ActiveDashboard = () => {
           onClick={() => setToggleSecurity(!toggleSecurity)}
           className="toggleButton"
         >
-          MISSION SECURITY
+          {t("Mission.security")}
         </button>
         {toggleSecurity && (
           <>
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Security level</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.seclevel")}</StyledSecondaryHeading>
               <StyledText>{activeMission?.securityLevel}</StyledText>
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Evacuation Route</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.evac")}</StyledSecondaryHeading>
               <StyledText>{activeMission?.evacuationRoute}</StyledText>
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Evacuation Signal</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.evacsignal")}</StyledSecondaryHeading>
               <StyledText>{activeMission?.additionalEvacuationSignal}</StyledText>
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Safe Haven</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.safehaven")}</StyledSecondaryHeading>
               <StyledText>{activeMission?.safeHaven}</StyledText>
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Next Hospital</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.hospital")}</StyledSecondaryHeading>
               <StyledText>{activeMission?.nextHospital}</StyledText>
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Next Veterinary</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Mission.vet")}</StyledSecondaryHeading>
               <StyledText>{activeMission?.nextVeterinary}</StyledText>
             </StyledSectionWrapper>
           </>
@@ -145,11 +151,11 @@ const ActiveDashboard = () => {
           onClick={() => setToggleDeployed(!toggleDeployed)}
           className="toggleButton"
         >
-          ALSO DEPLOYED
+          {t("Mission.also1")}
         </button>
         {toggleDeployed && (
           <>
-            Coming soon
+            {t("Mission.also2")}
           </>
         )}
 
@@ -159,16 +165,16 @@ const ActiveDashboard = () => {
           onClick={() => setToggle360(!toggle360)}
           className="toggleButton"
         >
-          360
+          {t("Mission.360")}
         </button>
         {toggle360 && (
           <>
-            Coming soon
+            {t("Mission.360soon")}
           </>
         )}
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Starting time</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Mission.start")}</StyledSecondaryHeading>
           <StyledText>
             {new Date(activeMission.start_of_mission).toLocaleString()}
           </StyledText>
@@ -176,7 +182,7 @@ const ActiveDashboard = () => {
 
         <StyledLinkWrapper>
           <StyledButton onClick={handleLeave} to="/">
-            Leave Mission
+            {t("Mission.leave")}
           </StyledButton>
         </StyledLinkWrapper>
 

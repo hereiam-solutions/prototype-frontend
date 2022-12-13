@@ -7,25 +7,36 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 // component imports
 import App from "./App";
+import Home from "./components/navigation/Home";
+
+// nav elements
 import Profile from "./components/navigation/withoutActiveMission/drawContent/Profile/Profile";
 import Settings from "./components/navigation/withoutActiveMission/drawContent/Settings/Settings";
-import ActiveDashboard from "./components/navigation/withActiveMission/drawContent/ActiveDashboard";
-import Home from "./components/navigation/Home";
-import Layout from "./components/navigation/withoutActiveMission/Layout";
 import About from "./components/navigation/withoutActiveMission/drawContent/About/About";
+import Layout from "./components/navigation/withoutActiveMission/Layout";
+
+// auth
 import AuthAbout from "./components/auth/AuthAbout";
 import AuthLayout from "./components/auth/AuthLayout";
 import Authentication from "./components/auth/Authentication";
 import RequireAuth from "./components/auth/RequireAuth";
-import CreateHazardMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateHazardMarker";
+
+//mission
 import MissionLayout from "./components/navigation/withActiveMission/MissionLayout";
 import RequireActiveMission from "./components/navigation/RequireActiveMission";
 import JoinMission from "./components/navigation/withoutActiveMission/drawContent/JoinMission";
 import CreateMission from "./components/navigation/withoutActiveMission/drawContent/CreateMission";
 import MissionCreationLayout from "./components/navigation/withoutActiveMission/MissionCreationLayout";
+import ActiveDashboard from "./components/navigation/withActiveMission/drawContent/ActiveDashboard";
+
+//marker
 import CreateLocationMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateLocationMarker";
 import CreatePatientMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreatePatientMarker";
 import CreateSignalMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateSignalMarker";
+import CreateHazardMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateHazardMarker";
+
+//translation
+import './i18n';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

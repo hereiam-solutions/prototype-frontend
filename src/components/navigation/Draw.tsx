@@ -1,8 +1,10 @@
 import { Outlet } from "react-router-dom";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 import useNavigation from "../../hooks/useNavigation";
 import useMission from "../../hooks/useMission";
+
+import styled from "styled-components";
 
 type DrawPropsType = {
   usedInAuthentication: boolean;
@@ -18,13 +20,6 @@ const Draw = ({ usedInAuthentication }: DrawPropsType) => {
       <StyledDrawContentWrapper>
         <Outlet />
       </StyledDrawContentWrapper>
-      {/* 
-      {!usedInAuthentication && (
-        <StyledBackgroundBehindDraw
-          to={activeMission ? "" : "/"}
-          onClick={() => setIsDrawOpen(false)}
-        />
-      )} */}
 
       <StyledBackgroundBehindDraw
         to={usedInAuthentication ? "/auth" : activeMission ? "" : "/"}

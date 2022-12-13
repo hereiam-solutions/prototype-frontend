@@ -40,9 +40,6 @@ function SetMarker() {
         if (markerType === MarkerType.PATIENT) {
           navigate(`create-${MarkerType.PATIENT}`);
         }
-        // if (markerType === MarkerType.VICTIM) {
-        //  navigate(`create-${MarkerType.VICTIM}`);
-        //}
         if (markerType === MarkerType.LOCATION) {
           navigate(`create-${MarkerType.LOCATION}`);
         }
@@ -51,22 +48,6 @@ function SetMarker() {
         }
 
         map.setView(e.latlng, map.getZoom());
-
-        // TODO: resize Icons on zoom level
-
-        //  map.on('zoomend', function (e) {
-        //  if (map.getZoom() === 15) {
-        //      var elements = document.getElementsByClassName('icon-wrapper');
-        //      for (var i = 0, max = elements.length; i < max; i++) {
-        //        elements[i].style.width = 8;
-        //        elements[i].style.height = 10;
-        //        elements[i].style.marginLeft = 4;
-        //        elements[i].style.marginTop = 11;
-        //      }
-        //    }
-        //  }
-        //)
-        
 
         setIsCreateMarkerModeEnabled(false);
       }

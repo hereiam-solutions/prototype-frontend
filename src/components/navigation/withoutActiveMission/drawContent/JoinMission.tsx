@@ -1,6 +1,6 @@
 import { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
+
 import useNavigation from "../../../../hooks/useNavigation";
 
 import useRealm from "../../../../hooks/useRealm";
@@ -10,6 +10,8 @@ import useMission from "../../../../hooks/useMission";
 import { MissionSchema } from "../../../../data/realm/schema/mission";
 
 import useModal from "../../../../hooks/useModal";
+
+import { useTranslation } from 'react-i18next';
 
 import styled from "styled-components";
 
@@ -92,43 +94,51 @@ const JoinMission = () => {
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Mission</StyledHeading>
+        <StyledHeading>{t("Mission.headline")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Join a Mission</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Mission.joinin")}</StyledSecondaryHeading>
 
           <StyledInput
             type="text"
             value={missionId}
             onChange={handleMissionIdChange}
-            placeholder="Insert Mission ID..."
+            placeholder="ID..."
             onSubmit={handleJoin}
           />
 
           <StyledButton onClick={handleJoin}>
-            {error ? error : "Join"}
+            {t(error ? error : "Join")}
           </StyledButton>
+
+          <StyledRejoinButton onClick={handleJoinCurrentMission}>
+            {t("Mission.rejoin1")}
+          </StyledRejoinButton>
+
           <StyledHint onClick={handleJoinCurrentMission}>
-            Droped out?
+            {t("Mission.rejoin2")}
             <br />
-            Join last active mission.
+            {t("Mission.rejoin3")}
           </StyledHint>
+
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Create a Mission</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Mission.create1")}</StyledSecondaryHeading>
 
           <StyledButton
             onClick={() => {
               initiateMissionCreation();
 
               setModalContent(
-                "Start drawing the mission border with the help of the polygon tool on the right >"
+                t("Mission.modal1")
               );
 
               setTimeout(() => {
@@ -138,7 +148,7 @@ const JoinMission = () => {
               setIsModalActive(true);
             }}
           >
-            Create
+            {t("Mission.create2")}
           </StyledButton>
         </StyledSectionWrapper>
       </StyledContentWrapper>
@@ -235,11 +245,26 @@ const StyledButton = styled.button`
   border-radius: ${(props) => props.theme.inputBorderRadius};
 `;
 
+const StyledRejoinButton = styled.button`
+  width: 60%;
+  height: 3rem;
+
+  margin-top: 1rem;
+
+  font-weight: 700;
+  text-align: center;
+
+  align-self: center;
+
+  color: ${(props) => props.theme.buttonColor};
+ 
+  border: 1px solid ${(props) => props.theme.buttonColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+`;
+
 const StyledHint = styled.div`
-  margin-top: 0.3rem;
    font-size: 0.9rem;
    align-self: center;
-
 `;
 
 export default JoinMission;

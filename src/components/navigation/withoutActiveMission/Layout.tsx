@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import Map from "../../map/Map";
 import Nav from "../Nav";
 
@@ -6,11 +7,13 @@ import Nav from "../Nav";
 const Layout = () => {
   return (
     <StyledAppWrapper>
+
       <Map />
+
       <StyledNavWrapper>
-        <Nav />
-        
+        <Nav />       
       </StyledNavWrapper>
+      
     </StyledAppWrapper>
   );
 };
