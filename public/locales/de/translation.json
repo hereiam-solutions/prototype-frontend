@@ -100,7 +100,15 @@
         "clothing": "Kleidung",
         "clothinghint": "Beschreibe sichtbare Kleidung, wie Jacke, Hose, Schuhe für eine spätere Suche oder Ermittlung.",
         "bodymarks": "Körpermerkmale",
-        "bodymarkshint": "Beschreibe sichtbare Körpermerkmale, wie Narben, Male oder Prothesen für eine spätere Suche oder Ermittlung."
+        "bodymarkshint": "Beschreibe sichtbare Körpermerkmale, wie Narben, Male oder Prothesen für eine spätere Suche oder Ermittlung.",
+        "idhint": "Schreiben Sie diese ID <br /> deutlich lesbar auf den/die Betroffene/n.",
+        "years": "Jahre",
+        "level": "Level:",
+        "pos": "Position:",
+        "adr": "Adresse:",
+        "to": "An:",
+        "cont": "Kontakt:",
+        "close": "FALL SCHLIESSEN"
     },
     "Signal": {
         "headline": "Markiere vermutete Betroffene",

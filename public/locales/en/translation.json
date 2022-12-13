@@ -101,7 +101,15 @@
         "clothing": "Clothing",
         "clothinghint": "Describe visible clothing, such as jacket, pants, shoes for later search or investigation.",
         "bodymarks": "Bodymarks",
-        "bodymarkshint": "Describe visible bodymarks, such as scars, marks, or prosthetics for later search or investigation."
+        "bodymarkshint": "Describe visible bodymarks, such as scars, marks, or prosthetics for later search or investigation.",
+        "idhint": "Write this ID clearly <br /> readable on the victim.",
+        "years": "years",
+        "level": "Level:",
+        "pos": "Position:",
+        "adr": "Address:",
+        "to": "To:",
+        "cont": "Contact:",
+        "close": "CLOSE CASE"
     },
     "Signal": {
         "headline": "Mark suspected victims",
