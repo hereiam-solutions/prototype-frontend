@@ -64,7 +64,8 @@
         "headline":"Mark Hazard",
         "type": "Hazard type",
         "desc": "Description",
-        "deschint": "Provide a short description for that Hazard or Obstacle."
+        "deschint": "Provide a short description for that Hazard or Obstacle.",
+        "remove": "Remove"
     },
     "Location": {
         "headline": "Set Location",

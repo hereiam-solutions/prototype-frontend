@@ -63,7 +63,8 @@
         "headline": "Markiere eine Gefahr",
         "type": "Gefahrentyp",
         "desc": "Beschreibung",
-        "deschint": "Geben Sie eine kurze Beschreibung für diese Gefahr oder dieses Hindernis an."
+        "deschint": "Geben Sie eine kurze Beschreibung für diese Gefahr oder dieses Hindernis an.",
+        "remove": "Löschen"
     },
     "Location": {
         "headline": "Einsatzrelevante Standorte",
