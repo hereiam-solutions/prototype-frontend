@@ -1,4 +1,13 @@
 {
+    "Mission": {
+        "headline": "Einsatz",
+        "joinin": "Join in diesen Einsatz",
+        "rejoin1": "In den letzten Einsatz",
+        "rejoin2": "Ausgestiegen?",
+        "rejoin3": "Lade den letzten aktiven Einsatz.",
+        "create1": "Einsatz erstellen",
+        "create2": "Erstellen"
+    },
     "Settings": {
         "headline": "Einstellungen",
         "map": "Karte",

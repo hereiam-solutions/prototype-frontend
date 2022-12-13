@@ -1,4 +1,14 @@
 {
+    "Mission": {
+        "headline": "Mission",
+        "joinin": "Join this Mission",
+        "rejoin1": "Into last mission",
+        "rejoin2": "Droped out?",
+        "rejoin3": "Re-Join last active mission.",
+        "create1": "Create a Mission",
+        "create2": "Create"
+
+    },
     "Settings": {
         "headline": "Settings",
         "map": "Map",
