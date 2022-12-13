@@ -4,6 +4,7 @@
     "Join": "Join",
     "loading...": "loading...",
     "Submit Hazard": "Submit Hazard",
+    "Submit Location": "Submit Location",
     "Mission": {
         "headline": "Mission",
         "joinin": "Join this Mission",
@@ -57,7 +58,12 @@
         "type": "Hazard type",
         "desc": "Description",
         "deschint": "Provide a short description for that Hazard or Obstacle."
-
+    },
+    "Location": {
+        "headline": "Set Location",
+        "type": "Location type",
+        "desc": "Description",
+        "deschint": "In addition to the type, provide a brief description of the location, e.g. contact information, call sign, channel."
     },
     "Settings": {
         "headline": "Settings",

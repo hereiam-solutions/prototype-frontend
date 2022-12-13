@@ -4,6 +4,7 @@
     "Join": "Laden",
     "loading...": "lade...",
     "Submit Hazard": "Sende Gefahr",
+    "Submit Location": "Sende einsatzrelevanten Ort",
     "Mission": {
         "headline": "Einsatz",
         "joinin": "Join in diesen Einsatz",
@@ -56,6 +57,12 @@
         "type": "Gefahrentyp",
         "desc": "Beschreibung",
         "deschint": "Geben Sie eine kurze Beschreibung für diese Gefahr oder dieses Hindernis an."
+    },
+    "Location": {
+        "headline": "Einsatzrelevante Standorte",
+        "type": "Standorttyp",
+        "desc": "Beschreibung",
+        "deschint": "Geben Sie zusätzlich zum Typ eine kurze Beschreibung des Standorts an, z. B. Kontaktinformationen, Rufzeichen, Kanal."
     },
     "Settings": {
         "headline": "Einstellungen",
