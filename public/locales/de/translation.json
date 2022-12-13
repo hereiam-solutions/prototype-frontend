@@ -115,7 +115,10 @@
         "type": "Informationsquelle",
         "typehint": "Von welcher Informationsquelle kam das Signal?",
         "desc": "Beschreibung",
-        "deschint": "Beschreibe die Information weiter."
+        "deschint": "Beschreibe die Information weiter.",
+        "susp": "Vermutete Betroffene",
+        "by": "durch",
+        "clear": "ABGEARBEITET"
     },
     "Actionmenu": {
         "modal1": "Tippen Sie einmal auf der Karte auf die Stelle, an der Sie die Markierung setzen möchten."

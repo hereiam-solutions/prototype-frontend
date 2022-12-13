@@ -116,8 +116,10 @@
         "type": "Signal type",
         "typehint": "From which signal source did the information come?",
         "desc": "Description",
-        "deschint": "Provide more information for that Signal."
-
+        "deschint": "Provide more information for that Signal.",
+        "susp": "Suspected victim",
+        "by": "by",
+        "clear": "PROCESSED"
     },
     "Actionmenu": {
         "modal1": "Tap once on the map at the location you want to set the marker."
