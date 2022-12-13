@@ -10,6 +10,7 @@
         "rejoin3": "Lade den letzten aktiven Einsatz.",
         "create1": "Einsatz erstellen",
         "create2": "Erstellen",
+        "id": "Einsatz ID",
         "define": "Definiere den Einsatz",
         "name": "Einsatzname",
         "namehint": "Gebe dem Einsatz einen beschreibenden Namen.",
@@ -45,7 +46,8 @@
         "start": "Einsatzbeginn",
         "starthint": "Legen Sie Datum und Uhrzeit fest, zu der dieser Einsatz startet.",
         "modal1": "Beginnen Sie mit dem Zeichnen der Missionsgrenze mit Hilfe des Polygonwerkzeugs auf der rechten Seite.",
-        "modal2": "Einsatz erstellt und als aktiver Einsatz festgelegt."
+        "modal2": "Einsatz erstellt und als aktiver Einsatz festgelegt.",
+        "leave": "Einsatz verlassen"
     },
     "Settings": {
         "headline": "Einstellungen",

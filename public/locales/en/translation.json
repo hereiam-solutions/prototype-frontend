@@ -10,6 +10,7 @@
         "rejoin3": "Re-Join last active mission.",
         "create1": "Create a Mission",
         "create2": "Create",
+        "id": "Mission ID",
         "define": "Define Mission",
         "name": "Mission name",
         "namehint": "Give this mission a meaningfull name.",
@@ -46,7 +47,8 @@
         "start": "Mission starts",
         "starthint": "Set date and time, this mission will start.",
         "modal1": "Start drawing the mission border with the help of the polygon tool on the right",
-        "modal2": "Mission created and set as your active Mission!"
+        "modal2": "Mission created and set as your active Mission!",
+        "leave": "Leave Mission"
 
     },
     "Settings": {
