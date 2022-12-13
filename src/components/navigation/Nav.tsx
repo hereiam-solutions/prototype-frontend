@@ -94,7 +94,7 @@ const StyledNavigationMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.3rem;
   position: absolute;
   bottom: 2%;
   right: 4%;
