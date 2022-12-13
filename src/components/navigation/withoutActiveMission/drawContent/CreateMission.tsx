@@ -82,7 +82,9 @@ const CreateMission = () => {
 
         setActiveMission(newActiveMission as MissionSchema);
 
-        setModalContent("Mission created and set as your active Mission!");
+        setModalContent(
+          t("Mission.modal2")
+        );
 
         setTimeout(() => {
           setIsModalActive(false);

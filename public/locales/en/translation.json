@@ -45,7 +45,8 @@
         "360soon": "Coming soon",
         "start": "Mission starts",
         "starthint": "Set date and time, this mission will start.",
-        "modal1": "Start drawing the mission border with the help of the polygon tool on the right"
+        "modal1": "Start drawing the mission border with the help of the polygon tool on the right",
+        "modal2": "Mission created and set as your active Mission!"
 
     },
     "Settings": {

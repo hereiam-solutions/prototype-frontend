@@ -44,7 +44,8 @@
         "360soon": "Demnächst verfügbar",
         "start": "Einsatzbeginn",
         "starthint": "Legen Sie Datum und Uhrzeit fest, zu der dieser Einsatz startet.",
-        "modal1": "Beginnen Sie mit dem Zeichnen der Missionsgrenze mit Hilfe des Polygonwerkzeugs auf der rechten Seite"
+        "modal1": "Beginnen Sie mit dem Zeichnen der Missionsgrenze mit Hilfe des Polygonwerkzeugs auf der rechten Seite.",
+        "modal2": "Einsatz erstellt und als aktiver Einsatz festgelegt."
     },
     "Settings": {
         "headline": "Einstellungen",
