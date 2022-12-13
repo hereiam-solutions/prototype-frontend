@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
 
 // type imports
 import { realmFunctionNames } from "../../../../../data/realm/functions";
@@ -8,8 +7,9 @@ import { realmFunctionNames } from "../../../../../data/realm/functions";
 import useCreateMarker from "../../../../../hooks/useCreateMarker";
 import useMission from "../../../../../hooks/useMission";
 import useRealm from "../../../../../hooks/useRealm";
-
+import useMissionMap from "../../../../../hooks/useMissionMap";
 import useNavigation from "../../../../../hooks/useNavigation";
+
 import {
   ageGroups,
   CreatePatientArgs,
@@ -18,8 +18,12 @@ import {
   genders,
   statuses,
 } from "../../../../../data/realm/schema/patient";
+
 import SingleDropdown from "../../../ui/SingleDropdown";
-import useMissionMap from "../../../../../hooks/useMissionMap";
+
+import { useTranslation } from 'react-i18next';
+
+import styled from "styled-components";
 
 const CreatePatientMarker = () => {
   const { realm } = useRealm();
@@ -185,18 +189,18 @@ const CreatePatientMarker = () => {
   const [toggleHandover, setToggleHandover] = useState(false)
   const [toggleForensics, setToggleForensics] = useState(false)
 
+  const { t } = useTranslation();
+
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>Set Victim</StyledHeading>
+        <StyledHeading>{ t("Patient.headline")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
 
-        {/* include Identifier */}
-
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Age Group:</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Patient.age")}</StyledSecondaryHeading>
 
           <SingleDropdown
             options={ageGroupDropwdownOptions}
@@ -207,7 +211,7 @@ const CreatePatientMarker = () => {
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Gender:</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Patient.gender")}</StyledSecondaryHeading>
 
           <SingleDropdown
             options={genderDropwdownOptions}
@@ -218,7 +222,7 @@ const CreatePatientMarker = () => {
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>Status:</StyledSecondaryHeading>
+          <StyledSecondaryHeading>{t("Patient.status")}</StyledSecondaryHeading>
 
           <SingleDropdown
             options={statusDropwdownOptions}
@@ -234,12 +238,13 @@ const CreatePatientMarker = () => {
           onClick={() => setToggleExtrication(!toggleExtrication)}
           className="toggleButton"
         >
-        EXTRICATION
+          {t("Patient.extriction")}
         </button>
         {toggleExtrication && (
           <>
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Extricated on mission level:</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Patient.extrictlevel")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.extrictlevelhint")}</StyledHint>
               <SingleDropdown
                 options={extricatedLevelDropwdownOptions}
                 value={selectedLevel}
@@ -249,8 +254,11 @@ const CreatePatientMarker = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Position in structure:</StyledSecondaryHeading>
-              <StyledHint>Describe the position in the structure, such as floor or part of thge building.</StyledHint>
+
+              {/* Add selection for floors, kitchen etc. */}
+
+              <StyledSecondaryHeading>{t("Patient.position")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.positionhint")}</StyledHint>
               <StyledInput
                 type="text"
                 value={positionValue}
@@ -259,8 +267,8 @@ const CreatePatientMarker = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Found on address:</StyledSecondaryHeading>
-              <StyledHint>State the address if possible.</StyledHint>
+              <StyledSecondaryHeading>{t("Patient.address")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.addresshint")}</StyledHint>
               <StyledInput
                 type="text"
                 value={foundValue}
@@ -276,12 +284,13 @@ const CreatePatientMarker = () => {
           onClick={() => setToggleHandover(!toggleHandover)}
           className="toggleButton"
         >
-          HANDOVER
+          {t("Patient.handover")}
         </button>
         {toggleHandover && (
           <>
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Handover to:</StyledSecondaryHeading>
+              <StyledSecondaryHeading>{t("Patient.handoverto")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.handovertohint")}</StyledHint>
               <SingleDropdown
                 options={handoverDropwdownOptions}
                 value={selectedHandover}
@@ -291,8 +300,8 @@ const CreatePatientMarker = () => {
             </StyledSectionWrapper>
             <br />
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Handover Contact:</StyledSecondaryHeading>
-              <StyledHint>Contact details, the victim handed over to.</StyledHint>
+              <StyledSecondaryHeading>{t("Patient.handovercontact")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.handovercontacthint")}</StyledHint>
               <StyledInput
                 type="text"
                 value={handoverToValue}
@@ -308,13 +317,13 @@ const CreatePatientMarker = () => {
           onClick={() => setToggleForensics(!toggleForensics)}
           className="toggleButton"
         >
-          FORENSICS
+          {t("Patient.forensics")}
         </button>
         {toggleForensics && (
           <>
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Hair</StyledSecondaryHeading>
-              <StyledHint>Describe the hair for later search and forensics.</StyledHint>
+              <StyledSecondaryHeading>{t("Patient.hair")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.hairhint")}</StyledHint>
               <StyledInput
                 type="text"
                 value={hairValue}
@@ -323,8 +332,8 @@ const CreatePatientMarker = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Face</StyledSecondaryHeading>
-              <StyledHint>Describe the face (like beard or glasses) for later search and forensics.</StyledHint>
+              <StyledSecondaryHeading>{t("Patient.face")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.facehint")}</StyledHint>
               <StyledInput
                 type="text"
                 value={faceValue}
@@ -333,8 +342,8 @@ const CreatePatientMarker = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Clothing</StyledSecondaryHeading>
-              <StyledHint>Describe the clothing (like jacket, trousers or shoes) for later search and forensics.</StyledHint>
+              <StyledSecondaryHeading>{t("Patient.clothing")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.clothinghint")}</StyledHint>
               <StyledInput
                 type="text"
                 value={clothingValue}
@@ -343,8 +352,8 @@ const CreatePatientMarker = () => {
             </StyledSectionWrapper>
 
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>Bodymarks</StyledSecondaryHeading>
-              <StyledHint>Describe visible bodymarks for later search and forensics.</StyledHint>
+              <StyledSecondaryHeading>{t("Patient.bodymarks")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.bodymarkshint")}</StyledHint>
               <StyledInput
                 type="text"
                 value={bodymarksValue}
@@ -358,7 +367,7 @@ const CreatePatientMarker = () => {
         {/* SUBMIT */}
         <br />
         <StyledButton onClick={handleSubmit}>
-          {loading ? "loading..." : "Submit Victim"}
+          {t(loading ? "loading..." : "Submit Victim")}
         </StyledButton>
 
       </StyledContentWrapper>
