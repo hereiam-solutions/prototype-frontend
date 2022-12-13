@@ -2,6 +2,8 @@
     "Submit": "Senden",
     "Starting time required": "Erfordert Startzeit",
     "Join": "Laden",
+    "loading...": "lade...",
+    "Submit Hazard": "Sende Gefahr",
     "Mission": {
         "headline": "Einsatz",
         "joinin": "Join in diesen Einsatz",
@@ -48,6 +50,12 @@
         "modal1": "Beginnen Sie mit dem Zeichnen der Missionsgrenze mit Hilfe des Polygonwerkzeugs auf der rechten Seite.",
         "modal2": "Einsatz erstellt und als aktiver Einsatz festgelegt.",
         "leave": "Einsatz verlassen"
+    },
+    "Hazard": {
+        "headline": "Markiere eine Gefahr",
+        "type": "Gefahrentyp",
+        "desc": "Beschreibung",
+        "deschint": "Geben Sie eine kurze Beschreibung für diese Gefahr oder dieses Hindernis an."
     },
     "Settings": {
         "headline": "Einstellungen",

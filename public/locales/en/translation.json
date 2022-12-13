@@ -2,6 +2,8 @@
     "Submit": "Submit",
     "Starting time required": "Starting time required",
     "Join": "Join",
+    "loading...": "loading...",
+    "Submit Hazard": "Submit Hazard",
     "Mission": {
         "headline": "Mission",
         "joinin": "Join this Mission",
@@ -49,6 +51,12 @@
         "modal1": "Start drawing the mission border with the help of the polygon tool on the right",
         "modal2": "Mission created and set as your active Mission!",
         "leave": "Leave Mission"
+    },
+    "Hazard": {
+        "headline":"Mark Hazard",
+        "type": "Hazard type",
+        "desc": "Description",
+        "deschint": "Provide a short description for that Hazard or Obstacle."
 
     },
     "Settings": {
