@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
+
 import { Marker, Popup } from "react-leaflet";
 import L, { Icon } from "leaflet";
 
-// svg imports
-// import { ReactComponent as AvalanceIcon } from "../../../assets/Hazards/Alert=Avalanche.svg";
-
-import { locationTypes } from "../mapTypes";
 import useRealm from "../../../hooks/useRealm";
+import { realmFunctionNames } from "../../../data/realm/functions";
+
 import useMission from "../../../hooks/useMission";
 import useMissionMap from "../../../hooks/useMissionMap";
+
+import { locationTypes } from "../mapTypes";
 import {
   DeleteLocationArgs,
   LocationSchema,
   UpdateLocationArgs,
 } from "../../../data/realm/schema/location";
-import { realmFunctionNames } from "../../../data/realm/functions";
 
 // styling imports
 import {
@@ -27,6 +27,8 @@ import {
   StyledDeactivateButton,
   StyledActivateButton,
 } from "./styles/markerStyles";
+
+import { useTranslation } from 'react-i18next';
 
 const ApparrelIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=apparel.svg",
@@ -60,11 +62,6 @@ const DeactivatedBarrierIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=barrier.svg",
   iconSize: [25, 25],
 });
-
-// const BooIcon = new Icon({
-//   iconUrl: "/icons/assets/Locations/Color/Active=boo.svg",
-//   iconSize: [25, 25],
-// });
 
 const CareIcon = new Icon({
   iconUrl: "/icons/assets/Locations/Color/Active=care.svg",
@@ -378,6 +375,8 @@ const LocationMarker = ({ location }: Props) => {
       return word[0].toUpperCase() + word.substring(1);
     })
     .join(" ");
+  
+  const { t } = useTranslation();
 
   return (
     <Marker
@@ -398,16 +397,16 @@ const LocationMarker = ({ location }: Props) => {
 
           {isActive ? (
             <StyledDeactivateButton onClick={changeLocationStatus}>
-              Deactivate
+              {t("Location.deactivate")}
             </StyledDeactivateButton>
           ) : (
             <StyledActivateButton onClick={changeLocationStatus}>
-              Activate
+                {t("Location.activate")}
             </StyledActivateButton>
           )}
 
           <StyledDeactivateButton onClick={deleteLocation}>
-            Remove
+            {t("Location.remove")}
           </StyledDeactivateButton>
 
           <StyledDate>

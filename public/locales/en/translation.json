@@ -71,7 +71,10 @@
         "headline": "Set Location",
         "type": "Location type",
         "desc": "Description",
-        "deschint": "In addition to the type, provide a brief description of the location, e.g. contact information, call sign, channel."
+        "deschint": "In addition to the type, provide a brief description of the location, e.g. contact information, call sign, channel.",
+        "deactivate": "Deactivate",
+        "activate": "Activate",
+        "remove": "Remove"
     },
     "Patient": {
         "headline": "Record Victim",

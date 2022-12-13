@@ -70,7 +70,10 @@
         "headline": "Einsatzrelevante Standorte",
         "type": "Standorttyp",
         "desc": "Beschreibung",
-        "deschint": "Geben Sie zusätzlich zum Typ eine kurze Beschreibung des Standorts an, z. B. Kontaktinformationen, Rufzeichen, Kanal."
+        "deschint": "Geben Sie zusätzlich zum Typ eine kurze Beschreibung des Standorts an, z. B. Kontaktinformationen, Rufzeichen, Kanal.",
+        "deactivate": "Nur in Planung",
+        "activate": "Aktivieren",
+        "remove": "Löschen"
     },
     "Patient": {
         "headline": "Erfasse Betroffene",
