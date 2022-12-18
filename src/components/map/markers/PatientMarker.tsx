@@ -223,7 +223,7 @@ const PatientMarker = ({ patient }: Props) => {
 };
 
 const StyledStatus = styled.div`
-min-width: 40vw;
+  width: 100%;
   self-align: center;
   padding: 0.5rem;
 
@@ -238,7 +238,7 @@ min-width: 40vw;
 `;
 
 const StyledShortSign = styled.div`
-  min-width: 40vw;
+  width: 100%;
   padding: 0.5rem;
 
   display: flex;
