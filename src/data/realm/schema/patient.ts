@@ -16,6 +16,17 @@ export enum genders {
   DIVERSE = "divers",
 }
 
+export enum conditions {
+  LIVE = "live",
+  DECEASED = "deceased",
+}
+
+export enum injuries {
+  NONE = "none",
+  STABLE = "stable",
+  CRITICAL = "critical",
+}
+
 export enum statuses {
   IMMEDIATE = "immediate",
   DELAYED = "delayed",
@@ -27,6 +38,7 @@ export enum statuses {
 
 export enum extricatedLevels {
   ASSISTED = "assisted",
+  DEBRIS = "debrisremoval",
   ASR3 = "ASR3",
   ASR4 = "ASR4",
   ASR5 = "ASR5",
@@ -37,7 +49,7 @@ export enum handovers {
   LOCALS = "Locals",
   AMBULANCE = "Ambulance",
   MEDICAL = "Medical Team",
-  CARRIER = "Carrier support",
+  FIELD = "Field Hospital",
   HELICOPTER = "Helicopter",
   HOSPITAL = "Hospital",
   MORTUARY = "Mortuary",
@@ -54,9 +66,13 @@ export type PatientSchema = {
   mission: BSON.ObjectId;
   agegroup: ageGroups;
   gender: genders;
+  condition: conditions;
+  injury: injuries;
   status: statuses;
   extricatedLevel: extricatedLevels;
+  floorLevel: string;
   positionInStructure: string;
+  timeExtrication: string;
   foundStreetAddress: string;
   handoverTo: string;
   handover: handovers;
@@ -64,6 +80,7 @@ export type PatientSchema = {
   face: string;
   clothing: string;
   bodymarks: string;
+  notes: string;
   geoJSON: geoJSONPoint;
 };
 
@@ -71,9 +88,13 @@ export type CreatePatientArgs = {
   mission: string;
   agegroup: ageGroups;
   gender: genders;
+  condition: conditions;
+  injury: injuries;
   status: statuses;
   extricatedLevel: extricatedLevels;
+  floorLevel: string;
   positionInStructure: string;
+  timeExtrication: string;
   foundStreetAddress: string;
   handoverTo: string;
   handover: handovers;
@@ -81,6 +102,7 @@ export type CreatePatientArgs = {
   face: string;
   clothing: string;
   bodymarks: string;
+  notes: string;
   geoJSON: geoJSONPoint;
 };
 

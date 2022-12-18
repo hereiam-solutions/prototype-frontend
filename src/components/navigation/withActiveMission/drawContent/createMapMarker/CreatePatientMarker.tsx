@@ -17,6 +17,8 @@ import {
   handovers,
   genders,
   statuses,
+  injuries,
+  conditions
 } from "../../../../../data/realm/schema/patient";
 
 import SingleDropdown from "../../../ui/SingleDropdown";
@@ -42,9 +44,13 @@ const CreatePatientMarker = () => {
           mission: activeMission._id.toString(),
           agegroup: selectedAgeGroup as ageGroups,
           gender: selectedGender as genders,
+          condition: selectedCondition as conditions,
+          injury: selectedInjury as injuries,
           status: selectedStatus as statuses,
           extricatedLevel: selectedLevel as extricatedLevels,
+          floorLevel: floorValue,
           positionInStructure: positionValue,
+          timeExtrication: timeValue,
           foundStreetAddress: foundValue,
           handoverTo: handoverToValue,
           handover: selectedHandover as handovers,
@@ -52,6 +58,7 @@ const CreatePatientMarker = () => {
           face: faceValue,
           clothing: clothingValue,
           bodymarks: bodymarksValue,
+          notes: notesValue,
           geoJSON: { type: "Point", coordinates: location },
         };
 
@@ -95,6 +102,24 @@ const CreatePatientMarker = () => {
     setSelectedGender(e.currentTarget.value);
   };
 
+  // condition
+  const [selectedCondition, setSelectedCondition] = useState<string>(
+    conditions.LIVE
+  );
+
+  const handleConditionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCondition(e.currentTarget.value);
+  };
+
+  // injury
+  const [selectedInjury, setSelectedInjury] = useState<string>(
+    injuries.NONE
+  );
+
+  const handleInjuryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedInjury(e.currentTarget.value);
+  };
+
   // status
   const [selectedStatus, setSelectedStatus] = useState<string>(
     statuses.DELAYED
@@ -113,6 +138,15 @@ const CreatePatientMarker = () => {
     setSelectedLevel(e.currentTarget.value);
   };
 
+  // floorLevel
+  const [floorValue, setFloorValue] = useState<string>("");
+
+  const handleFloorChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFloorValue(event.currentTarget.value);
+  };
+
   // positionInStructure
   const [positionValue, setPositionValue] = useState<string>("");
 
@@ -120,6 +154,15 @@ const CreatePatientMarker = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPositionValue(event.currentTarget.value);
+  };
+
+  // timeExtrication
+  const [timeValue, setTimeValue] = useState<string>("");
+
+  const handleTimeChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setTimeValue(event.currentTarget.value);
   };
 
   // foundStreetAddress
@@ -133,7 +176,7 @@ const CreatePatientMarker = () => {
 
   // handover
   const [selectedHandover, setSelectedHandover] = useState<string>(
-    handovers.CARRIER
+    handovers.FAMILY
   );
 
   const handleHandoverChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -185,6 +228,15 @@ const CreatePatientMarker = () => {
     setBodymarksValue(event.currentTarget.value);
   };
 
+  // notes
+  const [notesValue, setNotesValue] = useState<string>("");
+
+  const handleNotesChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setNotesValue(event.currentTarget.value);
+  };
+
   const [toggleExtrication, setToggleExtrication] = useState(false)
   const [toggleHandover, setToggleHandover] = useState(false)
   const [toggleForensics, setToggleForensics] = useState(false)
@@ -222,6 +274,28 @@ const CreatePatientMarker = () => {
         </StyledSectionWrapper>
 
         <StyledSectionWrapper>
+          <StyledSecondaryHeading>{t("Patient.condition")}</StyledSecondaryHeading>
+
+          <SingleDropdown
+            options={conditionDropwdownOptions}
+            value={selectedCondition}
+            label={""}
+            onChange={handleConditionChange}
+          />
+        </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>{t("Patient.injuries")}</StyledSecondaryHeading>
+
+          <SingleDropdown
+            options={injuriesDropwdownOptions}
+            value={selectedInjury}
+            label={""}
+            onChange={handleInjuryChange}
+          />
+        </StyledSectionWrapper>
+
+        <StyledSectionWrapper>
           <StyledSecondaryHeading>{t("Patient.status")}</StyledSecondaryHeading>
 
           <SingleDropdown
@@ -255,7 +329,16 @@ const CreatePatientMarker = () => {
 
             <StyledSectionWrapper>
 
-              {/* Add selection for floors, kitchen etc. */}
+              <StyledSecondaryHeading>{t("Patient.floor")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.floorhint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={floorValue}
+                onChange={handleFloorChange}
+              />
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
 
               <StyledSecondaryHeading>{t("Patient.position")}</StyledSecondaryHeading>
               <StyledHint>{t("Patient.positionhint")}</StyledHint>
@@ -263,6 +346,17 @@ const CreatePatientMarker = () => {
                 type="text"
                 value={positionValue}
                 onChange={handlePositionChange}
+              />
+            </StyledSectionWrapper>
+
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>{t("Patient.time")}</StyledSecondaryHeading>
+              <StyledHint>{t("Patient.timehint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={timeValue}
+                onChange={handleTimeChange}
               />
             </StyledSectionWrapper>
 
@@ -360,9 +454,20 @@ const CreatePatientMarker = () => {
                 onChange={handleBodymarksChange}
               />
             </StyledSectionWrapper>
+
           </>
         )}
 
+        (/* outside toggle */)
+        <br />
+        <StyledSectionWrapper>
+          <StyledSecondaryHeading>{t("Patient.notes")}</StyledSecondaryHeading>
+          <StyledHint>{t("Patient.noteshint")}</StyledHint>
+          <StyledInput
+            value={notesValue}
+            onChange={handleNotesChange}
+          />
+        </StyledSectionWrapper>
         
         {/* SUBMIT */}
         <br />
@@ -489,6 +594,17 @@ const genderDropwdownOptions = [
   { label: genders.DIVERSE, value: genders.DIVERSE },
 ];
 
+const conditionDropwdownOptions = [
+  { label: conditions.LIVE, value: conditions.LIVE },
+  { label: conditions.DECEASED, value: conditions.DECEASED },
+];
+
+const injuriesDropwdownOptions = [
+  { label: injuries.NONE, value: injuries.NONE },
+  { label: injuries.STABLE, value: injuries.STABLE },
+  { label: injuries.CRITICAL, value: injuries.CRITICAL },
+];
+
 const statusDropwdownOptions = [
   { label: statuses.IMMEDIATE, value: statuses.IMMEDIATE },
   { label: statuses.DELAYED, value: statuses.DELAYED },
@@ -500,6 +616,7 @@ const statusDropwdownOptions = [
 
 const extricatedLevelDropwdownOptions = [
   { label: extricatedLevels.ASSISTED, value: extricatedLevels.ASSISTED },
+  { label: extricatedLevels.DEBRIS, value: extricatedLevels.DEBRIS },
   { label: extricatedLevels.ASR3, value: extricatedLevels.ASR3 },
   { label: extricatedLevels.ASR4, value: extricatedLevels.ASR4 },
   { label: extricatedLevels.ASR5, value: extricatedLevels.ASR5 },
@@ -510,7 +627,7 @@ const handoverDropwdownOptions = [
   { label: handovers.LOCALS, value: handovers.LOCALS },
   { label: handovers.AMBULANCE, value: handovers.AMBULANCE },
   { label: handovers.MEDICAL, value: handovers.MEDICAL },
-  { label: handovers.CARRIER, value: handovers.CARRIER },
+  { label: handovers.FIELD, value: handovers.FIELD },
   { label: handovers.HELICOPTER, value: handovers.HELICOPTER },
   { label: handovers.HOSPITAL, value: handovers.HOSPITAL },
   { label: handovers.MORTUARY, value: handovers.MORTUARY },

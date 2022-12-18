@@ -99,24 +99,44 @@ const PatientMarker = ({ patient }: Props) => {
 
           {/* include Identifier */}
           <StyledSection>
+
             <StyledShortSign>
+
               <StyledVictimID>
                 {patient.identifier}
               </StyledVictimID>
+              
               <StyledHint>
                 {t("Patient.idhint")}
               </StyledHint>
+
             </StyledShortSign>
+
           </StyledSection>
 
+          <StyledLocate>
+
+            <StyledCoordinates>
+              {patient.geoJSON.coordinates[0]}
+              <br />
+              {patient.geoJSON.coordinates[1]}
+            </StyledCoordinates>
+
+            <StyledBoldText>{t("Patient.adr")} {patient.foundStreetAddress}</StyledBoldText>
+            <StyledBoldText>Worksite: AAA</StyledBoldText>
+            <StyledBoldText>Team: GER-02</StyledBoldText>
+
+          </StyledLocate>
+          <br />
           <StyledSection>
-            <StyledStatus>{patient.status}</StyledStatus>
-          </StyledSection>
-
-          <StyledSection>     
             <StyledBoldText>{patient.agegroup} {t("Patient.years")}</StyledBoldText>
             <StyledBoldText>{patient.gender}</StyledBoldText>
           </StyledSection>
+
+          <StyledBoldText>{t("Patient.condition")} {patient.condition}</StyledBoldText>
+          <StyledBoldText>{t("Patient.injuries")} {patient.injury}</StyledBoldText>
+          <br />
+          <StyledStatus>{patient.status}</StyledStatus>
 
           {/* EXTRICATION */}
           <StyledSection>
@@ -130,9 +150,10 @@ const PatientMarker = ({ patient }: Props) => {
               {toggleExtrication && (
                 <>
                   <br />
-                  <StyledBoldText>{t("Patient.level")} {patient.extricatedLevel}</StyledBoldText> 
+                  <StyledBoldText>{t("Patient.floor")} {patient.floorLevel}</StyledBoldText>
                   <StyledBoldText>{t("Patient.pos")} {patient.positionInStructure}</StyledBoldText>
-                  <StyledBoldText>{t("Patient.adr")} {patient.foundStreetAddress}</StyledBoldText>
+                  <StyledBoldText>{t("Patient.level")} {patient.extricatedLevel}</StyledBoldText> 
+                  <StyledBoldText>{t("Patient.time")} {patient.timeExtrication}</StyledBoldText>       
                 </>
               )}
             </StyledExtricationSection>
@@ -178,6 +199,14 @@ const PatientMarker = ({ patient }: Props) => {
             </StyledForensicsSection>
           </StyledSection>
 
+          {/* NOTES */}
+          <br />
+          <StyledSection>
+            <StyledNotes>
+              <StyledBoldText>{t("Patient.notes")}:<br />{patient.notes}</StyledBoldText>
+            </StyledNotes>
+          </StyledSection>
+
           <br />
           <StyledDeactivateButton onClick={deletePatient}>
             {t("Patient.close")}
@@ -194,7 +223,6 @@ const PatientMarker = ({ patient }: Props) => {
 };
 
 const StyledStatus = styled.div`
-
   width: 100%;
   self-align: center;
   padding: 0.5rem;
@@ -210,7 +238,6 @@ const StyledStatus = styled.div`
 `;
 
 const StyledShortSign = styled.div`
-
   width: 100%;
   padding: 0.5rem;
 
@@ -239,6 +266,15 @@ const StyledVictimID = styled.div`
   font-weight: 500;
 `;
 
+const StyledLocate = styled.div`
+  witdh: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const StyledExtricationSection = styled.div`
   margin-top: 1rem;
   width: 100%;
@@ -247,6 +283,10 @@ const StyledExtricationSection = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  button {
+    font-weight: 800;
+  }
 `;
 
 const StyledHandoverSection = styled.div`
@@ -257,6 +297,10 @@ const StyledHandoverSection = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  button {
+    font-weight: 800;
+  }
 `;
 
 const StyledForensicsSection = styled.div`
@@ -267,6 +311,27 @@ const StyledForensicsSection = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  button {
+    font-weight: 800;
+  }
+`;
+
+const StyledCoordinates = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.7rem;
+  font-weight: 300;
+`;
+
+const StyledNotes = styled.div`
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: 500;
 `;
 
 export default PatientMarker;
