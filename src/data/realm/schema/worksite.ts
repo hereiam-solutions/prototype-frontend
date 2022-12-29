@@ -13,6 +13,7 @@ export enum constructionTypes {
 };
 
 export enum buildingUses {
+    LIVING = "Living",
     SHOPPING = "Shopping",
     HOSPITAL = "Hospital",
     CARE = "Care",
@@ -91,20 +92,20 @@ export type WorksiteSchema = {
     boundaries: string;
     constructionType: constructionTypes;
     buildingUse: buildingUses;
-    floorArea: number;
-    floorNumber: number;
-    basementNumber: number;
+    floorArea: string;
+    floorNumber: string;
+    basementNumber: string;
     collapse: collapses;
-    damage: number;
+    damage: string;
     voids: voids;
     timestamp: string;
     endtime: string;
     operatingTeams: string[];
     operatingLevel: operatingLevels;
     worksiteTriageLevel: worksiteTriageLevels;
-    missingPersons: number;
-    confirmedLive: number;
-    confirmedVictims: number;
+    missingPersons: string;
+    confirmedLive: string;
+    confirmedVictims: string;
     needsMedical: boolean;
     needsFirefighting: boolean;
     needsDecon: boolean;
@@ -115,8 +116,8 @@ export type WorksiteSchema = {
     needsBreaking: boolean;
     needsLifting: boolean;
     needsRoping: boolean;
-    liveVictimsExtricated: number;
-    deadVictimsRecovered: number;
+    liveVictimsExtricated: string;
+    deadVictimsRecovered: string;
     otherOperationalActivities: string[];
     logisticalNeeds: string[];
     nextActionPlan: string[];
