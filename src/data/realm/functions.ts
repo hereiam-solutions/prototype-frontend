@@ -16,6 +16,11 @@ export const realmFunctionNames = {
   getAllSignalsForMission: "getAllSignalsForMission",
   deleteSignal: "deleteSignal",
 
+  createWorksite: "createWorksite",
+  getAllWorksites: "getAllWorksites",
+  getAllWorksitesForMission: "getAllWorksitesForMission",
+  deleteWorksite: "deleteWorksite",
+
   createLocation: "createLocation",
   getAllLocationsForMission: "getAllLocationsForMission",
   getAllLocations: "getAllLocations",
