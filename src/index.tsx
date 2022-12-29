@@ -34,6 +34,7 @@ import CreateLocationMarker from "./components/navigation/withActiveMission/draw
 import CreatePatientMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreatePatientMarker";
 import CreateSignalMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateSignalMarker";
 import CreateHazardMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateHazardMarker";
+import CreateWorksiteMarker from "./components/navigation/withActiveMission/drawContent/createMapMarker/CreateWorksiteMarker";
 
 //translation
 import './i18n';
@@ -107,6 +108,7 @@ root.render(
             <Route path="create-patient" element={<CreatePatientMarker />} />
             <Route path="create-location" element={<CreateLocationMarker />} />
             <Route path="create-signal" element={<CreateSignalMarker />} />
+            <Route path="create-worksite" element={<CreateWorksiteMarker />} />
           </Route>
         </Route>
       </Routes>
