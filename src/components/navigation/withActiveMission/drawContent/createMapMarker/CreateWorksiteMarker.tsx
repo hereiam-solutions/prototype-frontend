@@ -11,15 +11,15 @@ import useMissionMap from "../../../../../hooks/useMissionMap";
 import useNavigation from "../../../../../hooks/useNavigation";
 
 import {
-  ageGroups,
-  CreatePatientArgs,
-  extricatedLevels,
-  handovers,
-  genders,
-  statuses,
-  injuries,
-  conditions
-} from "../../../../../data/realm/schema/patient";
+  CreateWorksiteArgs,
+  constructionTypes,
+  buildingUses,
+  collapses,
+  voids,
+  worksiteTriageLevels,
+  innerHazards,
+  
+} from "../../../../../data/realm/schema/worksite";
 
 import SingleDropdown from "../../../ui/SingleDropdown";
 
@@ -40,25 +40,45 @@ const CreatePatientMarker = () => {
     try {
 
       if (activeMission) {
-        const args: CreatePatientArgs = {
+        const args: CreateWorksiteArgs = {
+          
+          address: addressValue,
+          boundaries: boundariesValue,
+          constructionType: selectedConstructionType as constructionTypes,
+          buildingUse: selectedBuildingUse as buildingUses,
+          floorArea: floorAreaValue,
+          floorNumber: floorNumberValue,
+          basementNumber: basementNumberValue,
+          collapse: selectedCollapse as collapses,
+          damage: damageValue,
+          voids: selectedVoid as voids,
+          operatingTeams: operatingTeamsValue,
+          operatingLevel: selectedOperatingLevel as operatingLevels,
+          worksiteTriageLevel: selectedWorksiteTriageLevel as worksiteTriageLevels,
+          missingPersons: missingPersonsValue,
+          confirmedLive: confirmedLiveValue,
+          confirmedVictims: confirmedVictimsValue,
+          needsMedical: needsMedicalValue,
+          needsFirefighting: needsFirefightingValue,
+          needsDecon: needsDeconValue,
+          needsPumping: needsPumpingValue,
+          needsDogSearch: needsDogSearchValue,
+          needsTechnicalSearch: needsTechnicalSearchValue,
+          needsShoring: needsShoringValue,
+          needsBreaking: needsBreakingValue,
+          needsLifting: needsLiftingValue,
+          needsRoping: needsRopingValue,
+          liveVictimsExtricated: liveVictimsExtricatedValue,
+          deadVictimsRecovered: deadVictimsRecoveredValue,
+          otherOperationalActivities: otherOperationalActivitiesValue,
+          logisticalNeeds: logisticalNeedsValue,
+          nextActionPlan: nextActionPlanValue,
+          worksiteRelevantContacts: worksiteRelevantContactsValue,
+          hasHazmat: hasHazmatValue,
+          innerHazards: selectedInnerHazard as innerHazards;
+          unusualHazards: unusualHazardsValue,
+          notice: noticeValue,
           mission: activeMission._id.toString(),
-          agegroup: selectedAgeGroup as ageGroups,
-          gender: selectedGender as genders,
-          condition: selectedCondition as conditions,
-          injury: selectedInjury as injuries,
-          status: selectedStatus as statuses,
-          extricatedLevel: selectedLevel as extricatedLevels,
-          floorLevel: floorValue,
-          positionInStructure: positionValue,
-          timeExtrication: timeValue,
-          foundStreetAddress: foundValue,
-          handoverTo: handoverToValue,
-          handover: selectedHandover as handovers,
-          hair: hairValue,
-          face: faceValue,
-          clothing: clothingValue,
-          bodymarks: bodymarksValue,
-          notes: notesValue,
           geoJSON: { type: "Point", coordinates: location },
         };
 
@@ -67,7 +87,7 @@ const CreatePatientMarker = () => {
         if (realm.currentUser) {
           // call the Realm function
           await realm.currentUser.callFunction(
-            realmFunctionNames.createPatient,
+            realmFunctionNames.createWorksite,
             args
           );
         }
@@ -79,163 +99,108 @@ const CreatePatientMarker = () => {
     } catch (e) {
       console.log(
         "There has been an error while calling the Realm custom function called:",
-        realmFunctionNames.createPatient,
+        realmFunctionNames.createWorksite,
         "Error:",
         e
       );
     }
   };
 
-  // ageGroup
-  const [selectedAgeGroup, setSelectedAgeGroup] = useState<string>(
-    ageGroups.ADULT
+  // address
+  const [addressValue, setAddressValue] = useState<string>("");
+
+  const handleAddressChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setAddressValue(event.currentTarget.value);
+  };
+
+  // boundaries
+  const [boundariesValue, setBoundariesValue] = useState<string>("");
+
+  const handleBoundariesChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setBoundariesValue(event.currentTarget.value);
+  };
+
+  // constructionType
+  const [selectedConstructionType, setSelectedConstructionType] = useState<string>(
+    constructionTypes.CONCRETECONSTRUCTION
   );
 
-  const handleAgeGroupChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedAgeGroup(e.currentTarget.value);
+  const handleConstructionTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedConstructionType(e.currentTarget.value);
   };
 
-  // gender
-  const [selectedGender, setSelectedGender] = useState<string>(genders.MALE);
-
-  const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedGender(e.currentTarget.value);
-  };
-
-  // condition
-  const [selectedCondition, setSelectedCondition] = useState<string>(
-    conditions.LIVE
+  // buildingUse
+  const [selectedBuildingUse, setSelectedBuildingUse] = useState<string>(
+    buildingUses.LIVING
   );
 
-  const handleConditionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCondition(e.currentTarget.value);
+  const handleBuildingUseChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedBuildingUse(e.currentTarget.value);
   };
 
-  // injury
-  const [selectedInjury, setSelectedInjury] = useState<string>(
-    injuries.NONE
+  // floorArea
+  const [floorAreaValue, setFloorAreaValue] = useState<string>("");
+
+  const handleFloorAreaChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFloorAreaValue(event.currentTarget.value);
+  };
+
+  // floorNumber
+  const [floorNumberValue, setFloorNumberValue] = useState<string>("");
+
+  const handleFloorNumberChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFloorNumberValue(event.currentTarget.value);
+  };
+
+  // basementNumber
+  const [basementNumberValue, setBasementNumberValue] = useState<string>("");
+
+  const handleBasementNumberChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setBasementNumberValue(event.currentTarget.value);
+  };
+
+  // collapse
+  const [selectedCollapse, setSelectedCollapse] = useState<string>(
+    collapses.OUTSPREAD
   );
 
-  const handleInjuryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedInjury(e.currentTarget.value);
+  const handleCollapseChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCollapse(e.currentTarget.value);
   };
 
-  // status
-  const [selectedStatus, setSelectedStatus] = useState<string>(
-    statuses.DELAYED
+  // damage
+  const [damageValue, setDamageValue] = useState<string>("");
+
+  const handleDamageChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setDamageValue(event.currentTarget.value);
+  };
+
+  // voids
+  const [selectedVoid, setSelectedVoid] = useState<string>(
+    voids.SMALL
   );
 
-  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedStatus(e.currentTarget.value);
+  const handleVoidsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedVoid(e.currentTarget.value);
   };
 
-  // extricatedLevel
-  const [selectedLevel, setSelectedLevel] = useState<string>(
-    extricatedLevels.ASR3
-  );
+  // endtime
 
-  const handleLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedLevel(e.currentTarget.value);
-  };
 
-  // floorLevel
-  const [floorValue, setFloorValue] = useState<string>("");
 
-  const handleFloorChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFloorValue(event.currentTarget.value);
-  };
-
-  // positionInStructure
-  const [positionValue, setPositionValue] = useState<string>("");
-
-  const handlePositionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setPositionValue(event.currentTarget.value);
-  };
-
-  // timeExtrication
-  const [timeValue, setTimeValue] = useState<string>("");
-
-  const handleTimeChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setTimeValue(event.currentTarget.value);
-  };
-
-  // foundStreetAddress
-  const [foundValue, setFoundValue] = useState<string>("");
-
-  const handleFoundChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFoundValue(event.currentTarget.value);
-  };
-
-  // handover
-  const [selectedHandover, setSelectedHandover] = useState<string>(
-    handovers.FAMILY
-  );
-
-  const handleHandoverChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedHandover(e.currentTarget.value);
-  };
-
-  // handoverTo
-  const [handoverToValue, setHandoverToValue] = useState<string>("");
-
-  const handleHandoverToChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setHandoverToValue(event.currentTarget.value);
-  };
-
-  // hair
-  const [hairValue, setHairValue] = useState<string>("");
-
-  const handleHairChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setHairValue(event.currentTarget.value);
-  };
-
-  // face
-  const [faceValue, setFaceValue] = useState<string>("");
-
-  const handleFaceChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFaceValue(event.currentTarget.value);
-  };
-
-  // clothing
-  const [clothingValue, setClothingValue] = useState<string>("");
-
-  const handleClothingChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setClothingValue(event.currentTarget.value);
-  };
-
-  // bodymarks
-  const [bodymarksValue, setBodymarksValue] = useState<string>("");
-
-  const handleBodymarksChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setBodymarksValue(event.currentTarget.value);
-  };
-
-  // notes
-  const [notesValue, setNotesValue] = useState<string>("");
-
-  const handleNotesChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setNotesValue(event.currentTarget.value);
-  };
+  
 
   const [toggleExtrication, setToggleExtrication] = useState(false)
   const [toggleHandover, setToggleHandover] = useState(false)
