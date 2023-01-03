@@ -721,6 +721,7 @@ const CreateWorksiteMarker = () => {
         </button>
         {togglePlanning && (
           <>
+            {/* <input type="checkbox" checked={isChecked} onChange={handleChange} /> */}
             <StyledSectionWrapper>
               <StyledSecondaryHeading>{t("Patient.handoverto")}</StyledSecondaryHeading>
               <StyledHint>{t("Patient.handovertohint")}</StyledHint>
