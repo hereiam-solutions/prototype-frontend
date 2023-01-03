@@ -99,7 +99,7 @@ export type WorksiteSchema = {
     damage: string;
     voids: voids;
     timestamp: string;
-    endtime: string;
+    //endtime: string;
     operatingTeams: string[];
     operatingLevel: operatingLevels;
     worksiteTriageLevel: worksiteTriageLevels;
@@ -144,7 +144,7 @@ export type CreateWorksiteArgs = {
     damage: string;
     voids: voids;
     timestamp: string;
-    endtime: string;
+    //endtime: string;
     operatingTeams: string[];
     operatingLevel: operatingLevels;
     worksiteTriageLevel: worksiteTriageLevels;
@@ -171,8 +171,8 @@ export type CreateWorksiteArgs = {
     innerHazards: innerHazards;
     unusualHazards: string;
     notice: string;
-    status: "active" | "inactive";
-    mission: string;
+    //status: "active" | "inactive";
+    //mission: string;
     geoJSON: geoJSONPoint;
 };
 

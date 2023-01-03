@@ -52,7 +52,7 @@ const CreatePatientMarker = () => {
           collapse: selectedCollapse as collapses,
           damage: damageValue,
           voids: selectedVoid as voids,
-          operatingTeams: operatingTeamsValue,
+          *operatingTeams: operatingTeamsValue,
           operatingLevel: selectedOperatingLevel as operatingLevels,
           worksiteTriageLevel: selectedWorksiteTriageLevel as worksiteTriageLevels,
           missingPersons: missingPersonsValue,
@@ -70,14 +70,14 @@ const CreatePatientMarker = () => {
           needsRoping: needsRopingValue,
           liveVictimsExtricated: liveVictimsExtricatedValue,
           deadVictimsRecovered: deadVictimsRecoveredValue,
-          otherOperationalActivities: otherOperationalActivitiesValue,
-          logisticalNeeds: logisticalNeedsValue,
-          nextActionPlan: nextActionPlanValue,
-          worksiteRelevantContacts: worksiteRelevantContactsValue,
+          *otherOperationalActivities: otherOperationalActivitiesValue,
+          *logisticalNeeds: logisticalNeedsValue,
+          *nextActionPlan: nextActionPlanValue,
+          *worksiteRelevantContacts: worksiteRelevantContactsValue,
           hasHazmat: hasHazmatValue,
           innerHazards: selectedInnerHazard as innerHazards;
-          unusualHazards: unusualHazardsValue,
-          notice: noticeValue,
+          *unusualHazards: unusualHazardsValue,
+          *notice: noticeValue,
           mission: activeMission._id.toString(),
           geoJSON: { type: "Point", coordinates: location },
         };
@@ -196,7 +196,7 @@ const CreatePatientMarker = () => {
     setSelectedVoid(e.currentTarget.value);
   };
 
-  // endtime
+  // operatingTeams
 
 
 
