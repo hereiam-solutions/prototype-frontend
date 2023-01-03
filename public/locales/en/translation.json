@@ -141,7 +141,20 @@
         "constructiontype": "Construction type",
         "constructiontypehint": "Select the main construction type for this worksite.",
         "buildinguse": "Building use",
-        "buildingusehint": "Select which type of use is predominant for the building."
+        "buildingusehint": "Select which type of use is predominant for the building.",
+        "floorarea": "Ground plan size",
+        "floorareahint": "Estimate the ground plan size in square meters.",
+        "floornumber": "Floors",
+        "floornumberhint": "Enter the number of floors.",
+        "basementnumber": "Basement Level",
+        "basementnumberhint": "Enter the number of basement level.",
+        "damage": "Damage",
+        "damagehint": "What percentage of the building is damaged?",
+        "voids": "Voids",
+        "voidshint": "Select whether the building is accessible through large (big) or narrow (small) openings.",
+        "triagelevel": "Worksite Triage Level (USAR)",
+        "triagelevelhint": "Set the worksite triage level according USAR requirements.",
+        "planning": "PLANNING"
     },
     "Actionmenu": {
         "modal1": "Tap once on the map at the location you want to set the marker."

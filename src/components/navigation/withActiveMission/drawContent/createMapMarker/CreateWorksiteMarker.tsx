@@ -216,46 +216,7 @@ const CreateWorksiteMarker = () => {
     setSelectedWorksiteTriageLevel(e.currentTarget.value);
   };
 
-  // operatingTeams
-  const [operatingTeamValue, setOperatingTeamValue] = useState<string>("");
-  const [operatingTeamsValue, setOperatingTeamsValue] = useState<string[]>([]);
-
-  const handleOperatingTeamChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setOperatingTeamValue(event.currentTarget.value);
-  };
-
-  const handleOperatingTeamsChange = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-
-    if (operatingTeamValue) {
-      const operatingTeams: string[] = operatingTeamsValue;
-      operatingTeams.push(operatingTeamValue);
-
-      setOperatingTeamsValue(operatingTeams);
-      setOperatingTeamValue("");
-    }
-  };
-
-  const handleRemoveObject = (operatingTeamToBeRemoved: string) => {
-    const operatingTeams: string[] = operatingTeamsValue;
-
-    const reducedOperatingTeams = operatingTeams.filter(
-      (operatingTeam: string) => operatingTeam !== operatingTeamToBeRemoved
-    );
-
-    setOperatingTeamsValue(reducedOperatingTeams);
-  };
-
-  // operatingLevel
-  const [selectedOperatingLevel, setSelectedOperatingLevel] = useState<string>(
-    operatingLevels.ASR3
-  );
-
-  const handleOperatingLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOperatingLevel(e.currentTarget.value);
-  };
+  // PLANNING
 
   //missingPersons
   const [missingPersonsValue, setMissingPersonsValue] = useState<string>("");
@@ -283,6 +244,7 @@ const CreateWorksiteMarker = () => {
   ) => {
     setConfirmedVictimsValue(event.currentTarget.value);
   };
+
 
   // needsMedical
   const [needsMedicalValue, setNeedsMedicalValue] = useState(false);
@@ -354,56 +316,6 @@ const CreateWorksiteMarker = () => {
     setNeedsRopingValue(e.target.checked);
   };
 
-  // liveVictimsExtricated
-  const [liveVictimsExtricatedValue, setLiveVictimsExtricatedValue] = useState<string>("");
-
-  const handleLiveVictimsExtricatedChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setLiveVictimsExtricatedValue(event.currentTarget.value);
-  };
-
-  // deadVictimsRecovered
-  const [deadVictimsRecoveredValue, setDeadVictimsRecoveredValue] = useState<string>("");
-
-  const handleDeadVictimsRecoveredChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setDeadVictimsRecoveredValue(event.currentTarget.value);
-  };
-
-  // otherOperationalActivities
-  const [otherOperationalActivitiValue, setOtherOperationalActivitiValue] = useState<string>("");
-  const [otherOperationalActivitiesValue, setOtherOperationalActivitiesValue] = useState<string[]>([]);
-
-  const handleOtherOperationalActivitiChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setOtherOperationalActivitiValue(event.currentTarget.value);
-  };
-
-  const handleOtherOperationalActivitiesChange = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-
-    if (otherOperationalActivitiValue) {
-      const otherOperationalActivities: string[] = otherOperationalActivitiesValue;
-      otherOperationalActivities.push(otherOperationalActivitiValue);
-
-      setOtherOperationalActivitiesValue(otherOperationalActivities);
-      setOtherOperationalActivitiValue("");
-    }
-  };
-
-  const handleRemoveActiviti = (otherOperationalActivitiToBeRemoved: string) => {
-    const otherOperationalActivities: string[] = otherOperationalActivitiesValue;
-
-    const reducedOtherOperationalActivities = otherOperationalActivities.filter(
-      (otherOperationalActiviti: string) => otherOperationalActiviti !== otherOperationalActivitiToBeRemoved
-    );
-
-    setOtherOperationalActivitiesValue(reducedOtherOperationalActivities);
-  };
-
   // logisticalNeeds
   const [logisticalNeedValue, setLogisticalNeedValue] = useState<string>("");
   const [logisticalNeedsValue, setLogisticalNeedsValue] = useState<string[]>([]);
@@ -467,6 +379,104 @@ const CreateWorksiteMarker = () => {
 
     setNextActionPlanValue(reducedNextActionPlan);
   };
+
+  // SITUATION
+
+  // operatingTeams
+  const [operatingTeamValue, setOperatingTeamValue] = useState<string>("");
+  const [operatingTeamsValue, setOperatingTeamsValue] = useState<string[]>([]);
+
+  const handleOperatingTeamChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setOperatingTeamValue(event.currentTarget.value);
+  };
+
+  const handleOperatingTeamsChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (operatingTeamValue) {
+      const operatingTeams: string[] = operatingTeamsValue;
+      operatingTeams.push(operatingTeamValue);
+
+      setOperatingTeamsValue(operatingTeams);
+      setOperatingTeamValue("");
+    }
+  };
+
+  const handleRemoveObject = (operatingTeamToBeRemoved: string) => {
+    const operatingTeams: string[] = operatingTeamsValue;
+
+    const reducedOperatingTeams = operatingTeams.filter(
+      (operatingTeam: string) => operatingTeam !== operatingTeamToBeRemoved
+    );
+
+    setOperatingTeamsValue(reducedOperatingTeams);
+  };
+
+  // operatingLevel
+  const [selectedOperatingLevel, setSelectedOperatingLevel] = useState<string>(
+    operatingLevels.ASR3
+  );
+
+  const handleOperatingLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOperatingLevel(e.currentTarget.value);
+  };
+
+  
+
+
+  // liveVictimsExtricated
+  const [liveVictimsExtricatedValue, setLiveVictimsExtricatedValue] = useState<string>("");
+
+  const handleLiveVictimsExtricatedChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setLiveVictimsExtricatedValue(event.currentTarget.value);
+  };
+
+  // deadVictimsRecovered
+  const [deadVictimsRecoveredValue, setDeadVictimsRecoveredValue] = useState<string>("");
+
+  const handleDeadVictimsRecoveredChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setDeadVictimsRecoveredValue(event.currentTarget.value);
+  };
+
+  // otherOperationalActivities
+  const [otherOperationalActivitiValue, setOtherOperationalActivitiValue] = useState<string>("");
+  const [otherOperationalActivitiesValue, setOtherOperationalActivitiesValue] = useState<string[]>([]);
+
+  const handleOtherOperationalActivitiChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setOtherOperationalActivitiValue(event.currentTarget.value);
+  };
+
+  const handleOtherOperationalActivitiesChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (otherOperationalActivitiValue) {
+      const otherOperationalActivities: string[] = otherOperationalActivitiesValue;
+      otherOperationalActivities.push(otherOperationalActivitiValue);
+
+      setOtherOperationalActivitiesValue(otherOperationalActivities);
+      setOtherOperationalActivitiValue("");
+    }
+  };
+
+  const handleRemoveActiviti = (otherOperationalActivitiToBeRemoved: string) => {
+    const otherOperationalActivities: string[] = otherOperationalActivitiesValue;
+
+    const reducedOtherOperationalActivities = otherOperationalActivities.filter(
+      (otherOperationalActiviti: string) => otherOperationalActiviti !== otherOperationalActivitiToBeRemoved
+    );
+
+    setOtherOperationalActivitiesValue(reducedOtherOperationalActivities);
+  };
+
+  
 
   // worksiteRelevantContacts
   const [worksiteRelevantContactValue, setWorksiteRelevantContactValue] = useState<string>("");
@@ -701,15 +711,15 @@ const CreateWorksiteMarker = () => {
           </>
         )}
 
-        {/* HANDOVER */}
+        {/* PLANNING */}
         <br />
         <button
-          onClick={() => setToggleHandover(!toggleHandover)}
+          onClick={() => setTogglePlanning(!togglePlanning)}
           className="toggleButton"
         >
-          {t("Patient.handover")}
+          {t("Worksite.planning")}
         </button>
-        {toggleHandover && (
+        {togglePlanning && (
           <>
             <StyledSectionWrapper>
               <StyledSecondaryHeading>{t("Patient.handoverto")}</StyledSecondaryHeading>
