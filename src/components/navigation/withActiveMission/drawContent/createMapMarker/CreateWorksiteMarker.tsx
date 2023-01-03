@@ -721,7 +721,7 @@ const CreateWorksiteMarker = () => {
         </button>
         {togglePlanning && (
           <>
-            {/* <input type="checkbox" checked={isChecked} onChange={handleChange} /> */}
+            {/* <StyledCheckbox type="checkbox" checked={isChecked} onChange={handleChange} /> */}
             <StyledSectionWrapper>
               <StyledSecondaryHeading>{t("Patient.handoverto")}</StyledSecondaryHeading>
               <StyledHint>{t("Patient.handovertohint")}</StyledHint>
@@ -916,6 +916,25 @@ const StyledHint = styled.div`
 margin-top: -0.4rem;
 font-size: 0.8rem;
 font-weight: 300;
+`;
+
+const StyledCheckbox = styled.input`
+  /* Add your desired styles here */
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+
+  &:checked {
+    /* Add styles for the checked state */
+    background-color: #333;
+    border-color: #333;
+  }
 `;
 
 // dropdown options
