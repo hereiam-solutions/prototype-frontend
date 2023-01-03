@@ -15,6 +15,7 @@ import {
   constructionTypes,
   buildingUses,
   collapses,
+  operatingLevels,
   voids,
   worksiteTriageLevels,
   innerHazards,
@@ -52,7 +53,7 @@ const CreatePatientMarker = () => {
           collapse: selectedCollapse as collapses,
           damage: damageValue,
           voids: selectedVoid as voids,
-          *operatingTeams: operatingTeamsValue,
+          operatingTeams: operatingTeamsValue,
           operatingLevel: selectedOperatingLevel as operatingLevels,
           worksiteTriageLevel: selectedWorksiteTriageLevel as worksiteTriageLevels,
           missingPersons: missingPersonsValue,
@@ -70,14 +71,14 @@ const CreatePatientMarker = () => {
           needsRoping: needsRopingValue,
           liveVictimsExtricated: liveVictimsExtricatedValue,
           deadVictimsRecovered: deadVictimsRecoveredValue,
-          *otherOperationalActivities: otherOperationalActivitiesValue,
-          *logisticalNeeds: logisticalNeedsValue,
-          *nextActionPlan: nextActionPlanValue,
-          *worksiteRelevantContacts: worksiteRelevantContactsValue,
+          otherOperationalActivities: otherOperationalActivitiesValue,
+          logisticalNeeds: logisticalNeedsValue,
+          nextActionPlan: nextActionPlanValue,
+          worksiteRelevantContacts: worksiteRelevantContactsValue,
           hasHazmat: hasHazmatValue,
-          innerHazards: selectedInnerHazard as innerHazards;
-          *unusualHazards: unusualHazardsValue,
-          *notice: noticeValue,
+          innerHazards: selectedInnerHazards as innerHazards,
+          unusualHazards: unusualHazardsValue,
+          notice: noticeValue,
           mission: activeMission._id.toString(),
           geoJSON: { type: "Point", coordinates: location },
         };
@@ -197,10 +198,333 @@ const CreatePatientMarker = () => {
   };
 
   // operatingTeams
+  const [operatingTeamValue, setOperatingTeamValue] = useState<string>("");
+  const [operatingTeamsValue, setOperatingTeamsValue] = useState<string[]>([]);
 
+  const handleOperatingTeamChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setOperatingTeamValue(event.currentTarget.value);
+  };
 
+  const handleOperatingTeamsChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
 
-  
+    if (operatingTeamValue) {
+      const operatingTeams: string[] = operatingTeamsValue;
+      operatingTeams.push(operatingTeamValue);
+
+      setOperatingTeamsValue(operatingTeams);
+      setOperatingTeamValue("");
+    }
+  };
+
+  const handleRemoveObject = (operatingTeamToBeRemoved: string) => {
+    const operatingTeams: string[] = operatingTeamsValue;
+
+    const reducedOperatingTeams = operatingTeams.filter(
+      (operatingTeam: string) => operatingTeam !== operatingTeamToBeRemoved
+    );
+
+    setOperatingTeamsValue(reducedOperatingTeams);
+  };
+
+  // operatingLevel
+  const [selectedOperatingLevel, setSelectedOperatingLevel] = useState<string>(
+    operatingLevels.ASR3
+  );
+
+  const handleOperatingLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOperatingLevel(e.currentTarget.value);
+  };
+
+  // worksiteTriageLevel
+  const [selectedWorksiteTriageLevel, setSelectedWorksiteTriageLevel] = useState<string>(
+    worksiteTriageLevels.B
+  );
+
+  const handleWorksiteTriageLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedWorksiteTriageLevel(e.currentTarget.value);
+  };
+
+  //missingPersons
+  const [missingPersonsValue, setMissingPersonsValue] = useState<string>("");
+
+  const handleMissingPersonsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setMissingPersonsValue(event.currentTarget.value);
+  };
+
+  // confirmedLive
+  const [confirmedLiveValue, setConfirmedLiveValue] = useState<string>("");
+
+  const handleConfirmedLiveChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setConfirmedLiveValue(event.currentTarget.value);
+  };
+
+  // confirmedVictims
+  const [confirmedVictimsValue, setConfirmedVictimsValue] = useState<string>("");
+
+  const handleConfirmedVictimsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setConfirmedVictimsValue(event.currentTarget.value);
+  };
+
+  // needsMedical
+  const [needsMedicalValue, setNeedsMedicalValue] = useState(false);
+
+  const handleNeedsMedicalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsMedicalValue(e.target.checked);
+  };
+
+  // needsFirefighting
+  const [needsFirefightingValue, setNeedsFirefightingValue] = useState(false);
+
+  const handleNeedsFirefightingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsFirefightingValue(e.target.checked);
+  };
+
+  // needsDecon
+  const [needsDeconValue, setNeedsDeconValue] = useState(false);
+
+  const handleNeedsDeconChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsDeconValue(e.target.checked);
+  };
+
+  // needsPumping
+  const [needsPumpingValue, setNeedsPumpingValue] = useState(false);
+
+  const handleNeedsPumpingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsPumpingValue(e.target.checked);
+  };
+
+  // needsDogSearch
+  const [needsDogSearchValue, setNeedsDogSearchValue] = useState(false);
+
+  const handleNeedsDogSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsDogSearchValue(e.target.checked);
+  };
+
+  // needsTechnicalSearch
+  const [needsTechnicalSearchValue, setNeedsTechnicalSearchValue] = useState(false);
+
+  const handleNeedsTechnicalSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsTechnicalSearchValue(e.target.checked);
+  };
+
+  // needsShoring
+  const [needsShoringValue, setNeedsShoringValue] = useState(false);
+
+  const handleNeedsShoringChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsShoringValue(e.target.checked);
+  };
+
+  // needsBreaking
+  const [needsBreakingValue, setNeedsBreakingValue] = useState(false);
+
+  const handleNeedsBreakingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsBreakingValue(e.target.checked);
+  };
+
+  // needsLifting
+  const [needsLiftingValue, setNeedsLiftingValue] = useState(false);
+
+  const handleNeedsLiftingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsLiftingValue(e.target.checked);
+  };
+
+  // needsRoping
+  const [needsRopingValue, setNeedsRopingValue] = useState(false);
+
+  const handleNeedsRopingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNeedsRopingValue(e.target.checked);
+  };
+
+  // liveVictimsExtricated
+  const [liveVictimsExtricatedValue, setLiveVictimsExtricatedValue] = useState<string>("");
+
+  const handleLiveVictimsExtricatedChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setLiveVictimsExtricatedValue(event.currentTarget.value);
+  };
+
+  // deadVictimsRecovered
+  const [deadVictimsRecoveredValue, setDeadVictimsRecoveredValue] = useState<string>("");
+
+  const handleDeadVictimsRecoveredChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setDeadVictimsRecoveredValue(event.currentTarget.value);
+  };
+
+  // otherOperationalActivities
+  const [otherOperationalActivitiValue, setOtherOperationalActivitiValue] = useState<string>("");
+  const [otherOperationalActivitiesValue, setOtherOperationalActivitiesValue] = useState<string[]>([]);
+
+  const handleOtherOperationalActivitiChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setOtherOperationalActivitiValue(event.currentTarget.value);
+  };
+
+  const handleOtherOperationalActivitiesChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (otherOperationalActivitiValue) {
+      const otherOperationalActivities: string[] = otherOperationalActivitiesValue;
+      otherOperationalActivities.push(otherOperationalActivitiValue);
+
+      setOtherOperationalActivitiesValue(otherOperationalActivities);
+      setOtherOperationalActivitiValue("");
+    }
+  };
+
+  const handleRemoveActiviti = (otherOperationalActivitiToBeRemoved: string) => {
+    const otherOperationalActivities: string[] = otherOperationalActivitiesValue;
+
+    const reducedOtherOperationalActivities = otherOperationalActivities.filter(
+      (otherOperationalActiviti: string) => otherOperationalActiviti !== otherOperationalActivitiToBeRemoved
+    );
+
+    setOtherOperationalActivitiesValue(reducedOtherOperationalActivities);
+  };
+
+  // logisticalNeeds
+  const [logisticalNeedValue, setLogisticalNeedValue] = useState<string>("");
+  const [logisticalNeedsValue, setLogisticalNeedsValue] = useState<string[]>([]);
+
+  const handlelogisticalNeedChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setLogisticalNeedValue(event.currentTarget.value);
+  };
+
+  const handleLogisticalNeedsChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (logisticalNeedValue) {
+      const logisticalNeeds: string[] = logisticalNeedsValue;
+      logisticalNeeds.push(logisticalNeedValue);
+
+      setLogisticalNeedsValue(logisticalNeeds);
+      setLogisticalNeedValue("");
+    }
+  };
+
+  const handleRemoveNeeds = (logisticalNeedToBeRemoved: string) => {
+    const logisticalNeeds: string[] = logisticalNeedsValue;
+
+    const reducedLogisticalNeeds = logisticalNeeds.filter(
+      (logisticalNeed: string) => logisticalNeed !== logisticalNeedToBeRemoved
+    );
+
+    setLogisticalNeedsValue(reducedLogisticalNeeds);
+  };
+
+  // nextActionPlan
+  const [nextActionPlanoValue, setNextActionPlanoValue] = useState<string>("");
+  const [nextActionPlanValue, setNextActionPlanValue] = useState<string[]>([]);
+
+  const handleNextActionPlanoChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setNextActionPlanoValue(event.currentTarget.value);
+  };
+
+  const handleNextActionPlanChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (nextActionPlanoValue) {
+      const nextActionPlan: string[] = nextActionPlanValue;
+      nextActionPlan.push(nextActionPlanoValue);
+
+      setNextActionPlanValue(nextActionPlan);
+      setNextActionPlanoValue("");
+    }
+  };
+
+  const handleRemovePlans = (nextActionPlanoToBeRemoved: string) => {
+    const nextActionPlan: string[] = nextActionPlanValue;
+
+    const reducedNextActionPlan = nextActionPlan.filter(
+      (nextActionPlano: string) => nextActionPlano !== nextActionPlanoToBeRemoved
+    );
+
+    setNextActionPlanValue(reducedNextActionPlan);
+  };
+
+  // worksiteRelevantContacts
+  const [worksiteRelevantContactValue, setWorksiteRelevantContactValue] = useState<string>("");
+  const [worksiteRelevantContactsValue, setWorksiteRelevantContactsValue] = useState<string[]>([]);
+
+  const handleWorksiteRelevantContactChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setWorksiteRelevantContactValue(event.currentTarget.value);
+  };
+
+  const handleWorksiteRelevantContactsChange = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (worksiteRelevantContactValue) {
+      const worksiteRelevantContacts: string[] = worksiteRelevantContactsValue;
+      worksiteRelevantContacts.push(worksiteRelevantContactValue);
+
+      setWorksiteRelevantContactsValue(worksiteRelevantContacts);
+      setWorksiteRelevantContactValue("");
+    }
+  };
+
+  const handleRemoveContacts = (worksiteRelevantContactToBeRemoved: string) => {
+    const worksiteRelevantContacts: string[] = worksiteRelevantContactsValue;
+
+    const reducedWorksiteRelevantContacts = worksiteRelevantContacts.filter(
+      (worksiteRelevantContact: string) => worksiteRelevantContact !== worksiteRelevantContactToBeRemoved
+    );
+
+    setWorksiteRelevantContactsValue(reducedWorksiteRelevantContacts);
+  };
+
+  // hasHazmat
+  const [hasHazmatValue, setHasHazmatValue] = useState(false);
+
+  const handleHasHazmatChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setHasHazmatValue(e.target.checked);
+  };
+
+  // innerHazards
+  const [selectedInnerHazards, setSelectedInnerHazards] = useState<string>(
+    innerHazards.ASBESTOS
+  );
+
+  const handleInnerHazardsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedInnerHazards(e.currentTarget.value);
+  };
+
+  // unusualHazards
+  const [unusualHazardsValue, setUnusualHazardsValue] = useState<string>("");
+
+  const handleUnusualHazardsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setUnusualHazardsValue(event.currentTarget.value);
+  };
+
+  // notice
+  const [noticeValue, setNoticeValue] = useState<string>("");
+
+  const handleNoticeChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setNoticeValue(event.currentTarget.value);
+  };
+
+  // toggle areas
 
   const [toggleExtrication, setToggleExtrication] = useState(false)
   const [toggleHandover, setToggleHandover] = useState(false)
