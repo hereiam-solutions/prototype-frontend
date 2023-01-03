@@ -28,7 +28,7 @@ import { useTranslation } from 'react-i18next';
 
 import styled from "styled-components";
 
-const CreatePatientMarker = () => {
+const CreateWorksiteMarker = () => {
   const { realm } = useRealm();
   const { createMarkerLocation: location } = useCreateMarker();
   const { activeMission } = useMission();
@@ -207,6 +207,15 @@ const CreatePatientMarker = () => {
     setSelectedVoid(e.currentTarget.value);
   };
 
+  // worksiteTriageLevel
+  const [selectedWorksiteTriageLevel, setSelectedWorksiteTriageLevel] = useState<string>(
+    worksiteTriageLevels.B
+  );
+
+  const handleWorksiteTriageLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedWorksiteTriageLevel(e.currentTarget.value);
+  };
+
   // operatingTeams
   const [operatingTeamValue, setOperatingTeamValue] = useState<string>("");
   const [operatingTeamsValue, setOperatingTeamsValue] = useState<string[]>([]);
@@ -246,15 +255,6 @@ const CreatePatientMarker = () => {
 
   const handleOperatingLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOperatingLevel(e.currentTarget.value);
-  };
-
-  // worksiteTriageLevel
-  const [selectedWorksiteTriageLevel, setSelectedWorksiteTriageLevel] = useState<string>(
-    worksiteTriageLevels.B
-  );
-
-  const handleWorksiteTriageLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedWorksiteTriageLevel(e.currentTarget.value);
   };
 
   //missingPersons
@@ -584,7 +584,7 @@ const CreatePatientMarker = () => {
           />
         </StyledSectionWrapper>
 
-        {/* STRUCTURE */}
+        {/* TOGGLE STRUCTURE */}
         <br />
         <button
           onClick={() => setToggleStructure(!toggleStructure)}
@@ -599,7 +599,7 @@ const CreatePatientMarker = () => {
               <StyledSecondaryHeading>{t("Worksite.constructiontype")}</StyledSecondaryHeading>
               <StyledHint>{t("Worksite.constructiontypehint")}</StyledHint>
               <SingleDropdown
-                options={constructionTypeDropdownOptions}
+                options={constructionTypeDropwdownOptions}
                 value={selectedConstructionType}
                 label={""}
                 onChange={handleConstructionTypeChange}
@@ -611,7 +611,7 @@ const CreatePatientMarker = () => {
               <StyledSecondaryHeading>{t("Worksite.buildinguse")}</StyledSecondaryHeading>
               <StyledHint>{t("Worksite.buildingusehint")}</StyledHint>
               <SingleDropdown
-                options={buildingUseDropdownOptions}
+                options={buildingUseDropwdownOptions}
                 value={selectedBuildingUse}
                 label={""}
                 onChange={handleBuildingUseChange}
@@ -629,7 +629,74 @@ const CreatePatientMarker = () => {
               />
             </StyledSectionWrapper>
 
+            {/* FLOOR NUMBER */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.floornumber")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.floornumberhint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={floorNumberValue}
+                onChange={handleFloorNumberChange}
+              />
+            </StyledSectionWrapper>
 
+            {/* BASEMENT NUMBER */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.basementnumber")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.basementnumberhint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={basementNumberValue}
+                onChange={handleBasementNumberChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* COLLAPSE */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.collapse")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.collapsehint")}</StyledHint>
+              <SingleDropdown
+                options={collapseDropwdownOptions}
+                value={selectedCollapse}
+                label={""}
+                onChange={handleCollapseChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* DAMAGE % */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.damage")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.damagehint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={damageValue}
+                onChange={handleDamageChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* VOIDS */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.voids")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.voidshint")}</StyledHint>
+              <SingleDropdown
+                options={voidsDropwdownOptions}
+                value={selectedVoid}
+                label={""}
+                onChange={handleVoidsChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* WORKSITE TRIAGE LEVEL */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.triagelevel")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.triagelevelhint")}</StyledHint>
+              <SingleDropdown
+                options={worksiteTriageLevelDropwdownOptions}
+                value={selectedWorksiteTriageLevel}
+                label={""}
+                onChange={handleWorksiteTriageLevelChange}
+              />
+            </StyledSectionWrapper>
 
           </>
         )}
@@ -842,28 +909,59 @@ font-weight: 300;
 
 // dropdown options
 const constructionTypeDropwdownOptions = [
-  { label: constructionType.BRICKCONCRETE, value: constructionType.BRICKCONCRETE },
-  { label: constructionType.BRICKWOOD, value: constructionType.BRICKWOOD },
-  { label: constructionType.CONCRETECONSTRUCTION, value: constructionType.CONCRETECONSTRUCTION },
-  { label: constructionType.CONCRETEWALLS, value: constructionType.CONCRETEWALLS },
-  { label: constructionType.STEELFRAME, value: constructionType.STEELFRAME },
-  { label: constructionType.STONE, value: constructionType.STONE},
-  { label: constructionType.OTHER, value: constructionType.OTHER},
+  { label: constructionTypes.BRICKCONCRETE, value: constructionTypes.BRICKCONCRETE },
+  { label: constructionTypes.BRICKWOOD, value: constructionTypes.BRICKWOOD },
+  { label: constructionTypes.CONCRETECONSTRUCTION, value: constructionTypes.CONCRETECONSTRUCTION },
+  { label: constructionTypes.CONCRETEWALLS, value: constructionTypes.CONCRETEWALLS },
+  { label: constructionTypes.STEELFRAME, value: constructionTypes.STEELFRAME },
+  { label: constructionTypes.STONE, value: constructionTypes.STONE},
+  { label: constructionTypes.OTHER, value: constructionTypes.OTHER},
 ];
 
 const buildingUseDropwdownOptions = [
-  { label: buildingUse.LIVING, value: buildingUse.LIVING },
-  { label: buildingUse.SHOPPING, value: buildingUse.SHOPPING },
-  { label: buildingUse.HOSPITAL, value: buildingUse.HOSPITAL },
-  { label: buildingUse.CARE, value: buildingUse.CARE },
-  { label: buildingUse.OFFICE, value: buildingUse.OFFICE },
-  { label: buildingUse.RELIGIOUS, value: buildingUse.RELIGIOUS },
-  { label: buildingUse.SCHOOL, value: buildingUse.SCHOOL},
-  { label: buildingUse.INDUSTRIAL, value: buildingUse.INDUSTRIAL},
-  { label: buildingUse.HOTEL, value: buildingUse.HOTEL},
-  { label: buildingUse.RESTAURANT, value: buildingUse.RESTAURANT },
-  { label: buildingUse.MIXED, value: buildingUse.MIXED },
-  { label: buildingUse.OTHER, value: buildingUse.OTHER },
+  { label: buildingUses.LIVING, value: buildingUses.LIVING },
+  { label: buildingUses.SHOPPING, value: buildingUses.SHOPPING },
+  { label: buildingUses.HOSPITAL, value: buildingUses.HOSPITAL },
+  { label: buildingUses.CARE, value: buildingUses.CARE },
+  { label: buildingUses.OFFICE, value: buildingUses.OFFICE },
+  { label: buildingUses.RELIGIOUS, value: buildingUses.RELIGIOUS },
+  { label: buildingUses.SCHOOL, value: buildingUses.SCHOOL},
+  { label: buildingUses.INDUSTRIAL, value: buildingUses.INDUSTRIAL},
+  { label: buildingUses.HOTEL, value: buildingUses.HOTEL},
+  { label: buildingUses.RESTAURANT, value: buildingUses.RESTAURANT },
+  { label: buildingUses.MIXED, value: buildingUses.MIXED },
+  { label: buildingUses.OTHER, value: buildingUses.OTHER },
 ];
+
+const collapseDropwdownOptions = [
+  { label: collapses.PLANE, value: collapses.PLANE },
+  { label: collapses.MULTILAYER, value: collapses.MULTILAYER },
+  { label: collapses.OUTSPREAD, value: collapses.OUTSPREAD },
+  { label: collapses.PANCAKESEVERAL, value: collapses.PANCAKESEVERAL },
+  { label: collapses.PANCAKEONE, value: collapses.PANCAKEONE },
+  { label: collapses.HEAPVERTICAL, value: collapses.HEAPVERTICAL },
+  { label: collapses.HEAPUNCOLLAPSED, value: collapses.HEAPUNCOLLAPSED },
+  { label: collapses.HEAPDEBRIS, value: collapses.HEAPDEBRIS },
+  { label: collapses.HEAPPLATES, value: collapses.HEAPPLATES },
+  { label: collapses.OVERHANG, value: collapses.OVERHANG },
+  { label: collapses.OVERTURN, value: collapses.OVERTURN },
+  { label: collapses.OTHER, value: collapses.OTHER },
+];
+
+const voidsDropwdownOptions = [
+  { label: voids.BIG, value: voids.BIG },
+  { label: voids.SMALL, value: voids.SMALL },
+];
+
+const worksiteTriageLevelDropwdownOptions = [
+  { label: worksiteTriageLevels.A, value: worksiteTriageLevels.A },
+  { label: worksiteTriageLevels.B, value: worksiteTriageLevels.B },
+  { label: worksiteTriageLevels.C, value: worksiteTriageLevels.C },
+  { label: worksiteTriageLevels.D, value: worksiteTriageLevels.D },
+  { label: worksiteTriageLevels.E, value: worksiteTriageLevels.E },
+  { label: worksiteTriageLevels.F, value: worksiteTriageLevels.F },
+];
+
+
 
 export default CreateWorksiteMarker;
