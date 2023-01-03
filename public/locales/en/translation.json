@@ -129,6 +129,20 @@
         "by": "by",
         "clear": "PROCESSED"
     },
+    "Worksite": {
+        "headline": "Define Worksite",
+        "identifier": "Identifier",
+        "identierhint": "Use your identification system for a short describer.",
+        "address": "Street address",
+        "addresshint": "State the street address if possible.",
+        "boundaries": "Worksite Boundaries",
+        "boundarieshint": "Describe the worksite boundaries if necessary.",
+        "structure": "STRUCTURE",
+        "constructiontype": "Construction type",
+        "constructiontypehint": "Select the main construction type for this worksite.",
+        "buildinguse": "Building use",
+        "buildingusehint": "Select which type of use is predominant for the building."
+    },
     "Actionmenu": {
         "modal1": "Tap once on the map at the location you want to set the marker."
 

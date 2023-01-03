@@ -42,7 +42,7 @@ const CreatePatientMarker = () => {
 
       if (activeMission) {
         const args: CreateWorksiteArgs = {
-          
+          identifier: identifierValue,
           address: addressValue,
           boundaries: boundariesValue,
           constructionType: selectedConstructionType as constructionTypes,
@@ -81,6 +81,7 @@ const CreatePatientMarker = () => {
           notice: noticeValue,
           mission: activeMission._id.toString(),
           geoJSON: { type: "Point", coordinates: location },
+          status: "active",
         };
 
         setLoading(true);
@@ -105,6 +106,15 @@ const CreatePatientMarker = () => {
         e
       );
     }
+  };
+
+  //identifier
+  const [identifierValue, setIdentifierValue] = useState<string>("");
+
+  const handleIdentifierChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setIdentifierValue(event.currentTarget.value);
   };
 
   // address
@@ -526,138 +536,101 @@ const CreatePatientMarker = () => {
 
   // toggle areas
 
-  const [toggleExtrication, setToggleExtrication] = useState(false)
-  const [toggleHandover, setToggleHandover] = useState(false)
-  const [toggleForensics, setToggleForensics] = useState(false)
+  const [toggleStructure, setToggleStructure] = useState(false)
+  const [togglePlanning, setTogglePlanning] = useState(false)
+  const [toggleSituation, setToggleSituation] = useState(false)
+  const [toggleRisk, setToggleRisk] = useState(false)
 
   const { t } = useTranslation();
 
   return (
     <StyledDrawWrapper>
       <StyledDrawHeader>
-        <StyledHeading>{ t("Patient.headline")}</StyledHeading>
+        <StyledHeading>{ t("Worksite.headline")}</StyledHeading>
       </StyledDrawHeader>
 
       <StyledContentWrapper>
 
+        {/* IDENTIFIER */}
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>{t("Patient.age")}</StyledSecondaryHeading>
-
-          <SingleDropdown
-            options={ageGroupDropwdownOptions}
-            value={selectedAgeGroup}
-            label={""}
-            onChange={handleAgeGroupChange}
+          <StyledSecondaryHeading>{t("Worksite.identifier")}</StyledSecondaryHeading>
+          <StyledHint>{t("Worksite.identifierhint")}</StyledHint>
+          <StyledInput
+            type="text"
+            value={identifierValue}
+            onChange={handleIdentifierChange}
           />
         </StyledSectionWrapper>
 
+        {/* ADDRESS */}
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>{t("Patient.gender")}</StyledSecondaryHeading>
-
-          <SingleDropdown
-            options={genderDropwdownOptions}
-            value={selectedGender}
-            label={""}
-            onChange={handleGenderChange}
+          <StyledSecondaryHeading>{t("Worksite.address")}</StyledSecondaryHeading>
+          <StyledHint>{t("Worksite.addresshint")}</StyledHint>
+          <StyledInput
+            type="text"
+            value={addressValue}
+            onChange={handleAddressChange}
           />
         </StyledSectionWrapper>
 
+        {/* BOUNDARIES */}
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>{t("Patient.condition")}</StyledSecondaryHeading>
-
-          <SingleDropdown
-            options={conditionDropwdownOptions}
-            value={selectedCondition}
-            label={""}
-            onChange={handleConditionChange}
+          <StyledSecondaryHeading>{t("Worksite.boundaries")}</StyledSecondaryHeading>
+          <StyledHint>{t("Worksite.boundarieshint")}</StyledHint>
+          <StyledInput
+            type="text"
+            value={boundariesValue}
+            onChange={handleBoundariesChange}
           />
         </StyledSectionWrapper>
 
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>{t("Patient.injuries")}</StyledSecondaryHeading>
-
-          <SingleDropdown
-            options={injuriesDropwdownOptions}
-            value={selectedInjury}
-            label={""}
-            onChange={handleInjuryChange}
-          />
-        </StyledSectionWrapper>
-
-        <StyledSectionWrapper>
-          <StyledSecondaryHeading>{t("Patient.status")}</StyledSecondaryHeading>
-
-          <SingleDropdown
-            options={statusDropwdownOptions}
-            value={selectedStatus}
-            label={""}
-            onChange={handleStatusChange}
-          />
-        </StyledSectionWrapper>
-
-        {/* EXTRICATION */}
+        {/* STRUCTURE */}
         <br />
         <button
-          onClick={() => setToggleExtrication(!toggleExtrication)}
+          onClick={() => setToggleStructure(!toggleStructure)}
           className="toggleButton"
         >
-          {t("Patient.extriction")}
+          {t("Worksite.structure")}
         </button>
-        {toggleExtrication && (
+        {toggleStructure && (
           <>
+            {/* CONSTRUCTION TYPE */}
             <StyledSectionWrapper>
-              <StyledSecondaryHeading>{t("Patient.extrictlevel")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.extrictlevelhint")}</StyledHint>
+              <StyledSecondaryHeading>{t("Worksite.constructiontype")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.constructiontypehint")}</StyledHint>
               <SingleDropdown
-                options={extricatedLevelDropwdownOptions}
-                value={selectedLevel}
+                options={constructionTypeDropdownOptions}
+                value={selectedConstructionType}
                 label={""}
-                onChange={handleLevelChange}
+                onChange={handleConstructionTypeChange}
               />
             </StyledSectionWrapper>
 
+            {/* BUILDING USE */}
             <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.buildinguse")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.buildingusehint")}</StyledHint>
+              <SingleDropdown
+                options={buildingUseDropdownOptions}
+                value={selectedBuildingUse}
+                label={""}
+                onChange={handleBuildingUseChange}
+              />
+            </StyledSectionWrapper>
 
-              <StyledSecondaryHeading>{t("Patient.floor")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.floorhint")}</StyledHint>
+            {/* FLOOR AREA */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.floorarea")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.floorareahint")}</StyledHint>
               <StyledInput
                 type="text"
-                value={floorValue}
-                onChange={handleFloorChange}
+              value={floorAreaValue}
+              onChange={handleFloorAreaChange}
               />
             </StyledSectionWrapper>
 
-            <StyledSectionWrapper>
 
-              <StyledSecondaryHeading>{t("Patient.position")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.positionhint")}</StyledHint>
-              <StyledInput
-                type="text"
-                value={positionValue}
-                onChange={handlePositionChange}
-              />
-            </StyledSectionWrapper>
 
-            <StyledSectionWrapper>
-
-              <StyledSecondaryHeading>{t("Patient.time")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.timehint")}</StyledHint>
-              <StyledInput
-                type="text"
-                value={timeValue}
-                onChange={handleTimeChange}
-              />
-            </StyledSectionWrapper>
-
-            <StyledSectionWrapper>
-              <StyledSecondaryHeading>{t("Patient.address")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.addresshint")}</StyledHint>
-              <StyledInput
-                type="text"
-                value={foundValue}
-                onChange={handleFoundChange}
-              />
-            </StyledSectionWrapper>
           </>
         )}
 
@@ -868,59 +841,29 @@ font-weight: 300;
 `;
 
 // dropdown options
-const ageGroupDropwdownOptions = [
-  { label: ageGroups.BABY, value: ageGroups.BABY },
-  { label: ageGroups.PRESCHOOLER, value: ageGroups.PRESCHOOLER },
-  { label: ageGroups.CHILD, value: ageGroups.CHILD },
-  { label: ageGroups.ADOLESCENT, value: ageGroups.ADOLESCENT },
-  { label: ageGroups.ADULT, value: ageGroups.ADULT },
-  { label: ageGroups.ELDERLY, value: ageGroups.ELDERLY },
+const constructionTypeDropwdownOptions = [
+  { label: constructionType.BRICKCONCRETE, value: constructionType.BRICKCONCRETE },
+  { label: constructionType.BRICKWOOD, value: constructionType.BRICKWOOD },
+  { label: constructionType.CONCRETECONSTRUCTION, value: constructionType.CONCRETECONSTRUCTION },
+  { label: constructionType.CONCRETEWALLS, value: constructionType.CONCRETEWALLS },
+  { label: constructionType.STEELFRAME, value: constructionType.STEELFRAME },
+  { label: constructionType.STONE, value: constructionType.STONE},
+  { label: constructionType.OTHER, value: constructionType.OTHER},
 ];
 
-const genderDropwdownOptions = [
-  { label: genders.MALE, value: genders.MALE },
-  { label: genders.FEMALE, value: genders.FEMALE },
-  { label: genders.DIVERSE, value: genders.DIVERSE },
+const buildingUseDropwdownOptions = [
+  { label: buildingUse.LIVING, value: buildingUse.LIVING },
+  { label: buildingUse.SHOPPING, value: buildingUse.SHOPPING },
+  { label: buildingUse.HOSPITAL, value: buildingUse.HOSPITAL },
+  { label: buildingUse.CARE, value: buildingUse.CARE },
+  { label: buildingUse.OFFICE, value: buildingUse.OFFICE },
+  { label: buildingUse.RELIGIOUS, value: buildingUse.RELIGIOUS },
+  { label: buildingUse.SCHOOL, value: buildingUse.SCHOOL},
+  { label: buildingUse.INDUSTRIAL, value: buildingUse.INDUSTRIAL},
+  { label: buildingUse.HOTEL, value: buildingUse.HOTEL},
+  { label: buildingUse.RESTAURANT, value: buildingUse.RESTAURANT },
+  { label: buildingUse.MIXED, value: buildingUse.MIXED },
+  { label: buildingUse.OTHER, value: buildingUse.OTHER },
 ];
 
-const conditionDropwdownOptions = [
-  { label: conditions.LIVE, value: conditions.LIVE },
-  { label: conditions.DECEASED, value: conditions.DECEASED },
-];
-
-const injuriesDropwdownOptions = [
-  { label: injuries.NONE, value: injuries.NONE },
-  { label: injuries.STABLE, value: injuries.STABLE },
-  { label: injuries.CRITICAL, value: injuries.CRITICAL },
-];
-
-const statusDropwdownOptions = [
-  { label: statuses.IMMEDIATE, value: statuses.IMMEDIATE },
-  { label: statuses.DELAYED, value: statuses.DELAYED },
-  { label: statuses.MINIMAL, value: statuses.MINIMAL },
-  { label: statuses.EXPECTANT, value: statuses.EXPECTANT },
-  { label: statuses.LOST, value: statuses.LOST },
-  { label: statuses.AFFECTED, value: statuses.AFFECTED },
-];
-
-const extricatedLevelDropwdownOptions = [
-  { label: extricatedLevels.ASSISTED, value: extricatedLevels.ASSISTED },
-  { label: extricatedLevels.DEBRIS, value: extricatedLevels.DEBRIS },
-  { label: extricatedLevels.ASR3, value: extricatedLevels.ASR3 },
-  { label: extricatedLevels.ASR4, value: extricatedLevels.ASR4 },
-  { label: extricatedLevels.ASR5, value: extricatedLevels.ASR5 },
-];
-
-const handoverDropwdownOptions = [
-  { label: handovers.FAMILY, value: handovers.FAMILY },
-  { label: handovers.LOCALS, value: handovers.LOCALS },
-  { label: handovers.AMBULANCE, value: handovers.AMBULANCE },
-  { label: handovers.MEDICAL, value: handovers.MEDICAL },
-  { label: handovers.FIELD, value: handovers.FIELD },
-  { label: handovers.HELICOPTER, value: handovers.HELICOPTER },
-  { label: handovers.HOSPITAL, value: handovers.HOSPITAL },
-  { label: handovers.MORTUARY, value: handovers.MORTUARY },
-  { label: handovers.OTHER, value: handovers.OTHER },
-];
-
-export default CreatePatientMarker;
+export default CreateWorksiteMarker;
