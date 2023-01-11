@@ -1,21 +1,4 @@
-// example in parent component
-// const [selectedDisasterTypes, setSelectedDisasterTypes] = useState<string[]>([
-//     disasterTypesEnum.DROUGHT,
-//   ]);
-
-//   const handleDisasterTypesChange = (
-//     e: React.ChangeEvent<HTMLSelectElement>
-//   ) => {
-//     const selectedOptions = e.currentTarget.selectedOptions;
-//     const newStateValue: string[] = [];
-
-//     for (let i = 0; i < selectedOptions.length; i++) {
-//       console.log(i, selectedOptions[i].value);
-//       newStateValue.push(selectedOptions[i].value);
-//     }
-
-//     setSelectedDisasterTypes(newStateValue);
-//   };
+import styled from "styled-components";
 
 type MultiDropdownProps = {
   label: string;
@@ -37,17 +20,32 @@ const MultiDropdown = ({
     <>
       <label>
         {label}
-        <select placeholder="HI" value={values} onChange={onChange} multiple>
+        <StyledSelect value={values} onChange={onChange} multiple>
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
-        </select>
+        </StyledSelect>
       </label>
-      {values && values.map((value) => <div key={value}>{value}</div>)}
+      {/*values && values.map((value) => <div key={value}>{value}</div>)*/}
     </>
   );
 };
+
+const StyledSelect = styled.select`
+  background-color: ${(props) => props.theme.primaryBackgroundColor};
+  border: 1px solid ${(props) => props.theme.formFieldColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+  color: ${(props) => props.theme.formFieldColor};
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  width: 100%;
+  /* margin-top: 0.6rem; */
+  padding: 0.75rem;
+  outline: none;
+`;
 
 export default MultiDropdown;
