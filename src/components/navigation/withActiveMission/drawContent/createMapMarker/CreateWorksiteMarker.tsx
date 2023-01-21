@@ -320,7 +320,7 @@ const CreateWorksiteMarker = () => {
   const [logisticalNeedValue, setLogisticalNeedValue] = useState<string>("");
   const [logisticalNeedsValue, setLogisticalNeedsValue] = useState<string[]>([]);
 
-  const handlelogisticalNeedChange = (
+  const handleLogisticalNeedChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setLogisticalNeedValue(event.currentTarget.value);
@@ -404,7 +404,7 @@ const CreateWorksiteMarker = () => {
     }
   };
 
-  const handleRemoveObject = (operatingTeamToBeRemoved: string) => {
+  const handleRemoveTeam = (operatingTeamToBeRemoved: string) => {
     const operatingTeams: string[] = operatingTeamsValue;
 
     const reducedOperatingTeams = operatingTeams.filter(
@@ -716,7 +716,213 @@ const CreateWorksiteMarker = () => {
         </button>
         {togglePlanning && (
           <>
-            {/* <StyledCheckbox type="checkbox" checked={isChecked} onChange={handleChange} /> */}
+            {/* missing persons */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.missingpersons")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.missingpersonshint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={missingPersonsValue}
+                onChange={handleMissingPersonsChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* confirmed live  */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.confirmedlive")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.confirmedlivehint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={confirmedLiveValue}
+                onChange={handleConfirmedLiveChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* confirmed victims  */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.confirmedvictims")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.confirmedvictimshint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={confirmedVictimsValue}
+                onChange={handleConfirmedVictimsChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* ressources needs  */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.needsressources")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.needsressourceshint")}</StyledHint>
+              
+              <StyledCheckboxArea>
+
+                <label>
+                  <StyledCheckbox
+                  type="checkbox" 
+                  checked={needsMedicalValue}
+                  onChange={handleNeedsMedicalChange}
+                  />
+                  <span>{t("Worksite.needsmedic")}</span>
+                </label>
+
+                <label>
+                  <StyledCheckbox
+                    type="checkbox"
+                    checked={needsFirefightingValue}
+                    onChange={handleNeedsFirefightingChange}
+                  />
+                  <span>{t("Worksite.needsfirefighting")}</span>
+                </label>
+
+                <label>
+                  <StyledCheckbox
+                    type="checkbox"
+                    checked={needsDeconValue}
+                    onChange={handleNeedsDeconChange}
+                  />
+                  <span>{t("Worksite.needsdecon")}</span>
+                </label>
+
+                <label>
+                  <StyledCheckbox
+                    type="checkbox"
+                    checked={needsPumpingValue}
+                    onChange={handleNeedsPumpingChange}
+                  />
+                  <span>{t("Worksite.needspumping")}</span>
+                </label>
+
+                <hr />
+
+                <label>
+                  <StyledCheckbox
+                    type="checkbox"
+                    checked={needsDogSearchValue}
+                    onChange={handleNeedsDogSearchChange}
+                  />
+                  <span>{t("Worksite.needsdogsearch")}</span>
+                </label>
+
+                <label>
+                  <StyledCheckbox
+                    type="checkbox"
+                    checked={needsTechnicalSearchValue}
+                    onChange={handleNeedsTechnicalSearchChange}
+                  />
+                  <span>{t("Worksite.needstechnicalsearch")}</span>
+                </label>
+
+                <hr />
+
+                <label>
+                  <StyledCheckbox
+                    type="checkbox"
+                    checked={needsShoringValue}
+                    onChange={handleNeedsShoringChange}
+                  />
+                  <span>{t("Worksite.needsshoring")}</span>
+                </label>
+
+                <label>
+                  <StyledCheckbox
+                    type="checkbox"
+                    checked={needsBreakingValue}
+                    onChange={handleNeedsBreakingChange}
+                  />
+                  <span>{t("Worksite.needsbreaking")}</span>
+                </label>
+
+                <label>
+                  <StyledCheckbox
+                    type="checkbox"
+                    checked={needsLiftingValue}
+                    onChange={handleNeedsLiftingChange}
+                  />
+                  <span>{t("Worksite.needslifting")}</span>
+                </label>
+
+                <label>
+                  <StyledCheckbox
+                    type="checkbox"
+                    checked={needsRopingValue}
+                    onChange={handleNeedsRopingChange}
+                  />
+                  <span>{t("Worksite.needsroping")}</span>
+                </label>
+
+              </StyledCheckboxArea>
+
+            </StyledSectionWrapper>
+
+            {/* logistical needs  */}
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>{t("Mission.logisticalneed")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.logisticalneedhint")}</StyledHint>
+
+              <StyledList>
+                {logisticalNeedsValue.map((logisticalNeed: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {logisticalNeed}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveNeeds(logisticalNeed)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
+
+              <StyledForm onSubmit={handleLogisticalNeedsChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={logisticalNeedValue}
+                    onChange={handleLogisticalNeedChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
+
+            {/*nextActionPlan*/}
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>{t("Mission.nextactionplan")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.nextactionplanhint")}</StyledHint>
+
+              <StyledList>
+                {nextActionPlanValue.map((nextActionPlano: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {nextActionPlano}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemovePlans(nextActionPlano)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
+
+              <StyledForm onSubmit={handleNextActionPlanChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={nextActionPlanoValue}
+                    onChange={handleNextActionPlanoChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
             
           </>
         )}
@@ -731,6 +937,144 @@ const CreateWorksiteMarker = () => {
         </button>
         {toggleSituation && (
           <>
+            {/* operatingTeams */}
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>{t("Mission.operatingteams")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.operatingteamshint")}</StyledHint>
+
+              <StyledList>
+                {operatingTeamsValue.map((operatingTeam: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {operatingTeam}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveTeam(operatingTeam)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
+
+              <StyledForm onSubmit={handleOperatingTeamsChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={operatingTeamValue}
+                    onChange={handleOperatingTeamChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
+
+            {/* operatingLevel */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.operatinglevel")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.operatinglevelhint")}</StyledHint>
+              <SingleDropdown
+                options={operatingLevelDropwdownOptions}
+                value={selectedOperatingLevel}
+                label={""}
+                onChange={handleOperatingLevelChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* liveVictimsExtricated */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.livevictims")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.livevictimshint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={liveVictimsExtricatedValue}
+                onChange={handleLiveVictimsExtricatedChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* deadVictimsRecovered */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.deadvictims")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.deadvictimshint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={deadVictimsRecoveredValue}
+                onChange={handleDeadVictimsRecoveredChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* otherOperationalActivities */}
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>{t("Mission.otheractivities")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.otheractivitieshint")}</StyledHint>
+
+              <StyledList>
+                {otherOperationalActivitiesValue.map((otherOperationalActiviti: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {otherOperationalActiviti}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveActiviti(otherOperationalActiviti)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
+
+              <StyledForm onSubmit={handleOtherOperationalActivitiesChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={otherOperationalActivitiValue}
+                    onChange={handleOtherOperationalActivitiChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
+
+            {/* worksiteRelevantContacts */}
+            <StyledSectionWrapper>
+
+              <StyledSecondaryHeading>{t("Mission.worksitecontacts")}</StyledSecondaryHeading>
+              <StyledHint>{t("Mission.worksitecontactshint")}</StyledHint>
+
+              <StyledList>
+                {worksiteRelevantContactsValue.map((worksiteRelevantContact: string, index: number) => {
+                  return (
+                    <StyledListEntry key={index}>
+                      {worksiteRelevantContact}
+                      <StyledObjectiveButton
+                        onClick={() => handleRemoveContacts(worksiteRelevantContact)}
+                      >
+                        X
+                      </StyledObjectiveButton>
+                    </StyledListEntry>
+                  );
+                })}
+              </StyledList>
+
+              <StyledForm onSubmit={handleWorksiteRelevantContactsChange}>
+
+                <StyledFormContentWrapper>
+                  <StyledInput
+                    value={worksiteRelevantContactValue}
+                    onChange={handleWorksiteRelevantContactChange}
+                  />
+                  <StyledFormButton type="submit">+</StyledFormButton>
+                </StyledFormContentWrapper>
+
+              </StyledForm>
+
+            </StyledSectionWrapper>
 
           </>
         )}
@@ -745,6 +1089,40 @@ const CreateWorksiteMarker = () => {
         </button>
         {toggleRisk && (
           <>
+            {/* hasHazmat */}
+            <StyledSectionWrapper>
+              <label>
+                <StyledCheckbox
+                  type="checkbox"
+                  checked={hasHazmatValue}
+                  onChange={handleHasHazmatChange}
+                />
+                <span>{t("Worksite.hashazmat")}</span>
+              </label>
+            </StyledSectionWrapper>
+
+            {/* innerHazards */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.innerhazards")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.innerhazardshint")}</StyledHint>
+              <SingleDropdown
+                options={innerHazardsDropwdownOptions}
+                value={selectedInnerHazards}
+                label={""}
+                onChange={handleInnerHazardsChange}
+              />
+            </StyledSectionWrapper>
+
+            {/* unusualHazards */}
+            <StyledSectionWrapper>
+              <StyledSecondaryHeading>{t("Worksite.unusualhazard")}</StyledSecondaryHeading>
+              <StyledHint>{t("Worksite.unusualhazardhint")}</StyledHint>
+              <StyledInput
+                type="text"
+                value={unusualHazardsValue}
+                onChange={handleUnusualHazardsChange}
+              />
+            </StyledSectionWrapper>
 
           </>
         )}
@@ -869,6 +1247,16 @@ font-size: 0.8rem;
 font-weight: 300;
 `;
 
+const StyledCheckboxArea = styled.div`
+  width: 100%;
+  padding-left: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+`;
+
 const StyledCheckbox = styled.input`
   /* Add your desired styles here */
   appearance: none;
@@ -886,6 +1274,64 @@ const StyledCheckbox = styled.input`
     background-color: #333;
     border-color: #333;
   }
+`;
+
+const StyledForm = styled.form``;
+
+const StyledFormContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: 3rem;
+`;
+
+const StyledFormButton = styled.button`
+  width: 20%;
+  height: 100%;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  text-align: center;
+  align-self: center;
+
+  color: ${(props) => props.theme.primaryBackgroundColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  border: 1px solid ${(props) => props.theme.formSubmitBorderColor};
+  border-radius: ${(props) => props.theme.inputBorderRadius};
+`;
+
+const StyledList = styled.ul`
+  margin: 0;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+const StyledListEntry = styled.li`
+  color: ${(props) => props.theme.buttonFontColor};
+  background-color: ${(props) => props.theme.buttonColor};
+
+  margin-bottom: 0.3rem;
+  padding: 0.2rem 0.6rem;
+
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  list-style: none;
+  display: inline-block;
+  margin-right: 1rem;
+
+  border-radius: 12px;
+`;
+
+const StyledObjectiveButton = styled.span`
+  color: ${(props) => props.theme.primaryBackgroundColor};
+
+  font-weight: 200;
+  opacity: 0.7;
+
+  margin-left: 0.7rem;
 `;
 
 // dropdown options
@@ -941,6 +1387,34 @@ const worksiteTriageLevelDropwdownOptions = [
   { label: worksiteTriageLevels.D, value: worksiteTriageLevels.D },
   { label: worksiteTriageLevels.E, value: worksiteTriageLevels.E },
   { label: worksiteTriageLevels.F, value: worksiteTriageLevels.F },
+];
+
+const operatingLevelDropwdownOptions = [
+  { label: operatingLevels.ASR1, value: operatingLevels.ASR1 },
+  { label: operatingLevels.ASR2, value: operatingLevels.ASR2 },
+  { label: operatingLevels.ASR3, value: operatingLevels.ASR3 },
+  { label: operatingLevels.ASR4, value: operatingLevels.ASR4},
+  { label: operatingLevels.ASR5, value: operatingLevels.ASR5 },
+];
+
+const innerHazardsDropwdownOptions = [
+  { label: innerHazards.ANIMALS, value: innerHazards.ANIMALS },
+  { label: innerHazards.ASBESTOS, value: innerHazards.ASBESTOS },
+  { label: innerHazards.BIOLOGICAL, value: innerHazards.BIOLOGICAL },
+  { label: innerHazards.BREAKDOWN, value: innerHazards.BREAKDOWN },
+  { label: innerHazards.CHEMICAL, value: innerHazards.CHEMICAL },
+  { label: innerHazards.DIFFUSION, value: innerHazards.DIFFUSION },
+  { label: innerHazards.DROWNING, value: innerHazards.DROWNING },
+  { label: innerHazards.ELECTRICITY, value: innerHazards.ELECTRICITY },
+  { label: innerHazards.EXPLOSION, value: innerHazards.EXPLOSION },
+  { label: innerHazards.FALL, value: innerHazards.FALL },
+  { label: innerHazards.FEAR, value: innerHazards.FEAR },
+  { label: innerHazards.FIRE, value: innerHazards.FIRE },
+  { label: innerHazards.GAS, value: innerHazards.GAS },
+  { label: innerHazards.ILLNESS, value: innerHazards.ILLNESS },
+  { label: innerHazards.INFECTIOUS, value: innerHazards.INFECTIOUS },
+  { label: innerHazards.RADIOACTIVE, value: innerHazards.RADIOACTIVE },
+  { label: innerHazards.TOXINS, value: innerHazards.TOXINS },
 ];
 
 
