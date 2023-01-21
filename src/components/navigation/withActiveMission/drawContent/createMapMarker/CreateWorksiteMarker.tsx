@@ -423,9 +423,6 @@ const CreateWorksiteMarker = () => {
     setSelectedOperatingLevel(e.currentTarget.value);
   };
 
-  
-
-
   // liveVictimsExtricated
   const [liveVictimsExtricatedValue, setLiveVictimsExtricatedValue] = useState<string>("");
 
@@ -475,8 +472,6 @@ const CreateWorksiteMarker = () => {
 
     setOtherOperationalActivitiesValue(reducedOtherOperationalActivities);
   };
-
-  
 
   // worksiteRelevantContacts
   const [worksiteRelevantContactValue, setWorksiteRelevantContactValue] = useState<string>("");
@@ -722,78 +717,34 @@ const CreateWorksiteMarker = () => {
         {togglePlanning && (
           <>
             {/* <StyledCheckbox type="checkbox" checked={isChecked} onChange={handleChange} /> */}
-            <StyledSectionWrapper>
-              <StyledSecondaryHeading>{t("Patient.handoverto")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.handovertohint")}</StyledHint>
-              <SingleDropdown
-                options={handoverDropwdownOptions}
-                value={selectedHandover}
-                label={""}
-                onChange={handleHandoverChange}
-              />
-            </StyledSectionWrapper>
-            <br />
-            <StyledSectionWrapper>
-              <StyledSecondaryHeading>{t("Patient.handovercontact")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.handovercontacthint")}</StyledHint>
-              <StyledInput
-                type="text"
-                value={handoverToValue}
-                onChange={handleHandoverToChange}
-              />
-            </StyledSectionWrapper>
+            
           </>
         )}
 
-        {/* FORENSICS */}
+        {/* SITUATION */}
         <br />
         <button
-          onClick={() => setToggleForensics(!toggleForensics)}
+          onClick={() => setToggleSituation(!toggleSituation)}
           className="toggleButton"
         >
-          {t("Patient.forensics")}
+          {t("Worksite.situation")}
         </button>
-        {toggleForensics && (
+        {toggleSituation && (
           <>
-            <StyledSectionWrapper>
-              <StyledSecondaryHeading>{t("Patient.hair")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.hairhint")}</StyledHint>
-              <StyledInput
-                type="text"
-                value={hairValue}
-                onChange={handleHairChange}
-              />
-            </StyledSectionWrapper>
 
-            <StyledSectionWrapper>
-              <StyledSecondaryHeading>{t("Patient.face")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.facehint")}</StyledHint>
-              <StyledInput
-                type="text"
-                value={faceValue}
-                onChange={handleFaceChange}
-              />
-            </StyledSectionWrapper>
+          </>
+        )}
 
-            <StyledSectionWrapper>
-              <StyledSecondaryHeading>{t("Patient.clothing")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.clothinghint")}</StyledHint>
-              <StyledInput
-                type="text"
-                value={clothingValue}
-                onChange={handleClothingChange}
-              />
-            </StyledSectionWrapper>
-
-            <StyledSectionWrapper>
-              <StyledSecondaryHeading>{t("Patient.bodymarks")}</StyledSecondaryHeading>
-              <StyledHint>{t("Patient.bodymarkshint")}</StyledHint>
-              <StyledInput
-                type="text"
-                value={bodymarksValue}
-                onChange={handleBodymarksChange}
-              />
-            </StyledSectionWrapper>
+        {/* RISK */}
+        <br />
+        <button
+          onClick={() => setToggleRisk(!toggleRisk)}
+          className="toggleButton"
+        >
+          {t("Worksite.risk")}
+        </button>
+        {toggleRisk && (
+          <>
 
           </>
         )}
@@ -801,18 +752,18 @@ const CreateWorksiteMarker = () => {
         (/* outside toggle */)
         <br />
         <StyledSectionWrapper>
-          <StyledSecondaryHeading>{t("Patient.notes")}</StyledSecondaryHeading>
-          <StyledHint>{t("Patient.noteshint")}</StyledHint>
+          <StyledSecondaryHeading>{t("Worksite.notes")}</StyledSecondaryHeading>
+          <StyledHint>{t("Worksite.noteshint")}</StyledHint>
           <StyledInput
-            value={notesValue}
-            onChange={handleNotesChange}
+            value={noticeValue}
+            onChange={handleNoticeChange}
           />
         </StyledSectionWrapper>
         
         {/* SUBMIT */}
         <br />
         <StyledButton onClick={handleSubmit}>
-          {t(loading ? "loading..." : "Submit Victim")}
+          {t(loading ? "loading..." : "Submit Worksite")}
         </StyledButton>
 
       </StyledContentWrapper>
