@@ -25,7 +25,7 @@ import {
 import { divIcon } from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
 import styled from "styled-components";
-import { RiLoginBoxFill } from "react-icons/ri";
+import { RiLoginBoxLine } from "react-icons/ri";
 
 import { useTranslation } from 'react-i18next';
 
@@ -36,13 +36,12 @@ type Props = {
 //customize logo
 let iconSize = 30;
 const StyledLocationMarker = styled.button`
- background-color: ${(props) => props.theme.alertColor};
- border-radius: 50px;
+ color: ${(props) => props.theme.alertColor};
 `;
 const iconMarker = renderToStaticMarkup(
   <div>
     <StyledLocationMarker>
-      <RiLoginBoxFill
+      <RiLoginBoxLine
         size={iconSize}
       />
     </StyledLocationMarker>

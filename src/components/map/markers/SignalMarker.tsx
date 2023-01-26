@@ -26,7 +26,7 @@ import { useTranslation } from 'react-i18next';
 import { divIcon } from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
 import styled from "styled-components";
-import { MdNotListedLocation } from "react-icons/md";
+import { RiQuestionLine } from "react-icons/ri";
 
 type Props = {
   signal: SignalSchema;
@@ -41,7 +41,7 @@ const StyledLocationMarker = styled.button`
 const iconMarker = renderToStaticMarkup(
   <div>
     <StyledLocationMarker>
-      <MdNotListedLocation
+      <RiQuestionLine
         size={iconSize}
       />
     </StyledLocationMarker>
