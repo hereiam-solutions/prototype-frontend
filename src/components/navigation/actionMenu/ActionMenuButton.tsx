@@ -2,11 +2,13 @@ import styled from "styled-components";
 import useActionMenu from "../../../hooks/useActionMenu";
 
 // logo imports
-import { RiCloseCircleFill } from "react-icons/ri"; //MID
-import { MdNotListedLocation } from "react-icons/md"; //TOP
-import { RiUserAddFill } from "react-icons/ri"; //RIGHT
-import { MdReportProblem } from "react-icons/md"; //LEFT
-import { RiFlag2Fill } from "react-icons/ri"; //BOTTOM
+import { RiQuestionFill } from "react-icons/ri"; //TOP -> suspected
+import { RiUserAddFill } from "react-icons/ri"; //MID -> add victim
+import { RiAlertFill } from "react-icons/ri"; //BOTTOM
+
+import { RiFlag2Fill } from "react-icons/ri"; //LEFT
+import { RiLoginBoxFill } from "react-icons/ri"; //RIGTH
+
 
 import { MarkerType } from "../../map/mapTypes";
 import useModal from "../../../hooks/useModal";
@@ -48,16 +50,20 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
   const handleClick = () => {
     setIsActionMenuOpen(false);
 
-    if (positionInActionMenu === Position.LEFT) {
+    if (positionInActionMenu === Position.BOTTOM) {
       setMarkerType(MarkerType.HAZARD);
       setIsCreateMarkerModeEnabled(true);
       handleModal();
-    } else if (positionInActionMenu === Position.BOTTOM) {
-      setMarkerType(MarkerType.LOCATION);
+    } else if (positionInActionMenu === Position.MID) {
+      setMarkerType(MarkerType.PATIENT);
       setIsCreateMarkerModeEnabled(true);
       handleModal();
+    } else if (positionInActionMenu === Position.LEFT) {
+    setMarkerType(MarkerType.LOCATION);
+    setIsCreateMarkerModeEnabled(true);
+      handleModal();
     } else if (positionInActionMenu === Position.RIGHT) {
-      setMarkerType(MarkerType.PATIENT);
+      setMarkerType(MarkerType.WORKSITE);
       setIsCreateMarkerModeEnabled(true);
       handleModal();
     }
@@ -68,20 +74,6 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
     }
   };
 
-  if (positionInActionMenu === Position.LEFT) {
-    return (
-      <StyledButton
-        onClick={handleClick}
-        positionInActionMenu={positionInActionMenu}
-        className={"item"}
-      >
-        <MdReportProblem
-          size={35}
-        />
-      </StyledButton>
-    );
-  }
-
   if (positionInActionMenu === Position.TOP) {
     return (
       <StyledButton
@@ -89,21 +81,21 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
         positionInActionMenu={positionInActionMenu}
         className={"item"}
       >
-        <MdNotListedLocation
+        <RiQuestionFill
           size={35}
         />
       </StyledButton>
     );
   }
 
-  if (positionInActionMenu === Position.RIGHT) {
+  if (positionInActionMenu === Position.LEFT) {
     return (
       <StyledButton
         onClick={handleClick}
         positionInActionMenu={positionInActionMenu}
         className={"item"}
       >
-        <RiUserAddFill
+        <RiFlag2Fill
           size={35}
         />
       </StyledButton>
@@ -117,8 +109,22 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
         positionInActionMenu={positionInActionMenu}
         className={"item"}
       >
-        <RiFlag2Fill
-        size={35}
+        <RiAlertFill
+          size={35}
+        />
+      </StyledButton>
+    );
+  }
+
+  if (positionInActionMenu === Position.RIGHT) {
+    return (
+      <StyledButton
+        onClick={handleClick}
+        positionInActionMenu={positionInActionMenu}
+        className={"item"}
+      >
+        <RiLoginBoxFill
+          size={35}
         />
       </StyledButton>
     );
@@ -131,7 +137,7 @@ const ActionMenuButton = ({ positionInActionMenu }: ActionMenuButtonProps) => {
       className={"item"}
     >
       
-      <RiCloseCircleFill
+      <RiUserAddFill
         size={35}
       />
     </StyledX>
