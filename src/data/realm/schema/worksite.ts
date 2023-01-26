@@ -99,7 +99,6 @@ export type WorksiteSchema = {
     damage: string;
     voids: voids;
     timestamp: string;
-    //endtime: string;
     operatingTeams: string[];
     operatingLevel: operatingLevels;
     worksiteTriageLevel: worksiteTriageLevels;
