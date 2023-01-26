@@ -50,7 +50,7 @@ const iconMarker = renderToStaticMarkup(
 
 const WorksiteIcon = divIcon({
   html: iconMarker,
-  className: 'victim',
+  className: 'worksite',
   iconAnchor: [0, 0],
 });
 
