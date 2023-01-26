@@ -28,6 +28,8 @@ import { LocationSchema } from "../../data/realm/schema/location";
 import LocationMarker from "./markers/LocationMarker";
 import { SignalSchema } from "../../data/realm/schema/signal";
 import SignalMarker from "./markers/SignalMarker";
+import { WorksiteSchema } from "../../data/realm/schema/worksite";
+import WorksiteMarker from "./markers/WorksiteMarker";
 
 import { useTranslation } from 'react-i18next';
 
@@ -42,6 +44,7 @@ const MissionMap = () => {
   const [hazards, setHazards] = useState<HazardSchema[]>([]);
   const [locations, setLocations] = useState<LocationSchema[]>([]);
   const [signals, setSignals] = useState<SignalSchema[]>([]);
+  const [worksites, setWorksites] = useState<WorksiteSchema[]>([]);
 
   const tileLayerRef = useRef(null);
 
@@ -70,10 +73,16 @@ const MissionMap = () => {
             { mission: activeMission?._id.toString() }
           );
 
+          const worksitesResponse = await realm.currentUser.callFunction(
+            realmFunctionNames.getAllWorksitesForMission,
+            { mission: activeMission?._id.toString() }
+          );
+
           setPatients(patientsResponse as PatientSchema[]);
           setLocations(locationsResponse as LocationSchema[]);
           setHazards(hazardsResponse as HazardSchema[]);
           setSignals(signalsResponse as SignalSchema[]);
+          setWorksites(worksitesResponse as WorksiteSchema[]);
         }
 
         if (tileLayerRef.current) {
@@ -157,6 +166,14 @@ const MissionMap = () => {
             <LayerGroup>
               {patients.map((patient: PatientSchema) => (
                 <PatientMarker patient={patient} key={patient._id.toString()} />
+              ))}
+            </LayerGroup>
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay checked={true} name={t("Worksites")}>
+            <LayerGroup>
+              {worksites.map((worksite: WorksiteSchema) => (
+                <WorksiteMarker worksite={worksite} key={worksite._id.toString()} />
               ))}
             </LayerGroup>
           </LayersControl.Overlay>
