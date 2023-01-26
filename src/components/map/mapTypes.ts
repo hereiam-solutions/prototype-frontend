@@ -29,11 +29,13 @@ const poly: geoJSONPolygon = {
   ],
 };
 
+
 export enum MarkerType {
   HAZARD = "hazard",
   PATIENT = "patient",
   LOCATION = "location",
   SIGNAL = "signal",
+  WORKSITE = "worksite"
 }
 
 export type screenCoordinatesType = {
