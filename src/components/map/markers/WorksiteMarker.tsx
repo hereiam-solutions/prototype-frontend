@@ -81,7 +81,7 @@ const WorksiteMarker = ({ worksite }: Props) => {
   const [toggleStructure, setToggleStructure] = useState(true)
   const [togglePlanning, setTogglePlanning] = useState(false)
   const [toggleSituation, setToggleSituation] = useState(false)
-  const [toggleRisks, setToggleRisks] = useState(false)
+  const [toggleRisk, setToggleRisk] = useState(false)
 
   const { t } = useTranslation();
 
@@ -196,42 +196,95 @@ const WorksiteMarker = ({ worksite }: Props) => {
             </StyledPlanningSection>
           </StyledSection>
 
-          {/* FORENSICS */}
+          {/* SITUATION */}
           <StyledSection>
-            <StyledForensicsSection>
+            <StyledSituationSection>
               <button
-                onClick={() => setToggleForensics(!toggleForensics)}
+                onClick={() => setToggleSituation(!toggleSituation)}
                 className="toggleButton"
               >
                 {t("Patient.forensics")}
               </button>
-              {toggleForensics && (
+              {toggleSituation && (
                 <>
                   <br />
-                  <StyledBoldText>{t("Patient.hair")}: {patient.hair}</StyledBoldText>
-                  <StyledBoldText>{t("Patient.face")}: {patient.face}</StyledBoldText>
-                  <StyledBoldText>{t("Patient.clothing")}: {patient.clothing}</StyledBoldText>
-                  <StyledBoldText>{t("Patient.bodymarks")}: {patient.bodymarks}</StyledBoldText>
+                  <StyledBoldText>{t("Worksite.operatingteams")}</StyledBoldText>
+                  <StyledList>
+                    {worksite.operatingTeams.map(
+                      (operatingTeam: string, index: number) => {
+                        return (
+                          <StyledListEntry key={index}>{operatingTeam = ""}</StyledListEntry>
+                        );
+                      }
+                    )}
+                  </StyledList>
+                  <StyledBoldText>{t("Worksite.operatinglevel")} {worksite.operatingLevel}</StyledBoldText>
+                  <StyledBoldText>{t("Worksite.livevictims")} {worksite.liveVictimsExtricated}</StyledBoldText>
+                  <StyledBoldText>{t("Worksite.deadvictims")} {worksite.deadVictimsRecovered}</StyledBoldText>
+                  
+                  <StyledBoldText>{t("Worksite.otheractivities")}</StyledBoldText>
+                  <StyledList>
+                    {worksite.otherOperationalActivities.map(
+                      (otherOperationalActiviti: string, index: number) => {
+                        return (
+                          <StyledListEntry key={index}>{otherOperationalActiviti = ""}</StyledListEntry>
+                        );
+                      }
+                    )}
+                  </StyledList>
+
+                  <StyledBoldText>{t("Worksite.worksitecontacts")}</StyledBoldText>
+                  <StyledList>
+                    {worksite.worksiteRelevantContacts.map(
+                      (worksiteRelevantContact: string, index: number) => {
+                        return (
+                          <StyledListEntry key={index}>{worksiteRelevantContact = ""}</StyledListEntry>
+                        );
+                      }
+                    )}
+                  </StyledList>
+
                 </>
               )}
-            </StyledForensicsSection>
+            </StyledSituationSection>
+          </StyledSection>
+
+          {/* RISK */}
+          <StyledSection>
+            <StyledRiskSection>
+              <button
+                onClick={() => setToggleRisk(!toggleRisk)}
+                className="toggleButton"
+              >
+                {t("Worksite.risk")}
+              </button>
+              {toggleRisk && (
+                <>
+                  <br />
+
+                  <StyledBoldText>{t("Worksite.innerhazards")} {worksite.innerHazards}</StyledBoldText>
+                  <StyledBoldText>{t("Worksite.unusualhazard")} {worksite.unusualHazards}</StyledBoldText>
+
+                </>
+              )}
+            </StyledRiskSection>
           </StyledSection>
 
           {/* NOTES */}
           <br />
           <StyledSection>
             <StyledNotes>
-              <StyledBoldText>{t("Patient.notes")}:<br />{patient.notes}</StyledBoldText>
+              <StyledBoldText>{t("Worksite.notes")}:<br />{worksite.notice}</StyledBoldText>
             </StyledNotes>
           </StyledSection>
 
           <br />
-          <StyledDeactivateButton onClick={deletePatient}>
-            {t("Patient.close")}
+          <StyledDeactivateButton onClick={deleteWorksite}>
+            {t("Worksite.close")}
           </StyledDeactivateButton>
 
           <StyledDate>
-            {new Date(patient.timestamp).toLocaleString()}
+            {new Date(worksite.timestamp).toLocaleString()}
           </StyledDate>
 
         </StyledPopupContentWrapper>
@@ -239,21 +292,6 @@ const WorksiteMarker = ({ worksite }: Props) => {
     </Marker>
   );
 };
-
-const StyledStatus = styled.div`
-  width: 100%;
-  self-align: center;
-  padding: 0.5rem;
-
-  color: ${(props) => props.theme.buttonFontColor};
-  font-size: 1.3rem;
-  font-weight: 500;
-  text-align: center;
-
-  border: 1px solid ${(props) => props.theme.buttonFontColor};
-  border-radius: ${(props) => props.theme.primaryBorderRadius};
-
-`;
 
 const StyledShortSign = styled.div`
   width: 100%;
@@ -269,14 +307,6 @@ const StyledShortSign = styled.div`
 
   opacity: 0.3;
 
-`;
-
-const StyledHint = styled.div`
-  margin-top: 0.3rem;
-
-  font-size: 0.8rem;
-  font-weight: 300;
-  text-align: center;
 `;
 
 const StyledVictimID = styled.div`
@@ -321,7 +351,21 @@ const StyledPlanningSection = styled.div`
   }
 `;
 
-const StyledForensicsSection = styled.div`
+const StyledSituationSection = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    font-weight: 800;
+  }
+`;
+
+const StyledRiskSection = styled.div`
   margin-top: 1rem;
   width: 100%;
 
