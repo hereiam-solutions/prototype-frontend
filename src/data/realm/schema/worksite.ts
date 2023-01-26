@@ -86,8 +86,9 @@ export enum innerHazards {
 
 export type WorksiteSchema = {
     _id: BSON.ObjectId;
-    identifier: string;
     placed_by: BSON.ObjectId;
+    timestamp: string;
+    identifier: string;
     address: string;
     boundaries: string;
     constructionType: constructionTypes;
@@ -98,7 +99,6 @@ export type WorksiteSchema = {
     collapse: collapses;
     damage: string;
     voids: voids;
-    timestamp: string;
     operatingTeams: string[];
     operatingLevel: operatingLevels;
     worksiteTriageLevel: worksiteTriageLevels;
@@ -131,6 +131,9 @@ export type WorksiteSchema = {
 };
 
 export type CreateWorksiteArgs = {
+    // _id: BSON.ObjectId;
+    // placed_by: BSON.ObjectId;
+    // timestamp: string;
     identifier: string;
     address: string;
     boundaries: string;
@@ -168,7 +171,7 @@ export type CreateWorksiteArgs = {
     innerHazards: innerHazards;
     unusualHazards: string;
     notice: string;
-    status: "active" | "inactive";
+    status: "active";
     mission: string;
     geoJSON: geoJSONPoint;
 };
