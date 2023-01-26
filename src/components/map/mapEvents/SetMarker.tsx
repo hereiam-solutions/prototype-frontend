@@ -46,6 +46,9 @@ function SetMarker() {
         if (markerType === MarkerType.SIGNAL) {
           navigate(`create-${MarkerType.SIGNAL}`);
         }
+        if (markerType === MarkerType.WORKSITE) {
+          navigate(`create-${MarkerType.WORKSITE}`);
+        }
 
         map.setView(e.latlng, map.getZoom());
 
