@@ -47,16 +47,19 @@ const StyledAccordionHeader = styled.div`
 const StyledWrapper = styled.div`
   width: 100%;
   margin-top: 1.2rem;
-
+  cursor:pointer;
   padding: 0.5rem;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.7rem;
-
   font-size: 1rem;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 `;
 
 const StyledContent = styled.div`
