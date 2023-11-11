@@ -3,7 +3,7 @@
     "version": "0.1.1",
     "private": true,
     "dependencies": {
-        "axios": "^0.27.2",
+        "axios": "^1.6.0",
         "formik": "^2.2.9",
         "i18next": "^22.4.3",
         "i18next-browser-languagedetector": "^7.0.1",
